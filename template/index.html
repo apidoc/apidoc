@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>apiDoc</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link href="http://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700" rel="stylesheet" type="text/css">
+	<link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="vendor/prettify.css" rel="stylesheet" media="screen">
+	<link href="css/style.css" rel="stylesheet" media="screen">
+	<link href="img/favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+
+<script id="template-sidenav" type="text/x-handlebars-template">
+	<ul class="sidenav nav nav-list affix">
+	{{#each nav}}
+		{{#if isHeader}}
+			{{#if isFixed}}
+				<li class="nav-fixed nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{title}}</a></li>
+			{{else}}
+				<li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{title}}</a></li>
+			{{/if}}
+		{{else}}
+			<li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}"><a href="#api-{{group}}-{{name}}">{{title}}</a></li>
+		{{/if}}
+	{{/each}}
+	</ul>
+</script>
+
+<script id="template-project" type="text/x-handlebars-template">
+	<div class="pull-left">
+		<h1>{{name}}</h1>
+		{{#if description}}<h2>{{{nl2br description}}}</h2>{{/if}}
+	</div>
+	<div class="pull-right">
+		<div class="btn-group">
+			<button id="version" class="btn btn-large dropdown-toggle" data-toggle="dropdown">
+				<strong>{{version}}</strong> <span class="caret"></span>
+			</button>
+			<ul id="versions" class="dropdown-menu">
+					<li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
+					<li class="divider"></li>
+					<li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
+	{{#each versions}}
+				<li class="version"><a href="#">{{this}}</a></li>
+	{{/each}}
+			</ul>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</script>
+
+<script id="template-apidoc" type="text/x-handlebars-template">
+	{{#if apidoc}}
+		<div id="api-_" class="apidoc">{{{apidoc}}}</div>
+	{{/if}}
+</script>
+
+<script id="template-generator" type="text/x-handlebars-template">
+	{{#if generator}}
+		{{__ "Generated with"}} <a href="http://apidocjs.com">apiDoc</a> {{{generator.version}}} - {{{generator.time}}}
+	{{/if}}
+</script>
+
+<script id="template-sections" type="text/x-handlebars-template">
+	<section id="api-{{group}}">
+		<h1>{{title}}</h1>
+		{{#each articles}}
+			<div id="api-{{group}}-{{name}}">
+				{{{article}}}
+			</div>
+		{{/each}}
+	</section>
+</script>
+
+<script id="template-article" type="text/x-handlebars-template">
+	<article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
+		<div class="pull-left">
+			<h1>{{article.group}} - {{article.title}}</h1>
+		</div>
+		<div class="pull-right">
+			<div class="btn-group">
+				<button class="version btn dropdown-toggle" data-toggle="dropdown">
+					<strong>{{article.version}}</strong> <span class="caret"></span>
+				</button>
+				<ul class="versions dropdown-menu">
+					<li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
+	{{#each versions}}
+					<li class="version"><a href="#">{{this}}</a></li>
+	{{/each}}
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+		{{#if article.description}}
+			<p>{{{nl2br article.description}}}</p>
+		{{/if}}
+
+		<pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
+
+		{{#if article.permission.name}}
+			<p>
+				{{__ "Permission:"}} 
+				{{article.permission.name}}
+
+				{{#if article.permission.description}}
+					&nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br article.permission.description}}" title="" data-original-title="{{article.permission.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+				{{/if}}
+			</p>
+		{{else}}
+			{{#if article.permission}}
+				<p>{{__ "Permission:"}} {{article.permission}}</p>
+			{{/if}}
+		{{/if}}
+
+		{{#each article.examples}}
+			<strong>{{title}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
+		{{/each}}
+
+		{{subTemplate "article-param-block" params=article.parameter _title="Parameter" _hasType=_hasTypeInParameterFields}}
+		{{subTemplate "article-param-block" params=article.success _title="Success (200)" _hasType=_hasTypeInSuccessFields}}
+		{{subTemplate "article-param-block" params=article.info _title="Info" _hasType=_hasTypeInInfoFields}}
+		{{subTemplate "article-param-block" params=article.error _title="Error (4xx)" _col1="Name" _hasType=_hasTypeInErrorFields}}
+	</article>
+</script>
+
+<script id="template-article-param-block" type="text/x-handlebars-template">
+	{{#if params}}
+		<h2>{{__ _title}}</h2>
+		{{#if params.fields}}
+			<table>
+				<thead>
+					<tr>
+						<th style="width: 30%">{{#if _col1}}{{__ _col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+						{{#if _hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+						<th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+					</tr>
+				</thead>
+				<tbody>
+			{{#each params.fields}}
+					<tr>
+						<td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
+						{{#if ../../_hasType}}<td>{{{type}}}</td>{{/if}}
+						<td>{{{nl2br description}}}</td>
+					</tr>
+			{{/each}}
+				</tbody>
+			</table>
+		{{else}}
+			<p>{{__ "No response values."}}</p>
+		{{/if}}
+
+		{{#each params.examples}}
+			<strong>{{title}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
+		{{/each}}
+	{{/if}}
+</script>
+
+<script id="template-compare-article" type="text/x-handlebars-template">
+	<article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
+		<div class="pull-left">
+			<h1>{{article.group}} - {{{showDiff article.title compare.title}}}</h1>
+		</div>
+
+		<div class="pull-right">
+			<div class="btn-group">
+				<button class="btn btn-success" disabled>
+					<strong>{{article.version}}</strong> {{__ "compared to"}}
+				</button>
+				<button class="version btn btn-danger dropdown-toggle" data-toggle="dropdown">
+					<strong>{{compare.version}}</strong> <span class="caret"></span>
+				</button>
+				<ul class="versions dropdown-menu">
+					<li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
+					<li class="divider"></li>
+	{{#each versions}}
+					<li class="version"><a href="#">{{this}}</a></li>
+	{{/each}}
+				</ul>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+
+		{{#if article.description}}
+			<p>{{{showDiff article.description compare.description "nl2br"}}}</p>
+		{{else}}
+			{{#if compare.description}}
+			<p>{{{showDiff "" compare.description "nl2br"}}}</p>
+			{{/if}}
+		{{/if}}
+
+		<pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
+
+		{{subTemplate "article-compare-permission" article=article compare=compare}}
+
+		{{#each_compare_title article.examples compare.examples}}
+
+			{{#if typeSame}}
+			<strong>{{{showDiff source.title compare.title}}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeIns}}
+			<strong><ins>{{{source.title}}}</ins></strong>
+			<pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeDel}}
+			<strong><del>{{{compare.title}}}</del></strong>
+			<pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
+			{{/if}}
+
+		{{/each_compare_title}}
+
+		{{subTemplate "article-compare-param-block" source=article.parameter compare=compare.parameter _title="Parameter" _hasType=_hasTypeInParameterFields}}
+		{{subTemplate "article-compare-param-block" source=article.success compare=compare.success _title="Success (200)" _hasType=_hasTypeInSuccessFields}}
+		{{subTemplate "article-compare-param-block" source=article.info compare=compare.info _title="Info" _hasType=_hasTypeInInfoFields}}
+		{{subTemplate "article-compare-param-block" source=article.error compare=compare.error _title="Error (4xx)" _col1="Name" _hasType=_hasTypeInErrorFields}}
+	</article>
+</script>
+
+<script id="template-article-compare-permission" type="text/x-handlebars-template">
+	{{#if article.permission.name}}
+		<p>
+			{{__ "Permission:"}} 
+			{{#if compare.permission.name}}
+
+				{{{showDiff article.permission.name compare.permission.name}}}
+
+				{{#if article.permission.description}}
+					&nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{{showDiff article.permission.description compare.permission.description "nl2br"}}}" title="" data-original-title="{{{showDiff article.permission.title compare.permission.title}}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+				{{/if}}
+
+			{{else}}
+
+				<ins>
+					{{article.permission.name}}
+
+					{{#if article.permission.description}}
+						&nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br article.permission.description}}" title="" data-original-title="{{article.permission.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+					{{/if}}
+				</ins>
+
+				{{#if compare.permission}}
+				<del>
+					<br>{{{compare.permission}}}
+				</del>
+				{{/if}}
+
+			{{/if}}
+		</p>
+	{{else}}
+		{{#if article.permission}}
+			<p>
+				{{__ "Permission:"}} 
+				{{#if compare.permission.name}}
+					<ins>
+						{{{article.permission}}}
+					</ins>
+
+					<del>
+					<br>
+					{{compare.permission.name}}
+
+					{{#if compare.permission.description}}
+						&nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br compare.permission.description}}" title="" data-original-title="{{compare.permission.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+					{{/if}}
+					</del>
+				{{else}}
+					{{{showDiff article.permission compare.permission}}}
+				{{/if}}
+			</p>
+		{{else}}
+			{{#if compare.permission.name}}
+				<p>
+					{{__ "Permission:"}} 
+
+					<del>
+					<br>
+					{{compare.permission.name}}
+
+					{{#if compare.permission.description}}
+						&nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br compare.permission.description}}" title="" data-original-title="{{compare.permission.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+					{{/if}}
+					</del>
+				</p>
+			{{else}}
+				{{#if compare.permission}}
+					<p>
+						{{__ "Permission:"}}
+						<del>
+						{{{compare.permission}}}
+						</del>
+					</p> 
+				{{/if}}
+			{{/if}}
+		{{/if}}
+	{{/if}}
+</script>
+
+<script id="template-article-compare-param-block" type="text/x-handlebars-template">
+	{{#if source}}
+		<h2>{{__ _title}}</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<th style="width: 30%">{{#if _col1}}{{__ _col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+					{{#if _hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+					<th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+				</tr>
+			</thead>
+
+			<tbody>
+		{{#each_compare_field source.fields compare.fields}}
+
+			{{#if typeSame}}
+				<tr>
+					<td class="code">
+						{{{splitFill source.field "." "&nbsp;&nbsp;"}}}
+						{{#if source.optional}}
+							{{#if compare.optional}} <span class="label label-optional">{{__ "optional"}}</span>
+							{{else}} <span class="label label-optional label-ins">{{__ "optional"}}</span>
+							{{/if}}
+						{{else}}
+							{{#if compare.optional}} <span class="label label-optional label-del">{{__ "optional"}}</span>{{/if}}
+						{{/if}}
+					</td>
+
+				{{#if source.type}}
+					{{#if compare.type}}
+					<td>{{{showDiff source.type compare.type}}}</td>
+					{{else}}
+					<td>{{{source.type}}}</td>
+					{{/if}}
+				{{else}}
+					{{#if compare.type}}
+					<td>{{{compare.type}}}</td>
+					{{else}}
+						{{#if ../../_hasType}}<td></td>{{/if}}
+					{{/if}}
+
+				{{/if}}
+
+					<td>{{{showDiff source.description compare.description "nl2br"}}}</td>
+				</tr>
+			{{/if}}
+
+			{{#if typeIns}}
+				<tr class="ins">
+					<td class="code">
+						{{{splitFill source.field "." "&nbsp;&nbsp;"}}}
+						{{#if source.optional}} <span class="label label-optional label-ins">{{__ "optional"}}</span>{{/if}}
+					</td>
+
+				{{#if source.type}}
+					<td>{{{source.type}}}</td>
+				{{else}}
+					{{{typRowTd}}}
+				{{/if}}
+
+					<td>{{{nl2br source.description}}}</td>
+				</tr>
+			{{/if}}
+
+			{{#if typeDel}}
+				<tr class="del">
+					<td class="code">
+						{{{splitFill compare.field "." "&nbsp;&nbsp;"}}}
+						{{#if compare.optional}} <span class="label label-optional label-del">{{__ "optional"}}</span>{{/if}}
+					</td>
+
+				{{#if compare.type}}
+					<td>{{{compare.type}}}</td>
+				{{else}}
+					{{{typRowTd}}}
+				{{/if}}
+
+					<td>{{{nl2br compare.description}}}</td>
+				</tr>
+			{{/if}}
+
+		{{/each_compare_field}}
+			</tbody>
+		</table>
+
+		{{#each_compare_title source.examples compare.examples}}
+
+
+			{{#if typeSame}}
+			<strong>{{{showDiff source.title compare.title}}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeIns}}
+			<strong><ins>{{{source.title}}}</ins></strong>
+			<pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeDel}}
+			<strong><del>{{{compare.title}}}</del></strong>
+			<pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
+			{{/if}}
+
+		{{/each_compare_title}}
+	{{/if}}
+</script>
+
+<div id="border"></div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span2">
+			<div id="sidenav"></div>
+		</div>
+		<div id="content">
+			<div id="project"></div>
+			<div id="sections"></div>
+			<div id="apidoc"></div>
+			<div id="generator"></div>
+		</div>
+	</div>
+</div>
+
+<script data-main="main.js" src="vendor/require-jquery.min.js"></script>
+</body>
+</html>

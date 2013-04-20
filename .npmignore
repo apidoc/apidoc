@@ -1,0 +1,5 @@
+.settings/
+.project
+node_modules/
+tmp/
+doc/

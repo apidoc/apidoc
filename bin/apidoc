@@ -1,0 +1,126 @@
+#!/usr/bin/env node
+
+"use strict";
+
+/*
+ * apidoc
+ * http://apidocjs.com
+ *
+ * Copyright (c) 2013 inveris OHG
+ * Author Peter Rottmann <rottmann@inveris.de>
+ * Licensed under the MIT license.
+ */
+
+var path = require("path");
+var optimist = require("optimist");
+
+var argv = optimist
+	.usage("Usage: $0 [options]")
+
+	.option("f", {
+		alias: "file-filters",
+		"default": ".*\\.js$",
+		describe: "RegEx-Filter to select files that should be parsed (many -f can be used)."
+	})
+
+	.option("i", {
+		alias: "input",
+		"default": "./",
+		describe: "Input / source dirname."
+	})
+
+	.option("o", {
+		alias: "output",
+		"default": "./doc/",
+		describe: "Output dirname."
+	})
+
+	.option("t", {
+		alias: "template",
+		"default": path.join(__dirname, "../template/"),
+		describe: "Use template for output files."
+	})
+
+	.option("v", {
+		alias: "verbose",
+		boolean: true,
+		"default": true,
+		describe: "Verbose debug output."
+	})
+
+	.option("h", {
+		alias: "help",
+		boolean: true,
+		describe: "Show this help information."
+	})
+
+	.option("parse-filters", {
+		describe: "Optional user defined filters. Format name=filename"
+	})
+
+	.option("parse-parsers", {
+		describe: "Optional user defined parsers. Format name=filename"
+	})
+
+	.option("parse-workers", {
+		describe: "Optional user defined workers. Format name=filename"
+	})
+
+	.option("silent", {
+		boolean: true,
+		"default": false,
+		describe: "Turn verbose information off."
+	})
+
+	.option("simulate", {
+		boolean: true,
+		"default": false,
+		describe: "Execute but not write any file."
+	})
+
+	.argv
+;
+
+if(argv.help)
+{
+	optimist.showHelp();
+  process.exit(0);
+}
+
+/**
+ * Transform Parameters to Objectlist.
+ *
+ * @param {String[]} filters
+ * @returns {Object}
+ */
+function transformFilters(filters)
+{
+	if( ! filters) return undefined;
+	if(typeof(filters) === "string") filters = [ filters ]; 
+	var retFilters = [];
+	filters.forEach(function(filter) {
+		var splits = filter.split("=");
+		if(splits.length === 2)
+		{
+			var obj = {};
+			obj[splits[0]] = splits[1];
+			retFilters.push(obj);
+		}
+	});
+	return retFilters;
+} // transformFilters
+
+var defaults = {
+	includeFilters: argv["file-filters"],
+	src: argv["input"],
+	dest: argv["output"],
+	template: argv["template"],
+	debug: (argv["silent"]) ? false : argv["verbose"],
+	log: (argv["silent"]) ? false: true,
+	filters: transformFilters(argv["parse-filters"]),
+	parsers: transformFilters(argv["parse-parsers"]),
+	workers: transformFilters(argv["parse-workers"]),
+	simulate:  argv["simulate"]
+};
+
+require("../lib/apidoc")(defaults);

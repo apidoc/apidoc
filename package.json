@@ -1,0 +1,40 @@
+{
+  "name": "apidoc",
+  "version": "0.1.5",
+  "description": "RESTful web API Documentation Generator",
+  "author": "Peter Rottmann <rottmann@inveris.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/apidoc/apidoc.git"
+  },
+  "main": "./lib/apidoc",
+  "bin": "bin/apidoc",
+  "keywords": [
+    "api",
+    "apidoc",
+    "doc",
+    "documentation",
+    "rest",
+    "restful"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "wrench": "~1.4.4",
+    "underscore": "~1.4.4",
+    "semver": "~1.1.4",
+    "lodash": "~1.1.1",
+    "node-markdown": "~0.1.1",
+    "optimist": "~0.3.7",
+    "colors": "~0.6.0-1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0rc7",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1rc6",
+    "grunt-simple-mocha": "~0.3.2",
+    "should": "~1.2.2"
+  }
+}

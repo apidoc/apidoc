@@ -1,0 +1,7 @@
+{
+  "name": "apidoc-example",
+  "version": "0.3.0",
+  "description": "apidoc example project",
+  "apidoc": "This is a description, it will be ignored if parameter apidocFilename exist.",
+  "apidocFilename": "API.md"
+}
