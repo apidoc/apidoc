@@ -3,13 +3,13 @@
 "use strict";
 
 /*
- * apidoc
- * http://apidocjs.com
- *
- * Copyright (c) 2013 inveris OHG
- * Author Peter Rottmann <rottmann@inveris.de>
- * Licensed under the MIT license.
- */
+* apidoc
+* http://apidocjs.com
+*
+* Copyright (c) 2013 inveris OHG
+* Author Peter Rottmann <rottmann@inveris.de>
+* Licensed under the MIT license.
+*/
 
 var path = require("path");
 var optimist = require("optimist");
@@ -84,19 +84,19 @@ var argv = optimist
 if(argv.help)
 {
 	optimist.showHelp();
-  process.exit(0);
+process.exit(0);
 }
 
 /**
- * Transform Parameters to Objectlist.
- *
- * @param {String[]} filters
- * @returns {Object}
- */
+* Transform Parameters to Objectlist.
+*
+* @param {String[]} filters
+* @returns {Object}
+*/
 function transformFilters(filters)
 {
 	if( ! filters) return undefined;
-	if(typeof(filters) === "string") filters = [ filters ]; 
+	if(typeof(filters) === "string") filters = [ filters ];
 	var retFilters = [];
 	filters.forEach(function(filter) {
 		var splits = filter.split("=");
