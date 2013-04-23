@@ -19,17 +19,10 @@ td.code {
   font-weight: 400;
 }
 
-#border {
-	width: 264px;
-	height: 100%;
-	position: fixed;
-	background-color: #f5f5f5;
-}
-
 #content {
 	padding-top: 16px;
 	z-Index: -1;
-	margin-left: 264px;
+	margin-left: 270px;
 }
 
 p {
@@ -156,8 +149,10 @@ pre {
   border-radius: 6px;
   position: relative;
   margin: 10px 0 20px 0;
-  /* z-Index: -1; */
-  overflow: auto;
+}
+
+pre.language-json {
+	overflow: auto;
 }
 
 pre.language-html {
@@ -236,7 +231,14 @@ pre .pun {
 .sidenav {
   width: 228px;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+	background-color: #f5f5f5;
 }
 
 .sidenav > li > a {
@@ -281,8 +283,4 @@ pre .pun {
 
 .sidenav > li.is-new a {
 	border-left: #e5e5e5 4px solid;
-}
-
-.sidenav.affix {
-  top: 20px;
 }
