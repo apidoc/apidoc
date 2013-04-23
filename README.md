@@ -14,6 +14,8 @@ Creates from input files a documentation in path `doc/`.
 
 ## Changelog
 
+* `0.1.7` Add @apiIgnore. Update grunt Modules.
+* `0.1.6` Fix OSX executable
 * `0.1.5` Official release
 
 ## License

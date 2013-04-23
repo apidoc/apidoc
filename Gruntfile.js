@@ -56,7 +56,7 @@ module.exports = function(grunt)
 				passfail: false,
 				node: true
 			}
-		}, // jshint
+		}, // js-hint
 
 		simplemocha: {
 			options: {
