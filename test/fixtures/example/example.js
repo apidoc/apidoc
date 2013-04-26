@@ -2,10 +2,10 @@
  * @test Ignore this block. No apiDoc.
  */
 
-/**
- * @apiIgnore Ignore this block, apiIgnore is set.
- * @api {get} /ignore/me
- */
+	/**
+	 * @apiIgnore Ignore this block, apiIgnore is set.
+	 * @api {get} /ignore/me
+	 */
 
 /**
  * @api {get} /log/:id Get

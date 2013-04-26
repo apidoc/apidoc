@@ -14,6 +14,7 @@ Creates from input files a documentation in path `doc/`.
 
 ## Changelog
 
+* `0.1.9` Fix for whitespace before comment block (Brandon Hamilton https://github.com/apidoc/apidoc/pull/2)
 * `0.1.8` Change templates, enable navigation scroll.
 * `0.1.7` Add @apiIgnore. Update grunt Modules.
 * `0.1.6` Fix OSX executable
