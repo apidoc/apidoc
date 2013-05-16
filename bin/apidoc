@@ -23,6 +23,12 @@ var argv = optimist
 		describe: "RegEx-Filter to select files that should be parsed (many -f can be used)."
 	})
 
+	.option("e", {
+		alias: "exclude-filters",
+		"default": "",
+		describe: "RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).",
+	})
+
 	.option("i", {
 		alias: "input",
 		"default": "./",
@@ -111,6 +117,7 @@ function transformFilters(filters)
 } // transformFilters
 
 var defaults = {
+	excludeFilters: argv["exclude-filters"],
 	includeFilters: argv["file-filters"],
 	src: argv["input"],
 	dest: argv["output"],
