@@ -78,8 +78,11 @@ require([
 		// Titel der ersten Einträge von group[].name[] ermitteln (name hat Versionsliste)
 		var titles = {};
 		$.each(groupEntries, function(index, entries) {
-			var title = entries[0].title.toLowerCase().replace(/[äöüß]/g, function($0) { return umlauts[$0]; });
-			titles[title + " #~#" + index] = 1;
+            var title = entries[0].title;
+            if (title) {
+                title.toLowerCase().replace(/[äöüß]/g, function($0) { return umlauts[$0]; });
+                titles[title + " #~#" + index] = 1;
+            }
 		}); // each
 		// Sortieren
 		var values = Object.keys(titles);
