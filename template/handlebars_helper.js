@@ -35,14 +35,21 @@ define([
 	};
 
 	/**
-	 * Liefert den lokalisierten Text zurück.
-	 *
+	 * Return localized Text.
 	 * @param string text
 	 */
 	Handlebars.registerHelper("__", function(text){
 		return locale.__(text);
 	});
 
+	/**
+	 * Replace underscore with space.
+	 * @param string text
+	 */
+	Handlebars.registerHelper("underscoreToSpace", function(text){
+		return text.replace(/(_+)/g, " ");
+	});
+	
 	/**
 	 * 
 	 */

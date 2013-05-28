@@ -17,9 +17,9 @@
 	{{#each nav}}
 		{{#if isHeader}}
 			{{#if isFixed}}
-				<li class="nav-fixed nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{title}}</a></li>
+				<li class="nav-fixed nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
 			{{else}}
-				<li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{title}}</a></li>
+				<li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
 			{{/if}}
 		{{else}}
 			<li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}"><a href="#api-{{group}}-{{name}}">{{title}}</a></li>
@@ -57,7 +57,7 @@
 
 <script id="template-sections" type="text/x-handlebars-template">
 	<section id="api-{{group}}">
-		<h1>{{title}}</h1>
+		<h1>{{underscoreToSpace title}}</h1>
 		{{#each articles}}
 			<div id="api-{{group}}-{{name}}">
 				{{{article}}}
@@ -69,7 +69,7 @@
 <script id="template-article" type="text/x-handlebars-template">
 	<article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
 		<div class="pull-left">
-			<h1>{{article.group}} - {{article.title}}</h1>
+			<h1>{{underscoreToSpace article.group}} - {{article.title}}</h1>
 		</div>
 		<div class="pull-right">
 			<div class="btn-group">
