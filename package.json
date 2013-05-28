@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": "MIT",
@@ -22,18 +22,18 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "wrench": "~1.4.4",
+    "wrench": "~1.5.1",
     "underscore": "~1.4.4",
     "semver": "~1.1.4",
-    "lodash": "~1.1.1",
+    "lodash": "~1.2.0",
     "node-markdown": "~0.1.1",
-    "optimist": "~0.3.7",
+    "optimist": "~0.5.0",
     "colors": "~0.6.0-1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-jshint": "~0.4.3",
+    "grunt-contrib-jshint": "~0.5.4",
     "grunt-simple-mocha": "~0.4.0",
     "should": "~1.2.2"
   }

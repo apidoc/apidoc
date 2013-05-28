@@ -49,6 +49,7 @@ describe("apiDoc", function() {
 	// compare
 	it("case 1: created files should equal to fixtures", function(done) {
 		var timeRegExp = /"time"\:\s"(.*)"/g;
+		var versionRegExp = /"version"\:\s"(.*)"/g;
 		var slashesRegExp = /\\\\/g;
 		fixtureFiles.forEach(function(name) {
 			var fixtureContent = fs.readFileSync("test/fixtures/" + name, "utf8");
@@ -58,9 +59,13 @@ describe("apiDoc", function() {
 			fixtureContent = fixtureContent.replace(/\r\n/g, "\n");
 			createdContent = createdContent.replace(/\r\n/g, "\n");
 
-			// creation time remove.
+			// creation time remove (never equal)
 			fixtureContent = fixtureContent.replace(timeRegExp, "");
 			createdContent = createdContent.replace(timeRegExp, "");
+
+			// creation time remove (or fixtures must be updated every time the version change)
+			fixtureContent = fixtureContent.replace(versionRegExp, "");
+			createdContent = createdContent.replace(versionRegExp, "");
 
 			// windows path \\ to /
 			fixtureContent = fixtureContent.replace(slashesRegExp, "/");
