@@ -14,13 +14,7 @@ Creates from input files a documentation in path `doc/`.
 
 ## Changelog
 
-* `0.1.10` Add `-e` exclude option for Files / Directories, example `apidoc -e node_modules/`.
-* `0.1.10` Fix check for a valid title in Template (Ben S. Stahlhood II https://github.com/apidoc/apidoc/pull/7)
-* `0.1.9` Fix for whitespace before comment block (Brandon Hamilton https://github.com/apidoc/apidoc/pull/2)
-* `0.1.8` Change templates, enable navigation scroll.
-* `0.1.7` Add @apiIgnore. Update grunt Modules.
-* `0.1.6` Fix OSX executable
-* `0.1.5` Official release
+[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
 
 ## License
 Copyright (c) 2013 inveris OHG
