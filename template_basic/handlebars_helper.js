@@ -18,7 +18,7 @@ define([
 	Handlebars.registerHelper("underscoreToSpace", function(text){
 		return text.replace(/(_+)/g, " ");
 	});
-
+	
 	/**
 	 * 
 	 */

@@ -315,6 +315,17 @@ pre.del {
   text-decoration: line-through;
 }
 
+table.ins th,
+table.ins td {
+  background-color: #60d060;
+}
+
+table.del th,
+table.del td {
+  background-color: #f05050;
+  text-decoration: line-through;
+}
+
 tr.ins td {
   background-color: #60d060;
 }

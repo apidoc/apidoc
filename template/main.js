@@ -78,11 +78,12 @@ require([
 		// Titel der ersten Einträge von group[].name[] ermitteln (name hat Versionsliste)
 		var titles = {};
 		$.each(groupEntries, function(index, entries) {
-            var title = entries[0].title;
-            if (title) {
-                title.toLowerCase().replace(/[äöüß]/g, function($0) { return umlauts[$0]; });
-                titles[title + " #~#" + index] = 1;
-            }
+			var title = entries[0].title;
+			if(title)
+			{
+				title.toLowerCase().replace(/[äöüß]/g, function($0) { return umlauts[$0]; });
+				titles[title + " #~#" + index] = 1;
+			}
 		}); // each
 		// Sortieren
 		var values = Object.keys(titles);
@@ -239,12 +240,12 @@ require([
 						versions: articleVersions[entry.group][entry.name]
 					};
 				}
-				
-				if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _.any(entry.parameter.fields, function(item) { return item.type; });
-				if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _.any(entry.error.fields, function(item) { return item.type; });
-				if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _.any(entry.success.fields, function(item) { return item.type; });
-				if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _.any(entry.info.fields, function(item) { return item.type; });
-				
+
+				if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+				if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+				if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+				if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+
 				articles.push({
 					article: templateArticle(fields),
 					group: entry.group,
@@ -282,6 +283,25 @@ require([
 		var id = window.location.hash;
 		$('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
 	}
+
+	/**
+	 * Check if Parameter (sub) List has a type Field.
+	 * Example: @apaSuccess          varname1 No type.
+	 *          @apaSuccess {String} varname2 With type.
+	 *
+	 * @param {Object} fields 
+	 */
+	function _hasTypeInFields(fields)
+	{
+		hasField = false;
+		$.each(fields, function(name) {
+			if(_.any(fields[name], function(item) { return item.type; }) )
+			{
+				hasField = true;
+			}
+		});
+		return hasField;
+	} // _hasTypeInFields
 
 	/**
 	 * On Template changes, recall plugins.
@@ -358,7 +378,7 @@ require([
 
 	// On change the Version of an article. 
 	$("article .versions li.version a").on("click", changeVersionCompareTo);
-
+	
 	/**
 	 * 
 	 */
@@ -406,14 +426,16 @@ require([
 			};
 
 			var entry = sourceEntry;
-			if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _.any(entry.parameter.fields, function(item) { return item.type; });
-			if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _.any(entry.error.fields, function(item) { return item.type; });
-			if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _.any(entry.success.fields, function(item) { return item.type; });
+			if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+			if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+			if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+			if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
 
 			var entry = compareEntry;
-			if(fields._hasTypeInParameterFields !== true && entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _.any(entry.parameter.fields, function(item) { return item.type; });
-			if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _.any(entry.error.fields, function(item) { return item.type; });
-			if(fields._hasTypeInParameterFields !== true && entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _.any(entry.success.fields, function(item) { return item.type; });
+			if(fields._hasTypeInParameterFields !== true && entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+			if(fields._hasTypeInErrorFields !== true && entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+			if(fields._hasTypeInSuccessFields !== true && entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+			if(fields._hasTypeInInfoFields !== true && entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
 
 			var content = templateCompareArticle(fields);
 			$root.after(content);
@@ -475,9 +497,10 @@ require([
 			versions: articleVersions[group][name]
 		};
 
-		if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _.any(entry.parameter.fields, function(item) { return item.type; });
-		if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _.any(entry.error.fields, function(item) { return item.type; });
-		if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _.any(entry.success.fields, function(item) { return item.type; });
+		if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+		if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+		if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+		if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
 
 		return templateArticle(fields);
 	} // renderArticle

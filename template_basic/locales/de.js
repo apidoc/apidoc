@@ -3,8 +3,8 @@ define({
 		"Compare all with predecessor": "Vergleiche alle mit ihren Vorgängern", 
 		"compare changes to:"         : "vergleiche Änderungen mit:",
 		"compared to"                 : "verglichen mit",
+		"Default value:"              : "Standardwert:",
 		"Description"                 : "Beschreibung",
-		"Error (4xx)"                 : "Error (4xx)",
 		"Field"                       : "Feld",
 		"General"                     : "Allgemein",
 		"Generated with"              : "Erstellt mit",
@@ -14,7 +14,6 @@ define({
 		"Parameter"                   : "Parameter",
 		"Permission:"                 : "Berechtigung:",
 		"show up to version:"         : "zeige bis zur Version:",
-		"Success (200)"               : "Success (200)",
 		"Type"                        : "Typ"
 	}
 });
