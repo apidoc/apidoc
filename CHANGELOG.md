@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+#### 0.2.1
+Bugfix: executable line delimiters.
+
 #### 0.2.0
 Extend `@apiParam`, `@apiSuccess`, `@apiError` with a grouping ability. Example `@apiParam (group) varname`.
 view [@apiParam](http://apidocjs.com/#param-api-param)
@@ -18,10 +21,10 @@ Update Node Modules to newer versions.
 Add `-e` exclude option for Files / Directories, example `apidoc -e node_modules/`.
 
 #### 0.1.10
-Fix check for a valid title in Template (Ben S. Stahlhood II https://github.com/apidoc/apidoc/pull/7)
+Bugfix: check for a valid title in Template (Ben S. Stahlhood II https://github.com/apidoc/apidoc/pull/7)
 
 #### 0.1.9
-Fix for whitespace before comment block (Brandon Hamilton https://github.com/apidoc/apidoc/pull/2)
+Bugfix: Whitespace before comment block (Brandon Hamilton https://github.com/apidoc/apidoc/pull/2)
 
 #### 0.1.8
 Change templates, enable navigation scroll.
@@ -31,7 +34,7 @@ Add [@apiIgnore](http://apidocjs.com/#param-api-ignore).
 Update grunt Modules.
 
 #### 0.1.6
-Fix OSX executable
+Bugfix: OSX executable
 
 #### 0.1.5
 Official release
