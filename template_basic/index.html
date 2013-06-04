@@ -138,11 +138,10 @@
 			{{/each}}
 				</tbody>
 			</table>
-
-			{{#each params.examples}}
-				<strong>{{title}}</strong>
-				<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
-			{{/each}}
+		{{/each}}
+		{{#each params.examples}}
+			<strong>{{title}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
 		{{/each}}
 	{{/if}}
 </script>

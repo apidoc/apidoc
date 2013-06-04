@@ -23,14 +23,27 @@
  * 
  * @apiParam {String} id The Users-ID.
  *
+ * @apiExample CURL example:
+ *     curl -i -X POST http://localhost:3001/example
+ *          -H 'Content-Type: application/json' \
+ *          -d '{ "id": "4711" }'
+ *
  * @apiSuccess {String} id         The Users-ID.
  * @apiSuccess {Date}   registered Registration Date. 
  * @apiSuccess {Date}   name       Fullname of the User.
  *
+ * @apiSuccessExample Success-Response (example):
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "id": "4711"
+ *       "registered": "31.01.2013"
+ *       "name": "John Doe"
+ *     }
+ *
  * @apiError NoAccessRight Only authenticated Admins can access the data.
  * @apiError UserNotFound   The <code>id</code> of the User was not found.
  * 
- * @apiErrorExample Response (example):
+ * @apiErrorExample Error-Response (example):
  *     HTTP/1.1 401 Not Authenticated
  *     {
  *       "error": "NoAccessRight"

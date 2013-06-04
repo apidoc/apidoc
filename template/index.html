@@ -152,11 +152,10 @@
 			{{/each}}
 				</tbody>
 			</table>
-
-			{{#each params.examples}}
-				<strong>{{title}}</strong>
-				<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
-			{{/each}}
+		{{/each}}
+		{{#each params.examples}}
+			<strong>{{title}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
 		{{/each}}
 	{{/if}}
 </script>
@@ -347,26 +346,25 @@
 				{{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../../_hasType}}
 				</table>
 			{{/if}}
-
-			{{#each_compare_title source.examples compare.examples}}
-
-				{{#if typeSame}}
-				<strong>{{{showDiff source.title compare.title}}}</strong>
-				<pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
-				{{/if}}
-
-				{{#if typeIns}}
-				<strong><ins>{{{source.title}}}</ins></strong>
-				<pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
-				{{/if}}
-
-				{{#if typeDel}}
-				<strong><del>{{{compare.title}}}</del></strong>
-				<pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
-				{{/if}}
-
-			{{/each_compare_title}}
   	{{/each_compare_keys}}
+		{{#each_compare_title source.examples compare.examples}}
+
+			{{#if typeSame}}
+			<strong>{{{showDiff source.title compare.title}}}</strong>
+			<pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeIns}}
+			<strong><ins>{{{source.title}}}</ins></strong>
+			<pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
+			{{/if}}
+
+			{{#if typeDel}}
+			<strong><del>{{{compare.title}}}</del></strong>
+			<pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
+			{{/if}}
+
+		{{/each_compare_title}}
 	{{/if}}
 </script>
 

@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+#### 0.2.2
+Bugfix: Template not show @apiSuccessExample @apiErrorExample.
+
 #### 0.2.1
 Bugfix: executable line delimiters.
 
