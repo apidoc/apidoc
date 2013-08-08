@@ -378,7 +378,24 @@ require([
 
 	// On change the Version of an article. 
 	$("article .versions li.version a").on("click", changeVersionCompareTo);
-	
+
+	$.urlParam = function(name) {
+		var results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
+		return (results && results[1]) ? results[1] : null;
+	};
+
+	if($.urlParam("compare"))
+	{
+		// URL Paramter ?compare=1 is set.
+		$("#compareAllWithPredecessor").trigger("click");
+
+		if(window.location.hash)
+		{
+			var id = window.location.hash;
+			$('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
+		}
+	}
+
 	/**
 	 * 
 	 */

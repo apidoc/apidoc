@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.2.3
+Extend Template with url-param "compare=1" to show the compare version on page view.
+Bugfix: Minor fix with double structure examples.
+
 #### 0.2.2
 Bugfix: Template not show @apiSuccessExample @apiErrorExample.
 
