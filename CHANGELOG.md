@@ -1,5 +1,13 @@
 # apiDoc Changelog
 
+#### 0.2.5
+Allow multiple structure includes.
+Split and extend test-files.
+
+#### 0.2.4
+Fix parsing for empty lines and removing stars on data that spans over multiple lines. (Martin Jonsson https://github.com/apidoc/apidoc/pull/11)
+Remove http:// link to make https compliant. (Thomas Schaaf https://github.com/apidoc/apidoc/pull/10)
+
 #### 0.2.3
 Extend Template with url-param "compare=1" to show the compare version on page view.
 Bugfix: Minor fix with double structure examples.
