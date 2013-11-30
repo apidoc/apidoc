@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+#### 0.2.7
+Bugfix: Allow usage of structures and titles in the same block (https://github.com/apidoc/apidoc/issues/21)
+
+#### 0.2.6
+Give some indication, in case file listing with fails (Johannes Zellner https://github.com/apidoc/apidoc/pull/20)
+
 #### 0.2.5
 Allow multiple structure includes.
 Split and extend test-files.

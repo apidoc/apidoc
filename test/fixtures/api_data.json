@@ -34,6 +34,46 @@
     "filename": "test\\fixtures\\example\\error_structure.js"
   },
   {
+    "type": "post",
+    "url": "/test/title_and_error",
+    "title": "Title and Structure",
+    "name": "PostTitleAndError",
+    "group": "Error",
+    "version": "0.1.0",
+    "description": "Use of Title and Structures in the same block.",
+    "success": {
+      "fields": {
+        "204 No Content. Added to global namespace.": [
+          {
+            "group": "204",
+            "field": "message",
+            "optional": false,
+            "description": "Successfully deleted."
+          }
+        ]
+      }
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "field": "error3Error",
+            "optional": false,
+            "description": "This is Error 3 (local)."
+          },
+          {
+            "group": "Error 4xx",
+            "field": "error1Error",
+            "optional": false,
+            "description": "This is Error 1."
+          }
+        ]
+      }
+    },
+    "filename": "test\\fixtures\\example\\title_and_structure.js"
+  },
+  {
     "type": "get",
     "url": "/test/:id",
     "title": "Grouping",
@@ -509,9 +549,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
+            "field": "field2",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "This is Field 2."
           }
         ]
       }
@@ -528,9 +568,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
+            "field": "field1",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "This is Field 1."
           }
         ]
       }
@@ -578,5 +618,24 @@
     "url": "",
     "version": "0.0.0",
     "filename": "test\\fixtures\\example\\success_structure.js"
+  },
+  {
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "field": "error1Error",
+            "optional": false,
+            "description": "This is Error 1."
+          }
+        ]
+      }
+    },
+    "group": "title_and_structure.js",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "test\\fixtures\\example\\title_and_structure.js"
   }
 ]
