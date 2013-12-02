@@ -20,7 +20,7 @@ var argv = optimist
 	.option("f", {
 		alias: "file-filters",
 		"default": ".*\\.js$",
-		describe: "RegEx-Filter to select files that should be parsed (many -f can be used)."
+		describe: "RegEx-Filter to select files that should be parsed (multiple -f can be used)."
 	})
 
 	.option("e", {
