@@ -1,5 +1,13 @@
 # apiDoc Changelog
 
+#### 0.3.0
+Replace deprecated node-markdown with [marked](https://github.com/chjj/marked).
+Add cli parameter for marked `--marked-...`, watch all params with`--help`.
+Upgrade all used node modules.
+
+#### 0.2.8
+Bugfix: executable line delimiters. (again).
+
 #### 0.2.7
 Bugfix: Allow usage of structures and titles in the same block (https://github.com/apidoc/apidoc/issues/21)
 

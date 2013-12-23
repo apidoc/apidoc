@@ -31,7 +31,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\error_structure.js"
+    "filename": "test/fixtures/example/error_structure.js"
   },
   {
     "type": "post",
@@ -71,7 +71,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\title_and_structure.js"
+    "filename": "test/fixtures/example/title_and_structure.js"
   },
   {
     "type": "get",
@@ -172,7 +172,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\_grouping.js"
+    "filename": "test/fixtures/example/_grouping.js"
   },
   {
     "type": "get",
@@ -300,7 +300,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\param.js"
+    "filename": "test/fixtures/example/param.js"
   },
   {
     "type": "get",
@@ -435,7 +435,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\param.js"
+    "filename": "test/fixtures/example/param.js"
   },
   {
     "type": "post",
@@ -469,7 +469,7 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\structure.js"
+    "filename": "test/fixtures/example/structure.js"
   },
   {
     "type": "post",
@@ -503,7 +503,26 @@ define({ api: [
         ]
       }
     },
-    "filename": "test\\fixtures\\example\\success_structure.js"
+    "filename": "test/fixtures/example/success_structure.js"
+  },
+  {
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "field": "error1Error",
+            "optional": false,
+            "description": "This is Error 1."
+          }
+        ]
+      }
+    },
+    "group": "error_structure.js",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "test/fixtures/example/error_structure.js"
   },
   {
     "error": {
@@ -522,45 +541,7 @@ define({ api: [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\error_structure.js"
-  },
-  {
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "field": "error1Error",
-            "optional": false,
-            "description": "This is Error 1."
-          }
-        ]
-      }
-    },
-    "group": "error_structure.js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\error_structure.js"
-  },
-  {
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "field": "field2",
-            "optional": false,
-            "description": "This is Field 2."
-          }
-        ]
-      }
-    },
-    "group": "structure.js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\structure.js"
+    "filename": "test/fixtures/example/error_structure.js"
   },
   {
     "parameter": {
@@ -579,7 +560,26 @@ define({ api: [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\structure.js"
+    "filename": "test/fixtures/example/structure.js"
+  },
+  {
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "field": "field2",
+            "optional": false,
+            "description": "This is Field 2."
+          }
+        ]
+      }
+    },
+    "group": "structure.js",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "test/fixtures/example/structure.js"
   },
   {
     "success": {
@@ -598,7 +598,7 @@ define({ api: [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\success_structure.js"
+    "filename": "test/fixtures/example/success_structure.js"
   },
   {
     "success": {
@@ -617,7 +617,7 @@ define({ api: [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\success_structure.js"
+    "filename": "test/fixtures/example/success_structure.js"
   },
   {
     "error": {
@@ -636,6 +636,6 @@ define({ api: [
     "type": "",
     "url": "",
     "version": "0.0.0",
-    "filename": "test\\fixtures\\example\\title_and_structure.js"
+    "filename": "test/fixtures/example/title_and_structure.js"
   }
 ] });

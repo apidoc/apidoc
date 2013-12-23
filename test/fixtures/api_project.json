@@ -1,10 +1,10 @@
 {
   "name": "apidoc",
-  "version": "0.2.7",
+  "version": "0.3.0",
   "description": "RESTful web API Documentation Generator",
   "apidoc": "",
   "generator": {
-    "version": "0.2.7",
-    "time": "2013-11-30T10:04:13.365Z"
+    "version": "0.3.0",
+    "time": "2013-12-23T15:00:00.000Z"
   }
 }

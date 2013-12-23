@@ -84,6 +84,15 @@ var argv = optimist
 		describe: "Execute but not write any file."
 	})
 
+	// Marked-Params.
+	.option("marked-gfm",         { boolean: true, "default": true, describe: "Enable GitHub flavored markdown." })
+	.option("marked-tables",      { boolean: true, "default": true, describe: "Enable GFM tables. This option requires the gfm option to be true." })
+	.option("marked-breaks",      { boolean: true, "default": false, describe: "Enable GFM line breaks. This option requires the gfm option to be true." })
+	.option("marked-pedantic",    { boolean: true, "default": false, describe: "Conform to obscure parts of markdown.pl as much as possible." })
+	.option("marked-sanitize",    { boolean: true, "default": false, describe: "Sanitize the output. Ignore any HTML that has been input." })
+	.option("marked-smartLists",  { boolean: true, "default": false, describe: "Use smarter list behavior than the original markdown." })
+	.option("marked-smartypants", { boolean: true, "default": false, describe: "Use \"smart\" typograhic punctuation for things like quotes and dashes." })
+
 	.argv
 ;
 
@@ -119,15 +128,24 @@ function transformFilters(filters)
 var defaults = {
 	excludeFilters: argv["exclude-filters"],
 	includeFilters: argv["file-filters"],
-	src: argv["input"],
-	dest: argv["output"],
-	template: argv["template"],
-	debug: (argv["silent"]) ? false : argv["verbose"],
-	log: (argv["silent"]) ? false: true,
-	filters: transformFilters(argv["parse-filters"]),
-	parsers: transformFilters(argv["parse-parsers"]),
-	workers: transformFilters(argv["parse-workers"]),
-	simulate:  argv["simulate"]
+	src:            argv["input"],
+	dest:           argv["output"],
+	template:       argv["template"],
+	debug:          (argv["silent"]) ? false : argv["verbose"],
+	log:            (argv["silent"]) ? false: true,
+	filters:        transformFilters(argv["parse-filters"]),
+	parsers:        transformFilters(argv["parse-parsers"]),
+	workers:        transformFilters(argv["parse-workers"]),
+	simulate:       argv["simulate"],
+	marked: {
+		gfm:          argv["marked-gfm"],
+		tables:       argv["marked-tables"],
+		breaks:       argv["marked-breaks"],
+		pedantic:     argv["marked-pedantic"],
+		sanitize:     argv["marked-sanitize"],
+		smartLists:   argv["marked-smartLists"],
+		smartypants:  argv["marked-smartypants"]
+	}
 };
 
 require("../lib/apidoc")(defaults);
