@@ -4,7 +4,7 @@ Generates a RESTful web API Documentation.
 
 Documentation at [apidocjs.com](http://apidocjs.com).
 
-[Example](http://apidocjs.com/example/).
+[Example](http://apidocjs.com/example/) output.
 
 
 ## Installation
@@ -30,8 +30,7 @@ Creates from input files a documentation in path `doc/`.
 
 
 ## License
+
 Copyright (c) 2013 inveris OHG
-
 Author Peter Rottmann <rottmann@inveris.de>
-
 Licensed under the MIT license.
