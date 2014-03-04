@@ -1,4 +1,4 @@
-# apiDoc 0.3.0
+# apiDoc 0.4.0
 
 Generates a RESTful web API Documentation.
 
@@ -6,6 +6,39 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 
 [Example](http://apidocjs.com/example/) output.
 
+## Supported programming languages
+
+ * **C#, Go, Dart, Java, JavaScript, PHP** (all DocStyle capable languages like ):
+
+   ```javascript
+   /**
+     * This is a comment.
+     */
+   ```
+
+ * **Erlang**:
+
+   ```erlang
+   %{
+   This is a comment.
+   %}
+   ```
+
+ * **Python**
+
+   ```python
+   """
+   This is a comment.
+   """
+   ```
+
+ * **Ruby**
+
+   ```ruby
+   =begin
+   This is a comment.
+   =end
+   ```
 
 ## Installation
 

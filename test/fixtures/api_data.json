@@ -176,6 +176,166 @@
   },
   {
     "type": "get",
+    "url": "/language/erlang",
+    "title": "Erlang",
+    "name": "GetLanguageErlang",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for Erlang Comment-Syntax.",
+    "filename": "test/fixtures/example/language.erl"
+  },
+  {
+    "type": "get",
+    "url": "/language/erlang/indented1",
+    "title": "Erlang indented 1",
+    "name": "GetLanguageErlangIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.erl"
+  },
+  {
+    "type": "get",
+    "url": "/language/erlang/indented2",
+    "title": "Erlang indented 2",
+    "name": "GetLanguageErlangIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.erl"
+  },
+  {
+    "type": "get",
+    "url": "/language/javascript",
+    "title": "JavaScript",
+    "name": "GetLanguageJavaScript",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for JavaScript Comment-Syntax.",
+    "filename": "test/fixtures/example/language.js"
+  },
+  {
+    "type": "get",
+    "url": "/language/javascript/indented1",
+    "title": "JavaScript indented 1",
+    "name": "GetLanguageJavaScriptIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.js"
+  },
+  {
+    "type": "get",
+    "url": "/language/javascript/indented2",
+    "title": "JavaScript indented 2",
+    "name": "GetLanguageJavaScriptIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.js"
+  },
+  {
+    "type": "get",
+    "url": "/language/python",
+    "title": "Python",
+    "name": "GetLanguagePython",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for Python Comment-Syntax.",
+    "filename": "test/fixtures/example/language.py"
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented1",
+    "title": "Python indented 1",
+    "name": "GetLanguagePythonIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py"
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented2",
+    "title": "Python indented 2",
+    "name": "GetLanguagePythonIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py"
+  },
+  {
+    "type": "get",
+    "url": "/language/ruby",
+    "title": "Ruby",
+    "name": "GetLanguageRuby",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for Ruby Comment-Syntax.",
+    "filename": "test/fixtures/example/language.rb"
+  },
+  {
+    "type": "get",
+    "url": "/language/ruby/indented1",
+    "title": "Ruby indented 1",
+    "name": "GetLanguageRubyIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.rb"
+  },
+  {
+    "type": "get",
+    "url": "/language/ruby/indented2",
+    "title": "Ruby indented 2",
+    "name": "GetLanguageRubyIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.rb"
+  },
+  {
+    "type": "get",
     "url": "/param/:id",
     "title": "Parameters",
     "name": "GetParam",
@@ -549,9 +709,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
+            "field": "field2",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "This is Field 2."
           }
         ]
       }
@@ -568,9 +728,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
+            "field": "field1",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "This is Field 1."
           }
         ]
       }

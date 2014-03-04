@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+#### 0.4.0
+Add support for other comment-style. Now apiDoc supports:
+ * Erlang
+ * JavaScript (DocStyle: e.g. also used C#, Go, Dart, Java, PHP)
+ * Python
+ * Ruby
+Add some programming language test cases.
+Remove german code comments.
+Upgrade all used node modules.
+
 #### 0.3.0
 Replace deprecated node-markdown with [marked](https://github.com/chjj/marked).
 Add cli parameter for marked `--marked-...`, watch all params with`--help`.
