@@ -12,15 +12,15 @@
 module.exports = function(grunt)
 {
 	/* --------------------------------------------------------------------------------
-	 * Configuration.
+	 * Configuration
 	 * -------------------------------------------------------------------------------- */
 	grunt.initConfig({
 		pkg: grunt.file.readJSON("package.json"),
 
-    // clear temporary dir.
-    clean: {
-      test: ["tmp"]
-    }, // clean
+		// Clear temporary dir
+		clean: {
+			test: ["tmp"]
+		}, // clean
 
 		jshint: {
 			all: ["Gruntfile.js", "lib/**/*.js", "test/**/*.js"],
@@ -67,18 +67,18 @@ module.exports = function(grunt)
 				reporter: "spec"
 			},
 			all: { src: ["test/apidoc_test.js"] }
-    } // simplemocha
+		} // simplemocha
 	}); // grunt.initConfig
 
 	/* --------------------------------------------------------------------------------
-	 * Modules.
+	 * Modules
 	 * -------------------------------------------------------------------------------- */
-  grunt.loadNpmTasks("grunt-contrib-clean");
+	grunt.loadNpmTasks("grunt-contrib-clean");
 	grunt.loadNpmTasks("grunt-contrib-jshint");
 	grunt.loadNpmTasks("grunt-simple-mocha");
 
 	/* --------------------------------------------------------------------------------
-	 * Tasks.
+	 * Tasks
 	 * -------------------------------------------------------------------------------- */
 	// Task: default
 	grunt.registerTask("default", ["jshint"]);
