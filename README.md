@@ -8,7 +8,7 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 
 ## Supported programming languages
 
- * **C#, Go, Dart, Java, JavaScript, PHP** (all DocStyle capable languages like ):
+ * **C#, Go, Dart, Java, JavaScript, PHP** (all DocStyle capable languages):
 
    ```javascript
    /**
