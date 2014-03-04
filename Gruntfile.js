@@ -23,7 +23,7 @@ module.exports = function(grunt)
 		}, // clean
 
 		jshint: {
-			all: ["Gruntfile.js", "lib/**/*.js", "test/**/*.js"],
+			all: ["Gruntfile.js", "lib/**/*.js", "test/**/*.js", "!test/fixtures/**"],
 			options: {
 				// Enforcing Options
 				bitwise: true,
