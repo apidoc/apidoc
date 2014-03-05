@@ -3,7 +3,7 @@
 #### 0.4.0
 Add support for other comment-style. Now apiDoc supports:
  * Erlang
- * JavaScript (DocStyle: e.g. also used C#, Go, Dart, Java, PHP)
+ * JavaScript (JavaDoc-Style: e.g. also used C#, Go, Dart, Java, PHP, TypeScript)
  * Python
  * Ruby
 Add some programming language test cases.
