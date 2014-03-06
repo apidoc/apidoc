@@ -1,9 +1,12 @@
 # apiDoc Changelog
 
+#### 0.4.1
+Add support for CoffeeScript comment-style. 
+
 #### 0.4.0
 Add support for other comment-style. Now apiDoc supports:
  * Erlang
- * JavaScript (JavaDoc-Style: e.g. also used C#, Go, Dart, Java, PHP, TypeScript)
+ * JavaScript (JavaDoc-Style: e.g. also useable in C#, Go, Dart, Java, PHP, TypeScript)
  * Python
  * Ruby
 Add some programming language test cases.

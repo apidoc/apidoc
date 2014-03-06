@@ -19,7 +19,7 @@ var argv = optimist
 
 	.option("f", {
 		alias: "file-filters",
-		"default": ".*\\.(cs|dart|erl|go|java|js|php?|py|rb|ts)$",
+		"default": ".*\\.(coffee|cs|dart|erl|go|java|js|php?|py|rb|ts)$",
 		describe: "RegEx-Filter to select files that should be parsed (multiple -f can be used)."
 	})
 

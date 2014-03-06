@@ -176,6 +176,46 @@
   },
   {
     "type": "get",
+    "url": "/language/coffeescript",
+    "title": "CoffeeScript",
+    "name": "GetLanguageCoffeeScript",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for CoffeeScript Comment-Syntax.",
+    "filename": "test/fixtures/example/language.coffee"
+  },
+  {
+    "type": "get",
+    "url": "/language/coffeescript/indented1",
+    "title": "CoffeeScript indented 1",
+    "name": "GetLanguageCoffeeScriptIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.coffee"
+  },
+  {
+    "type": "get",
+    "url": "/language/coffeescript/indented2",
+    "title": "CoffeeScript indented 2",
+    "name": "GetLanguageCoffeeScriptIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.coffee"
+  },
+  {
+    "type": "get",
     "url": "/language/erlang",
     "title": "Erlang",
     "name": "GetLanguageErlang",
@@ -709,9 +749,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
+            "field": "field1",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "This is Field 1."
           }
         ]
       }
@@ -728,9 +768,9 @@
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
+            "field": "field2",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "This is Field 2."
           }
         ]
       }

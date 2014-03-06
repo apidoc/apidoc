@@ -1,4 +1,4 @@
-# apiDoc 0.4.0
+# apiDoc 0.4.1
 
 Generates a RESTful web API Documentation.
 
@@ -14,6 +14,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
    /**
      * This is a comment.
      */
+   ```
+
+ * **CoffeeScript**:
+
+   ```coffeescript
+   ###
+   This is a comment.
+   ###
    ```
 
  * **Erlang**:
