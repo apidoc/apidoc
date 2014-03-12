@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+#### 0.4.2
+Fix parsing of multiline string (Alexander Else https://github.com/apidoc/apidoc/issues/34)
+
 #### 0.4.1
 Add support for CoffeeScript comment-style. 
 
