@@ -6,6 +6,19 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 
 [Example](http://apidocjs.com/example/) output.
 
+
+## Installation
+
+`npm install apidoc -g`
+
+
+## Example
+
+`apidoc -i example/ -o doc/`
+
+Creates from input files in `example/` a documentation in path `doc/`.
+
+
 ## Supported programming languages
 
  * **C#, Go, Dart, Java, JavaScript, PHP** (all DocStyle capable languages):
@@ -48,21 +61,10 @@ Documentation at [apidocjs.com](http://apidocjs.com).
    =end
    ```
 
-## Installation
-
-`npm install apidoc -g`
-
-
-## Example
-
-`apidoc -i example/ -o doc/`
-
-Creates from input files a documentation in path `doc/`.
-
 
 ## Grunt Module
 
-[grund-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
+[grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 
 
 ## Changelog
