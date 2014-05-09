@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+#### 0.4.3
+Added a short-circuit check. (Mattias Festin https://github.com/apidoc/apidoc/issues/41)
+
 #### 0.4.2
 Fix parsing of multiline string (Alexander Else https://github.com/apidoc/apidoc/issues/34)
 
