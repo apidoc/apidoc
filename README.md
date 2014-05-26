@@ -14,7 +14,7 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 
 ## Example
 
-    ```javascript
+   ```javascript
     /**
      * @api {get} /user/:id Request User information
      * @apiName GetUser
@@ -25,7 +25,7 @@ Documentation at [apidocjs.com](http://apidocjs.com).
      * @apiSuccess {String} firstname Firstname of the User.
      * @apiSuccess {String} lastname  Lastname of the User.
      */
-    ```
+   ```
 
 `apidoc -i example/ -o doc/`
 
