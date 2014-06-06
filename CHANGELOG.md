@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+#### 0.4.4
+Preserve other files when copying template files to the destination output dir.
+
 #### 0.4.3
 Added a short-circuit check. (Mattias Festin https://github.com/apidoc/apidoc/issues/41)
 
