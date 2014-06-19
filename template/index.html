@@ -66,6 +66,9 @@
 <script id="template-sections" type="text/x-handlebars-template">
 	<section id="api-{{group}}">
 		<h1>{{underscoreToSpace title}}</h1>
+		{{#if description}}
+			<p>{{{nl2br description}}}</p>
+		{{/if}}
 		{{#each articles}}
 			<div id="api-{{group}}-{{name}}">
 				{{{article}}}

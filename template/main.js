@@ -212,6 +212,7 @@ require([
 		var articles = [];
 		var oldName = "";
 		var fields = {};
+		var description = "";
 		articleVersions[groupEntry] = {};
 		// Render all Articls of a group.
 		api.forEach(function(entry) {
@@ -252,6 +253,7 @@ require([
 					name: entry.name
 				});
 				oldName = entry.name;
+				if (entry.groupDescription) description = entry.groupDescription;
 			}
 		}); // forEach
 
@@ -259,6 +261,7 @@ require([
 		var fields = {
 			group: groupEntry,
 			title: groupEntry,
+			description: description,
 			articles: articles
 		};
 		$("#sections").append( templateSections(fields) );
