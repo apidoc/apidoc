@@ -2,16 +2,16 @@
 
 #### 0.5.0
 Add new Functions:
-* [@apiGroupDescription](http://apidocjs.com/#param-api-group-description) (Ruslan Ismagilov https://github.com/apidoc/apidoc/pull/54)
+* [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
 
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
 
 #### 0.4.3
-Added a short-circuit check. (Mattias Festin https://github.com/apidoc/apidoc/issues/41)
+Added a short-circuit check. (https://github.com/apidoc/apidoc/issues/41)
 
 #### 0.4.2
-Fix parsing of multiline string (Alexander Else https://github.com/apidoc/apidoc/issues/34)
+Bugfix: Fix parsing of multiline string. (https://github.com/apidoc/apidoc/issues/34)
 
 #### 0.4.1
 Add support for CoffeeScript comment-style. 
@@ -35,18 +35,18 @@ Upgrade all used node modules.
 Bugfix: executable line delimiters. (again).
 
 #### 0.2.7
-Bugfix: Allow usage of structures and titles in the same block (https://github.com/apidoc/apidoc/issues/21)
+Bugfix: Allow usage of structures and titles in the same block. (https://github.com/apidoc/apidoc/issues/21)
 
 #### 0.2.6
-Give some indication, in case file listing with fails (Johannes Zellner https://github.com/apidoc/apidoc/pull/20)
+Give some indication, in case file listing with fails. (https://github.com/apidoc/apidoc/pull/20)
 
 #### 0.2.5
 Allow multiple structure includes.
 Split and extend test-files.
 
 #### 0.2.4
-Fix parsing for empty lines and removing stars on data that spans over multiple lines. (Martin Jonsson https://github.com/apidoc/apidoc/pull/11)
-Remove http:// link to make https compliant. (Thomas Schaaf https://github.com/apidoc/apidoc/pull/10)
+Bugfix: Fix parsing for empty lines and removing stars on data that spans over multiple lines. (https://github.com/apidoc/apidoc/pull/11)
+Remove http:// link to make https compliant. (https://github.com/apidoc/apidoc/pull/10)
 
 #### 0.2.3
 Extend Template with url-param "compare=1" to show the compare version on page view.
@@ -69,17 +69,17 @@ Minor Template-Bugfixes.
 
 #### 0.1.11
 Allow whitespace in apiName and apiGroup.
-Bugfix filter for directories.
+Bugfix: Filter for directories.
 Update Node Modules to newer versions.
 
 #### 0.1.10
 Add `-e` exclude option for Files / Directories, example `apidoc -e node_modules/`.
 
 #### 0.1.10
-Bugfix: check for a valid title in Template (Ben S. Stahlhood II https://github.com/apidoc/apidoc/pull/7)
+Bugfix: Check for a valid title in Template. (https://github.com/apidoc/apidoc/pull/7)
 
 #### 0.1.9
-Bugfix: Whitespace before comment block (Brandon Hamilton https://github.com/apidoc/apidoc/pull/2)
+Bugfix: Whitespace before comment block. (https://github.com/apidoc/apidoc/pull/2)
 
 #### 0.1.8
 Change templates, enable navigation scroll.
@@ -89,7 +89,7 @@ Add [@apiIgnore](http://apidocjs.com/#param-api-ignore).
 Update grunt Modules.
 
 #### 0.1.6
-Bugfix: OSX executable
+Bugfix: OSX executable.
 
 #### 0.1.5
-Official release
+Official release.
