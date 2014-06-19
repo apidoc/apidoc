@@ -247,13 +247,15 @@ require([
 				if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
 				if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
 
+				// TODO: make groupDescription compareable with older versions (not important for the moment).
+				if (entry.groupDescription) description = entry.groupDescription;
+
 				articles.push({
 					article: templateArticle(fields),
 					group: entry.group,
 					name: entry.name
 				});
 				oldName = entry.name;
-				if (entry.groupDescription) description = entry.groupDescription;
 			}
 		}); // forEach
 
