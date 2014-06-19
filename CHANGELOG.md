@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.5.0
+Add new Functions:
+* [@apiGroupDescription](http://apidocjs.com/#param-api-group-description) (Ruslan Ismagilov https://github.com/apidoc/apidoc/pull/54)
+
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
 

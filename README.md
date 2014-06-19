@@ -1,4 +1,4 @@
-# apiDoc 0.4.x
+# apiDoc 0.5.x
 
 Generates a RESTful web API Documentation.
 
@@ -87,6 +87,6 @@ Creates from input files in `example/` a documentation in path `doc/`.
 
 ## License
 
-Copyright (c) 2013 inveris OHG
+Copyright (c) 2013-2014 inveris OHG
 Author Peter Rottmann <rottmann@inveris.de>
 Licensed under the MIT license.

@@ -1,4 +1,4 @@
-Copyright (c) 2013 inveris OHG
+Copyright (c) 2013-2014 inveris OHG
 Author Peter Rottmann <rottmann@inveris.de>
 Licensed under the MIT license.
 
