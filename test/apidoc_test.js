@@ -50,14 +50,9 @@ describe("apiDoc", function() {
 	it("case 1: created files should equal to fixtures", function(done) {
 		var timeRegExp = /"time"\:\s"(.*)"/g;
 		var versionRegExp = /"version"\:\s"(.*)"/g;
-		var slashesRegExp = /\\\\/g;
 		fixtureFiles.forEach(function(name) {
 			var fixtureContent = fs.readFileSync("test/fixtures/" + name, "utf8");
 			var createdContent = fs.readFileSync("./tmp/" + name, "utf8");
-
-			// windows \r\n to \n
-			fixtureContent = fixtureContent.replace(/\r\n/g, "\n");
-			createdContent = createdContent.replace(/\r\n/g, "\n");
 
 			// creation time remove (never equal)
 			fixtureContent = fixtureContent.replace(timeRegExp, "");
@@ -67,11 +62,16 @@ describe("apiDoc", function() {
 			fixtureContent = fixtureContent.replace(versionRegExp, "");
 			createdContent = createdContent.replace(versionRegExp, "");
 
-			// windows path \\ to /
-			fixtureContent = fixtureContent.replace(slashesRegExp, "/");
-			createdContent = createdContent.replace(slashesRegExp, "/");
+			var fixtureLines = fixtureContent.split(/\r\n/);
+			var createdLines = createdContent.split(/\r\n/);
 
-			if(fixtureContent !== createdContent) throw new Error("File ./tmp/" + name + " not equals to test/fixutres/" + name);
+			if (fixtureLines.length !== createdLines.length)
+				throw new Error("File ./tmp/" + name + " not equals to test/fixutres/" + name);
+
+			for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
+				if (fixtureLines[lineNumber] !== createdLines[lineNumber])
+					throw new Error("File ./tmp/" + name + " not equals to test/fixutres/" + name + " in line " + (lineNumber + 1));
+			} // for
 		});
 		done();
 	}); // it

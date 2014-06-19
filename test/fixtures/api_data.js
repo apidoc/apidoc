@@ -75,6 +75,16 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/group/:id",
+    "title": "Group and Description",
+    "name": "GetGroup",
+    "group": "Group",
+    "groupDescription": "This is a Group Description.\nMulitline capable.",
+    "version": "0.5.0",
+    "filename": "test/fixtures/example/group.js"
+  },
+  {
+    "type": "get",
     "url": "/test/:id",
     "title": "Grouping",
     "name": "GetGrouping",
@@ -711,9 +721,9 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error1Error",
+            "field": "error2Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "This is Error 2."
           }
         ]
       }
@@ -730,9 +740,9 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error2Error",
+            "field": "error1Error",
             "optional": false,
-            "description": "This is Error 2."
+            "description": "This is Error 1."
           }
         ]
       }
@@ -749,9 +759,9 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
+            "field": "field2",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "This is Field 2."
           }
         ]
       }
@@ -768,9 +778,9 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
+            "field": "field1",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "This is Field 1."
           }
         ]
       }
