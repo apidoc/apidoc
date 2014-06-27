@@ -1,10 +1,19 @@
 # apiDoc Changelog
 
 #### 0.5.0
-Add new Functions:
-* [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
+* Add new Functions:
+  * [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
+  * [@apiHeader](http://apidocjs.com/#param-api-header)
+  * [@apiHeaderTitle](http://apidocjs.com/#param-api-header-title)
+  * [@apiDefineHeaderStructure](http://apidocjs.com/#param-api-define-header-structure)
+  * [@apiHeaderStructure](http://apidocjs.com/#param-api-header-structure)
+* Remove package.json path `apidocFilename`.
+* Change package.json path `apidoc`.
+  * Add `apidoc.header` / `apidoc.footer` (with custom navigation titles). (http://apidocjs.com/#headerfooter)
 * Remove template basic (easier to maintain), the default template will be re-designed in a future version too.
 * Update template libraries.
+* Add test cases.
+* Bugfix: Template scrollbug (https://github.com/apidoc/apidoc/issues/64)
 
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
@@ -20,10 +29,10 @@ Add support for CoffeeScript comment-style.
 
 #### 0.4.0
 Add support for other comment-style. Now apiDoc supports:
- * Erlang
- * JavaScript (JavaDoc-Style: e.g. also useable in C#, Go, Dart, Java, PHP, TypeScript)
- * Python
- * Ruby
+* Erlang
+* JavaScript (JavaDoc-Style: e.g. also useable in C#, Go, Dart, Java, PHP, TypeScript)
+* Python
+* Ruby
 Add some programming language test cases.
 Remove german code comments.
 Upgrade all used node modules.
