@@ -4,6 +4,7 @@
 Add new Functions:
 * [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
 * Remove template basic (easier to maintain), the default template will be re-designed in a future version too.
+* Update template libraries.
 
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
