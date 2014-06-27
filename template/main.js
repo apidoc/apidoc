@@ -4,6 +4,7 @@ require.config({
 		diffMatchPatch: "./vendor/diff_match_patch.min",
 		handlebars: "./vendor/handlebars.min",
 		handlebarsExtended: "./handlebars_helper",
+		jquery: "./vendor/jquery.min",
 		locales: "./locales/locale",
 		lodash: "./vendor/lodash.min",
 		prettify: "./vendor/prettify/prettify"
@@ -19,7 +20,7 @@ require.config({
 			exports: "Handlebars"
 		},
 		handlebarsExtended: {
-			deps: ["handlebars"],
+			deps: ["jquery", "handlebars"],
 			exports: "Handlebars"
 		},
 		prettify: {
