@@ -243,6 +243,7 @@ require([
 					};
 				}
 
+				if(entry.header && entry.header.fields) fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
 				if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
 				if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
 				if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);

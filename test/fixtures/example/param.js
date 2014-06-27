@@ -3,7 +3,7 @@
  * @apiName GetParam
  * @apiGroup Param
  * @apiVersion 0.1.1
- * @apiDescription Parameters and diffrent Versions: 0.1.1
+ * @apiDescription Parameters and different Versions: 0.1.1
  *
  * @apiParam {String} param1                 Parameter with type and description.
  * @apiParam {String} param2
@@ -31,7 +31,7 @@
  * @apiName GetParam
  * @apiGroup Param
  * @apiVersion 0.1.0
- * @apiDescription Parameters and diffrent Versions: 0.1.0
+ * @apiDescription Parameters and different Versions: 0.1.0
  *
  * @apiParam {String} param0                 This param is removed in 0.1.1.
  * @apiParam {String} param1                 This is an old text.

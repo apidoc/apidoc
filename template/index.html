@@ -123,6 +123,7 @@
       <pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
     {{/each}}
 
+    {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields}}
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields}}
     {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields}}
     {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields}}
