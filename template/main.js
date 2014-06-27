@@ -46,7 +46,8 @@ require([
 	/**
 	 * Templates.
 	 */
-	var templateApidoc         = Handlebars.compile( $("#template-apidoc").html() );
+	var templateHeader         = Handlebars.compile( $("#template-header").html() );
+	var templateFooter         = Handlebars.compile( $("#template-footer").html() );
 	var templateArticle        = Handlebars.compile( $("#template-article").html() );
 	var templateCompareArticle = Handlebars.compile( $("#template-compare-article").html() );
 	var templateGenerator      = Handlebars.compile( $("#template-generator").html() );
@@ -164,13 +165,22 @@ require([
 		}); // forEach
 	}); // forEach
 
-	// Mainmenu "General" Entry.
-	if(apiProject.apidoc)
-	{
-		nav.push({
+	// Mainmenu Header Entry.
+	if(apiProject.header) {
+		nav.unshift({
 			group: "_",
 			isHeader: true,
-			title: locale.__("General"),
+			title: (apiProject.header.title == null) ? locale.__("General") : apiProject.header.title,
+			isFixed: true
+		});
+	}
+
+	// Mainmenu Footer Entry.
+	if(apiProject.footer && apiProject.footer.title != null) {
+		nav.push({
+			group: "_footer",
+			isHeader: true,
+			title: apiProject.footer.title,
 			isFixed: true
 		});
 	}
@@ -201,9 +211,10 @@ require([
 	$("#project").append( templateProject(apiProject) );
 
 	/**
-	 * Render ApiDoc, general documentation.
+	 * Render ApiDoc, header/footer documentation.
 	 */
-	$("#apidoc").append( templateApidoc(apiProject) );
+	if(apiProject.header) $("#header").append( templateHeader(apiProject.header) );
+	if(apiProject.footer) $("#footer").append( templateFooter(apiProject.footer) );
 
 	/**
 	 *  Render Sections and Articles
@@ -280,7 +291,7 @@ require([
 	$(".sidenav").find("a").on("click", function(e) {
 		e.preventDefault();
 		var id = $(this).attr("href");
-		$('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 400);
+		$('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
 		window.location.hash = $(this).attr("href");
 	});
 
@@ -288,7 +299,7 @@ require([
 	if(window.location.hash)
 	{
 		var id = window.location.hash;
-		$('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
+		$('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
 	}
 
 	/**

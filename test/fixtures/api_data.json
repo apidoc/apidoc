@@ -186,6 +186,215 @@
   },
   {
     "type": "get",
+    "url": "/header/:id",
+    "title": "Parameters",
+    "name": "GetHeader",
+    "group": "Header",
+    "version": "0.5.0",
+    "description": "Test for @apiHeader (same as @apiParam)",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header1",
+            "optional": false,
+            "description": "Parameter with type and description."
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header2",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header3",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": "Parameter with type, description and default value."
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header4",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "field": "header5",
+            "optional": false,
+            "description": "Basic Parameter with description."
+          },
+          {
+            "group": "Header",
+            "field": "header6",
+            "optional": false,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "field": "header7",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": "Basic Parameter with description and default value."
+          },
+          {
+            "group": "Header",
+            "field": "header8",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "field": "header9",
+            "optional": true,
+            "description": "Optional basic Parameter with description."
+          },
+          {
+            "group": "Header",
+            "field": "header10",
+            "optional": true,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "field": "header11",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": "Optional basic Parameter with description and default value."
+          },
+          {
+            "group": "Header",
+            "field": "header12",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header13",
+            "optional": true,
+            "description": "Optional Parameter with type and description."
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header14",
+            "optional": true,
+            "description": ""
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header15",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": "Optional Parameter with type, description and default value."
+          },
+          {
+            "group": "Header",
+            "type": "String",
+            "field": "header16",
+            "defaultValue": "Default Value",
+            "optional": true,
+            "description": ""
+          }
+        ]
+      }
+    },
+    "filename": "test/fixtures/example/header.js"
+  },
+  {
+    "type": "get",
+    "url": "/header/example/",
+    "title": "Header Example",
+    "name": "GetHeaderExample",
+    "group": "Header",
+    "version": "0.5.0",
+    "description": "Usage of @headerExample.",
+    "header": {
+      "examples": [
+        {
+          "title": "An example:",
+          "content": "   curl -i http://localhost/header/example/\n"
+        }
+      ]
+    },
+    "filename": "test/fixtures/example/header_example.js"
+  },
+  {
+    "type": "get",
+    "url": "/header/title/",
+    "title": "Header Title",
+    "name": "GetHeaderTitle",
+    "group": "Header",
+    "version": "0.5.0",
+    "description": "Usage of @headerTitle.",
+    "header": {
+      "fields": {
+        "This are the Parameters for MyGroup:": [
+          {
+            "group": "MyHeaderGroup",
+            "field": "authorization",
+            "optional": false,
+            "description": "The authorization code."
+          },
+          {
+            "group": "MyHeaderGroup",
+            "type": "string",
+            "field": "text",
+            "optional": false,
+            "description": "Some text."
+          }
+        ]
+      }
+    },
+    "filename": "test/fixtures/example/header_title.js"
+  },
+  {
+    "type": "post",
+    "url": "/test/header",
+    "title": "Header Structure",
+    "name": "PostHeader",
+    "group": "Header",
+    "version": "0.5.0",
+    "description": "Use of multiple HeaderStructures.",
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "field": "Header3",
+            "optional": false,
+            "description": "This is Header 3 (local)."
+          },
+          {
+            "group": "Header",
+            "field": "Header1",
+            "optional": false,
+            "description": "This is Header 1."
+          },
+          {
+            "group": "Header",
+            "field": "header2",
+            "optional": false,
+            "description": "This is Header 2."
+          }
+        ]
+      }
+    },
+    "filename": "test/fixtures/example/header_structure.js"
+  },
+  {
+    "type": "get",
     "url": "/language/coffeescript",
     "title": "CoffeeScript",
     "name": "GetLanguageCoffeeScript",
@@ -391,7 +600,7 @@
     "name": "GetParam",
     "group": "Param",
     "version": "0.1.1",
-    "description": "Parameters and diffrent Versions: 0.1.1",
+    "description": "Parameters and different Versions: 0.1.1",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -519,7 +728,7 @@
     "name": "GetParam",
     "group": "Param",
     "version": "0.1.0",
-    "description": "Parameters and diffrent Versions: 0.1.0",
+    "description": "Parameters and different Versions: 0.1.0",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -752,6 +961,44 @@
     "url": "",
     "version": "0.0.0",
     "filename": "test/fixtures/example/error_structure.js"
+  },
+  {
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "field": "header2",
+            "optional": false,
+            "description": "This is Header 2."
+          }
+        ]
+      }
+    },
+    "group": "header_structure.js",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "test/fixtures/example/header_structure.js"
+  },
+  {
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "field": "Header1",
+            "optional": false,
+            "description": "This is Header 1."
+          }
+        ]
+      }
+    },
+    "group": "header_structure.js",
+    "type": "",
+    "url": "",
+    "version": "0.0.0",
+    "filename": "test/fixtures/example/header_structure.js"
   },
   {
     "parameter": {

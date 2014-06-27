@@ -51,9 +51,15 @@
   <div class="clearfix"></div>
 </script>
 
-<script id="template-apidoc" type="text/x-handlebars-template">
-  {{#if apidoc}}
-    <div id="api-_" class="apidoc">{{{apidoc}}}</div>
+<script id="template-header" type="text/x-handlebars-template">
+  {{#if content}}
+    <div id="api-_">{{{content}}}</div>
+  {{/if}}
+</script>
+
+<script id="template-footer" type="text/x-handlebars-template">
+  {{#if content}}
+    <div id="api-_footer">{{{content}}}</div>
   {{/if}}
 </script>
 
@@ -459,8 +465,9 @@
     </div>
     <div id="content">
       <div id="project"></div>
+      <div id="header"></div>
       <div id="sections"></div>
-      <div id="apidoc"></div>
+      <div id="footer"></div>
       <div id="generator"></div>
     </div>
   </div>
