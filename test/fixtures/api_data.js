@@ -721,9 +721,9 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error2Error",
+            "field": "error1Error",
             "optional": false,
-            "description": "This is Error 2."
+            "description": "This is Error 1."
           }
         ]
       }
@@ -740,9 +740,9 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error1Error",
+            "field": "error2Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "This is Error 2."
           }
         ]
       }
@@ -759,9 +759,9 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
+            "field": "field1",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "This is Field 1."
           }
         ]
       }
@@ -778,9 +778,9 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
+            "field": "field2",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "This is Field 2."
           }
         ]
       }
