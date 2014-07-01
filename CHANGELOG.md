@@ -1,6 +1,7 @@
 # apiDoc Changelog
 
 #### 0.5.1
+* Update node version to 0.10.x.
 * Add optional custom browser title with `apidoc.title` in `package.json`. 
 * Add optional url endpoint with `apidoc.url` in `package.json`.
 * Bugfix: Template scrollbug. (https://github.com/apidoc/apidoc/issues/64)

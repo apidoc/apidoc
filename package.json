@@ -27,7 +27,7 @@
     "restful"
   ],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "dependencies": {
     "colors": "~0.6.2",
