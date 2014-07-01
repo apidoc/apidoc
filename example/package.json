@@ -2,6 +2,14 @@
   "name": "apidoc-example",
   "version": "0.3.0",
   "description": "apidoc example project",
-  "apidoc": "This is a description, it will be ignored if parameter apidocFilename exist.",
-  "apidocFilename": "API.md"
+  "apidoc": {
+    "header": {
+      "title": "My own header title",
+      "filename": "header.md"
+    },
+    "footer": {
+      "title": "My own footer title",
+      "filename": "footer.md"
+    }
+  }
 }
