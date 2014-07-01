@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+#### 0.5.1
+* Add optional custom browser title with `apidoc.title` in `package.json`. 
+* Add optional url endpoint with `apidoc.url` in `package.json`.
+* Bugfix: Template scrollbug. (https://github.com/apidoc/apidoc/issues/64)
+
 #### 0.5.0
 * Add new Functions:
   * [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
@@ -13,7 +18,6 @@
 * Remove template basic (easier to maintain), the default template will be re-designed in a future version too.
 * Update template libraries.
 * Add test cases.
-* Bugfix: Template scrollbug (https://github.com/apidoc/apidoc/issues/64)
 
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
