@@ -4,6 +4,7 @@
   "description": "apidoc example project",
   "apidoc": {
   	"title": "Custom apiDoc browser title",
+  	"url" : "https://api.github.com/v1",
     "header": {
       "title": "My own header title",
       "filename": "header.md"

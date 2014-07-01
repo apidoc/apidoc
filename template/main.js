@@ -263,6 +263,9 @@ require([
 				// TODO: make groupDescription compareable with older versions (not important for the moment).
 				if (entry.groupDescription) description = entry.groupDescription;
 
+				// Add endpoint URL
+				if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
+
 				articles.push({
 					article: templateArticle(fields),
 					group: entry.group,
