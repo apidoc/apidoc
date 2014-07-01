@@ -2,36 +2,36 @@
  * Content
  * ------------------------------------------------------------------------------------------ */
 body {
-	min-width: 980px;
-	max-width: 1280px;
+  min-width: 980px;
+  max-width: 1280px;
 }
 
 body, p, a, div, th, td { 
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 400;
-	font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
 }
 
 td.code {
-	font-size: 14px;
-	font-family: "Source Code Pro";
+  font-size: 14px;
+  font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 400;
 }
 
 #content {
-	padding-top: 16px;
-	z-Index: -1;
-	margin-left: 270px;
+  padding-top: 16px;
+  z-Index: -1;
+  margin-left: 270px;
 }
 
 p {
-	color: #808080;
+  color: #808080;
 }
 
 h1 {
-	font-family: "Source Sans Pro Semibold", sans-serif;
-	font-weight: normal;
+  font-family: "Source Sans Pro Semibold", sans-serif;
+  font-weight: normal;
   font-size: 44px;
   line-height: 50px;
   margin: 0 0 10px 0;
@@ -39,8 +39,8 @@ h1 {
 }
 
 h2 {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: normal;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: normal;
   font-size: 24px;
   line-height: 40px;
   margin: 0 0 20px 0;
@@ -48,64 +48,72 @@ h2 {
 }
 
 section {
-	border-top: 1px solid #ebebeb;
-	padding: 30px 0;
+  border-top: 1px solid #ebebeb;
+  padding: 30px 0;
 }
 
 section h1 {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 700;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
   font-size: 32px;
-	line-height: 40px;
-	padding-bottom: 14px;
-	margin: 0 0 20px 0;
+  line-height: 40px;
+  padding-bottom: 14px;
+  margin: 0 0 20px 0;
   padding: 0;
 }
 
 article {
-	padding: 14px 0 30px 0;
+  padding: 14px 0 30px 0;
 }
 
 article h1 {
-	font-family: "Source Sans Pro Bold", sans-serif;
-	font-weight: 600;
+  font-family: "Source Sans Pro Bold", sans-serif;
+  font-weight: 600;
   font-size: 24px;
   line-height: 26px;
 }
 
 article h2 {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 600;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
   font-size: 18px;
   line-height: 24px;
   margin: 0 0 10px 0;
 }
 
+article h3 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 18px;
+  margin: 0 0 10px 0;
+}
+
 table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: 0 0 20px 0;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0 0 20px 0;
 }
 
 th {
-	background-color: #f5f5f5;
-	text-align: left;
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 700;
-	padding: 4px 8px;
-	border: #e0e0e0 1px solid;
+  background-color: #f5f5f5;
+  text-align: left;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  padding: 4px 8px;
+  border: #e0e0e0 1px solid;
 }
 
 td {
-	vertical-align: top;
-	padding: 2px 8px;
-	border: #e0e0e0 1px solid;
+  vertical-align: top;
+  padding: 2px 8px;
+  border: #e0e0e0 1px solid;
 }
 
 #generator {
-	color: #b0b0b0;
-	border-top: 1px solid #ebebeb;
-	padding: 10px 0;
+  color: #b0b0b0;
+  border-top: 1px solid #ebebeb;
+  padding: 10px 0;
 }
 
 .label-optional {
@@ -117,23 +125,23 @@ td {
  * ------------------------------------------------------------------------------------------ */
 
 #apidoc .apidoc {
-	border-top: 1px solid #ebebeb;
-	padding: 30px 0;
+  border-top: 1px solid #ebebeb;
+  padding: 30px 0;
 }
 
 #apidoc h1 {
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 700;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
   font-size: 32px;
-	line-height: 40px;
-	padding-bottom: 14px;
-	margin: 0 0 20px 0;
+  line-height: 40px;
+  padding-bottom: 14px;
+  margin: 0 0 20px 0;
   padding: 0;
 }
 
 #apidoc h2 {
-	font-family: "Source Sans Pro Bold", sans-serif;
-	font-weight: 600;
+  font-family: "Source Sans Pro Bold", sans-serif;
+  font-weight: 600;
   font-size: 22px;
   line-height: 26px;
   padding-top: 14px;
@@ -152,11 +160,11 @@ pre {
 }
 
 pre.language-json {
-	overflow: auto;
+  overflow: auto;
 }
 
 pre.language-html {
-	margin: 40px 0 20px 0;
+  margin: 40px 0 20px 0;
 }
 
 pre.language-html:before {
@@ -164,8 +172,8 @@ pre.language-html:before {
   position: absolute;
   top: -30px;
   left: 0;
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 600;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
   font-size: 15px;
   display: inline-block;
   padding: 2px 5px;
@@ -192,12 +200,12 @@ pre.language-html[data-type="delete"]:before {
 }
 
 pre.language-api .str {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 pre.language-api .pln,
 pre.language-api .pun {
-	color: #65B042;
+  color: #65B042;
 }
 
 pre code {
@@ -206,19 +214,19 @@ pre code {
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 400;
-	word-wrap: normal;
-	white-space: pre;
+  word-wrap: normal;
+  white-space: pre;
 }
 
 /*
 pre.language-json {
-	background: #f5f5f5;
-	border: #e0e0e0 1px solid;
+  background: #f5f5f5;
+  border: #e0e0e0 1px solid;
 }
 
 pre.language-json .pln,
 pre.language-json .pun {
-	color: #3a3a3a;
+  color: #3a3a3a;
 }
 */
 
@@ -235,7 +243,7 @@ pre.language-json .pun {
   bottom: 0;
   overflow-x: hidden;
   overflow-y: auto;
-	background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .sidenav > li > a {
@@ -243,26 +251,26 @@ pre.language-json .pun {
   width: 192px;
   margin: 0;
   padding: 2px 11px;
-	border: 0;
-	border-left: transparent 4px solid;
-	border-right: transparent 4px solid;
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 400;
-	font-size: 14px;
+  border: 0;
+  border-left: transparent 4px solid;
+  border-right: transparent 4px solid;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .sidenav > li.nav-header > a {
   padding: 5px 15px;
   border: 1px solid #e5e5e5;
   width: 190px;
-	font-family: "Source Sans Pro", sans-serif;
-	font-weight: 700;
-	font-size: 16px;
-	background-color: #ffffff;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: #ffffff;
 }
 
 .sidenav > li.nav-header.active > a {
-	background-color: #0088cc;
+  background-color: #0088cc;
 }
 
 .sidenav > .active > a {
@@ -275,11 +283,11 @@ pre.language-json .pun {
 }
 
 .sidenav > li.has-modifications a {
-	border-right: #60d060 4px solid;
+  border-right: #60d060 4px solid;
 }
 
 .sidenav > li.is-new a {
-	border-left: #e5e5e5 4px solid;
+  border-left: #e5e5e5 4px solid;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -287,14 +295,14 @@ pre.language-json .pun {
  * ------------------------------------------------------------------------------------------ */
 
 ins {
-	background: #60d060;
-	text-decoration: none;
-	color: #000000;
+  background: #60d060;
+  text-decoration: none;
+  color: #000000;
 }
 
 del {
-	background: #f05050;
-	color: #000000;
+  background: #f05050;
+  color: #000000;
 }
 
 .label-ins {

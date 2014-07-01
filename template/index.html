@@ -125,7 +125,7 @@
     {{/if}}
 
     {{#each article.examples}}
-      <strong>{{title}}</strong>
+      <h3>{{title}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
     {{/each}}
 
@@ -164,7 +164,7 @@
       </table>
     {{/each}}
     {{#each params.examples}}
-      <strong>{{title}}</strong>
+      <h3>{{title}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
     {{/each}}
   {{/if}}
@@ -210,17 +210,17 @@
     {{#each_compare_title article.examples compare.examples}}
 
       {{#if typeSame}}
-      <strong>{{{showDiff source.title compare.title}}}</strong>
+      <h3>{{{showDiff source.title compare.title}}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
       {{/if}}
 
       {{#if typeIns}}
-      <strong><ins>{{{source.title}}}</ins></strong>
+      <h3><ins>{{{source.title}}}</ins></h3>
       <pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
       {{/if}}
 
       {{#if typeDel}}
-      <strong><del>{{{compare.title}}}</del></strong>
+      <h3><del>{{{compare.title}}}</del></h3>
       <pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
       {{/if}}
 
@@ -360,17 +360,17 @@
     {{#each_compare_title source.examples compare.examples}}
 
       {{#if typeSame}}
-      <strong>{{{showDiff source.title compare.title}}}</strong>
+      <h3>{{{showDiff source.title compare.title}}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{{showDiff source.content compare.content}}}</code></pre>
       {{/if}}
 
       {{#if typeIns}}
-      <strong><ins>{{{source.title}}}</ins></strong>
+      <h3><ins>{{{source.title}}}</ins></h3>
       <pre class="ins prettyprint language-json" data-type="json"><code>{{{source.content}}}</code></pre>
       {{/if}}
 
       {{#if typeDel}}
-      <strong><del>{{{compare.title}}}</del></strong>
+      <h3><del>{{{compare.title}}}</del></h3>
       <pre class="del prettyprint language-json" data-type="json"><code>{{{compare.content}}}</code></pre>
       {{/if}}
 
