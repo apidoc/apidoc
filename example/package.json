@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "description": "apidoc example project",
   "apidoc": {
+  	"title": "Custom apiDoc browser title",
     "header": {
       "title": "My own header title",
       "filename": "header.md"
