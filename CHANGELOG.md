@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.5.2
+* Add css for printing.
+* Bugfix: Template IE8 compatibility. (https://github.com/apidoc/apidoc/issues/69)
+
 #### 0.5.1
 * Update node version to 0.10.x.
 * Add optional custom browser title with `apidoc.title` in `package.json`. 
