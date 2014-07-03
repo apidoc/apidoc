@@ -11,7 +11,7 @@ require.config({
 	},
 	shim: {
 		bootstrap: {
-			deps: ["jquery"],
+			deps: ["jquery"]
 		},
 		diffMatchPatch: {
 			exports: "diff_match_patch"
