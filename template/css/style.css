@@ -342,3 +342,46 @@ tr.del td {
   background-color: #f05050;
   text-decoration: line-through;
 }
+
+/* ------------------------------------------------------------------------------------------
+ * Print
+ * ------------------------------------------------------------------------------------------ */
+
+@media print {
+
+	#sidenav,
+	#version,
+	#versions,
+	section .version,
+	section .versions {
+    display: none;
+	}
+
+  #content {
+    margin-left: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:after {
+    content: " [" attr(href) "] ";
+  }
+
+  p {
+    color: #000000
+  }
+
+	pre {
+	  background-color: #ffffff;
+	  color: #000000;
+	  padding: 10px;
+	  border: #808080 1px solid;
+	  border-radius: 6px;
+	  position: relative;
+	  margin: 10px 0 20px 0;
+	}
+
+} /* /@media print */
