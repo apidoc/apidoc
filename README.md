@@ -79,7 +79,7 @@ Creates from input files in `example/` a documentation in path `doc/`.
    ```perl
    #**
    # This is a comment.
-   #**
+   #*
    ```
 
 
