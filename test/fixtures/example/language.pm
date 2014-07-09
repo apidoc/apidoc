@@ -6,7 +6,7 @@
 # @apiGroup Language
 # @apiVersion 0.4.0
 # @apiDescription Test for Perl Comment-Syntax.
-#**
+#*
 
 #**
 # @api {get} /language/perl/indented1 Perl indented 1
@@ -19,7 +19,7 @@
 #		Line 4 indented (with tab at beginning).
 #	Line 5 indented.
 # This is example line 6.
-#**
+#*
 
 #**
 @api {get} /language/perl/indented2 Perl indented 2
@@ -32,4 +32,4 @@ This is example line 3.
 	    Line 4 indented (with tab at beginning).
     Line 5 indented.
 This is example line 6.
-#**
+#*
