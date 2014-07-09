@@ -74,6 +74,14 @@ Creates from input files in `example/` a documentation in path `doc/`.
    =end
    ```
 
+ * **Perl**
+
+   ```perl
+   #**
+   # This is a comment.
+   #**
+   ```
+
 
 ## Grunt Module
 
