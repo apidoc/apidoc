@@ -515,6 +515,46 @@ define({ api: [
   },
   {
     "type": "get",
+    "url": "/language/perl",
+    "title": "Perl",
+    "name": "GetLanguagePerl",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "Test for Perl Comment-Syntax.",
+    "filename": "test/fixtures/example/language.pm"
+  },
+  {
+    "type": "get",
+    "url": "/language/perl/indented1",
+    "title": "Perl indented 1",
+    "name": "GetLanguagePerlIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n\tLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.pm"
+  },
+  {
+    "type": "get",
+    "url": "/language/perl/indented2",
+    "title": "Perl indented 2",
+    "name": "GetLanguagePerlIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+      }
+    ],
+    "filename": "test/fixtures/example/language.pm"
+  },
+  {
+    "type": "get",
     "url": "/language/python",
     "title": "Python",
     "name": "GetLanguagePython",
