@@ -69,7 +69,9 @@
 <script id="template-generator" type="text/x-handlebars-template">
   {{#if template.withGenerator}}
     {{#if generator}}
-      {{__ "Generated with"}} <a href="http://apidocjs.com">apiDoc</a> {{{generator.version}}} - {{{generator.time}}}
+      <div class="content">
+        {{__ "Generated with"}} <a href="http://apidocjs.com">apiDoc</a> {{{generator.version}}} - {{{generator.time}}}
+      </div>
     {{/if}}
   {{/if}}
 </script>
@@ -475,6 +477,21 @@
       <div id="footer"></div>
       <div id="generator"></div>
     </div>
+  </div>
+</div>
+
+<div id="loader">
+  <div class="spinner">
+	  <div class="spinner-container container1">
+	    <div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container2">
+	    <div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div>
+	  </div>
+	  <div class="spinner-container container3">
+	    <div class="circle1"></div><div class="circle2"></div><div class="circle3"></div><div class="circle4"></div>
+    </div>
+    <p>Loading...</p>
   </div>
 </div>
 

@@ -27,7 +27,8 @@ require.config({
 			exports: "prettyPrint"
 		}
 	},
-	urlArgs: "v=" + (new Date()).getTime()
+	urlArgs: "v=" + (new Date()).getTime(),
+	waitSeconds: 1
 });
 
 require([
@@ -197,6 +198,11 @@ require([
 	 */
 	var title = apiProject.title ? apiProject.title : "apiDoc: " + apiProject.name + " - " + apiProject.version;
 	$(document).attr("title", title);
+
+	/**
+	 * Remove loader.
+	 */
+	$("#loader").remove();
 
 	/**
 	 * Render Sidenav.
