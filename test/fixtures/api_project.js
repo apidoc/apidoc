@@ -1,6 +1,6 @@
 define({
   "name": "test",
-  "version": "1.2.3",
+  "version": "0.5.0",
   "description": "RESTful web API Documentation Generator",
   "header": {
     "title": "My own header title",
@@ -11,7 +11,7 @@ define({
     "content": "<h1 id=\"footer-md-file\">Footer .md File</h1>\n<p>Content of footer.md file.</p>\n"
   },
   "generator": {
-    "version": "0.5.0",
-    "time": "2014-06-27T13:09:11.199Z"
+    "version": "0.6.0",
+    "time": "2014-07-10T14:42:38.537Z"
   }
 });

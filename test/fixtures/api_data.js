@@ -6,7 +6,7 @@ define({ api: [
     "name": "PostError",
     "group": "Error",
     "version": "0.1.0",
-    "description": "Use of multiple ErrorStructures.",
+    "description": "<p>Use of multiple ErrorStructures.</p>",
     "error": {
       "fields": {
         "Error 4xx": [
@@ -14,19 +14,19 @@ define({ api: [
             "group": "Error 4xx",
             "field": "error3Error",
             "optional": false,
-            "description": "This is Error 3 (local)."
+            "description": "<p>This is Error 3 (local).</p>"
           },
           {
             "group": "Error 4xx",
             "field": "error1Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "<p>This is Error 1.</p>"
           },
           {
             "group": "Error 4xx",
             "field": "error2Error",
             "optional": false,
-            "description": "This is Error 2."
+            "description": "<p>This is Error 2.</p>"
           }
         ]
       }
@@ -40,7 +40,7 @@ define({ api: [
     "name": "PostTitleAndError",
     "group": "Error",
     "version": "0.1.0",
-    "description": "Use of Title and Structures in the same block.",
+    "description": "<p>Use of Title and Structures in the same block.</p>",
     "success": {
       "fields": {
         "204 No Content. Added to global namespace.": [
@@ -48,7 +48,7 @@ define({ api: [
             "group": "204",
             "field": "message",
             "optional": false,
-            "description": "Successfully deleted."
+            "description": "<p>Successfully deleted.</p>"
           }
         ]
       }
@@ -60,13 +60,13 @@ define({ api: [
             "group": "Error 4xx",
             "field": "error3Error",
             "optional": false,
-            "description": "This is Error 3 (local)."
+            "description": "<p>This is Error 3 (local).</p>"
           },
           {
             "group": "Error 4xx",
             "field": "error1Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "<p>This is Error 1.</p>"
           }
         ]
       }
@@ -79,7 +79,7 @@ define({ api: [
     "title": "Group and Description",
     "name": "GetGroup",
     "group": "Group",
-    "groupDescription": "This is a Group Description.\nMulitline capable.",
+    "groupDescription": "<p>This is a Group Description.Mulitline capable.</p>",
     "version": "0.5.0",
     "filename": "test/fixtures/example/group.js"
   },
@@ -90,7 +90,7 @@ define({ api: [
     "name": "GetGrouping",
     "group": "Grouping",
     "version": "0.1.0",
-    "description": "Title and Grouping of param, success and error",
+    "description": "<p>Title and Grouping of param, success and error</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -99,7 +99,7 @@ define({ api: [
             "type": "String",
             "field": "param1",
             "optional": false,
-            "description": "No Group, automatically set Group to \"Parameter\""
+            "description": "<p>No Group, automatically set Group to &quot;Parameter&quot;</p>"
           }
         ],
         "Replace \"login\" with this text": [
@@ -108,7 +108,7 @@ define({ api: [
             "type": "String",
             "field": "param2",
             "optional": false,
-            "description": "Group \"login\""
+            "description": "<p>Group &quot;login&quot;</p>"
           },
           {
             "group": "login",
@@ -116,7 +116,7 @@ define({ api: [
             "field": "param3",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Group \"login\" with default Value"
+            "description": "<p>Group &quot;login&quot; with default Value</p>"
           }
         ]
       }
@@ -129,7 +129,7 @@ define({ api: [
             "type": "String",
             "field": "success2",
             "optional": false,
-            "description": "Group \"201\""
+            "description": "<p>Group &quot;201&quot;</p>"
           },
           {
             "group": "201",
@@ -137,7 +137,7 @@ define({ api: [
             "field": "success3",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Group \"201\" with default Value"
+            "description": "<p>Group &quot;201&quot; with default Value</p>"
           }
         ],
         "Success 200": [
@@ -146,7 +146,7 @@ define({ api: [
             "type": "String",
             "field": "success1",
             "optional": false,
-            "description": "No Group, automatically set \"Success 200\""
+            "description": "<p>No Group, automatically set &quot;Success 200&quot;</p>"
           }
         ]
       }
@@ -159,7 +159,7 @@ define({ api: [
             "type": "String",
             "field": "error2",
             "optional": false,
-            "description": "Group \"400\""
+            "description": "<p>Group &quot;400&quot;</p>"
           }
         ],
         "401 - Oh oh, replace \"401\" with this text": [
@@ -168,7 +168,7 @@ define({ api: [
             "type": "String",
             "field": "error3",
             "optional": false,
-            "description": "Group \"401\""
+            "description": "<p>Group &quot;401&quot;</p>"
           }
         ],
         "Error 4xx": [
@@ -177,7 +177,7 @@ define({ api: [
             "type": "String",
             "field": "error1",
             "optional": false,
-            "description": "No Group automatically set \"Error 4xx\""
+            "description": "<p>No Group automatically set &quot;Error 4xx&quot;</p>"
           }
         ]
       }
@@ -191,7 +191,7 @@ define({ api: [
     "name": "GetHeader",
     "group": "Header",
     "version": "0.5.0",
-    "description": "Test for @apiHeader (same as @apiParam)",
+    "description": "<p>Test for @apiHeader (same as @apiParam)</p>",
     "header": {
       "fields": {
         "Header": [
@@ -200,7 +200,7 @@ define({ api: [
             "type": "String",
             "field": "header1",
             "optional": false,
-            "description": "Parameter with type and description."
+            "description": "<p>Parameter with type and description.</p>"
           },
           {
             "group": "Header",
@@ -215,7 +215,7 @@ define({ api: [
             "field": "header3",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Parameter with type, description and default value."
+            "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
             "group": "Header",
@@ -229,7 +229,7 @@ define({ api: [
             "group": "Header",
             "field": "header5",
             "optional": false,
-            "description": "Basic Parameter with description."
+            "description": "<p>Basic Parameter with description.</p>"
           },
           {
             "group": "Header",
@@ -242,7 +242,7 @@ define({ api: [
             "field": "header7",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Basic Parameter with description and default value."
+            "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Header",
@@ -255,7 +255,7 @@ define({ api: [
             "group": "Header",
             "field": "header9",
             "optional": true,
-            "description": "Optional basic Parameter with description."
+            "description": "<p>Optional basic Parameter with description.</p>"
           },
           {
             "group": "Header",
@@ -268,7 +268,7 @@ define({ api: [
             "field": "header11",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional basic Parameter with description and default value."
+            "description": "<p>Optional basic Parameter with description and default value.</p>"
           },
           {
             "group": "Header",
@@ -282,7 +282,7 @@ define({ api: [
             "type": "String",
             "field": "header13",
             "optional": true,
-            "description": "Optional Parameter with type and description."
+            "description": "<p>Optional Parameter with type and description.</p>"
           },
           {
             "group": "Header",
@@ -297,7 +297,7 @@ define({ api: [
             "field": "header15",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional Parameter with type, description and default value."
+            "description": "<p>Optional Parameter with type, description and default value.</p>"
           },
           {
             "group": "Header",
@@ -319,7 +319,7 @@ define({ api: [
     "name": "GetHeaderExample",
     "group": "Header",
     "version": "0.5.0",
-    "description": "Usage of @headerExample.",
+    "description": "<p>Usage of @headerExample.</p>",
     "header": {
       "examples": [
         {
@@ -337,7 +337,7 @@ define({ api: [
     "name": "GetHeaderTitle",
     "group": "Header",
     "version": "0.5.0",
-    "description": "Usage of @headerTitle.",
+    "description": "<p>Usage of @headerTitle.</p>",
     "header": {
       "fields": {
         "This are the Parameters for MyGroup:": [
@@ -345,14 +345,14 @@ define({ api: [
             "group": "MyHeaderGroup",
             "field": "authorization",
             "optional": false,
-            "description": "The authorization code."
+            "description": "<p>The authorization code.</p>"
           },
           {
             "group": "MyHeaderGroup",
             "type": "string",
             "field": "text",
             "optional": false,
-            "description": "Some text."
+            "description": "<p>Some text.</p>"
           }
         ]
       }
@@ -366,7 +366,7 @@ define({ api: [
     "name": "PostHeader",
     "group": "Header",
     "version": "0.5.0",
-    "description": "Use of multiple HeaderStructures.",
+    "description": "<p>Use of multiple HeaderStructures.</p>",
     "header": {
       "fields": {
         "Header": [
@@ -374,19 +374,19 @@ define({ api: [
             "group": "Header",
             "field": "Header3",
             "optional": false,
-            "description": "This is Header 3 (local)."
+            "description": "<p>This is Header 3 (local).</p>"
           },
           {
             "group": "Header",
             "field": "Header1",
             "optional": false,
-            "description": "This is Header 1."
+            "description": "<p>This is Header 1.</p>"
           },
           {
             "group": "Header",
             "field": "header2",
             "optional": false,
-            "description": "This is Header 2."
+            "description": "<p>This is Header 2.</p>"
           }
         ]
       }
@@ -400,7 +400,7 @@ define({ api: [
     "name": "GetLanguageCoffeeScript",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for CoffeeScript Comment-Syntax.",
+    "description": "<p>Test for CoffeeScript Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.coffee"
   },
   {
@@ -440,7 +440,7 @@ define({ api: [
     "name": "GetLanguageErlang",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for Erlang Comment-Syntax.",
+    "description": "<p>Test for Erlang Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.erl"
   },
   {
@@ -480,7 +480,7 @@ define({ api: [
     "name": "GetLanguageJavaScript",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for JavaScript Comment-Syntax.",
+    "description": "<p>Test for JavaScript Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.js"
   },
   {
@@ -520,7 +520,7 @@ define({ api: [
     "name": "GetLanguagePerl",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for Perl Comment-Syntax.",
+    "description": "<p>Test for Perl Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.pm"
   },
   {
@@ -560,7 +560,7 @@ define({ api: [
     "name": "GetLanguagePython",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for Python Comment-Syntax.",
+    "description": "<p>Test for Python Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.py"
   },
   {
@@ -600,7 +600,7 @@ define({ api: [
     "name": "GetLanguageRuby",
     "group": "Language",
     "version": "0.4.0",
-    "description": "Test for Ruby Comment-Syntax.",
+    "description": "<p>Test for Ruby Comment-Syntax.</p>",
     "filename": "test/fixtures/example/language.rb"
   },
   {
@@ -635,12 +635,12 @@ define({ api: [
   },
   {
     "type": "get",
-    "url": "/param/:id",
-    "title": "Parameters",
-    "name": "GetParam",
-    "group": "Param",
-    "version": "0.1.1",
-    "description": "Parameters and different Versions: 0.1.1",
+    "url": "/markdown/:id",
+    "title": "Markdown",
+    "name": "GetMarkdown",
+    "group": "Markdown",
+    "version": "0.6.0",
+    "description": "<p>Enable markdown for all description fields.</p><p>This <strong>text</strong> is in a <strong>separate</strong> p.</p><ul><li>List 1</li><li>List 2</li></ul><p>Multiline markdown text, output in one line.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -649,7 +649,30 @@ define({ api: [
             "type": "String",
             "field": "param1",
             "optional": false,
-            "description": "Parameter with type and description."
+            "description": "<p>This is a markdown <strong>apiParam</strong></p><p>Separate line.</p>"
+          }
+        ]
+      }
+    },
+    "filename": "test/fixtures/example/markdown.js"
+  },
+  {
+    "type": "get",
+    "url": "/param/:id",
+    "title": "Parameters",
+    "name": "GetParam",
+    "group": "Param",
+    "version": "0.1.1",
+    "description": "<p>Parameters and different Versions: 0.1.1</p>",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "field": "param1",
+            "optional": false,
+            "description": "<p>Parameter with type and description.</p>"
           },
           {
             "group": "Parameter",
@@ -664,7 +687,7 @@ define({ api: [
             "field": "param3",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Parameter with type, description and default value."
+            "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -678,7 +701,7 @@ define({ api: [
             "group": "Parameter",
             "field": "param5",
             "optional": false,
-            "description": "Basic Parameter with description."
+            "description": "<p>Basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
@@ -691,7 +714,7 @@ define({ api: [
             "field": "param7",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Basic Parameter with description and default value."
+            "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -704,7 +727,7 @@ define({ api: [
             "group": "Parameter",
             "field": "param9",
             "optional": true,
-            "description": "Optional basic Parameter with description."
+            "description": "<p>Optional basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
@@ -717,7 +740,7 @@ define({ api: [
             "field": "param11",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional basic Parameter with description and default value."
+            "description": "<p>Optional basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -731,7 +754,7 @@ define({ api: [
             "type": "String",
             "field": "param13",
             "optional": true,
-            "description": "Optional Parameter with type and description."
+            "description": "<p>Optional Parameter with type and description.</p>"
           },
           {
             "group": "Parameter",
@@ -746,7 +769,7 @@ define({ api: [
             "field": "param15",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional Parameter with type, description and default value."
+            "description": "<p>Optional Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -768,7 +791,7 @@ define({ api: [
     "name": "GetParam",
     "group": "Param",
     "version": "0.1.0",
-    "description": "Parameters and different Versions: 0.1.0",
+    "description": "<p>Parameters and different Versions: 0.1.0</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -777,14 +800,14 @@ define({ api: [
             "type": "String",
             "field": "param0",
             "optional": false,
-            "description": "This param is removed in 0.1.1."
+            "description": "<p>This param is removed in 0.1.1.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "field": "param1",
             "optional": false,
-            "description": "This is an old text."
+            "description": "<p>This is an old text.</p>"
           },
           {
             "group": "Parameter",
@@ -799,7 +822,7 @@ define({ api: [
             "field": "param3",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Parameter with type, description and default value."
+            "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -813,7 +836,7 @@ define({ api: [
             "group": "Parameter",
             "field": "param5",
             "optional": false,
-            "description": "Basic Parameter with description."
+            "description": "<p>Basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
@@ -826,7 +849,7 @@ define({ api: [
             "field": "param7",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Basic Parameter with description and default value."
+            "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -839,7 +862,7 @@ define({ api: [
             "group": "Parameter",
             "field": "param9",
             "optional": true,
-            "description": "Optional basic Parameter with description."
+            "description": "<p>Optional basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
@@ -852,7 +875,7 @@ define({ api: [
             "field": "param11",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional basic Parameter with description and default value."
+            "description": "<p>Optional basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -866,7 +889,7 @@ define({ api: [
             "type": "String",
             "field": "param13",
             "optional": true,
-            "description": "Optional Parameter with type and description."
+            "description": "<p>Optional Parameter with type and description.</p>"
           },
           {
             "group": "Parameter",
@@ -881,7 +904,7 @@ define({ api: [
             "field": "param15",
             "defaultValue": "Default Value",
             "optional": true,
-            "description": "Optional Parameter with type, description and default value."
+            "description": "<p>Optional Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
@@ -903,7 +926,7 @@ define({ api: [
     "name": "PostStructure",
     "group": "Structure",
     "version": "0.1.0",
-    "description": "Use of multiple Structures.",
+    "description": "<p>Use of multiple Structures.</p>",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -911,19 +934,19 @@ define({ api: [
             "group": "Parameter",
             "field": "field3",
             "optional": false,
-            "description": "This is Field 3 (local)."
+            "description": "<p>This is Field 3 (local).</p>"
           },
           {
             "group": "Parameter",
             "field": "field1",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "<p>This is Field 1.</p>"
           },
           {
             "group": "Parameter",
             "field": "field2",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "<p>This is Field 2.</p>"
           }
         ]
       }
@@ -937,7 +960,7 @@ define({ api: [
     "name": "PostSuccess",
     "group": "Success",
     "version": "0.1.0",
-    "description": "Use of multiple SuccessStructures.",
+    "description": "<p>Use of multiple SuccessStructures.</p>",
     "success": {
       "fields": {
         "Success 200": [
@@ -945,19 +968,19 @@ define({ api: [
             "group": "Success 200",
             "field": "success3",
             "optional": false,
-            "description": "This is Success 3 (local)."
+            "description": "<p>This is Success 3 (local).</p>"
           },
           {
             "group": "Success 200",
             "field": "success1",
             "optional": false,
-            "description": "This is Success 1."
+            "description": "<p>This is Success 1.</p>"
           },
           {
             "group": "Success 200",
             "field": "success2",
             "optional": false,
-            "description": "This is Success 2."
+            "description": "<p>This is Success 2.</p>"
           }
         ]
       }
@@ -972,7 +995,7 @@ define({ api: [
             "group": "Error 4xx",
             "field": "error1Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "<p>This is Error 1.</p>"
           }
         ]
       }
@@ -991,7 +1014,7 @@ define({ api: [
             "group": "Error 4xx",
             "field": "error2Error",
             "optional": false,
-            "description": "This is Error 2."
+            "description": "<p>This is Error 2.</p>"
           }
         ]
       }
@@ -1010,7 +1033,7 @@ define({ api: [
             "group": "Header",
             "field": "header2",
             "optional": false,
-            "description": "This is Header 2."
+            "description": "<p>This is Header 2.</p>"
           }
         ]
       }
@@ -1029,7 +1052,7 @@ define({ api: [
             "group": "Header",
             "field": "Header1",
             "optional": false,
-            "description": "This is Header 1."
+            "description": "<p>This is Header 1.</p>"
           }
         ]
       }
@@ -1048,7 +1071,7 @@ define({ api: [
             "group": "Parameter",
             "field": "field1",
             "optional": false,
-            "description": "This is Field 1."
+            "description": "<p>This is Field 1.</p>"
           }
         ]
       }
@@ -1067,7 +1090,7 @@ define({ api: [
             "group": "Parameter",
             "field": "field2",
             "optional": false,
-            "description": "This is Field 2."
+            "description": "<p>This is Field 2.</p>"
           }
         ]
       }
@@ -1086,7 +1109,7 @@ define({ api: [
             "group": "Success 200",
             "field": "success1",
             "optional": false,
-            "description": "This is Success 1."
+            "description": "<p>This is Success 1.</p>"
           }
         ]
       }
@@ -1105,7 +1128,7 @@ define({ api: [
             "group": "Success 200",
             "field": "success2",
             "optional": false,
-            "description": "This is Success 2."
+            "description": "<p>This is Success 2.</p>"
           }
         ]
       }
@@ -1124,7 +1147,7 @@ define({ api: [
             "group": "Error 4xx",
             "field": "error1Error",
             "optional": false,
-            "description": "This is Error 1."
+            "description": "<p>This is Error 1.</p>"
           }
         ]
       }
