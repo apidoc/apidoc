@@ -4,6 +4,8 @@ Generates a RESTful web API Documentation.
 
 ### **Important** [markdown](https://help.github.com/articles/markdown-basics) for all description fields is now enabled!
 
+[![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
+
 Documentation at [apidocjs.com](http://apidocjs.com).
 
 [Example](http://apidocjs.com/example/) output.
