@@ -54,7 +54,14 @@ require([
 	var templateProject        = Handlebars.compile( $("#template-project").html() );
 	var templateSections       = Handlebars.compile( $("#template-sections").html() );
 	var templateSidenav        = Handlebars.compile( $("#template-sidenav").html() );
-	
+
+	/**
+	 * apiProject defaults.
+	 */
+	if( ! apiProject.template) apiProject.template = {};
+	if(apiProject.template.withCompare == null) apiProject.template.withCompare = true;
+	if(apiProject.template.withGenerator == null) apiProject.template.withGenerator = true;
+
 	/**
 	 * Data transform.
 	 */
@@ -254,17 +261,10 @@ require([
 					};
 				}
 
-				if(entry.header && entry.header.fields) fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
-				if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
-				if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
-				if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
-				if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+				addArticleSettings(fields, entry);
 
 				// TODO: make groupDescription compareable with older versions (not important for the moment).
 				if (entry.groupDescription) description = entry.groupDescription;
-
-				// Add endpoint URL
-				if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
 
 				articles.push({
 					article: templateArticle(fields),
@@ -339,16 +339,19 @@ require([
 
 		var version = $("#version strong").html();
 		$("#sidenav li").removeClass("is-new");
-		$("#sidenav li[data-version=\"" + version + "\"]").each(function(){
-			var group = $(this).data("group");
-			var name = $(this).data("name");
-			var length = $("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"]").length;
-			var index  = $("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"]").index($(this));
-			if(length === 1 || index === (length - 1))
-			{
-				$(this).addClass("is-new");
-			}
-		});
+		if(apiProject.template.withCompare)
+		{
+			$("#sidenav li[data-version=\"" + version + "\"]").each(function(){
+				var group = $(this).data("group");
+				var name = $(this).data("name");
+				var length = $("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"]").length;
+				var index  = $("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"]").index($(this));
+				if(length === 1 || index === (length - 1))
+				{
+					$(this).addClass("is-new");
+				}
+			});
+		}
 	} // initDynamic
 	initDynamic();
 
@@ -522,6 +525,24 @@ require([
 	} // changeAllVersionCompareTo
 
 	/**
+	 * Add article settings.
+	 */
+	function addArticleSettings(fields, entry)
+	{
+		if(entry.header && entry.header.fields) fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
+		if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+		if(entry.error && entry.error.fields)         fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+		if(entry.success && entry.success.fields)     fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+		if(entry.info && entry.info.fields)           fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+
+		// Add prefix URL for endpoint
+		if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
+
+		// Add template settings
+		fields.template = apiProject.template;
+	} // addArticleSettings
+
+	/**
 	 * Render an Article.
 	 */
 	function renderArticle(group, name, version)
@@ -535,10 +556,7 @@ require([
 			versions: articleVersions[group][name]
 		};
 
-		if(entry.parameter && entry.parameter.fields) fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
-		if(entry.error && entry.error.fields) fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
-		if(entry.success && entry.success.fields) fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
-		if(entry.info && entry.info.fields) fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+		addArticleSettings(fields, entry);
 
 		return templateArticle(fields);
 	} // renderArticle
