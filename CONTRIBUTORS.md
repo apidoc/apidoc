@@ -2,6 +2,9 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Anton Fischer](https://github.com/antonfisher)
+  * Perl (Doxygen) support ([#71] (https://github.com/apidoc/apidoc/pull/71))
+
 * [Ruslan Ismagilov](https://github.com/isRuslan)
   * Add Function `@apiGroupDescription` ([#54](https://github.com/apidoc/apidoc/pull/54))
 

@@ -1,28 +1,36 @@
 # apiDoc Changelog
 
+#### 0.6.0
+Enable markdown for all description fields.
+Add `apidoc.json` configuration file for primary configuration over `package.json`. (http://apidocjs.com/#configuration)
+Add template specific configuration settings. (http://apidocjs.com/#configuration-template-settings)
+Add support for Perl (Doxygen) comment-style.
+Add simple CSS3 preloader.
+
 #### 0.5.2
-* Add css for printing.
-* Bugfix: Template IE8 compatibility. (https://github.com/apidoc/apidoc/issues/69)
+Add css for printing.
+Bugfix: Template IE8 compatibility. (https://github.com/apidoc/apidoc/issues/69)
 
 #### 0.5.1
-* Update node version to 0.10.x.
-* Add optional custom browser title with `apidoc.title` in `package.json`. 
-* Add optional url endpoint with `apidoc.url` in `package.json`.
-* Bugfix: Template scrollbug. (https://github.com/apidoc/apidoc/issues/64)
+Update node version to 0.10.x.
+Add optional custom browser title with `apidoc.title` in `package.json`. 
+Add optional url endpoint with `apidoc.url` in `package.json`.
+Bugfix: Template scrollbug. (https://github.com/apidoc/apidoc/issues/64)
 
 #### 0.5.0
-* Add new Functions:
-  * [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
-  * [@apiHeader](http://apidocjs.com/#param-api-header)
-  * [@apiHeaderTitle](http://apidocjs.com/#param-api-header-title)
-  * [@apiDefineHeaderStructure](http://apidocjs.com/#param-api-define-header-structure)
-  * [@apiHeaderStructure](http://apidocjs.com/#param-api-header-structure)
-* Remove package.json path `apidocFilename`.
-* Change package.json path `apidoc`.
-  * Add `apidoc.header` / `apidoc.footer` (with custom navigation titles). (http://apidocjs.com/#headerfooter)
-* Remove template basic (easier to maintain), the default template will be re-designed in a future version too.
-* Update template libraries.
-* Add test cases.
+Add new Functions:
+* [@apiGroupDescription](http://apidocjs.com/#param-api-group-description)
+* [@apiHeader](http://apidocjs.com/#param-api-header)
+* [@apiHeaderTitle](http://apidocjs.com/#param-api-header-title)
+* [@apiDefineHeaderStructure](http://apidocjs.com/#param-api-define-header-structure)
+* [@apiHeaderStructure](http://apidocjs.com/#param-api-header-structure)
+
+Remove package.json path `apidocFilename`.
+Change package.json path `apidoc`.
+Add `apidoc.header` / `apidoc.footer` (with custom navigation titles). (http://apidocjs.com/#headerfooter)
+Remove template basic (easier to maintain), the default template will be re-designed in a future version too.
+Update template libraries.
+Add test cases.
 
 #### 0.4.4
 Preserve other files when copying template files to the destination output dir.
@@ -42,6 +50,7 @@ Add support for other comment-style. Now apiDoc supports:
 * JavaScript (JavaDoc-Style: e.g. also useable in C#, Go, Dart, Java, PHP, TypeScript)
 * Python
 * Ruby
+
 Add some programming language test cases.
 Remove german code comments.
 Upgrade all used node modules.
@@ -85,6 +94,7 @@ Add new Functions:
 * [@apiParamTitle](http://apidocjs.com/#param-api-param-title)
 * [@apiSuccessTitle](http://apidocjs.com/#param-api-success-title)
 * [@apiErrorTitle](http://apidocjs.com/#param-api-error-title)
+
 Minor Template-Bugfixes.
 
 #### 0.1.11

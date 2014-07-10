@@ -1,6 +1,8 @@
-# apiDoc 0.5.x
+# apiDoc 0.6.x
 
 Generates a RESTful web API Documentation.
+
+### **Important** [markdown](https://help.github.com/articles/markdown-basics) for all description fields is now enabled!
 
 Documentation at [apidocjs.com](http://apidocjs.com).
 
@@ -58,6 +60,14 @@ Creates from input files in `example/` a documentation in path `doc/`.
    %}
    ```
 
+ * **Perl**
+
+   ```perl
+   #**
+   # This is a comment.
+   #*
+   ```
+
  * **Python**
 
    ```python
@@ -72,14 +82,6 @@ Creates from input files in `example/` a documentation in path `doc/`.
    =begin
    This is a comment.
    =end
-   ```
-
- * **Perl**
-
-   ```perl
-   #**
-   # This is a comment.
-   #*
    ```
 
 
