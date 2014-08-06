@@ -28,7 +28,7 @@ require.config({
 		}
 	},
 	urlArgs: "v=" + (new Date()).getTime(),
-	waitSeconds: 1
+	waitSeconds: 15
 });
 
 require([
