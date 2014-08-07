@@ -40,7 +40,7 @@
       <button id="version" class="btn btn-large dropdown-toggle" data-toggle="dropdown">
         <strong>{{version}}</strong> <span class="caret"></span>
       </button>
-      <ul id="versions" class="dropdown-menu">
+      <ul id="versions" class="dropdown-menu open-left">
           <li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
           <li class="divider"></li>
           <li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
@@ -101,7 +101,7 @@
         <button class="version btn dropdown-toggle" data-toggle="dropdown">
           <strong>{{article.version}}</strong> <span class="caret"></span>
         </button>
-        <ul class="versions dropdown-menu">
+        <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
   {{#each versions}}
           <li class="version"><a href="#">{{this}}</a></li>
@@ -193,7 +193,7 @@
         <button class="version btn btn-danger dropdown-toggle" data-toggle="dropdown">
           <strong>{{compare.version}}</strong> <span class="caret"></span>
         </button>
-        <ul class="versions dropdown-menu">
+        <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
           <li class="divider"></li>
   {{#each versions}}
