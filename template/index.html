@@ -137,7 +137,7 @@
 
     {{#each article.examples}}
       <h3>{{title}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
+      <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
     {{/each}}
 
     {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields}}
@@ -176,7 +176,7 @@
     {{/each}}
     {{#each params.examples}}
       <h3>{{title}}</h3>
-      <pre class="prettyprint language-json" data-type="json"><code>{{{content}}}</code></pre>
+      <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
     {{/each}}
   {{/if}}
 </script>

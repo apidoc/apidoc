@@ -75,6 +75,54 @@
   },
   {
     "type": "get",
+    "url": "/test/escape",
+    "title": "Escape Example",
+    "name": "GetEscape",
+    "group": "Escape",
+    "version": "0.6.0",
+    "description": "<p>Escape Example data.</p>",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "   curl -i http://localhost/escape/text\n   <b>curl -i http://localhost/escape/html</b>\n   <xml>curl -i http://localhost/escape/xml</xml>\n"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Example Response",
+          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value',\n field_html: '<b>html-value</b>',\n field_xml: '<xml>xml-value</xml>'\n}\n"
+        }
+      ]
+    },
+    "filename": "test/fixtures/example/escape.js"
+  },
+  {
+    "type": "get",
+    "url": "/test/escape",
+    "title": "Escape Example",
+    "name": "GetEscape",
+    "group": "Escape",
+    "version": "0.5.0",
+    "description": "<p>Escape Example data - with comparison.</p>",
+    "examples": [
+      {
+        "title": "Example usage:",
+        "content": "   curl -i http://localhost/escape/text-old\n   <b>curl -i http://localhost/escape/html-old</b>\n   <xml>curl -i http://localhost/escape/xml-old</xml>\n"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "Example Response",
+          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value old',\n field_html: '<b>html-value old</b>',\n field_xml: '<xml>xml-value old</xml>'\n}\n"
+        }
+      ]
+    },
+    "filename": "test/fixtures/example/escape.js"
+  },
+  {
+    "type": "get",
     "url": "/group/:id",
     "title": "Group and Description",
     "name": "GetGroup",
