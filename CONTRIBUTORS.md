@@ -5,7 +5,7 @@ Thanks to all people that help to make apiDoc better!
 * [Paul Dapolito](https://github.com/PaulDapolito)
   * Fixed bug where dropdown opens off of page ([#71] (https://github.com/apidoc/apidoc/pull/85))
 
-* [Coders Brothers](https://github.com/PaulDapolito)
+* [Coders Brothers](https://github.com/CodersBrothers)
   * Some refactors and bugfixes ([#71] (https://github.com/apidoc/apidoc/pull/83))
 
 * [Anton Fischer](https://github.com/antonfisher)
