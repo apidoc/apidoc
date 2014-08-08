@@ -1,5 +1,12 @@
 # apiDoc Changelog
 
+#### 0.6.2
+
+Bugfix: Docs do not generate without optional @api [title]. (https://github.com/apidoc/apidoc/issues/82)
+
+Bugfix: Escape example output in `apiExample`, `apiErrorExample`, `apiSuccessExample`. (https://github.com/apidoc/apidoc/issues/78)
+
+
 #### 0.6.1
 
 Changing font include to work on HTTPS.
