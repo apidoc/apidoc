@@ -1000,7 +1000,7 @@ define({ api: [
         ]
       }
     },
-    "group": "error_structure.js",
+    "group": "error_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1019,7 +1019,7 @@ define({ api: [
         ]
       }
     },
-    "group": "error_structure.js",
+    "group": "error_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1038,7 +1038,7 @@ define({ api: [
         ]
       }
     },
-    "group": "header_structure.js",
+    "group": "header_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1057,7 +1057,7 @@ define({ api: [
         ]
       }
     },
-    "group": "header_structure.js",
+    "group": "header_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1076,7 +1076,7 @@ define({ api: [
         ]
       }
     },
-    "group": "structure.js",
+    "group": "structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1095,7 +1095,7 @@ define({ api: [
         ]
       }
     },
-    "group": "structure.js",
+    "group": "structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1114,7 +1114,7 @@ define({ api: [
         ]
       }
     },
-    "group": "success_structure.js",
+    "group": "success_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1133,7 +1133,7 @@ define({ api: [
         ]
       }
     },
-    "group": "success_structure.js",
+    "group": "success_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",
@@ -1152,7 +1152,7 @@ define({ api: [
         ]
       }
     },
-    "group": "title_and_structure.js",
+    "group": "title_and_structure_js",
     "type": "",
     "url": "",
     "version": "0.0.0",

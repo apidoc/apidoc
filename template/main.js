@@ -89,7 +89,7 @@ require([
 		var titles = {};
 		$.each(groupEntries, function(index, entries) {
 			var title = entries[0].title;
-			if(title)
+			if(title !== undefined)
 			{
 				title.toLowerCase().replace(/[äöüß]/g, function($0) { return umlauts[$0]; });
 				titles[title + " #~#" + index] = 1;
