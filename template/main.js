@@ -267,6 +267,9 @@ require([
 					};
 				}
 
+				// Add prefix URL for endpoint
+				if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
+
 				addArticleSettings(fields, entry);
 
 				// TODO: make groupDescription compareable with older versions (not important for the moment).
@@ -540,9 +543,6 @@ require([
 		if(entry.error && entry.error.fields)         fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
 		if(entry.success && entry.success.fields)     fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
 		if(entry.info && entry.info.fields)           fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
-
-		// Add prefix URL for endpoint
-		if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
 
 		// Add template settings
 		fields.template = apiProject.template;

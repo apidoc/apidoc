@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+#### 0.6.3
+
+Bugfix: Multiple added url to api path after compared to other version. (https://github.com/apidoc/apidoc/issues/87)
+
+
 #### 0.6.2
 
 Bugfix: Docs do not generate without optional @api [title]. (https://github.com/apidoc/apidoc/issues/82)
