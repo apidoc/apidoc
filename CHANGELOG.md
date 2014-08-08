@@ -1,5 +1,12 @@
 # apiDoc Changelog
 
+#### 0.6.1
+
+Changing font include to work on HTTPS.
+
+Some refactors and bugfixes.
+
+
 #### 0.6.0
 
 Enable markdown for all description fields.
