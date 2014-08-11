@@ -166,8 +166,18 @@
         Send
       </button>
 
-      <h3>Response:</h3>
-      <pre class="prettyprint language-json" data-type="json"><code id="sample-response-{{article.name}}"></code></pre>
+      <div id="sample-response-{{article.name}}" style="display: none;">
+        <h3 style="margin-top: 10px">
+          Response
+          <span class="pull-right" onclick="clearResponse()">
+            Clear
+          </span>
+        </h3>
+        <pre class="prettyprint language-json" data-type="json">
+          <code id="sample-response-json-{{article.name}}">
+          </code>
+        </pre>
+      </div>
     {{/if}}
   </article>
 </script>
