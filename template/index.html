@@ -10,6 +10,7 @@
   <link href="css/style.css" rel="stylesheet" media="screen, print">
   <link href="img/favicon.ico" rel="icon" type="image/x-icon">
   <script src="vendor/polyfill.js"></script>
+  <script src="functions/send_sample_request.js"></script>
 </head>
 <body>
 
@@ -145,6 +146,29 @@
     {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields}}
     {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields}}
+
+    {{#if article.sample}}
+      <h2>
+        Send a Sample Request:
+      </h2>
+      {{#each article.parameter.fields.Parameter}}
+          <div class="col-md-4">
+            <div class="input-group">
+              <input type="text" class="form-control sample-param-{{../article.name}}" placeholder="{{field}} ({{type}})" id="{{field}}">
+              <span class="input-group-addon">
+              </span>
+            </div>
+          </div>
+      {{/each}}
+
+      <button class="btn btn-default"
+              onclick="sendSampleRequest('{{article.sample.0.url}}', '{{article.type}}', '{{article.name}}')">
+        Send
+      </button>
+
+      <h3>Response:</h3>
+      <pre class="prettyprint language-json" data-type="json"><code id="sample-response-{{article.name}}"></code></pre>
+    {{/if}}
   </article>
 </script>
 
@@ -174,10 +198,12 @@
         </tbody>
       </table>
     {{/each}}
+
     {{#each params.examples}}
       <h3>{{title}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
     {{/each}}
+
   {{/if}}
 </script>
 
