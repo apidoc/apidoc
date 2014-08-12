@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+#### 0.6.4
+
+Bugfix: Rserved parameter names. (https://github.com/apidoc/apidoc/issues/96)
+
+
 #### 0.6.3
 
 Bugfix: Multiple added url to api path after compared to other version. (https://github.com/apidoc/apidoc/issues/87)
