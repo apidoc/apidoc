@@ -31,7 +31,7 @@ function sendSampleRequest(url, type, apiName) {
 };
 
 function clearResponse(apiName) {
-	updateScrollSpy();
+	refreshScrollSpy();
 	$("#sample-response-json-" + apiName).html("");
 	$("#sample-response-" + apiName).hide();
 };
