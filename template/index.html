@@ -12,9 +12,10 @@
   <script src="vendor/polyfill.js"></script>
   <script src="utils/send_sample_request.js"></script>
 </head>
-<body>
+<body data-spy="scroll" data-target="#scrollingNav" data-offset="25">
 
 <script id="template-sidenav" type="text/x-handlebars-template">
+<nav id="#scrollingNav">
   <ul class="sidenav nav nav-list">
   {{#each nav}}
     {{#if title}}
@@ -25,11 +26,14 @@
           <li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
-        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}"><a href="#api-{{group}}-{{name}}">{{title}}</a></li>
+        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
+          <a href="#api-{{group}}-{{name}}">{{title}}</a>
+        </li>
       {{/if}}
     {{/if}}
   {{/each}}
   </ul>
+</nav>
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">

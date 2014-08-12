@@ -297,7 +297,9 @@ require([
 	/**
 	 * Bootstrap Scrollspy.
 	 */
-	$("body").scrollspy({ offset: 25 });
+	$('[data-spy="scroll"]').each(function () {
+  		$(this).scrollspy('refresh');
+	}); 
 
 	// Content-Scroll on Navigation click.
 	$(".sidenav").find("a").on("click", function(e) {
