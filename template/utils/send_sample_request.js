@@ -1,4 +1,4 @@
-function sendSampleRequest(url, type, apiName) {
+function sendSampleRequest(type, apiName) {
 
 	var dict = {};
 
@@ -7,6 +7,8 @@ function sendSampleRequest(url, type, apiName) {
 		var value = element.value;
 		dict[key] = value;
 	});
+
+	var url = $("#sample-url-" + apiName)[0].value;
 
 	$.ajax({
 		url: "/api" + url,

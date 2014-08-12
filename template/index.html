@@ -154,18 +154,22 @@
       <h2>
         Send a Sample Request:
       </h2>
+      <div class="col-md-4">
+        <div class="input-append">
+          <input type="text" class="form-control" id="sample-url-{{article.name}}" value='{{article.sample.0.defaultURL}}' />
+          <span class="add-on">
+            url
+          </span>
+        </div>
+      </div> 
       {{#each article.parameter.fields.Parameter}}
           <div class="col-md-4">
-            <div class="input-group">
               <input type="text" class="form-control sample-param-{{../article.name}}" placeholder="{{field}} ({{type}})" id="{{field}}">
-              <span class="input-group-addon">
-              </span>
-            </div>
           </div>
       {{/each}}
 
       <button class="btn btn-default"
-              onclick="sendSampleRequest('{{article.sample.0.url}}', '{{article.type}}', '{{article.name}}')">
+              onclick="sendSampleRequest('{{article.type}}', '{{article.name}}')">
         Send
       </button>
 
