@@ -13,16 +13,16 @@ function sendSampleRequest(url, type, apiName) {
 		dataType: "json",
 		data: dict,
 		type: type.toUpperCase(),
-		success: success,
-		error: error
+		success: displaySuccess,
+		error: displayError
 	});
 
-	function success(data) {
+	function displaySuccess(data) {
 		$("#sample-response-" + apiName).show();
 		$("#sample-response-json-" + apiName).html(JSON.stringify(data, null, 4));
 	};
 
-	function error(jqXHR, textStatus, errorThrown) {
+	function displayError(jqXHR, textStatus, errorThrown) {
 		$("#sample-response-" + apiName).show();
 		$("#sample-response-json-" + apiName).html(jqXHR.status + " Error: " + errorThrown);
 	};
@@ -35,6 +35,6 @@ function sendSampleRequest(url, type, apiName) {
 };
 
 function clearResponse(apiName) {
+	$("#sample-response-json-" + apiName).html("");
 	$("#sample-response-" + apiName).hide();
-	$("#sample-response-json-" + apiName).empty();
 };
