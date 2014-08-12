@@ -31,6 +31,20 @@ require.config({
 	waitSeconds: 15
 });
 
+function loadGoogleFontCss($){
+    var host = document.location.hostname.toLowerCase();
+    var protocol = document.location.protocol.toLowerCase();
+    var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
+    if (host == "localhost" || !host.length || protocol === 'file:'){
+        googleCss = 'http:' + googleCss;
+    }
+    $("<link/>", {
+        rel: "stylesheet",
+        type: "text/css",
+        href: googleCss
+    }).appendTo("head");
+}
+
 require([
 	"jquery",
 	"lodash",
@@ -41,6 +55,9 @@ require([
 	"prettify",
 	"bootstrap"
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint) {
+
+    loadGoogleFontCss($);
+
 
 	var api = apiData.api;
 
