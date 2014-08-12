@@ -30,10 +30,15 @@ function sendSampleRequest(url, type, apiName) {
 	};
 };
 
-function clearResponse(apiName) {
-	refreshScrollSpy();
+function clearSampleRequest(apiName) {
 	$("#sample-response-json-" + apiName).html("");
 	$("#sample-response-" + apiName).hide();
+
+	$(".sample-param-" + apiName).each(function(i, element) {
+		element.value = "";
+	});
+
+	refreshScrollSpy();
 };
 
 function refreshScrollSpy() {
