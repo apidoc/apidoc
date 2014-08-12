@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+#### 0.6.5
+
+Bugfix: Change RegExp for parameter values to handle all chars. (https://github.com/apidoc/apidoc/issues/97)
+
+
+#### 0.6.4
+
+Bugfix: Reserved parameter names. (https://github.com/apidoc/apidoc/issues/96)
+
+
 #### 0.6.3
 
 Bugfix: Multiple added url to api path after compared to other version. (https://github.com/apidoc/apidoc/issues/87)

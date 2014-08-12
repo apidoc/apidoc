@@ -33,8 +33,9 @@ require.config({
 
 function loadGoogleFontCss($){
     var host = document.location.hostname.toLowerCase();
+    var protocol = document.location.protocol.toLowerCase();
     var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
-    if (host == "localhost" || !host.length){
+    if (host == "localhost" || !host.length || protocol === 'file:'){
         googleCss = 'http:' + googleCss;
     }
     $("<link/>", {
