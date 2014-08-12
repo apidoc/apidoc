@@ -1,15 +1,16 @@
 function sendSampleRequest(type, apiName) {
-
+	// create JSON dictionary of parameters
 	var dict = {};
-
 	$(".sample-param-" + apiName).each(function(i, element) {
 		var key = element.id;
 		var value = element.value;
 		dict[key] = value;
 	});
 
+	// grab user-inputted URL
 	var url = $("#sample-url-" + apiName)[0].value;
 
+	// send AJAX request, catch success or error callback
 	$.ajax({
 		url: "/api" + url,
 		dataType: "json",
@@ -33,12 +34,18 @@ function sendSampleRequest(type, apiName) {
 };
 
 function clearSampleRequest(apiName) {
+	// hide sample response
 	$("#sample-response-json-" + apiName).html("");
 	$("#sample-response-" + apiName).hide();
 
+	// reset value of parameters
 	$(".sample-param-" + apiName).each(function(i, element) {
 		element.value = "";
 	});
+
+	// retore default URL
+	var sampleURLelement = $("#sample-url-" + apiName)[0];
+	sampleURLelement.value = sampleURLelement.defaultValue;
 
 	refreshScrollSpy();
 };
