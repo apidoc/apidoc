@@ -117,7 +117,9 @@
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
 
+	 {{#if article.type}}
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
+	 {{/if}}
 
     {{#if article.permission.name}}
       <p>
