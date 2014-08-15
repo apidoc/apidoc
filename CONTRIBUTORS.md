@@ -2,6 +2,12 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Brian Horakh](https://github.com/brianhorakh)
+  * Added ability to have forward slash (/) in parameter field names ([#101] (https://github.com/apidoc/apidoc/pull/101))
+
+* [PaulDapolito](https://github.com/PaulDapolito)
+  * Sample Requests feature ([#98] (https://github.com/apidoc/apidoc/pull/98))
+
 * [Paul Dapolito](https://github.com/PaulDapolito)
   * Fixed bug where dropdown opens off of page ([#85] (https://github.com/apidoc/apidoc/pull/85))
 

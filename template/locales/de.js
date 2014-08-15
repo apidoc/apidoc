@@ -13,7 +13,11 @@ define({
 		"optional"                    : "optional",
 		"Parameter"                   : "Parameter",
 		"Permission:"                 : "Berechtigung:",
+		"Response"                    : "Antwort",
+		"Send"                        : "Senden",
+		"Send a Sample Request"      : "Eine Beispielanfrage senden",
 		"show up to version:"         : "zeige bis zur Version:",
-		"Type"                        : "Typ"
+		"Type"                        : "Typ",
+		"url"                         : "url"
 	}
 });

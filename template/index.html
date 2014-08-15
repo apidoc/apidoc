@@ -9,7 +9,6 @@
   <link href="css/style.css" rel="stylesheet" media="screen, print">
   <link href="img/favicon.ico" rel="icon" type="image/x-icon">
   <script src="vendor/polyfill.js"></script>
-  <script src="utils/send_sample_request.js"></script>
 </head>
 <body data-spy="scroll" data-target="#scrollingNav" data-offset="25">
 
@@ -150,42 +149,8 @@
     {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields}}
 
-    {{#if article.sample}}
-      <h2>
-        Send a Sample Request:
-      </h2>
-      <div class="col-md-4">
-        <div class="input-append">
-          <input type="text" class="form-control" id="sample-url-{{article.name}}" value='{{article.sample.0.defaultURL}}' />
-          <span class="add-on">
-            url
-          </span>
-        </div>
-      </div> 
-      {{#each article.parameter.fields.Parameter}}
-          <div class="col-md-4">
-              <input type="text" class="form-control sample-param-{{../article.name}}" placeholder="{{field}} ({{type}})" id="{{field}}">
-          </div>
-      {{/each}}
+    {{subTemplate "article-sample-request" article=article}}
 
-      <button class="btn btn-default"
-              onclick="sendSampleRequest('{{article.type}}', '{{article.name}}')">
-        Send
-      </button>
-
-      <div id="sample-response-{{article.name}}" style="display: none;">
-        <h3 style="margin-top: 10px">
-          Response
-          <span class="pull-right" onclick="clearSampleRequest('{{article.name}}')">
-            Clear
-          </span>
-        </h3>
-        <pre class="prettyprint language-json" data-type="json">
-          <code id="sample-response-json-{{article.name}}">
-          </code>
-        </pre>
-      </div>
-    {{/if}}
   </article>
 </script>
 
@@ -222,6 +187,48 @@
     {{/each}}
 
   {{/if}}
+</script>
+
+<script id="template-article-sample-request" type="text/x-handlebars-template">
+    {{#if article.sampleRequest}}
+      <h2>{{__ "Send a Sample Request"}}</h2>
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <div class="controls">
+              <div class="input-prepend">>
+                <span class="add-on">{{__ "url"}}</span>
+                <input type="text" class="sample-request-url" value="{{article.sampleRequest.0.url}}" />
+              </div>
+            </div>
+          </div>
+ 
+      {{#each article.parameter.fields.Parameter}}
+          <div class="control-group">
+            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
+            <div class="controls">
+              <input type="text" placeholder="{{field}} ({{type}})" class="sample-request-param" data-name="{{field}}">
+            </div>
+          </div>
+      {{/each}}
+
+          <div class="control-group">
+            <div class="controls">
+              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+            </div>
+          </div>
+
+          <div class="sample-request-response" style="display: none;">
+            <h3>
+              {{__ "Response"}}
+              <button class="btn btn-small btn-default pull-right sample-request-clear">X</button>
+            </h3>
+            <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
+          </div>
+
+        </fieldset>
+      </form>
+    {{/if}}    
 </script>
 
 <script id="template-compare-article" type="text/x-handlebars-template">
@@ -284,6 +291,9 @@
     {{subTemplate "article-compare-param-block" source=article.success compare=compare.success _hasType=_hasTypeInSuccessFields}}
     {{subTemplate "article-compare-param-block" source=article.info compare=compare.info _hasType=_hasTypeInInfoFields}}
     {{subTemplate "article-compare-param-block" source=article.error compare=compare.error _col1="Name" _hasType=_hasTypeInErrorFields}}
+
+    {{subTemplate "article-sample-request" article=article}}
+
   </article>
 </script>
 
