@@ -56,7 +56,7 @@ define([
 
       // send AJAX request, catch success or error callback
       $.ajax({
-          url: url,
+          url: "../" + url,
           dataType: "json",
           data: dict,
           type: type.toUpperCase(),
