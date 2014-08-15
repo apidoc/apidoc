@@ -9,10 +9,12 @@
   <link href="css/style.css" rel="stylesheet" media="screen, print">
   <link href="img/favicon.ico" rel="icon" type="image/x-icon">
   <script src="vendor/polyfill.js"></script>
+  <script src="utils/send_sample_request.js"></script>
 </head>
-<body>
+<body data-spy="scroll" data-target="#scrollingNav" data-offset="25">
 
 <script id="template-sidenav" type="text/x-handlebars-template">
+<nav id="scrollingNav">
   <ul class="sidenav nav nav-list">
   {{#each nav}}
     {{#if title}}
@@ -23,11 +25,14 @@
           <li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
-        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}"><a href="#api-{{group}}-{{name}}">{{title}}</a></li>
+        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
+          <a href="#api-{{group}}-{{name}}">{{title}}</a>
+        </li>
       {{/if}}
     {{/if}}
   {{/each}}
   </ul>
+</nav>
 </script>
 
 <script id="template-project" type="text/x-handlebars-template">
@@ -144,6 +149,43 @@
     {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields}}
     {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields}}
+
+    {{#if article.sample}}
+      <h2>
+        Send a Sample Request:
+      </h2>
+      <div class="col-md-4">
+        <div class="input-append">
+          <input type="text" class="form-control" id="sample-url-{{article.name}}" value='{{article.sample.0.defaultURL}}' />
+          <span class="add-on">
+            url
+          </span>
+        </div>
+      </div> 
+      {{#each article.parameter.fields.Parameter}}
+          <div class="col-md-4">
+              <input type="text" class="form-control sample-param-{{../article.name}}" placeholder="{{field}} ({{type}})" id="{{field}}">
+          </div>
+      {{/each}}
+
+      <button class="btn btn-default"
+              onclick="sendSampleRequest('{{article.type}}', '{{article.name}}')">
+        Send
+      </button>
+
+      <div id="sample-response-{{article.name}}" style="display: none;">
+        <h3 style="margin-top: 10px">
+          Response
+          <span class="pull-right" onclick="clearSampleRequest('{{article.name}}')">
+            Clear
+          </span>
+        </h3>
+        <pre class="prettyprint language-json" data-type="json">
+          <code id="sample-response-json-{{article.name}}">
+          </code>
+        </pre>
+      </div>
+    {{/if}}
   </article>
 </script>
 
@@ -173,10 +215,12 @@
         </tbody>
       </table>
     {{/each}}
+
     {{#each params.examples}}
       <h3>{{title}}</h3>
       <pre class="prettyprint language-json" data-type="json"><code>{{content}}</code></pre>
     {{/each}}
+
   {{/if}}
 </script>
 
