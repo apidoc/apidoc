@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+
+#### 0.7.0
+
+Add rudimentary support for direct api calls from within the doc.
+
+Add configuration var `sampleUrl` parameter for `apidoc.json`.
+
+Added ability to have forward slash (/) in parameter field names.
+
+
 #### 0.6.5
 
 Bugfix: Change RegExp for parameter values to handle all chars. (https://github.com/apidoc/apidoc/issues/97)

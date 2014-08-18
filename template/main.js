@@ -7,7 +7,8 @@ require.config({
 		jquery: "./vendor/jquery.min",
 		locales: "./locales/locale",
 		lodash: "./vendor/lodash.min",
-		prettify: "./vendor/prettify/prettify"
+		prettify: "./vendor/prettify/prettify",
+		utilsSampleRequest: "utils/send_sample_request"
 	},
 	shim: {
 		bootstrap: {
@@ -31,20 +32,6 @@ require.config({
 	waitSeconds: 15
 });
 
-function loadGoogleFontCss($){
-    var host = document.location.hostname.toLowerCase();
-    var protocol = document.location.protocol.toLowerCase();
-    var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
-    if (host == "localhost" || !host.length || protocol === 'file:'){
-        googleCss = 'http:' + googleCss;
-    }
-    $("<link/>", {
-        rel: "stylesheet",
-        type: "text/css",
-        href: googleCss
-    }).appendTo("head");
-}
-
 require([
 	"jquery",
 	"lodash",
@@ -53,11 +40,14 @@ require([
 	"./api_project.js",
 	"./api_data.js",
 	"prettify",
+	"utilsSampleRequest",
 	"bootstrap"
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint) {
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
 
-    loadGoogleFontCss($);
-
+	/**
+	 * Load google web fonts.
+	 */
+  loadGoogleFontCss($);
 
 	var api = apiData.api;
 
@@ -380,6 +370,11 @@ require([
 				}
 			});
 		}
+		
+	    /**
+	     * Init Modules
+	     */
+	    sampleRequest.initDynamic();
 	} // initDynamic
 	initDynamic();
 
@@ -387,7 +382,7 @@ require([
 	 * Pre- / Code-Format.
 	 */
 	prettyPrint();
-
+	
 	/**
 	 * HTML-Template specific jQuery-Functions
 	 */
@@ -605,4 +600,20 @@ require([
 		$root.remove(); 
 		return;
 	} // resetArticle
+	
+
+	function loadGoogleFontCss($){
+	    var host = document.location.hostname.toLowerCase();
+	    var protocol = document.location.protocol.toLowerCase();
+	    var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
+	    if (host == "localhost" || !host.length || protocol === 'file:'){
+	        googleCss = 'http:' + googleCss;
+	    }
+	    $("<link/>", {
+	        rel: "stylesheet",
+	        type: "text/css",
+	        href: googleCss
+	    }).appendTo("head");
+	} // loadGoogleFontCss
+
 });

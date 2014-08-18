@@ -7,12 +7,12 @@
  *
  * @apiDescription Compare Verison 0.3.0 with 0.2.0 and you will see the green markers with new items in version 0.3.0 and red markers with removed items since 0.2.0.
  * 
- * @apiParam {String} id The Users-ID.
+ * @apiParam {Number} id The Users-ID.
  *
  * @apiExample Example usage:
  * curl -i http://localhost/user/4711
  *
- * @apiSuccess {String}   id            The Users-ID.
+ * @apiSuccess {Number}   id            The Users-ID.
  * @apiSuccess {Date}     registered    Registration Date. 
  * @apiSuccess {Date}     name          Fullname of the User.
  * @apiSuccess {String[]} nicknames     List of Users nicknames (Array of Strings).
@@ -46,14 +46,14 @@ function getUser() { return; }
  * 
  * @apiParam {String} name Name of the User.
  *
- * @apiSuccess {String} id         The new Users-ID.
+ * @apiSuccess {Number} id         The new Users-ID.
  *
  * @apiErrorStructure CreateUserError
  */
 function postUser() { return; }
 
 /**
- * @api {put} /user/:id Change a new User
+ * @api {put} /user/:id Change a User
  * @apiVersion 0.3.0
  * @apiName PutUser
  * @apiGroup User
