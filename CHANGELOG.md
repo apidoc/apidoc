@@ -3,9 +3,9 @@
 
 #### 0.7.0
 
-Add rudimentary support for direct api calls from within the doc.
-
-Add configuration var `sampleUrl` parameter for `apidoc.json` (for the api calls).
+Add rudimentary support for direct api calls (test requests) from within the doc.
+* New configuration var [sampleUrl](https://apidocjs.com#configuration-settings-sample-url) for `apidoc.json`.
+* [@apiSampleRequest](http://apidocjs.com/#param-api-sample-request)
 
 Added ability to have forward slash (/) in parameter field names.
 
