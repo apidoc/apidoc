@@ -70,7 +70,8 @@ Creates from input files in `example/` a documentation in path `doc/`.
    #*
    ```
    
-   ```=pod
+   ```perl
+   =pod
    This is a comment.
    =cut
    ```
