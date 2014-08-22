@@ -11,7 +11,7 @@ define({
     "content": "<h1 id=\"footer-md-file\">Footer .md File</h1>\n<p>Content of footer.md file.</p>\n"
   },
   "generator": {
-    "version": "0.6.2",
-    "time": "2014-08-08T13:56:55.412Z"
+    "version": "0.7.0",
+    "time": "2014-08-22T14:39:03.051Z"
   }
 });
