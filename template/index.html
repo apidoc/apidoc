@@ -192,42 +192,39 @@
 <script id="template-article-sample-request" type="text/x-handlebars-template">
     {{#if article.sampleRequest}}
       <h2>{{__ "Send a Sample Request"}}</h2>
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <div class="controls">
-              <div class="input-prepend">>
-                <span class="add-on">{{__ "url"}}</span>
-                <input type="text" class="sample-request-url" value="{{article.sampleRequest.0.url}}" />
-              </div>
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-append">
+              <input type="text" class="sample-request-url" value="{{article.sampleRequest.0.url}}" />
+              <span class="add-on">{{__ "url"}}</span>
             </div>
           </div>
- 
-      {{#each article.parameter.fields.Parameter}}
-          <div class="control-group">
-            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
-            <div class="controls">
-              <input type="text" placeholder="{{field}} ({{type}})" class="sample-request-param" data-name="{{field}}">
+        </div>
+
+    {{#each article.parameter.fields.Parameter}}
+        <div class="control-group">
+          <div class="controls">
+            <div class="input-append">
+              <input type="text" placeholder="{{type}}" class="sample-request-param" data-name="{{field}}">
+              <span class="add-on">{{field}}</span>
             </div>
           </div>
-      {{/each}}
+        </div>
+    {{/each}}
 
-          <div class="control-group">
-            <div class="controls">
-              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
-            </div>
+        <div class="control-group">
+          <div class="controls">
+            <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
           </div>
+        </div>
 
-          <div class="sample-request-response" style="display: none;">
-            <h3>
-              {{__ "Response"}}
-              <button class="btn btn-small btn-default pull-right sample-request-clear">X</button>
-            </h3>
-            <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
-          </div>
-
-        </fieldset>
-      </form>
+        <div class="sample-request-response" style="display: none;">
+          <h3>
+            {{__ "Response"}}
+            <button class="btn btn-small btn-default pull-right sample-request-clear">Clear</button>
+          </h3>
+          <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
+        </div>
     {{/if}}    
 </script>
 
