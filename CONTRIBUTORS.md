@@ -3,6 +3,9 @@
 Thanks to all people that help to make apiDoc better!
 
 * [Brian Horakh](https://github.com/brianhorakh)
+  * Perl - allow =pod and =cut ([#103] (https://github.com/apidoc/apidoc/issues/103))
+
+* [Brian Horakh](https://github.com/brianhorakh)
   * Added ability to have forward slash (/) in parameter field names ([#101] (https://github.com/apidoc/apidoc/pull/101))
 
 * [PaulDapolito](https://github.com/PaulDapolito)

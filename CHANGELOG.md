@@ -5,9 +5,13 @@
 
 Add rudimentary support for direct api calls from within the doc.
 
-Add configuration var `sampleUrl` parameter for `apidoc.json`.
+Add configuration var `sampleUrl` parameter for `apidoc.json` (for the api calls).
 
 Added ability to have forward slash (/) in parameter field names.
+
+Add parameter `--parse` for parse only the files and return the parsed data. 
+
+Allow perl comments between "=pod" and "=cut".
 
 
 #### 0.6.5

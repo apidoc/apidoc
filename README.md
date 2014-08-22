@@ -1,4 +1,4 @@
-# apiDoc 0.6.x
+# apiDoc 0.7.x
 
 Generates a RESTful web API Documentation.
 
@@ -68,6 +68,11 @@ Creates from input files in `example/` a documentation in path `doc/`.
    #**
    # This is a comment.
    #*
+   ```
+   
+   ```=pod
+   This is a comment.
+   =cut
    ```
 
  * **Python**
