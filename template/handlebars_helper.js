@@ -12,6 +12,15 @@ define([
 	});
 
 	/**
+	 * Console log.
+	 * @param mixed obj
+	 */
+	Handlebars.registerHelper("cl", function(obj){
+		console.log(obj);
+		return "";
+	});
+
+	/**
 	 * Replace underscore with space.
 	 * @param string text
 	 */
@@ -153,6 +162,7 @@ define([
 	function _handlebarsEachCompared(fieldname, source, compare, options)
 	{
 		var dataList = [];
+		var index = 0;
 		if(source)
 		{
 			source.forEach(function(sourceEntry) {
@@ -165,10 +175,12 @@ define([
 							var data = {
 								typeSame: true,
 								source: sourceEntry,
-								compare: compareEntry
+								compare: compareEntry,
+								index: index
 							};
 							dataList.push(data);
 							found = true;
+							index++;
 						}
 					});
 				}
@@ -176,9 +188,11 @@ define([
 				{
 					var data = {
 						typeIns: true,
-						source: sourceEntry
+						source: sourceEntry,
+						index: index
 					};
 					dataList.push(data);
+					index++;
 				}
 			});
 		}
@@ -200,9 +214,11 @@ define([
 				{
 					var data = {
 						typeDel: true,
-						compare: compareEntry
+						compare: compareEntry,
+						index: index
 					};
 					dataList.push(data);
+					index++;
 				}
 			});
 		}

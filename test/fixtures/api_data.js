@@ -84,14 +84,16 @@ define({ api: [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "   curl -i http://localhost/escape/text\n   <b>curl -i http://localhost/escape/html</b>\n   <xml>curl -i http://localhost/escape/xml</xml>\n"
+        "content": "Example usage:\n   curl -i http://localhost/escape/text\n   <b>curl -i http://localhost/escape/html</b>\n   <xml>curl -i http://localhost/escape/xml</xml>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Example Response",
-          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value',\n field_html: '<b>html-value</b>',\n field_xml: '<xml>xml-value</xml>'\n}\n"
+          "content": "Example Response\nHTTP/1.1 200 OK {\n field_text: 'text-value',\n field_html: '<b>html-value</b>',\n field_xml: '<xml>xml-value</xml>'\n}\n",
+          "type": "json"
         }
       ]
     },
@@ -108,18 +110,120 @@ define({ api: [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "   curl -i http://localhost/escape/text-old\n   <b>curl -i http://localhost/escape/html-old</b>\n   <xml>curl -i http://localhost/escape/xml-old</xml>\n"
+        "content": "Example usage:\n   curl -i http://localhost/escape/text-old\n   <b>curl -i http://localhost/escape/html-old</b>\n   <xml>curl -i http://localhost/escape/xml-old</xml>\n",
+        "type": "json"
       }
     ],
     "success": {
       "examples": [
         {
           "title": "Example Response",
-          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value old',\n field_html: '<b>html-value old</b>',\n field_xml: '<xml>xml-value old</xml>'\n}\n"
+          "content": "Example Response\nHTTP/1.1 200 OK {\n field_text: 'text-value old',\n field_html: '<b>html-value old</b>',\n field_xml: '<xml>xml-value old</xml>'\n}\n",
+          "type": "json"
         }
       ]
     },
     "filename": "test/fixtures/example/escape.js"
+  },
+  {
+    "type": "get",
+    "url": "/example/",
+    "title": "Example",
+    "name": "GetExample",
+    "group": "Example",
+    "version": "0.7.1",
+    "description": "<p>Extended usage of @apiExample with different example types.</p>",
+    "examples": [
+      {
+        "title": "PHP Example (new)",
+        "content": "echo 'This is the content. (new)';\n",
+        "type": "PHP"
+      },
+      {
+        "title": "JS Example",
+        "content": "console.log('This is the content.');\n",
+        "type": "JS"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "PHP Success Example (new)",
+          "content": "echo 'This is the success content. (new)';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Success Example",
+          "content": "console.log('This is the success content.');\n",
+          "type": "JS"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "PHP Error Example",
+          "content": "echo 'This is the error content.';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Error Example",
+          "content": "console.log('This is the error content.');\n",
+          "type": "JS"
+        }
+      ]
+    },
+    "filename": "test/fixtures/example/example.js"
+  },
+  {
+    "type": "get",
+    "url": "/example/",
+    "title": "Example",
+    "name": "GetExample",
+    "group": "Example",
+    "version": "0.7.0",
+    "description": "<p>Extended usage of @apiExample with different example types.</p>",
+    "examples": [
+      {
+        "title": "PHP Example",
+        "content": "echo 'This is the content.';\n",
+        "type": "PHP"
+      },
+      {
+        "title": "JS Example (removed)",
+        "content": "console.log('This is the content. (removed)');\n",
+        "type": "JS"
+      }
+    ],
+    "success": {
+      "examples": [
+        {
+          "title": "PHP Success Example",
+          "content": "echo 'This is the success content.';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Success Example",
+          "content": "console.log('This is the success content.');\n",
+          "type": "JS"
+        }
+      ]
+    },
+    "error": {
+      "examples": [
+        {
+          "title": "PHP Error Example (removed)",
+          "content": "echo 'This is the error content. (removed)';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Error Example",
+          "content": "console.log('This is the error content.');\n",
+          "type": "JS"
+        }
+      ]
+    },
+    "filename": "test/fixtures/example/example.js"
   },
   {
     "type": "get",
@@ -372,7 +476,8 @@ define({ api: [
       "examples": [
         {
           "title": "An example:",
-          "content": "   curl -i http://localhost/header/example/\n"
+          "content": "An example:\n   curl -i http://localhost/header/example/\n",
+          "type": "json"
         }
       ]
     },
@@ -461,7 +566,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.coffee"
@@ -476,7 +582,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.coffee"
@@ -501,7 +608,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.erl"
@@ -516,7 +624,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.erl"
@@ -541,7 +650,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.js"
@@ -556,7 +666,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.js"
@@ -581,7 +692,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n\tLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n\tLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.pm"
@@ -596,7 +708,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.pm"
@@ -611,7 +724,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n     Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n     Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.pm"
@@ -636,7 +750,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.py"
@@ -651,7 +766,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.py"
@@ -676,7 +792,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.rb"
@@ -691,7 +808,8 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n"
+        "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "type": "json"
       }
     ],
     "filename": "test/fixtures/example/language.rb"
