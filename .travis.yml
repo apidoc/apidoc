@@ -3,4 +3,3 @@ node_js:
   - 0.10
 before_script: 
   - npm install -g grunt-cli
-after_script: NODE_ENV=test istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
