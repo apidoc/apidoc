@@ -207,7 +207,10 @@
           <div class="control-group">
             <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
             <div class="controls">
-              <input type="text" placeholder="{{field}} ({{type}})" class="sample-request-param" data-name="{{field}}">
+              <div class="input-append">>
+                <input type="text" placeholder="{{field}}" class="sample-request-param" data-name="{{field}}">
+                <span class="add-on">{{type}}</span>
+              </div>
             </div>
           </div>
       {{/each}}
