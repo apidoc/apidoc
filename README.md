@@ -2,8 +2,6 @@
 
 Generates a RESTful web API Documentation.
 
-### **Important** [markdown](https://help.github.com/articles/markdown-basics) for all description fields is now enabled!
-
 [![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
 
@@ -104,8 +102,19 @@ Creates from input files in `example/` a documentation in path `doc/`.
 [CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
 
 
+## Help
+
+Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem. Pull requests are welcome too!
+
+A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
+
+[![Gitter chat](https://badges.gitter.im/apidoc/talk.png)](https://gitter.im/apidoc/talk)
+
+
 ## License
 
 Copyright (c) 2013-2014 inveris OHG
+
 Author Peter Rottmann <rottmann@inveris.de>
+
 Licensed under the MIT license.
