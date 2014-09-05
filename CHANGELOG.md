@@ -1,6 +1,17 @@
 # apiDoc Changelog
 
 
+#### 0.7.1
+
+Add type for `@apiExample {type} Title`, `@apiSuccessExample`, `@apiErrorExample`.
+
+Add type switch in template.
+
+Append filetype to fields at ajax reuqest testform.
+
+Bugfix: Same file handling with regexp under win32. (https://github.com/apidoc/apidoc/issues/109)
+
+
 #### 0.7.0
 
 Add rudimentary support for direct api calls (test requests) from within the doc.
