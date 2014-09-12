@@ -3,13 +3,13 @@
 "use strict";
 
 /*
-* apidoc
-* http://apidocjs.com
-*
-* Copyright (c) 2013-2014 inveris OHG
-* Author Peter Rottmann <rottmann@inveris.de>
-* Licensed under the MIT license.
-*/
+ * apidoc
+ * http://apidocjs.com
+ *
+ * Copyright (c) 2013-2014 inveris OHG
+ * Author Peter Rottmann <rottmann@inveris.de>
+ * Licensed under the MIT license.
+ */
 
 var path = require("path");
 var optimist = require("optimist");
@@ -109,26 +109,25 @@ if(argv.help)
 }
 
 /**
-* Transform Parameters to Objectlist.
-*
-* @param {String[]} filters
-* @returns {Object}
-*/
-function transformFilters(filters)
+ * Transform parameters to object.
+ *
+ * @param {String|String[]} filters
+ * @returns {Object}
+ */
+function transformToObject(filters)
 {
     if ( ! filters) return undefined;
     if (typeof(filters) === "string") filters = [ filters ];
-    var retFilters = [];
+    var result = {};
     filters.forEach(function(filter) {
         var splits = filter.split("=");
         if (splits.length === 2) {
             var obj = {};
-            obj[splits[0]] = splits[1];
-            retFilters.push(obj);
+            result[splits[0]] = path.resolve(splits[1], "");
         }
     });
-    return retFilters;
-} // transformFilters
+    return result;
+} // transformToObject
 
 var defaults = {
     excludeFilters: argv["exclude-filters"],
@@ -139,9 +138,9 @@ var defaults = {
     debug:          (argv["silent"]) ? false : argv["verbose"],
     log:            (argv["silent"]) ? false : true,
     parse:          (argv["parse"]) ? true : false,
-    filters:        transformFilters(argv["parse-filters"]),
-    parsers:        transformFilters(argv["parse-parsers"]),
-    workers:        transformFilters(argv["parse-workers"]),
+    filters:        transformToObject(argv["parse-filters"]),
+    parsers:        transformToObject(argv["parse-parsers"]),
+    workers:        transformToObject(argv["parse-workers"]),
     simulate:       argv["simulate"],
     marked: {
         gfm:         argv["marked-gfm"],

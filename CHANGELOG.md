@@ -1,6 +1,11 @@
 # apiDoc Changelog
 
 
+#### 0.7.2
+
+Bugfix: Custom parsers not working. (https://github.com/apidoc/apidoc/issues/113)
+
+
 #### 0.7.1
 
 Add type for `@apiExample {type} Title`, `@apiSuccessExample`, `@apiErrorExample`.
