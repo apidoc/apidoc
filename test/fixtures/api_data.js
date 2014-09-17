@@ -267,7 +267,7 @@ define({ api: [
             "type": "String",
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Group &quot;login&quot; with default Value</p>"
           }
         ]
@@ -288,7 +288,7 @@ define({ api: [
             "type": "String",
             "field": "success3",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Group &quot;201&quot; with default Value</p>"
           }
         ],
@@ -366,7 +366,7 @@ define({ api: [
             "type": "String",
             "field": "header3",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
@@ -374,7 +374,7 @@ define({ api: [
             "type": "String",
             "field": "header4",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
@@ -393,14 +393,14 @@ define({ api: [
             "group": "Header",
             "field": "header7",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Header",
             "field": "header8",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
@@ -867,7 +867,7 @@ define({ api: [
             "type": "String",
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
@@ -875,7 +875,7 @@ define({ api: [
             "type": "String",
             "field": "param4",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
@@ -894,14 +894,14 @@ define({ api: [
             "group": "Parameter",
             "field": "param7",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
             "field": "param8",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
@@ -1002,7 +1002,7 @@ define({ api: [
             "type": "String",
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
@@ -1010,7 +1010,7 @@ define({ api: [
             "type": "String",
             "field": "param4",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
@@ -1029,14 +1029,14 @@ define({ api: [
             "group": "Parameter",
             "field": "param7",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
             "field": "param8",
             "defaultValue": "Default Value",
-            "optional": true,
+            "optional": false,
             "description": ""
           },
           {
