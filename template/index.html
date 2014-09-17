@@ -183,7 +183,12 @@
       {{#each this}}
           <tr>
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
-            {{#if ../../_hasType}}<td>{{{type}}}</td>{{/if}}
+            {{#if ../../_hasType}}
+              <td>
+                {{{type}}}
+                {{#if size}}<span class="type-size">&#123;{{{size}}}&#125;</span>{{/if}}
+              </td>
+            {{/if}}
           <td>
             {{{nl2br description}}}
             {{#if defaultValue}}<p class="default-value">{{__ "Default value:"}} <code>{{{defaultValue}}}</code></p>{{/if}}
