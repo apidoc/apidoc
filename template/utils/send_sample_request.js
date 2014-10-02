@@ -38,6 +38,13 @@ define([
           dict[key] = $.type(value) === "string" ? escapeHtml(value) : value;
       });
 
+      var headerParam = {};
+      $root.find(".sample-request-header").each(function(i, element) {
+          var key = $(element).data("name");
+          var value = element.value;
+          headerParam[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+      });
+
       // grab user-inputted URL
       var url = $root.find(".sample-request-url").val();
 
@@ -59,6 +66,7 @@ define([
           url: url,
           dataType: "json",
           data: dict,
+	      headers: headerParam,
           type: type.toUpperCase(),
           success: displaySuccess,
           error: displayError
