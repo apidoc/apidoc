@@ -8,7 +8,8 @@ require.config({
 		locales: "./locales/locale",
 		lodash: "./vendor/lodash.min",
 		prettify: "./vendor/prettify/prettify",
-		utilsSampleRequest: "utils/send_sample_request"
+		utilsSampleRequest: "utils/send_sample_request",
+		pathToRegexp: "utils/path-to-regexp-master/index"
 	},
 	shim: {
 		bootstrap: {
@@ -41,6 +42,7 @@ require([
 	"./api_data.js",
 	"prettify",
 	"utilsSampleRequest",
+	"pathToRegexp",
 	"bootstrap",
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
 
