@@ -104,7 +104,7 @@ require([
 		}); // each
 		// Sort
 		var values = Object.keys(titles);
-		values.sort();
+		//values.sort();
 
 		// Add single elements to the new list
 		values.forEach(function(name) {
@@ -120,19 +120,24 @@ require([
 	/**
 	 * Group- and Versionlists.
 	 */
-	var apiGroups = {};
+	var apiGroups = [];
 	var apiVersions = {};
 	apiVersions[apiProject.version] = 1;
 
 	$.each(api, function(index, entry) {
-		apiGroups[entry.group] = 1;
+		apiGroups.push({
+			'title': entry.group,
+			'order': entry.groupOrder
+		});
+		
 		apiVersions[entry.version] = 1;
 	});
 
 	// Sort.
-	apiGroups = Object.keys(apiGroups);
-	apiGroups.sort();
-
+	apiGroups.sort(function(a, b) {
+		return a.order - b.order;
+	});
+	
 	apiVersions = Object.keys(apiVersions);
 	apiVersions.sort();
 	apiVersions.reverse();
@@ -141,14 +146,21 @@ require([
 	 * Create Navigationlist.
 	 */
 	var nav = [];
+	var usedTitles = [];
 	apiGroups.forEach(function(group) {
+		group = group.title;
+		
+		if (usedTitles.indexOf(group) != -1) return;
+		
 		// Mainmenu-Entry.
 		nav.push({
 			group: group,
 			isHeader: true,
 			title: group
 		});
-
+		
+		usedTitles.push(group);
+		
 		// Add Submenu.
 		var oldName = "";
 		api.forEach(function(entry) {
@@ -241,6 +253,8 @@ require([
 	 */
 	var articleVersions = {};
 	apiGroups.forEach(function(groupEntry) {
+		groupEntry = groupEntry.title;
+		
 		var articles = [];
 		var oldName = "";
 		var fields = {};
