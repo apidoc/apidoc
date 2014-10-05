@@ -1,4 +1,5 @@
 # apiDoc 0.7.x
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/apidoc/apidoc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Generates a RESTful web API Documentation.
 
