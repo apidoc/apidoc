@@ -149,7 +149,7 @@
     <div class="tab-content">
     {{#each article.examples}}
       <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
     {{/each}}
     </div>
@@ -203,7 +203,7 @@
     <div class="tab-content">
     {{#each params.examples}}
       <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
     {{/each}}
     </div>
@@ -322,19 +322,19 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+          <pre class="prettyprint language-{{compare.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
 
@@ -505,19 +505,19 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-json" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+          <pre class="prettyprint language-{{compare.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
 
