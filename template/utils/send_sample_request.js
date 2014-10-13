@@ -72,7 +72,7 @@ define([
 
       function displayError(jqXHR, textStatus, error) {
           $root.find(".sample-request-response").show();
-          $root.find(".sample-request-response-json").html(jqXHR.status + " Error: " + error);
+          $root.find(".sample-request-response-json").html(jqXHR.status + "<br />Error: " + error + "<br />" + jqXHR.responseText);
           refreshScrollSpy();
       };
   }
