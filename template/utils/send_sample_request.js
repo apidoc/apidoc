@@ -54,11 +54,14 @@ define([
           }
       } // while     
 
+      var jsonData = JSON.stringify(dict);
+	  
       // send AJAX request, catch success or error callback
       $.ajax({
           url: url,
           dataType: "json",
-          data: dict,
+		  contentType: "application/json",
+          data: jsonData,
           type: type.toUpperCase(),
           success: displaySuccess,
           error: displayError
@@ -72,7 +75,7 @@ define([
 
       function displayError(jqXHR, textStatus, error) {
           $root.find(".sample-request-response").show();
-          $root.find(".sample-request-response-json").html(jqXHR.status + " Error: " + error);
+          $root.find(".sample-request-response-json").html(jqXHR.status + " Error: " + error + "<br/><br/> + ");
           refreshScrollSpy();
       };
   }
