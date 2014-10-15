@@ -47,8 +47,13 @@ require([
 	/**
 	 * Load google web fonts.
 	 */
-  loadGoogleFontCss($);
+  	loadGoogleFontCss($);
 
+    	/**
+	 * Handle custom jQuery Ajax settings
+	 */
+	$.ajaxSetup(apiProject.jQueryAjaxSetup); 
+	
 	var api = apiData.api;
 
 	/**
