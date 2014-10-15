@@ -30,6 +30,8 @@ define([
   {
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
+      $root.find(".sample-request-response").fadeTo(1, 0.1);
+
       // create JSON dictionary of parameters
       var dict = {};
       $root.find(".sample-request-param").each(function(i, element) {
@@ -54,25 +56,41 @@ define([
           }
       } // while     
 
+      var jsonData = JSON.stringify(dict);
+	  
       // send AJAX request, catch success or error callback
       $.ajax({
           url: url,
           dataType: "json",
-          data: dict,
+		  contentType: "application/json",
+          data: jsonData,
           type: type.toUpperCase(),
           success: displaySuccess,
           error: displayError
       });
 
       function displaySuccess(data) {
-          $root.find(".sample-request-response").show();
+      	  var message = JSON.stringify(data, null, 4);
+      	  
           $root.find(".sample-request-response-json").html(JSON.stringify(data, null, 4));
+          $root.find(".sample-request-response").fadeTo(250, 1);
           refreshScrollSpy();
       };
 
       function displayError(jqXHR, textStatus, error) {
-          $root.find(".sample-request-response").show();
-          $root.find(".sample-request-response-json").html(jqXHR.status + " Error: " + error);
+      	
+      	  var jsonResponse = JSON.parse(jqXHR.responseText);
+      	  var message = "Error " + jqXHR.status + ": " + error;
+      	  
+      	  if (jsonResponse) {
+              message += "<br /><br />" + JSON.stringify(jsonResponse, null, 4);        	       
+      	  }
+      	  else {
+      	      message += "<br /><br />" + jqXHR.responseText;
+      	  }
+      	
+          $root.find(".sample-request-response-json").html(message);
+          $root.find(".sample-request-response").fadeTo(250, 1);
           refreshScrollSpy();
       };
   }
