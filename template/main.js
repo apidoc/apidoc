@@ -47,8 +47,8 @@ require([
 	/**
 	 * Load google web fonts.
 	 */
-  loadGoogleFontCss($);
-
+	loadGoogleFontCss($);
+	
 	var api = apiData.api;
 
 	/**
@@ -69,6 +69,11 @@ require([
 	if( ! apiProject.template) apiProject.template = {};
 	if(apiProject.template.withCompare == null) apiProject.template.withCompare = true;
 	if(apiProject.template.withGenerator == null) apiProject.template.withGenerator = true;
+
+    /**
+	 * Setup jQuery Ajax
+	 */
+	$.ajaxSetup(apiProject.jQueryAjaxSetup); 
 
 	/**
 	 * Data transform.

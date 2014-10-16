@@ -17,4 +17,8 @@
   	"withCompare": true,
   	"withGenerator": true
   }
+  "jQueryAjaxSetup": {
+	"headers": {
+		"X-Your-CustomHeader": "some value",
+	}
 }
