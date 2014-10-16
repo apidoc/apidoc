@@ -81,6 +81,7 @@ define([
 
       function displayError(jqXHR, textStatus, error) {
           var message = "Error " + jqXHR.status + ": " + error;
+		  var jsonResponse = JSON.parse(jqXHR.responseText);
 		  
 		  if (jsonResponse) {
 		      message += "<br /><br />" + JSON.stringify(jsonResponse, null, 4)
