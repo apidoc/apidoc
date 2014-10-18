@@ -145,6 +145,20 @@
         "type": "JS"
       }
     ],
+    "parameter": {
+      "examples": [
+        {
+          "title": "PHP Parameter Example (new)",
+          "content": "echo 'This is the parameter content. (new)';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Parameter Example",
+          "content": "console.log('This is the parameter content.');\n",
+          "type": "JS"
+        }
+      ]
+    },
     "success": {
       "examples": [
         {
@@ -195,6 +209,20 @@
         "type": "JS"
       }
     ],
+    "parameter": {
+      "examples": [
+        {
+          "title": "PHP Parameter Example",
+          "content": "echo 'This is the parameter content.';\n",
+          "type": "PHP"
+        },
+        {
+          "title": "JS Parameter Example (removed)",
+          "content": "console.log('This is the parameter content. (removed)');\n",
+          "type": "JS"
+        }
+      ]
+    },
     "success": {
       "examples": [
         {
