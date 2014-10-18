@@ -10,6 +10,11 @@
  * @apiExample {JS} JS Example
  * console.log('This is the content.');
  *
+ * @apiParamExample {PHP} PHP Parameter Example (new)
+ * echo 'This is the parameter content. (new)';
+ * @apiParamExample {JS} JS Parameter Example
+ * console.log('This is the parameter content.');
+ *
  * @apiSuccessExample {PHP} PHP Success Example (new)
  * echo 'This is the success content. (new)';
  * @apiSuccessExample {JS} JS Success Example
@@ -32,6 +37,11 @@
  * echo 'This is the content.';
  * @apiExample {JS} JS Example (removed)
  * console.log('This is the content. (removed)');
+ *
+ * @apiParamExample {PHP} PHP Parameter Example
+ * echo 'This is the parameter content.';
+ * @apiParamExample {JS} JS Parameter Example (removed)
+ * console.log('This is the parameter content. (removed)');
  *
  * @apiSuccessExample {PHP} PHP Success Example
  * echo 'This is the success content.';
