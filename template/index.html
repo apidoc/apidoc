@@ -138,21 +138,23 @@
       {{/if}}
     {{/if}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    {{#if article.examples}}
+      <ul class="nav nav-tabs nav-tabs-examples">
+        {{#each article.examples}}
+          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+            <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+   
+      <div class="tab-content">
       {{#each article.examples}}
-        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
-        </li>
+        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
+          <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        </div>
       {{/each}}
-    </ul>
- 
-    <div class="tab-content">
-    {{#each article.examples}}
-      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
-    {{/each}}
-    </div>
+    {{/if}}
 
     {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
@@ -192,21 +194,23 @@
       </table>
     {{/each}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    {{#if params.examples}}
+      <ul class="nav nav-tabs nav-tabs-examples">
+        {{#each params.examples}}
+          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+            <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+          </li>
+        {{/each}}
+      </ul>
+   
+      <div class="tab-content">
       {{#each params.examples}}
-        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
-        </li>
+        <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
+          <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
+        </div>
       {{/each}}
-    </ul>
- 
-    <div class="tab-content">
-    {{#each params.examples}}
-      <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-json" data-type="{{type}}"><code>{{content}}</code></pre>
       </div>
-    {{/each}}
-    </div>
+    {{/if}}
 
   {{/if}}
 </script>
