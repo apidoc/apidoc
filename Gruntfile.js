@@ -66,7 +66,7 @@ module.exports = function(grunt)
 				ui: "bdd",
 				reporter: "spec"
 			},
-			all: { src: ["test/apidoc_test.js"] }
+			all: { src: ["test/*_test.js"] }
 		} // simplemocha
 	}); // grunt.initConfig
 
