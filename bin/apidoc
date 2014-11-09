@@ -60,6 +60,13 @@ var argv = optimist
         describe: "Show this help information."
     })
 
+    .option("optimize-js", {
+        alias: "optimizejs",
+        boolean: true,
+        "default": false,
+        describe: "Optimize client javascript file with RequireJS and Almond."
+    })
+
     .option("parse", {
       boolean: true,
       "default": false,
@@ -141,6 +148,7 @@ var defaults = {
     filters:        transformToObject(argv["parse-filters"]),
     parsers:        transformToObject(argv["parse-parsers"]),
     workers:        transformToObject(argv["parse-workers"]),
+    optimizeJS:     argv["optimizejs"],
     simulate:       argv["simulate"],
     marked: {
         gfm:         argv["marked-gfm"],
