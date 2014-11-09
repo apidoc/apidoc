@@ -18,6 +18,8 @@ require.config({
 			exports: "diff_match_patch"
 		},
 		handlebars: {
+			// This is declared with `var` so we need to access the local scope var.
+			init: function(){ return Handlebars; },
 			exports: "Handlebars"
 		},
 		handlebarsExtended: {
