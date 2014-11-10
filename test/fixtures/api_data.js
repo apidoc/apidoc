@@ -12,20 +12,20 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error3Error",
             "optional": false,
+            "field": "error3Error",
             "description": "<p>This is Error 3 (local).</p>"
           },
           {
             "group": "Error 4xx",
-            "field": "error1Error",
             "optional": false,
+            "field": "error1Error",
             "description": "<p>This is Error 1.</p>"
           },
           {
             "group": "Error 4xx",
-            "field": "error2Error",
             "optional": false,
+            "field": "error2Error",
             "description": "<p>This is Error 2.</p>"
           }
         ]
@@ -46,8 +46,8 @@ define({ api: [
         "204 No Content. Added to global namespace.": [
           {
             "group": "204",
-            "field": "message",
             "optional": false,
+            "field": "message",
             "description": "<p>Successfully deleted.</p>"
           }
         ]
@@ -58,14 +58,14 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error3Error",
             "optional": false,
+            "field": "error3Error",
             "description": "<p>This is Error 3 (local).</p>"
           },
           {
             "group": "Error 4xx",
-            "field": "error1Error",
             "optional": false,
+            "field": "error1Error",
             "description": "<p>This is Error 1.</p>"
           }
         ]
@@ -249,8 +249,8 @@ define({ api: [
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param1",
             "optional": false,
+            "field": "param1",
             "description": "<p>No Group, automatically set Group to &quot;Parameter&quot;</p>"
           }
         ],
@@ -258,16 +258,16 @@ define({ api: [
           {
             "group": "login",
             "type": "String",
-            "field": "param2",
             "optional": false,
+            "field": "param2",
             "description": "<p>Group &quot;login&quot;</p>"
           },
           {
             "group": "login",
             "type": "String",
+            "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Group &quot;login&quot; with default Value</p>"
           }
         ]
@@ -279,16 +279,16 @@ define({ api: [
           {
             "group": "201",
             "type": "String",
-            "field": "success2",
             "optional": false,
+            "field": "success2",
             "description": "<p>Group &quot;201&quot;</p>"
           },
           {
             "group": "201",
             "type": "String",
+            "optional": false,
             "field": "success3",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Group &quot;201&quot; with default Value</p>"
           }
         ],
@@ -296,8 +296,8 @@ define({ api: [
           {
             "group": "Success 200",
             "type": "String",
-            "field": "success1",
             "optional": false,
+            "field": "success1",
             "description": "<p>No Group, automatically set &quot;Success 200&quot;</p>"
           }
         ]
@@ -309,8 +309,8 @@ define({ api: [
           {
             "group": "400",
             "type": "String",
-            "field": "error2",
             "optional": false,
+            "field": "error2",
             "description": "<p>Group &quot;400&quot;</p>"
           }
         ],
@@ -318,8 +318,8 @@ define({ api: [
           {
             "group": "401",
             "type": "String",
-            "field": "error3",
             "optional": false,
+            "field": "error3",
             "description": "<p>Group &quot;401&quot;</p>"
           }
         ],
@@ -327,8 +327,8 @@ define({ api: [
           {
             "group": "Error 4xx",
             "type": "String",
-            "field": "error1",
             "optional": false,
+            "field": "error1",
             "description": "<p>No Group automatically set &quot;Error 4xx&quot;</p>"
           }
         ]
@@ -350,113 +350,113 @@ define({ api: [
           {
             "group": "Header",
             "type": "String",
-            "field": "header1",
             "optional": false,
+            "field": "header1",
             "description": "<p>Parameter with type and description.</p>"
           },
           {
             "group": "Header",
             "type": "String",
-            "field": "header2",
             "optional": false,
+            "field": "header2",
             "description": ""
           },
           {
             "group": "Header",
             "type": "String",
+            "optional": false,
             "field": "header3",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
             "group": "Header",
             "type": "String",
+            "optional": false,
             "field": "header4",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": ""
           },
           {
             "group": "Header",
-            "field": "header5",
             "optional": false,
+            "field": "header5",
             "description": "<p>Basic Parameter with description.</p>"
           },
           {
             "group": "Header",
-            "field": "header6",
             "optional": false,
+            "field": "header6",
             "description": ""
           },
           {
             "group": "Header",
+            "optional": false,
             "field": "header7",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Header",
+            "optional": false,
             "field": "header8",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": ""
           },
           {
             "group": "Header",
-            "field": "header9",
             "optional": true,
+            "field": "header9]",
             "description": "<p>Optional basic Parameter with description.</p>"
           },
           {
             "group": "Header",
-            "field": "header10",
             "optional": true,
+            "field": "header10]",
             "description": ""
           },
           {
             "group": "Header",
+            "optional": true,
             "field": "header11",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": "<p>Optional basic Parameter with description and default value.</p>"
           },
           {
             "group": "Header",
+            "optional": true,
             "field": "header12",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": ""
           },
           {
             "group": "Header",
             "type": "String",
-            "field": "header13",
             "optional": true,
+            "field": "header13]",
             "description": "<p>Optional Parameter with type and description.</p>"
           },
           {
             "group": "Header",
             "type": "String",
-            "field": "header14",
             "optional": true,
+            "field": "header14]",
             "description": ""
           },
           {
             "group": "Header",
             "type": "String",
+            "optional": true,
             "field": "header15",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": "<p>Optional Parameter with type, description and default value.</p>"
           },
           {
             "group": "Header",
             "type": "String",
+            "optional": true,
             "field": "header16",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": ""
           }
         ]
@@ -496,15 +496,15 @@ define({ api: [
         "This are the Parameters for MyGroup:": [
           {
             "group": "MyHeaderGroup",
-            "field": "authorization",
             "optional": false,
+            "field": "authorization",
             "description": "<p>The authorization code.</p>"
           },
           {
             "group": "MyHeaderGroup",
             "type": "string",
-            "field": "text",
             "optional": false,
+            "field": "text",
             "description": "<p>Some text.</p>"
           }
         ]
@@ -525,20 +525,20 @@ define({ api: [
         "Header": [
           {
             "group": "Header",
-            "field": "Header3",
             "optional": false,
+            "field": "Header3",
             "description": "<p>This is Header 3 (local).</p>"
           },
           {
             "group": "Header",
-            "field": "Header1",
             "optional": false,
+            "field": "Header1",
             "description": "<p>This is Header 1.</p>"
           },
           {
             "group": "Header",
-            "field": "header2",
             "optional": false,
+            "field": "header2",
             "description": "<p>This is Header 2.</p>"
           }
         ]
@@ -828,8 +828,8 @@ define({ api: [
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param1",
             "optional": false,
+            "field": "param1",
             "description": "<p>This is a markdown <strong>apiParam</strong></p><p>Separate line.</p>"
           }
         ]
@@ -850,114 +850,262 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "type": "String",
-            "field": "param1",
             "optional": false,
-            "description": "<p>Parameter with type and description.</p>"
+            "field": "param1",
+            "description": "<p>Parameter and description.</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "field": "param2",
             "optional": false,
+            "field": "param2",
             "description": ""
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": false,
-            "description": "<p>Parameter with type, description and default value.</p>"
+            "description": "<p>Parameter, default value and description.</p>"
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "optional": false,
             "field": "param4",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": ""
           },
           {
             "group": "Parameter",
-            "field": "param5",
-            "optional": false,
-            "description": "<p>Basic Parameter with description.</p>"
+            "optional": true,
+            "field": "param5]",
+            "description": "<p>Optional parameter and description.</p>"
           },
           {
             "group": "Parameter",
-            "field": "param6",
-            "optional": false,
+            "optional": true,
+            "field": "param6]",
             "description": ""
           },
           {
             "group": "Parameter",
+            "optional": true,
             "field": "param7",
             "defaultValue": "Default Value",
-            "optional": false,
-            "description": "<p>Basic Parameter with description and default value.</p>"
+            "description": "<p>Optional parameter, default value and description.</p>"
           },
           {
             "group": "Parameter",
+            "optional": true,
             "field": "param8",
             "defaultValue": "Default Value",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
             "optional": false,
-            "description": ""
-          },
-          {
-            "group": "Parameter",
             "field": "param9",
-            "optional": true,
-            "description": "<p>Optional basic Parameter with description.</p>"
+            "description": "<p>(4711)                 Parameter, allowed value and description.</p>"
           },
           {
             "group": "Parameter",
+            "optional": false,
             "field": "param10",
-            "optional": true,
-            "description": ""
+            "description": "<p>(4711)</p>"
           },
           {
             "group": "Parameter",
+            "optional": false,
             "field": "param11",
             "defaultValue": "Default Value",
-            "optional": true,
-            "description": "<p>Optional basic Parameter with description and default value.</p>"
+            "description": "<p>(4711) Parameter, default value, allowed value and description.</p>"
           },
           {
             "group": "Parameter",
+            "optional": false,
             "field": "param12",
             "defaultValue": "Default Value",
-            "optional": true,
-            "description": ""
+            "description": "<p>(4711)</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param13",
-            "optional": true,
-            "description": "<p>Optional Parameter with type and description.</p>"
+            "description": "<p>Type, parameter and description.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param14",
-            "optional": true,
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param15",
             "defaultValue": "Default Value",
-            "optional": true,
-            "description": "<p>Optional Parameter with type, description and default value.</p>"
+            "description": "<p>Type, parameter and default value.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param16",
             "defaultValue": "Default Value",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
             "optional": true,
+            "field": "param17]",
+            "description": "<p>Type, optional parameter and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param18]",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param19",
+            "defaultValue": "Default Value",
+            "description": "<p>Type, optional parameter, default value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param20",
+            "defaultValue": "Default Value",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param21",
+            "description": "<p>(4711)                 Type, parameter, allowed value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param22",
+            "description": "<p>(4711)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param23",
+            "defaultValue": "Default Value",
+            "description": "<p>(4711) Type, parameter, default value, allowed value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param24",
+            "defaultValue": "Default Value",
+            "description": "<p>(4711)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param25]",
+            "description": "<p>(4711)                 Type, optional parameter, allowed value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param26]",
+            "description": "<p>(4711)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param27",
+            "defaultValue": "Default Value",
+            "description": "<p>(4711) Type, optional parameter, default value, allowed value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param28",
+            "defaultValue": "Default Value",
+            "description": "<p>(4711)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param29]",
+            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)                 Type, optional parameter, allowed strings and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param30]",
+            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param31",
+            "defaultValue": "Default Value",
+            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;) Type, optional parameter, default value, allowed strings and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "param32",
+            "defaultValue": "Default Value",
+            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "param33",
+            "defaultValue": "Default Value",
+            "description": "<p>{4,8} Type, parameter, default value, size and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "param34",
+            "defaultValue": "1",
+            "description": "<p>{1-3}               Type, parameter, default value, size and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "param35",
+            "defaultValue": "2",
+            "description": "<p>Type, parameter, default value and description.</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "param36",
+            "defaultValue": "2",
             "description": ""
           }
         ]
@@ -979,120 +1127,120 @@ define({ api: [
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param0",
             "optional": false,
+            "field": "param0",
             "description": "<p>This param is removed in 0.1.1.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param1",
             "optional": false,
+            "field": "param1",
             "description": "<p>This is an old text.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param2",
             "optional": false,
+            "field": "param2",
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": false,
             "field": "param4",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": ""
           },
           {
             "group": "Parameter",
-            "field": "param5",
             "optional": false,
+            "field": "param5",
             "description": "<p>Basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
-            "field": "param6",
             "optional": false,
+            "field": "param6",
             "description": ""
           },
           {
             "group": "Parameter",
+            "optional": false,
             "field": "param7",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": "<p>Basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
+            "optional": false,
             "field": "param8",
             "defaultValue": "Default Value",
-            "optional": false,
             "description": ""
           },
           {
             "group": "Parameter",
-            "field": "param9",
             "optional": true,
+            "field": "param9]",
             "description": "<p>Optional basic Parameter with description.</p>"
           },
           {
             "group": "Parameter",
-            "field": "param10",
             "optional": true,
+            "field": "param10]",
             "description": ""
           },
           {
             "group": "Parameter",
+            "optional": true,
             "field": "param11",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": "<p>Optional basic Parameter with description and default value.</p>"
           },
           {
             "group": "Parameter",
+            "optional": true,
             "field": "param12",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param13",
             "optional": true,
+            "field": "param13]",
             "description": "<p>Optional Parameter with type and description.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
-            "field": "param14",
             "optional": true,
+            "field": "param14]",
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": true,
             "field": "param15",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": "<p>Optional Parameter with type, description and default value.</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
+            "optional": true,
             "field": "param16",
             "defaultValue": "Default Value",
-            "optional": true,
             "description": ""
           }
         ]
@@ -1113,20 +1261,20 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field3",
             "optional": false,
+            "field": "field3",
             "description": "<p>This is Field 3 (local).</p>"
           },
           {
             "group": "Parameter",
-            "field": "field1",
             "optional": false,
+            "field": "field1",
             "description": "<p>This is Field 1.</p>"
           },
           {
             "group": "Parameter",
-            "field": "field2",
             "optional": false,
+            "field": "field2",
             "description": "<p>This is Field 2.</p>"
           }
         ]
@@ -1147,20 +1295,20 @@ define({ api: [
         "Success 200": [
           {
             "group": "Success 200",
-            "field": "success3",
             "optional": false,
+            "field": "success3",
             "description": "<p>This is Success 3 (local).</p>"
           },
           {
             "group": "Success 200",
-            "field": "success1",
             "optional": false,
+            "field": "success1",
             "description": "<p>This is Success 1.</p>"
           },
           {
             "group": "Success 200",
-            "field": "success2",
             "optional": false,
+            "field": "success2",
             "description": "<p>This is Success 2.</p>"
           }
         ]
@@ -1174,8 +1322,8 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error1Error",
             "optional": false,
+            "field": "error1Error",
             "description": "<p>This is Error 1.</p>"
           }
         ]
@@ -1193,8 +1341,8 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error2Error",
             "optional": false,
+            "field": "error2Error",
             "description": "<p>This is Error 2.</p>"
           }
         ]
@@ -1212,8 +1360,8 @@ define({ api: [
         "Header": [
           {
             "group": "Header",
-            "field": "header2",
             "optional": false,
+            "field": "header2",
             "description": "<p>This is Header 2.</p>"
           }
         ]
@@ -1231,8 +1379,8 @@ define({ api: [
         "Header": [
           {
             "group": "Header",
-            "field": "Header1",
             "optional": false,
+            "field": "Header1",
             "description": "<p>This is Header 1.</p>"
           }
         ]
@@ -1250,8 +1398,8 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field1",
             "optional": false,
+            "field": "field1",
             "description": "<p>This is Field 1.</p>"
           }
         ]
@@ -1269,8 +1417,8 @@ define({ api: [
         "Parameter": [
           {
             "group": "Parameter",
-            "field": "field2",
             "optional": false,
+            "field": "field2",
             "description": "<p>This is Field 2.</p>"
           }
         ]
@@ -1288,8 +1436,8 @@ define({ api: [
         "Success 200": [
           {
             "group": "Success 200",
-            "field": "success1",
             "optional": false,
+            "field": "success1",
             "description": "<p>This is Success 1.</p>"
           }
         ]
@@ -1307,8 +1455,8 @@ define({ api: [
         "Success 200": [
           {
             "group": "Success 200",
-            "field": "success2",
             "optional": false,
+            "field": "success2",
             "description": "<p>This is Success 2.</p>"
           }
         ]
@@ -1326,8 +1474,8 @@ define({ api: [
         "Error 4xx": [
           {
             "group": "Error 4xx",
-            "field": "error1Error",
             "optional": false,
+            "field": "error1Error",
             "description": "<p>This is Error 1.</p>"
           }
         ]
