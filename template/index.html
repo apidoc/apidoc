@@ -162,7 +162,7 @@
     {{subTemplate "article-param-block" params=article.info _hasType=_hasTypeInInfoFields section="info"}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
-    {{subTemplate "article-sample-request" article=article}}
+    {{subTemplate "article-sample-request" article=article id=id}}
 
   </article>
 </script>
@@ -234,31 +234,49 @@
             </div>
           </div>
 
+      {{#if article.header}}
+        {{#if article.header.fields}}
           <h3>{{__ "Headers"}}</h3>
-      {{#each article.header.fields.Header}}
-          <div class="control-group">
-            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
-            <div class="controls">
-              <div class="input-append">>
-                <input type="text" placeholder="{{field}}" class="sample-request-header" data-name="{{field}}">
-                <span class="add-on">{{type}}</span>
+          {{#each article.header.fields}}
+            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+            <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
+              {{#each this}}
+              <div class="control-group">
+                <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
+                <div class="controls">
+                  <div class="input-append">>
+                    <input type="text" placeholder="{{field}}" class="sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
+                    <span class="add-on">{{type}}</span>
+                  </div>
+                </div>
               </div>
+              {{/each}}
             </div>
-          </div>
-      {{/each}}
+          {{/each}}
+        {{/if}}
+      {{/if}}
 
-          <h3>{{__ "Data"}}</h3>
-      {{#each article.parameter.fields.Parameter}}
-          <div class="control-group">
-            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
-            <div class="controls">
-              <div class="input-append">>
-                <input type="text" placeholder="{{field}}" class="sample-request-param" data-name="{{field}}">
-                <span class="add-on">{{type}}</span>
+      {{#if article.parameter}}
+        {{#if article.parameter.fields}}
+          <h3>{{__ "Parameters"}}</h3>
+          {{#each article.parameter.fields}}
+            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+            <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
+              {{#each this}}
+              <div class="control-group">
+                <label class="control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                <div class="controls">
+                  <div class="input-append">>
+                    <input type="text" placeholder="{{field}}" class="sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
+                    <span class="add-on">{{type}}</span>
+                  </div>
+                </div>
               </div>
+              {{/each}}
             </div>
-          </div>
-      {{/each}}
+          {{/each}}
+        {{/if}}
+      {{/if}}
 
           <div class="control-group">
             <div class="controls">
@@ -369,7 +387,7 @@
     {{subTemplate "article-compare-param-block" source=article.info compare=compare.info _hasType=_hasTypeInInfoFields section="info"}}
     {{subTemplate "article-compare-param-block" source=article.error compare=compare.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
-    {{subTemplate "article-sample-request" article=article}}
+    {{subTemplate "article-sample-request" article=article id=id}}
 
   </article>
 </script>

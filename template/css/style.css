@@ -89,6 +89,14 @@ article h3 {
   margin: 0 0 10px 0;
 }
 
+article h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 8px 0;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;

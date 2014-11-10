@@ -223,7 +223,7 @@ require([
 	 *  Render Generator.
 	 */
 	$("#generator").append( templateGenerator(apiProject) );
-	
+
 	/**
 	 * Render Project.
 	 */
@@ -275,7 +275,7 @@ require([
 				}
 
 				// Add prefix URL for endpoint
-				if(apiProject.url) fields.article.url = apiProject.url + fields.article.url; 
+				if(apiProject.url) fields.article.url = apiProject.url + fields.article.url;
 
 				addArticleSettings(fields, entry);
 
@@ -307,7 +307,7 @@ require([
 	var $scrollSpy = $(this).scrollspy({ target: "#scrollingNav", offset: 25 });
 	$('[data-spy="scroll"]').each(function () {
 		$scrollSpy('refresh');
-	}); 
+	});
 
 	// Content-Scroll on Navigation click.
 	$(".sidenav").find("a").on("click", function(e) {
@@ -329,7 +329,7 @@ require([
 	 * Example: @apaSuccess          varname1 No type.
 	 *          @apaSuccess {String} varname2 With type.
 	 *
-	 * @param {Object} fields 
+	 * @param {Object} fields
 	 */
 	function _hasTypeInFields(fields)
 	{
@@ -371,7 +371,7 @@ require([
 				}
 			});
 		}
-		
+
 		// Tabs
 		$('.nav-tabs-examples a').click(function (e) {
 	  		e.preventDefault();
@@ -379,8 +379,15 @@ require([
 		});
 		// TODO: check to remove this silly timeout problem, tabs not activate but it is rendered
 		//setTimeout(function() {
-			$('.nav-tabs-examples').find('a:first').tab('show');	
+			$('.nav-tabs-examples').find('a:first').tab('show');
 		//}, 10);
+
+		// Sample Request Switch
+		$('.sample-request-switch').click(function (e) {
+	  		var name = '.' + $(this).attr('name') + '-fields';
+	  		$(name).addClass('hide');
+	  		$(this).parent().next(name).removeClass('hide');
+		});
 
 	    /**
 	     * Init Modules
@@ -393,7 +400,7 @@ require([
 	 * Pre- / Code-Format.
 	 */
 	prettyPrint();
-	
+
 	/**
 	 * HTML-Template specific jQuery-Functions
 	 */
@@ -413,7 +420,7 @@ require([
 			var group = $(this).data("group");
 			var name = $(this).data("name");
 			var version = $(this).data("version");
-			
+
 			if(version <= selectedVersion)
 			{
 				if($("article[data-group=\"" + group + "\"][data-name=\"" + name + "\"]:visible").length === 0)
@@ -426,7 +433,7 @@ require([
 				}
 			}
 		});
-		
+
 		initDynamic();
 		return;
 	});
@@ -434,7 +441,7 @@ require([
 	// On click compare all currently selected Versions with their predecessor.
 	$("#compareAllWithPredecessor").on("click", changeAllVersionCompareTo);
 
-	// On change the Version of an article. 
+	// On change the Version of an article.
 	$("article .versions li.version a").on("click", changeVersionCompareTo);
 
 	$.urlParam = function(name) {
@@ -455,7 +462,7 @@ require([
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	function changeVersionCompareTo(e)
 	{
@@ -466,16 +473,16 @@ require([
 		var $button = $root.find(".version");
 		var currentVersion = $button.find("strong").html();
 		$button.find("strong").html(selectedVersion);
-		
+
 		var group = $root.data("group");
 		var name = $root.data("name");
 		var version = $root.data("version");
-		
+
 		var compareVersion = $root.data("compare-version");
 
 		if(compareVersion === selectedVersion) return;
 		if( ! compareVersion && version == selectedVersion) return;
-		
+
 		if(    compareVersion && articleVersions[group][name][0] === selectedVersion
 				|| version === selectedVersion
 		)
@@ -526,11 +533,11 @@ require([
 
 			// Event on.click muss neu zugewiesen werden (sollte eigentlich mit on automatisch funktionieren... sollte)
 			$content.find(".versions li.version a").on("click", changeVersionCompareTo);
-			
+
 			// Navigation markieren
 			$("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"][data-version=\"" + currentVersion + "\"]").addClass("has-modifications");
 
-			$root.remove(); 
+			$root.remove();
 			// todo: bei Hauptversionswechsel oder zurückstellen auf höchste Eintragsversion, den Eintrag neu rendern
 		}
 
@@ -539,7 +546,7 @@ require([
 	} // changeVersionCompareTo
 
 	/**
-	 * 
+	 *
 	 */
 	function changeAllVersionCompareTo(e)
 	{
@@ -555,7 +562,7 @@ require([
 					$foundElement = $(this);
 				}
 			});
-			
+
 			if($foundElement)
 			{
 				$foundElement.trigger("click");
@@ -620,11 +627,11 @@ require([
 		$content.find(".versions li.version a").on("click", changeVersionCompareTo);
 
 		$("#sidenav li[data-group=\"" + group + "\"][data-name=\"" + name + "\"][data-version=\"" + version + "\"]").removeClass("has-modifications");
-		
-		$root.remove(); 
+
+		$root.remove();
 		return;
 	} // resetArticle
-	
+
 
 	function loadGoogleFontCss($){
 	    var host = document.location.hostname.toLowerCase();

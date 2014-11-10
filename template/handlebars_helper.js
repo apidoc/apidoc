@@ -27,9 +27,9 @@ define([
 	Handlebars.registerHelper("underscoreToSpace", function(text){
 		return text.replace(/(_+)/g, " ");
 	});
-	
+
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("assign", function(name) {
 		if(arguments.length > 0)
@@ -43,50 +43,60 @@ define([
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("nl2br", function(text) {
 		return _handlebarsNewlineToBreak(text);
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("if_eq", function(context, options) {
-		if(context === options.hash.compare) return options.fn(this);
+		var compare = context;
+		// Get length if context is an object
+		if (context instanceof Object && ! (options.hash.compare instanceof Object) )
+			 compare = Object.keys(context).length;
+
+		if(compare === options.hash.compare) return options.fn(this);
 		return options.inverse(this);
 	});
 
     /**
-     * 
+     *
      */
     Handlebars.registerHelper("if_gt", function(context, options) {
-        if(context > options.hash.compare) return options.fn(this);
+		var compare = context;
+		// Get length if context is an object
+		if (context instanceof Object && ! (options.hash.compare instanceof Object) )
+			 compare = Object.keys(context).length;
+
+        if(compare > options.hash.compare) return options.fn(this);
         return options.inverse(this);
     });
-	
+
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("subTemplate", function(name, sourceContext) {
 		var template = Handlebars.compile($("#template-" + name).html());
 		var templateContext = $.extend({}, this, sourceContext.hash);
 		return new Handlebars.SafeString( template(templateContext) );
 	});
-	
+
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("toLowerCase", function(value) {
 		return (value && typeof value === "string") ? value.toLowerCase() : '';
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("splitFill", function(value, splitChar, fillChar) {
 		var splits = value.split(splitChar);
-		
+
 		return new Array(splits.length).join(fillChar) + splits[splits.length - 1];
 	});
 
@@ -102,7 +112,7 @@ define([
 	} // _handlebarsNewlineToBreak
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("each_compare_keys", function(source, compare, options) {
 		var newSource = [];
@@ -130,23 +140,23 @@ define([
 		}
 		return _handlebarsEachCompared("key", newSource, newCompare, options);
 	});
-	
+
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("each_compare_field", function(source, compare, options) {
 		return _handlebarsEachCompared("field", source, compare, options);
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("each_compare_title", function(source, compare, options) {
 		return _handlebarsEachCompared("title", source, compare, options);
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	Handlebars.registerHelper("showDiff", function(source, compare, options) {
 		var ds = "";
@@ -165,7 +175,7 @@ define([
 	});
 
 	/**
-	 * 
+	 *
 	 */
 	function _handlebarsEachCompared(fieldname, source, compare, options)
 	{
