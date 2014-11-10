@@ -62,6 +62,8 @@ define([
           var key = matches[i].substr(1);
           if (param[key] !== undefined) {
               url = url.replace(matches[i], encodeURIComponent(param[key]));
+
+              // remove URL parameters from list
               delete param[key];
           }
       } // for
@@ -70,6 +72,7 @@ define([
       $.ajax({
           url: url,
           dataType: "json",
+          contentType: "application/json",
           data: param,
           headers: header,
           type: type.toUpperCase(),
@@ -78,14 +81,36 @@ define([
       });
 
       function displaySuccess(data) {
-          $root.find(".sample-request-response").show();
-          $root.find(".sample-request-response-json").html(JSON.stringify(data, null, 4));
+          var jsonResponse;
+          try {
+              jsonResponse = JSON.stringify(data, null, 4);
+          } catch (e) {
+              jsonResponse = data;
+          }
+          $root.find(".sample-request-response").fadeTo(250, 1);
+          $root.find(".sample-request-response-json").html(jsonResponse);
           refreshScrollSpy();
       };
 
       function displayError(jqXHR, textStatus, error) {
-          $root.find(".sample-request-response").show();
-          $root.find(".sample-request-response-json").html(jqXHR.status + "<br>Error: " + error + "<br>" + jqXHR.responseText);
+          var message = "Error " + jqXHR.status + ": " + error;
+          var jsonResponse;
+          try {
+              jsonResponse = JSON.parse(jqXHR.responseText);
+              jsonResponse = JSON.stringify(jsonResponse, null, 4);
+          } catch (e) {
+              jsonResponse = jqXHR.responseText;
+          }
+
+          if (jsonResponse)
+              message += "<br>" + jsonResponse;
+
+          // flicker on previous error to make clear that there is a new response
+          if($root.find(".sample-request-response").is(":visible"))
+              $root.find(".sample-request-response").fadeTo(1, 0.1);
+
+          $root.find(".sample-request-response").fadeTo(250, 1);
+          $root.find(".sample-request-response-json").html(message);
           refreshScrollSpy();
       };
   }
@@ -104,8 +129,8 @@ define([
       });
 
       // restore default URL
-      var $uRLelement = $root.find(".sample-request-url");
-      $uRLelement.val($uRLelement.prop("defaultValue"));
+      var $urlElement = $root.find(".sample-request-url");
+      $urlElement.val($urlElement.prop("defaultValue"));
 
       refreshScrollSpy();
   }

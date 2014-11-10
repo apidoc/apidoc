@@ -72,6 +72,9 @@ require([
 	if(apiProject.template.withCompare == null) apiProject.template.withCompare = true;
 	if(apiProject.template.withGenerator == null) apiProject.template.withGenerator = true;
 
+	// Setup jQuery Ajax
+	$.ajaxSetup(apiProject.template.jQueryAjaxSetup);
+
 	/**
 	 * Data transform.
 	 */
