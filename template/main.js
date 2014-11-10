@@ -7,8 +7,9 @@ require.config({
 		jquery: "./vendor/jquery.min",
 		locales: "./locales/locale",
 		lodash: "./vendor/lodash.min",
+		pathToRegexp: "./vendor/path-to-regexp/index",
 		prettify: "./vendor/prettify/prettify",
-		utilsSampleRequest: "utils/send_sample_request"
+		utilsSampleRequest: "./utils/send_sample_request",
 	},
 	shim: {
 		bootstrap: {
@@ -42,6 +43,7 @@ require([
 	"prettify",
 	"utilsSampleRequest",
 	"bootstrap",
+	"pathToRegexp"
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
 
 	/**

@@ -56,17 +56,15 @@ define([
       var url = $root.find(".sample-request-url").val();
 
       // Insert url parameter
-      // @todo Better use a library like https://github.com/component/path-to-regexp
-      var pattern = /\:(?!\/)(.*?)(\/|$)/g;
-      var matches;
-      while ((matches = pattern.exec(url)) !== null)
-      {
-          var key = matches[1];
+      var pattern = pathtoRegexp(url, null);
+      var matches = pattern.exec(url);
+      for (var i = 1; i < matches.length; i++) {
+          var key = matches[i].substr(1);
           if (param[key] !== undefined) {
-              url = url.replace(matches[0], encodeURIComponent(param[key]));
+              url = url.replace(matches[i], encodeURIComponent(param[key]));
               delete param[key];
           }
-      } // while
+      } // for
 
       // send AJAX request, catch success or error callback
       $.ajax({
