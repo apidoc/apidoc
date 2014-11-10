@@ -31,6 +31,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/error"
+      }
+    ],
     "filename": "test/fixtures/example/error_structure.js"
   },
   {
@@ -71,6 +76,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/title_and_error"
+      }
+    ],
     "filename": "test/fixtures/example/title_and_structure.js"
   },
   {
@@ -97,6 +107,11 @@
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/escape"
+      }
+    ],
     "filename": "test/fixtures/example/escape.js"
   },
   {
@@ -123,6 +138,11 @@
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/escape"
+      }
+    ],
     "filename": "test/fixtures/example/escape.js"
   },
   {
@@ -173,6 +193,11 @@
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/example/"
+      }
+    ],
     "filename": "test/fixtures/example/example.js"
   },
   {
@@ -223,6 +248,11 @@
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/example/"
+      }
+    ],
     "filename": "test/fixtures/example/example.js"
   },
   {
@@ -233,6 +263,11 @@
     "group": "Group",
     "groupDescription": "<p>This is a Group Description.Mulitline capable.</p>",
     "version": "0.5.0",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/group/:id"
+      }
+    ],
     "filename": "test/fixtures/example/group.js"
   },
   {
@@ -334,6 +369,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/:id"
+      }
+    ],
     "filename": "test/fixtures/example/_grouping.js"
   },
   {
@@ -462,6 +502,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/header/:id"
+      }
+    ],
     "filename": "test/fixtures/example/header.js"
   },
   {
@@ -481,6 +526,11 @@
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/header/example/"
+      }
+    ],
     "filename": "test/fixtures/example/header_example.js"
   },
   {
@@ -510,6 +560,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/header/title/"
+      }
+    ],
     "filename": "test/fixtures/example/header_title.js"
   },
   {
@@ -544,6 +599,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/header"
+      }
+    ],
     "filename": "test/fixtures/example/header_structure.js"
   },
   {
@@ -554,6 +614,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for CoffeeScript Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/coffeescript"
+      }
+    ],
     "filename": "test/fixtures/example/language.coffee"
   },
   {
@@ -568,6 +633,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/coffeescript/indented1"
       }
     ],
     "filename": "test/fixtures/example/language.coffee"
@@ -586,6 +656,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/coffeescript/indented2"
+      }
+    ],
     "filename": "test/fixtures/example/language.coffee"
   },
   {
@@ -596,6 +671,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for Erlang Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/erlang"
+      }
+    ],
     "filename": "test/fixtures/example/language.erl"
   },
   {
@@ -610,6 +690,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/erlang/indented1"
       }
     ],
     "filename": "test/fixtures/example/language.erl"
@@ -628,6 +713,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/erlang/indented2"
+      }
+    ],
     "filename": "test/fixtures/example/language.erl"
   },
   {
@@ -638,6 +728,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for JavaScript Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/javascript"
+      }
+    ],
     "filename": "test/fixtures/example/language.js"
   },
   {
@@ -652,6 +747,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/javascript/indented1"
       }
     ],
     "filename": "test/fixtures/example/language.js"
@@ -670,6 +770,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/javascript/indented2"
+      }
+    ],
     "filename": "test/fixtures/example/language.js"
   },
   {
@@ -680,6 +785,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for Perl Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/perl"
+      }
+    ],
     "filename": "test/fixtures/example/language.pm"
   },
   {
@@ -694,6 +804,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n\tLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/perl/indented1"
       }
     ],
     "filename": "test/fixtures/example/language.pm"
@@ -712,6 +827,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/perl/indented2"
+      }
+    ],
     "filename": "test/fixtures/example/language.pm"
   },
   {
@@ -728,6 +848,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/perl/podcut"
+      }
+    ],
     "filename": "test/fixtures/example/language.pm"
   },
   {
@@ -738,6 +863,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for Python Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python"
+      }
+    ],
     "filename": "test/fixtures/example/language.py"
   },
   {
@@ -752,6 +882,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented1"
       }
     ],
     "filename": "test/fixtures/example/language.py"
@@ -770,6 +905,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented2"
+      }
+    ],
     "filename": "test/fixtures/example/language.py"
   },
   {
@@ -780,6 +920,11 @@
     "group": "Language",
     "version": "0.4.0",
     "description": "<p>Test for Ruby Comment-Syntax.</p>",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/ruby"
+      }
+    ],
     "filename": "test/fixtures/example/language.rb"
   },
   {
@@ -796,6 +941,11 @@
         "type": "json"
       }
     ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/ruby/indented1"
+      }
+    ],
     "filename": "test/fixtures/example/language.rb"
   },
   {
@@ -810,6 +960,11 @@
         "title": "Test for indented comment.",
         "content": "Test for indented comment.\nThis is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
         "type": "json"
+      }
+    ],
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/ruby/indented2"
       }
     ],
     "filename": "test/fixtures/example/language.rb"
@@ -835,6 +990,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/markdown/:id"
+      }
+    ],
     "filename": "test/fixtures/example/markdown.js"
   },
   {
@@ -1111,6 +1271,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/param/:id"
+      }
+    ],
     "filename": "test/fixtures/example/param.js"
   },
   {
@@ -1246,7 +1411,99 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/param/:id"
+      }
+    ],
     "filename": "test/fixtures/example/param.js"
+  },
+  {
+    "type": "get",
+    "url": "/sample/request/",
+    "title": "Sampe Request",
+    "name": "GetSampleRequest",
+    "group": "Sample",
+    "version": "0.8.0",
+    "description": "<p>Usage of many @apiHeaderTitle with different parameters.</p>",
+    "header": {
+      "fields": {
+        "This are the Header for Group 1:": [
+          {
+            "group": "HeaderGroup1",
+            "type": "string",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>The authorization code.</p>"
+          },
+          {
+            "group": "HeaderGroup1",
+            "type": "string",
+            "optional": false,
+            "field": "secrect",
+            "description": "<p>Additional secret.</p>"
+          }
+        ],
+        "This are the Header for Group 2:": [
+          {
+            "group": "HeaderGroup2",
+            "type": "string",
+            "optional": false,
+            "field": "authorization",
+            "description": "<p>The authorization code.</p>"
+          },
+          {
+            "group": "HeaderGroup2",
+            "type": "string",
+            "optional": false,
+            "field": "secrect",
+            "description": "<p>Additional secret.</p>"
+          },
+          {
+            "group": "HeaderGroup2",
+            "type": "string",
+            "optional": false,
+            "field": "type",
+            "description": "<p>Content-Type.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "This are Parameter for Group 1:": [
+          {
+            "group": "ParameterGroup1",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>Your name.</p>"
+          }
+        ],
+        "This are Parameter for Group 2:": [
+          {
+            "group": "ParameterGroup2",
+            "type": "string",
+            "optional": false,
+            "field": "firstname",
+            "description": "<p>Your firstname.</p>"
+          },
+          {
+            "group": "ParameterGroup2",
+            "type": "string",
+            "optional": false,
+            "field": "lastname",
+            "description": "<p>Some lastname.</p>"
+          }
+        ]
+      }
+    },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/sample/request/"
+      }
+    ],
+    "filename": "test/fixtures/example/sample_request.js"
   },
   {
     "type": "post",
@@ -1280,6 +1537,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/structure"
+      }
+    ],
     "filename": "test/fixtures/example/structure.js"
   },
   {
@@ -1314,6 +1576,11 @@
         ]
       }
     },
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/test/success"
+      }
+    ],
     "filename": "test/fixtures/example/success_structure.js"
   },
   {

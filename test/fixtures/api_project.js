@@ -2,6 +2,8 @@ define({
   "name": "test",
   "version": "0.5.0",
   "description": "RESTful web API Documentation Generator",
+  "url": "https://api.github.com/v1",
+  "sampleUrl": "https://api.github.com/v1",
   "header": {
     "title": "My own header title",
     "content": "<h1 id=\"header-md-file\">Header .md File</h1>\n<p>Content of header.md file.</p>\n"
@@ -12,6 +14,6 @@ define({
   },
   "generator": {
     "version": "0.8.0",
-    "time": "2014-11-10T09:41:07.901Z"
+    "time": "2014-11-10T11:58:58.455Z"
   }
 });
