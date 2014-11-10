@@ -234,6 +234,20 @@
             </div>
           </div>
 
+          <h3>{{__ "Headers"}}</h3>
+      {{#each article.header.fields.Header}}
+          <div class="control-group">
+            <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
+            <div class="controls">
+              <div class="input-append">>
+                <input type="text" placeholder="{{field}}" class="sample-request-header" data-name="{{field}}">
+                <span class="add-on">{{type}}</span>
+              </div>
+            </div>
+          </div>
+      {{/each}}
+
+          <h3>{{__ "Data"}}</h3>
       {{#each article.parameter.fields.Parameter}}
           <div class="control-group">
             <label class="control-label" for="sample-request-field-{{field}}">{{field}}</label>
