@@ -38,7 +38,7 @@ module.exports = function(grunt)
 				noempty: true,
 				nonew: true,
 				plusplus: true,
-				quotmark: "double",
+				// quotmark: "double",
 				regexp: false,
 				undef: false,
 				unused: false,
