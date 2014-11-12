@@ -47,20 +47,32 @@ var argv = optimist
 
     .option('simulate', { boolean: true, 'default': false, describe: 'Execute but not write any file.' })
 
-    // Marked-Params
-    .option('marked-gfm',         { boolean: true, 'default': true, describe: 'Enable GitHub flavored markdown.' })
-    .option('marked-tables',      { boolean: true, 'default': true, describe: 'Enable GFM tables. This option requires the gfm option to be true.' })
-    .option('marked-breaks',      { boolean: true, 'default': false, describe: 'Enable GFM line breaks. This option requires the gfm option to be true.' })
-    .option('marked-pedantic',    { boolean: true, 'default': false, describe: 'Conform to obscure parts of markdown.pl as much as possible.' })
-    .option('marked-sanitize',    { boolean: true, 'default': false, describe: 'Sanitize the output. Ignore any HTML that has been input.' })
-    .option('marked-smartLists',  { boolean: true, 'default': false, describe: 'Use smarter list behavior than the original markdown.' })
-    .option('marked-smartypants', { boolean: true, 'default': false, describe: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
+    // markdown settings
+    .option('marked-gfm',         { boolean: true, 'default': true,
+            describe: 'Enable GitHub flavored markdown.' })
+
+    .option('marked-tables',      { boolean: true, 'default': true,
+            describe: 'Enable GFM tables. This option requires the gfm option to be true.' })
+
+    .option('marked-breaks',      { boolean: true, 'default': false,
+            describe: 'Enable GFM line breaks. This option requires the gfm option to be true.' })
+
+    .option('marked-pedantic',    { boolean: true, 'default': false,
+            describe: 'Conform to obscure parts of markdown.pl as much as possible.' })
+
+    .option('marked-sanitize',    { boolean: true, 'default': false,
+            describe: 'Sanitize the output. Ignore any HTML that has been input.' })
+
+    .option('marked-smartLists',  { boolean: true, 'default': false,
+            describe: 'Use smarter list behavior than the original markdown.' })
+
+    .option('marked-smartypants', { boolean: true, 'default': false,
+            describe: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
 
     .argv
 ;
 
-if(argv.help)
-{
+if (argv.help) {
     optimist.showHelp();
     process.exit(0);
 }
@@ -71,10 +83,13 @@ if(argv.help)
  * @param {String|String[]} filters
  * @returns {Object}
  */
-function transformToObject(filters)
-{
-    if ( ! filters) return undefined;
-    if (typeof(filters) === 'string') filters = [ filters ];
+function transformToObject(filters) {
+    if ( ! filters)
+        return;
+
+    if (typeof(filters) === 'string')
+        filters = [ filters ];
+
     var result = {};
     filters.forEach(function(filter) {
         var splits = filter.split('=');
@@ -84,7 +99,7 @@ function transformToObject(filters)
         }
     });
     return result;
-} // transformToObject
+}
 
 var defaults = {
     excludeFilters: argv['exclude-filters'],
@@ -110,4 +125,6 @@ var defaults = {
     }
 };
 
-require('../lib/apidoc')(defaults);
+try {
+    require('../lib/apidoc')(defaults);
+} catch (e) {}
