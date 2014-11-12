@@ -45,5 +45,8 @@
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-simple-mocha": "~0.4.0",
     "should": "~4.0.1"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }
