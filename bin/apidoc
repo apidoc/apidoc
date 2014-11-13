@@ -34,6 +34,8 @@ var argv = optimist
 
     .option('h', { alias: 'help', boolean: true, describe: 'Show this help information.' })
 
+    .option('debug', { boolean: true, 'default': false, describe: 'Show debug messages.' })
+
     .option('no-color', { boolean: true, 'default': false, describe: 'Turn off log color.' })
 
     .option('parse', { boolean: true, 'default': false,
@@ -107,7 +109,8 @@ var defaults = {
     src:            argv['input'],
     dest:           argv['output'],
     template:       argv['template'],
-    verbose:        argv['verbose'],
+    verbose:        argv['debug'] === true ? argv['debug'] : argv['verbose'],
+    debug:          argv['debug'],
     parse:          argv['parse'],
     filters:        transformToObject(argv['parse-filters']),
     parsers:        transformToObject(argv['parse-parsers']),
