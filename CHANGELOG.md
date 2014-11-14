@@ -4,8 +4,11 @@
 #### 0.8.0
 
 * Parameter
-  * Add `@apiDefine`, `@apiUse` as replacement for all (now) deprecated define and structure methdos.
-  * __Mark as deprecated__:
+  * __Add__ as replacement for all (now) deprecated define and structure methods:
+    * `@apiDefine`
+    * `@apiUse`
+
+  * __Deprecated__:
     * `@apiDefineErrorStructure`
     * `@apiDefineHeaderStructure`
     * `@apiDefinePermission`
@@ -19,13 +22,20 @@
     * `apiStructure`
     * `apiSuccessTitle`
     * `apiSuccessStructure`
-  * __Remove__ `@apiInfo`, `@apiInfoExample`, `@apiInfoTitle`. Not needed since success and error response can be grouped.
-  * __Add__
+
+  * __Remove__ unneeded methods since success and error response can be grouped:
+    * `@apiInfo`
+    * `@apiInfoExample`
+    * `@apiInfoTitle`
+
+  * __Add__ for consistent usage:
     * `@apiHeaderExample`
     * `@apiParamExample`
-  * __Change__
+
+  * __Change__:
     * `@apiPermission`, multiple permission usage in a block is allowed now. Permission names must be defined with @apiDefine.
-  * __Extend__
+
+  * __Extend__:
     * `@apiParam` with size and allowed values.
 
 * CLI
