@@ -1,6 +1,53 @@
 # apiDoc Changelog
 
 
+#### 0.8.0
+
+* Parameter
+  * Add `@apiDefine`, `@apiUse` as replacement for all (now) deprecated define and structure methdos.
+  * __Mark as deprecated__:
+    * `@apiDefineErrorStructure`
+    * `@apiDefineHeaderStructure`
+    * `@apiDefinePermission`
+    * `@apiDefineStructure`
+    * `@apiDefineSuccessStructure`
+    * `apiErrorTitle`
+    * `apiErrorStructure`
+    * `apiHeaderStructure`
+    * `apiHeaderTitle`
+    * `apiParamTitle`
+    * `apiStructure`
+    * `apiSuccessTitle`
+    * `apiSuccessStructure`
+  * __Remove__ `@apiInfo`, `@apiInfoExample`, `@apiInfoTitle`. Not needed since success and error response can be grouped.
+  * __Add__
+    * `@apiHeaderExample`
+    * `@apiParamExample`
+  * __Change__
+    * `@apiPermission`, multiple permission usage in a block is allowed now. Permission names must be defined with @apiDefine.
+  * __Extend__
+    * `@apiParam` with size and allowed values.
+
+* CLI
+  * Show deprecated message. Show details with `--debug` or `--verbose`.
+  * Improved error output.
+  * Turn off verbose output by default.
+  * Add debug output.
+
+* Parser
+  * Correctly handle Erlang comments.
+  * Bugfix: Markdown error on Empty description.
+  * Revised worker preProcess / postProcess functions.
+  * Change parser export names.
+
+* Template
+  * Change template sample request to handle custom named groups.
+  * Update template vendor files (handlebars 2, requirejs)
+  * Added support for using path-to-regexp in sample request.
+  * Add `jQueryAjaxSetup` to apidoc.json for setup ajax requests (http://apidocjs.com/#configuration-template-settings).
+  * Hide the ul for tabs if no content.
+
+
 #### 0.7.2
 
 Bugfix: Custom parsers not working. (https://github.com/apidoc/apidoc/issues/113)
@@ -25,7 +72,7 @@ Add rudimentary support for direct api calls (test requests) from within the doc
 
 Added ability to have forward slash (/) in parameter field names.
 
-Add parameter `--parse` for parse only the files and return the parsed data. 
+Add parameter `--parse` for parse only the files and return the parsed data.
 
 Allow perl comments between "=pod" and "=cut".
 
@@ -84,7 +131,7 @@ Bugfix: Template IE8 compatibility. (https://github.com/apidoc/apidoc/issues/69)
 Update node version to 0.10.x.
 
 Add optional custom browser title with `apidoc.title` in `package.json`.
- 
+
 Add optional url endpoint with `apidoc.url` in `package.json`.
 
 Bugfix: Template scrollbug. (https://github.com/apidoc/apidoc/issues/64)
@@ -129,7 +176,7 @@ Bugfix: Fix parsing of multiline string. (https://github.com/apidoc/apidoc/issue
 
 #### 0.4.1
 
-Add support for CoffeeScript comment-style. 
+Add support for CoffeeScript comment-style.
 
 
 #### 0.4.0

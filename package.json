@@ -18,6 +18,9 @@
   },
   "main": "./lib/apidoc",
   "bin": "bin/apidoc",
+  "scripts": {
+    "test": "grunt test"
+  },
   "keywords": [
     "api",
     "apidoc",
@@ -36,7 +39,6 @@
     "marked": "~0.3.2",
     "optimist": "~0.6.1",
     "semver": "~4.1.0",
-    "underscore": "~1.7.0",
     "wrench": "~1.5.8"
   },
   "devDependencies": {

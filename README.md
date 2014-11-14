@@ -1,9 +1,11 @@
-# apiDoc 0.7.x
+# apiDoc 0.8.x
 
 Generates a RESTful web API Documentation.
 
 [![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
+
+apiDoc creates a documentation from API descriptions in your source code.
 
 Documentation at [apidocjs.com](http://apidocjs.com).
 
@@ -13,6 +15,11 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 ## Installation
 
 `npm install apidoc -g`
+
+
+## Changelog
+
+[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
 
 
 ## Example
@@ -68,7 +75,7 @@ Creates from input files in `example/` a documentation in path `doc/`.
    # This is a comment.
    #*
    ```
-   
+
    ```perl
    =pod
    This is a comment.
@@ -95,11 +102,6 @@ Creates from input files in `example/` a documentation in path `doc/`.
 ## Grunt Module
 
 [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
-
-
-## Changelog
-
-[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
 
 
 ## Help
