@@ -2,6 +2,21 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Peter Wong](https://github.com/peterwongpp)
+  * Hide the ul for tabs if no content [#142] (https://github.com/apidoc/apidoc/pull/142))
+
+* [Bip Thelin](https://github.com/bipthelin)
+  * Correctly handle Erlang comments [#135] (https://github.com/apidoc/apidoc/pull/135))
+
+* [Michael Schnyder](https://github.com/michaelschnyder)
+  * Improvements to the Testclient [#132] (https://github.com/apidoc/apidoc/pull/132))
+
+* [Peter Gfader](https://github.com/peitor)
+  * Show error "responseText" on displayError [#129] (https://github.com/apidoc/apidoc/pull/129))
+
+* [cjbarth](https://github.com/cjbarth)
+  * Added support for using path-to-regexp in template [#119] (https://github.com/apidoc/apidoc/pull/119))
+
 * [Brian Horakh](https://github.com/brianhorakh)
   * Perl - allow =pod and =cut ([#103] (https://github.com/apidoc/apidoc/issues/103))
 

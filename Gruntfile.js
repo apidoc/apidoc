@@ -38,7 +38,7 @@ module.exports = function(grunt)
 				noempty: true,
 				nonew: true,
 				plusplus: true,
-				quotmark: "double",
+				// quotmark: "double",
 				regexp: false,
 				undef: false,
 				unused: false,
@@ -66,7 +66,7 @@ module.exports = function(grunt)
 				ui: "bdd",
 				reporter: "spec"
 			},
-			all: { src: ["test/apidoc_test.js"] }
+			all: { src: ["test/*_test.js"] }
 		} // simplemocha
 	}); // grunt.initConfig
 
@@ -84,5 +84,5 @@ module.exports = function(grunt)
 	grunt.registerTask("default", ["jshint"]);
 
 	// Task: test
-	grunt.registerTask("test", ["clean", "simplemocha"]);
+	grunt.registerTask("test", ["clean", "jshint", "simplemocha"]);
 };

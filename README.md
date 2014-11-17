@@ -1,9 +1,11 @@
-# apiDoc 0.7.x
+# apiDoc 0.8.x
 
 Generates a RESTful web API Documentation.
 
 [![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
+
+apiDoc creates a documentation from API descriptions in your source code.
 
 Documentation at [apidocjs.com](http://apidocjs.com).
 
@@ -15,9 +17,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 `npm install apidoc -g`
 
 
+## Changelog
+
+[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
+
+
 ## Example
 
-   ```javascript
+```javascript
 /**
  * @api {get} /user/:id Request User information
  * @apiName GetUser
@@ -28,11 +35,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
  * @apiSuccess {String} firstname Firstname of the User.
  * @apiSuccess {String} lastname  Lastname of the User.
  */
-   ```
+```
 
 `apidoc -i example/ -o doc/`
 
 Creates from input files in `example/` a documentation in path `doc/`.
+
+
+More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)
 
 
 ## Supported programming languages
@@ -68,7 +78,7 @@ Creates from input files in `example/` a documentation in path `doc/`.
    # This is a comment.
    #*
    ```
-   
+
    ```perl
    =pod
    This is a comment.
@@ -97,14 +107,10 @@ Creates from input files in `example/` a documentation in path `doc/`.
 [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 
 
-## Changelog
-
-[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
-
-
 ## Help
 
-Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem. Pull requests are welcome too!
+Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
+Pull requests are welcome too!
 
 A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
 
