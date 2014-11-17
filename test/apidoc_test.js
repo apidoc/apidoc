@@ -52,8 +52,8 @@ describe('apiDoc full example', function() {
 
     // compare
     it('case 1: created files should equal to fixtures', function(done) {
-        var timeRegExp = /'time'\:\s'(.*)'/g;
-        var versionRegExp = /'version'\:\s'(.*)'/g;
+        var timeRegExp = /\"time\"\:\s\"(.*)\"/g;
+        var versionRegExp = /\"version\"\:\s\"(.*)\"/g;
         fixtureFiles.forEach(function(name) {
             var fixtureContent = fs.readFileSync('test/fixtures/' + name, 'utf8');
             var createdContent = fs.readFileSync('./tmp/' + name, 'utf8');
