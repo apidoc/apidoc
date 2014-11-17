@@ -15,40 +15,30 @@
  * @apiParam [param7="Default Value"] Optional parameter, default value and description.
  * @apiParam [param8="Default Value"]
  *
- * @apiParam param9 (4711)                 Parameter, allowed value and description.
- * @apiParam param10 (4711)
- * @apiParam param11="Default Value" (4711) Parameter, default value, allowed value and description.
- * @apiParam param12="Default Value" (4711)
+ * @apiParam {String} param9                  Type, parameter and description.
+ * @apiParam {String} param10
+ * @apiParam {String} param11="Default Value" Type, parameter and default value.
+ * @apiParam {String} param12="Default Value"
  *
- * @apiParam {String} param13                  Type, parameter and description.
- * @apiParam {String} param14
- * @apiParam {String} param15="Default Value" Type, parameter and default value.
- * @apiParam {String} param16="Default Value"
+ * @apiParam {String} [param13]                 Type, optional parameter and description.
+ * @apiParam {String} [param14]
+ * @apiParam {String} [param15="Default Value"] Type, optional parameter, default value and description.
+ * @apiParam {String} [param26="Default Value"]
  *
- * @apiParam {String} [param17]                 Type, optional parameter and description.
- * @apiParam {String} [param18]
- * @apiParam {String} [param19="Default Value"] Type, optional parameter, default value and description.
- * @apiParam {String} [param20="Default Value"]
+ * @apiParam {String{4,8}} param17                  Type, size, parameter and description.
+ * @apiParam {Number{1-3}} param18                  Type, size, parameter and description.
+ * @apiParam {String{4,8}} param19="Default Value"  Type, size, parameter, default value and description.
+ * @apiParam {Number{1-3}} param20=1                Type, size, parameter, default value and description.
  *
- * @apiParam {String} param21 (4711)                 Type, parameter, allowed value and description.
- * @apiParam {String} param22 (4711)
- * @apiParam {String} param23="Default Value" (4711) Type, parameter, default value, allowed value and description.
- * @apiParam {String} param24="Default Value" (4711)
+ * @apiParam {String="value 1"} param21            Type, parameter and allowed string value.
+ * @apiParam {String="value 1", "value 2"} param22 Type, parameter and allowed list of string values.
+ * @apiParam {Number=4711} param23                 Type, parameter and allowed value.
+ * @apiParam {Number=4711,4712} param24            Type, parameter and allowed list of values.
  *
- * @apiParam {String} [param25] (4711)                 Type, optional parameter, allowed value and description.
- * @apiParam {String} [param26] (4711)
- * @apiParam {String} [param27="Default Value"] (4711) Type, optional parameter, default value, allowed value and description.
- * @apiParam {String} [param28="Default Value"] (4711)
- *
- * @apiParam {String} [param29] ("allowed1", "allowed2")                 Type, optional parameter, allowed strings and description.
- * @apiParam {String} [param30] ("allowed1", "allowed2")
- * @apiParam {String} [param31="Default Value"] ("allowed1", "allowed2") Type, optional parameter, default value, allowed strings and description.
- * @apiParam {String} [param32="Default Value"] ("allowed1", "allowed2")
- *
- * @apiParam {String} param33="Default Value" {4,8} Type, parameter, default value, size and description.
- * @apiParam {Number} param34=1 {1-3}               Type, parameter, default value, size and description.
- * @apiParam {Number} param35=2                     Type, parameter, default value and description.
- * @apiParam {Number} param36=2
+ * @apiParam {String{1,10}="value 1"}            param25 Type, size, parameter and allowed string value.
+ * @apiParam {String{1,10}="value 1", "value 2"} param26 Type, size, parameter and allowed list of string values.
+ * @apiParam {Number{1-9999}=4711}               param27 Type, size, parameter and allowed value.
+ * @apiParam {Number{1-9999}=4711,4712}          param28 Type, size, parameter and allowed list of values.
  */
 
 /**

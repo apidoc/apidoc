@@ -45,12 +45,15 @@
   * Add debug output.
 
 * Parser
+  * Ignore other doc-language @-parameters (enables jsdoc, phpdoc, ... again).
+  * Add apidoc specification version to project file.
   * Correctly handle Erlang comments.
   * Bugfix: Markdown error on Empty description.
   * Revised worker preProcess / postProcess functions.
   * Change parser export names.
 
 * Template
+  * Show size and allowed values in field description.
   * Change template sample request to handle custom named groups.
   * Update template vendor files (handlebars 2, requirejs)
   * Added support for using path-to-regexp in sample request.

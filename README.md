@@ -24,7 +24,7 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 
 ## Example
 
-   ```javascript
+```javascript
 /**
  * @api {get} /user/:id Request User information
  * @apiName GetUser
@@ -35,11 +35,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
  * @apiSuccess {String} firstname Firstname of the User.
  * @apiSuccess {String} lastname  Lastname of the User.
  */
-   ```
+```
 
 `apidoc -i example/ -o doc/`
 
 Creates from input files in `example/` a documentation in path `doc/`.
+
+
+More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)
 
 
 ## Supported programming languages
@@ -106,7 +109,8 @@ Creates from input files in `example/` a documentation in path `doc/`.
 
 ## Help
 
-Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem. Pull requests are welcome too!
+Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
+Pull requests are welcome too!
 
 A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
 

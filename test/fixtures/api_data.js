@@ -1,12 +1,52 @@
 define({ api: [
   {
+    "type": "get",
+    "url": "/define",
+    "title": "Define",
+    "name": "GetDefine",
+    "group": "Define",
+    "version": "0.8.0",
+    "description": "<p>Example of @apiDefine and @apiUse</p> ",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "field3",
+            "description": "<p>This is Field 3 (local).</p> "
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "field1",
+            "description": "<p>This is Field 1.</p> "
+          },
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "field2",
+            "description": "<p>This is Field 2.</p> "
+          }
+        ]
+      }
+    },
+    "filename": "test/fixtures/example/define.js",
+    "groupTitle": "Define",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/define"
+      }
+    ]
+  },
+  {
     "type": "post",
     "url": "/test/error",
     "title": "Multiple Error Structures",
     "name": "PostError",
     "group": "Error",
     "version": "0.1.0",
-    "description": "<p>Use of multiple ErrorStructures.</p>",
+    "description": "<p>Use of multiple ErrorStructures.</p> ",
     "error": {
       "fields": {
         "Error 4xx": [
@@ -14,29 +54,30 @@ define({ api: [
             "group": "Error 4xx",
             "optional": false,
             "field": "error3Error",
-            "description": "<p>This is Error 3 (local).</p>"
+            "description": "<p>This is Error 3 (local).</p> "
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "error1Error",
-            "description": "<p>This is Error 1.</p>"
+            "description": "<p>This is Error 1.</p> "
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "error2Error",
-            "description": "<p>This is Error 2.</p>"
+            "description": "<p>This is Error 2.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/error_structure.js",
+    "groupTitle": "Error",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/error"
       }
-    ],
-    "filename": "test/fixtures/example/error_structure.js"
+    ]
   },
   {
     "type": "post",
@@ -45,7 +86,7 @@ define({ api: [
     "name": "PostTitleAndError",
     "group": "Error",
     "version": "0.1.0",
-    "description": "<p>Use of Title and Structures in the same block.</p>",
+    "description": "<p>Use of Title and Structures in the same block.</p> ",
     "success": {
       "fields": {
         "204 No Content. Added to global namespace.": [
@@ -53,7 +94,7 @@ define({ api: [
             "group": "204",
             "optional": false,
             "field": "message",
-            "description": "<p>Successfully deleted.</p>"
+            "description": "<p>Successfully deleted.</p> "
           }
         ]
       }
@@ -65,23 +106,23 @@ define({ api: [
             "group": "Error 4xx",
             "optional": false,
             "field": "error3Error",
-            "description": "<p>This is Error 3 (local).</p>"
+            "description": "<p>This is Error 3 (local).</p> "
           },
           {
             "group": "Error 4xx",
             "optional": false,
             "field": "error1Error",
-            "description": "<p>This is Error 1.</p>"
+            "description": "<p>This is Error 1.</p> "
           }
         ]
       }
     },
+    "groupTitle": "Error",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/title_and_error"
       }
-    ],
-    "filename": "test/fixtures/example/title_and_structure.js"
+    ]
   },
   {
     "type": "get",
@@ -90,7 +131,7 @@ define({ api: [
     "name": "GetEscape",
     "group": "Escape",
     "version": "0.6.0",
-    "description": "<p>Escape Example data.</p>",
+    "description": "<p>Escape Example data.</p> ",
     "examples": [
       {
         "title": "Example usage:",
@@ -107,12 +148,13 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/escape.js",
+    "groupTitle": "Escape",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/escape"
       }
-    ],
-    "filename": "test/fixtures/example/escape.js"
+    ]
   },
   {
     "type": "get",
@@ -121,7 +163,7 @@ define({ api: [
     "name": "GetEscape",
     "group": "Escape",
     "version": "0.5.0",
-    "description": "<p>Escape Example data - with comparison.</p>",
+    "description": "<p>Escape Example data - with comparison.</p> ",
     "examples": [
       {
         "title": "Example usage:",
@@ -138,12 +180,13 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/escape.js",
+    "groupTitle": "Escape",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/escape"
       }
-    ],
-    "filename": "test/fixtures/example/escape.js"
+    ]
   },
   {
     "type": "get",
@@ -152,7 +195,7 @@ define({ api: [
     "name": "GetExample",
     "group": "Example",
     "version": "0.7.1",
-    "description": "<p>Extended usage of @apiExample with different example types.</p>",
+    "description": "<p>Extended usage of @apiExample with different example types.</p> ",
     "examples": [
       {
         "title": "PHP Example (new)",
@@ -193,12 +236,13 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/example.js",
+    "groupTitle": "Example",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/example/"
       }
-    ],
-    "filename": "test/fixtures/example/example.js"
+    ]
   },
   {
     "type": "get",
@@ -207,7 +251,7 @@ define({ api: [
     "name": "GetExample",
     "group": "Example",
     "version": "0.7.0",
-    "description": "<p>Extended usage of @apiExample with different example types.</p>",
+    "description": "<p>Extended usage of @apiExample with different example types.</p> ",
     "examples": [
       {
         "title": "PHP Example",
@@ -248,12 +292,13 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/example.js",
+    "groupTitle": "Example",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/example/"
       }
-    ],
-    "filename": "test/fixtures/example/example.js"
+    ]
   },
   {
     "type": "get",
@@ -261,14 +306,15 @@ define({ api: [
     "title": "Group and Description",
     "name": "GetGroup",
     "group": "Group",
-    "groupDescription": "<p>This is a Group Description.Mulitline capable.</p>",
+    "groupDescription": "<p>This is a Group Description. Markdown capable.</p> ",
     "version": "0.5.0",
+    "filename": "test/fixtures/example/group.js",
+    "groupTitle": "Group",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/group/:id"
       }
-    ],
-    "filename": "test/fixtures/example/group.js"
+    ]
   },
   {
     "type": "get",
@@ -277,7 +323,7 @@ define({ api: [
     "name": "GetGrouping",
     "group": "Grouping",
     "version": "0.1.0",
-    "description": "<p>Title and Grouping of param, success and error</p>",
+    "description": "<p>Title and Grouping of param, success and error</p> ",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -286,7 +332,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "param1",
-            "description": "<p>No Group, automatically set Group to &quot;Parameter&quot;</p>"
+            "description": "<p>No Group, automatically set Group to &quot;Parameter&quot;</p> "
           }
         ],
         "Replace \"login\" with this text": [
@@ -295,7 +341,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "param2",
-            "description": "<p>Group &quot;login&quot;</p>"
+            "description": "<p>Group &quot;login&quot;</p> "
           },
           {
             "group": "login",
@@ -303,7 +349,7 @@ define({ api: [
             "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "description": "<p>Group &quot;login&quot; with default Value</p>"
+            "description": "<p>Group &quot;login&quot; with default Value</p> "
           }
         ]
       }
@@ -316,7 +362,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "success2",
-            "description": "<p>Group &quot;201&quot;</p>"
+            "description": "<p>Group &quot;201&quot;</p> "
           },
           {
             "group": "201",
@@ -324,7 +370,7 @@ define({ api: [
             "optional": false,
             "field": "success3",
             "defaultValue": "Default Value",
-            "description": "<p>Group &quot;201&quot; with default Value</p>"
+            "description": "<p>Group &quot;201&quot; with default Value</p> "
           }
         ],
         "Success 200": [
@@ -333,7 +379,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "success1",
-            "description": "<p>No Group, automatically set &quot;Success 200&quot;</p>"
+            "description": "<p>No Group, automatically set &quot;Success 200&quot;</p> "
           }
         ]
       }
@@ -346,7 +392,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "error2",
-            "description": "<p>Group &quot;400&quot;</p>"
+            "description": "<p>Group &quot;400&quot;</p> "
           }
         ],
         "401 - Oh oh, replace \"401\" with this text": [
@@ -355,7 +401,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "error3",
-            "description": "<p>Group &quot;401&quot;</p>"
+            "description": "<p>Group &quot;401&quot;</p> "
           }
         ],
         "Error 4xx": [
@@ -364,17 +410,17 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "error1",
-            "description": "<p>No Group automatically set &quot;Error 4xx&quot;</p>"
+            "description": "<p>No Group automatically set &quot;Error 4xx&quot;</p> "
           }
         ]
       }
     },
+    "groupTitle": "Grouping",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/:id"
       }
-    ],
-    "filename": "test/fixtures/example/_grouping.js"
+    ]
   },
   {
     "type": "get",
@@ -383,7 +429,7 @@ define({ api: [
     "name": "GetHeader",
     "group": "Header",
     "version": "0.5.0",
-    "description": "<p>Test for @apiHeader (same as @apiParam)</p>",
+    "description": "<p>Test for @apiHeader (same as @apiParam)</p> ",
     "header": {
       "fields": {
         "Header": [
@@ -392,7 +438,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "header1",
-            "description": "<p>Parameter with type and description.</p>"
+            "description": "<p>Parameter with type and description.</p> "
           },
           {
             "group": "Header",
@@ -407,7 +453,7 @@ define({ api: [
             "optional": false,
             "field": "header3",
             "defaultValue": "Default Value",
-            "description": "<p>Parameter with type, description and default value.</p>"
+            "description": "<p>Parameter with type, description and default value.</p> "
           },
           {
             "group": "Header",
@@ -421,7 +467,7 @@ define({ api: [
             "group": "Header",
             "optional": false,
             "field": "header5",
-            "description": "<p>Basic Parameter with description.</p>"
+            "description": "<p>Basic Parameter with description.</p> "
           },
           {
             "group": "Header",
@@ -434,7 +480,7 @@ define({ api: [
             "optional": false,
             "field": "header7",
             "defaultValue": "Default Value",
-            "description": "<p>Basic Parameter with description and default value.</p>"
+            "description": "<p>Basic Parameter with description and default value.</p> "
           },
           {
             "group": "Header",
@@ -446,13 +492,13 @@ define({ api: [
           {
             "group": "Header",
             "optional": true,
-            "field": "header9]",
-            "description": "<p>Optional basic Parameter with description.</p>"
+            "field": "header9",
+            "description": "<p>Optional basic Parameter with description.</p> "
           },
           {
             "group": "Header",
             "optional": true,
-            "field": "header10]",
+            "field": "header10",
             "description": ""
           },
           {
@@ -460,7 +506,7 @@ define({ api: [
             "optional": true,
             "field": "header11",
             "defaultValue": "Default Value",
-            "description": "<p>Optional basic Parameter with description and default value.</p>"
+            "description": "<p>Optional basic Parameter with description and default value.</p> "
           },
           {
             "group": "Header",
@@ -473,14 +519,14 @@ define({ api: [
             "group": "Header",
             "type": "String",
             "optional": true,
-            "field": "header13]",
-            "description": "<p>Optional Parameter with type and description.</p>"
+            "field": "header13",
+            "description": "<p>Optional Parameter with type and description.</p> "
           },
           {
             "group": "Header",
             "type": "String",
             "optional": true,
-            "field": "header14]",
+            "field": "header14",
             "description": ""
           },
           {
@@ -489,7 +535,7 @@ define({ api: [
             "optional": true,
             "field": "header15",
             "defaultValue": "Default Value",
-            "description": "<p>Optional Parameter with type, description and default value.</p>"
+            "description": "<p>Optional Parameter with type, description and default value.</p> "
           },
           {
             "group": "Header",
@@ -502,12 +548,13 @@ define({ api: [
         ]
       }
     },
+    "filename": "test/fixtures/example/header.js",
+    "groupTitle": "Header",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/header/:id"
       }
-    ],
-    "filename": "test/fixtures/example/header.js"
+    ]
   },
   {
     "type": "get",
@@ -516,7 +563,7 @@ define({ api: [
     "name": "GetHeaderExample",
     "group": "Header",
     "version": "0.5.0",
-    "description": "<p>Usage of @headerExample.</p>",
+    "description": "<p>Usage of @headerExample.</p> ",
     "header": {
       "examples": [
         {
@@ -526,12 +573,13 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/header_example.js",
+    "groupTitle": "Header",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/header/example/"
       }
-    ],
-    "filename": "test/fixtures/example/header_example.js"
+    ]
   },
   {
     "type": "get",
@@ -540,7 +588,7 @@ define({ api: [
     "name": "GetHeaderTitle",
     "group": "Header",
     "version": "0.5.0",
-    "description": "<p>Usage of @apiHeaderTitle.</p>",
+    "description": "<p>Usage of @apiHeaderTitle.</p> ",
     "header": {
       "fields": {
         "This are the Parameters for MyGroup:": [
@@ -548,24 +596,24 @@ define({ api: [
             "group": "MyHeaderGroup",
             "optional": false,
             "field": "authorization",
-            "description": "<p>The authorization code.</p>"
+            "description": "<p>The authorization code.</p> "
           },
           {
             "group": "MyHeaderGroup",
             "type": "string",
             "optional": false,
             "field": "text",
-            "description": "<p>Some text.</p>"
+            "description": "<p>Some text.</p> "
           }
         ]
       }
     },
+    "groupTitle": "Header",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/header/title/"
       }
-    ],
-    "filename": "test/fixtures/example/header_title.js"
+    ]
   },
   {
     "type": "post",
@@ -574,7 +622,7 @@ define({ api: [
     "name": "PostHeader",
     "group": "Header",
     "version": "0.5.0",
-    "description": "<p>Use of multiple HeaderStructures.</p>",
+    "description": "<p>Use of multiple HeaderStructures.</p> ",
     "header": {
       "fields": {
         "Header": [
@@ -582,29 +630,30 @@ define({ api: [
             "group": "Header",
             "optional": false,
             "field": "Header3",
-            "description": "<p>This is Header 3 (local).</p>"
+            "description": "<p>This is Header 3 (local).</p> "
           },
           {
             "group": "Header",
             "optional": false,
             "field": "Header1",
-            "description": "<p>This is Header 1.</p>"
+            "description": "<p>This is Header 1.</p> "
           },
           {
             "group": "Header",
             "optional": false,
             "field": "header2",
-            "description": "<p>This is Header 2.</p>"
+            "description": "<p>This is Header 2.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/header_structure.js",
+    "groupTitle": "Header",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/header"
       }
-    ],
-    "filename": "test/fixtures/example/header_structure.js"
+    ]
   },
   {
     "type": "get",
@@ -613,13 +662,14 @@ define({ api: [
     "name": "GetLanguageCoffeeScript",
     "group": "Language",
     "version": "0.4.0",
-    "description": "<p>Test for CoffeeScript Comment-Syntax.</p>",
+    "description": "<p>Test for CoffeeScript Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.coffee",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/coffeescript"
       }
-    ],
-    "filename": "test/fixtures/example/language.coffee"
+    ]
   },
   {
     "type": "get",
@@ -631,16 +681,17 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.coffee",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/coffeescript/indented1"
       }
-    ],
-    "filename": "test/fixtures/example/language.coffee"
+    ]
   },
   {
     "type": "get",
@@ -652,16 +703,17 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.coffee",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/coffeescript/indented2"
       }
-    ],
-    "filename": "test/fixtures/example/language.coffee"
+    ]
   },
   {
     "type": "get",
@@ -670,13 +722,14 @@ define({ api: [
     "name": "GetLanguageErlang",
     "group": "Language",
     "version": "0.4.0",
-    "description": "<p>Test for Erlang Comment-Syntax.</p>",
+    "description": "<p>Test for Erlang Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.erl",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/erlang"
       }
-    ],
-    "filename": "test/fixtures/example/language.erl"
+    ]
   },
   {
     "type": "get",
@@ -692,12 +745,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.erl",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/erlang/indented1"
       }
-    ],
-    "filename": "test/fixtures/example/language.erl"
+    ]
   },
   {
     "type": "get",
@@ -709,16 +763,17 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.erl",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/erlang/indented2"
       }
-    ],
-    "filename": "test/fixtures/example/language.erl"
+    ]
   },
   {
     "type": "get",
@@ -727,13 +782,14 @@ define({ api: [
     "name": "GetLanguageJavaScript",
     "group": "Language",
     "version": "0.4.0",
-    "description": "<p>Test for JavaScript Comment-Syntax.</p>",
+    "description": "<p>Test for JavaScript Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.js",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/javascript"
       }
-    ],
-    "filename": "test/fixtures/example/language.js"
+    ]
   },
   {
     "type": "get",
@@ -749,12 +805,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.js",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/javascript/indented1"
       }
-    ],
-    "filename": "test/fixtures/example/language.js"
+    ]
   },
   {
     "type": "get",
@@ -770,12 +827,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.js",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/javascript/indented2"
       }
-    ],
-    "filename": "test/fixtures/example/language.js"
+    ]
   },
   {
     "type": "get",
@@ -784,13 +842,14 @@ define({ api: [
     "name": "GetLanguagePerl",
     "group": "Language",
     "version": "0.4.0",
-    "description": "<p>Test for Perl Comment-Syntax.</p>",
+    "description": "<p>Test for Perl Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.pm",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl"
       }
-    ],
-    "filename": "test/fixtures/example/language.pm"
+    ]
   },
   {
     "type": "get",
@@ -806,12 +865,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.pm",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl/indented1"
       }
-    ],
-    "filename": "test/fixtures/example/language.pm"
+    ]
   },
   {
     "type": "get",
@@ -827,12 +887,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.pm",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl/indented2"
       }
-    ],
-    "filename": "test/fixtures/example/language.pm"
+    ]
   },
   {
     "type": "get",
@@ -848,69 +909,13 @@ define({ api: [
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.pm",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl/podcut"
       }
-    ],
-    "filename": "test/fixtures/example/language.pm"
-  },
-  {
-    "type": "get",
-    "url": "/language/python",
-    "title": "Python",
-    "name": "GetLanguagePython",
-    "group": "Language",
-    "version": "0.4.0",
-    "description": "<p>Test for Python Comment-Syntax.</p>",
-    "sampleRequest": [
-      {
-        "url": "https://api.github.com/v1/language/python"
-      }
-    ],
-    "filename": "test/fixtures/example/language.py"
-  },
-  {
-    "type": "get",
-    "url": "/language/python/indented1",
-    "title": "Python indented 1",
-    "name": "GetLanguagePythonIndented1",
-    "group": "Language",
-    "version": "0.4.0",
-    "examples": [
-      {
-        "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
-        "type": "json"
-      }
-    ],
-    "sampleRequest": [
-      {
-        "url": "https://api.github.com/v1/language/python/indented1"
-      }
-    ],
-    "filename": "test/fixtures/example/language.py"
-  },
-  {
-    "type": "get",
-    "url": "/language/python/indented2",
-    "title": "Python indented 2",
-    "name": "GetLanguagePythonIndented2",
-    "group": "Language",
-    "version": "0.4.0",
-    "examples": [
-      {
-        "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
-        "type": "json"
-      }
-    ],
-    "sampleRequest": [
-      {
-        "url": "https://api.github.com/v1/language/python/indented2"
-      }
-    ],
-    "filename": "test/fixtures/example/language.py"
+    ]
   },
   {
     "type": "get",
@@ -919,13 +924,14 @@ define({ api: [
     "name": "GetLanguageRuby",
     "group": "Language",
     "version": "0.4.0",
-    "description": "<p>Test for Ruby Comment-Syntax.</p>",
+    "description": "<p>Test for Ruby Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.rb",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/ruby"
       }
-    ],
-    "filename": "test/fixtures/example/language.rb"
+    ]
   },
   {
     "type": "get",
@@ -937,16 +943,17 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.rb",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/ruby/indented1"
       }
-    ],
-    "filename": "test/fixtures/example/language.rb"
+    ]
   },
   {
     "type": "get",
@@ -958,16 +965,17 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n  Line 4 indented (with tab at beginning).\n  Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
         "type": "json"
       }
     ],
+    "filename": "test/fixtures/example/language.rb",
+    "groupTitle": "Language",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/ruby/indented2"
       }
-    ],
-    "filename": "test/fixtures/example/language.rb"
+    ]
   },
   {
     "type": "get",
@@ -976,7 +984,7 @@ define({ api: [
     "name": "GetMarkdown",
     "group": "Markdown",
     "version": "0.6.0",
-    "description": "<p>Enable markdown for all description fields.</p><p>This <strong>text</strong> is in a <strong>separate</strong> p.</p><ul><li>List 1</li><li>List 2</li></ul><p>Multiline markdown text, output in one line.</p>",
+    "description": "<p>Enable markdown for all description fields.</p> <p>This <strong>text</strong> is in a <strong>separate</strong> p.</p> <ul> <li>List 1</li> <li>List 2</li> </ul> <p>Multiline markdown text, output in one line.</p> ",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -985,17 +993,18 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "param1",
-            "description": "<p>This is a markdown <strong>apiParam</strong></p><p>Separate line.</p>"
+            "description": "<p>This is a markdown <strong>apiParam</strong></p> <p>Separate line.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/markdown.js",
+    "groupTitle": "Markdown",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/markdown/:id"
       }
-    ],
-    "filename": "test/fixtures/example/markdown.js"
+    ]
   },
   {
     "type": "get",
@@ -1004,7 +1013,7 @@ define({ api: [
     "name": "GetParam",
     "group": "Param",
     "version": "0.1.1",
-    "description": "<p>Parameters and different Versions: 0.1.1</p>",
+    "description": "<p>Parameters and different Versions: 0.1.1</p> ",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1012,7 +1021,7 @@ define({ api: [
             "group": "Parameter",
             "optional": false,
             "field": "param1",
-            "description": "<p>Parameter and description.</p>"
+            "description": "<p>Parameter and description.</p> "
           },
           {
             "group": "Parameter",
@@ -1025,7 +1034,7 @@ define({ api: [
             "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "description": "<p>Parameter, default value and description.</p>"
+            "description": "<p>Parameter, default value and description.</p> "
           },
           {
             "group": "Parameter",
@@ -1037,13 +1046,13 @@ define({ api: [
           {
             "group": "Parameter",
             "optional": true,
-            "field": "param5]",
-            "description": "<p>Optional parameter and description.</p>"
+            "field": "param5",
+            "description": "<p>Optional parameter and description.</p> "
           },
           {
             "group": "Parameter",
             "optional": true,
-            "field": "param6]",
+            "field": "param6",
             "description": ""
           },
           {
@@ -1051,7 +1060,7 @@ define({ api: [
             "optional": true,
             "field": "param7",
             "defaultValue": "Default Value",
-            "description": "<p>Optional parameter, default value and description.</p>"
+            "description": "<p>Optional parameter, default value and description.</p> "
           },
           {
             "group": "Parameter",
@@ -1062,221 +1071,184 @@ define({ api: [
           },
           {
             "group": "Parameter",
+            "type": "String",
             "optional": false,
             "field": "param9",
-            "description": "<p>(4711)                 Parameter, allowed value and description.</p>"
+            "description": "<p>Type, parameter and description.</p> "
           },
           {
             "group": "Parameter",
+            "type": "String",
             "optional": false,
             "field": "param10",
-            "description": "<p>(4711)</p>"
+            "description": ""
           },
           {
             "group": "Parameter",
+            "type": "String",
             "optional": false,
             "field": "param11",
             "defaultValue": "Default Value",
-            "description": "<p>(4711) Parameter, default value, allowed value and description.</p>"
+            "description": "<p>Type, parameter and default value.</p> "
           },
           {
             "group": "Parameter",
+            "type": "String",
             "optional": false,
             "field": "param12",
             "defaultValue": "Default Value",
-            "description": "<p>(4711)</p>"
+            "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "param13",
-            "description": "<p>Type, parameter and description.</p>"
+            "description": "<p>Type, optional parameter and description.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "param14",
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
+            "optional": true,
             "field": "param15",
             "defaultValue": "Default Value",
-            "description": "<p>Type, parameter and default value.</p>"
+            "description": "<p>Type, optional parameter, default value and description.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": false,
-            "field": "param16",
+            "optional": true,
+            "field": "param26",
             "defaultValue": "Default Value",
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
-            "field": "param17]",
-            "description": "<p>Type, optional parameter and description.</p>"
+            "size": "4,8",
+            "optional": false,
+            "field": "param17",
+            "description": "<p>Type, size, parameter and description.</p> "
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "size": "1-3",
+            "optional": false,
+            "field": "param18",
+            "description": "<p>Type, size, parameter and description.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
-            "field": "param18]",
-            "description": ""
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
+            "size": "4,8",
+            "optional": false,
             "field": "param19",
             "defaultValue": "Default Value",
-            "description": "<p>Type, optional parameter, default value and description.</p>"
+            "description": "<p>Type, size, parameter, default value and description.</p> "
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": true,
+            "type": "Number",
+            "size": "1-3",
+            "optional": false,
             "field": "param20",
-            "defaultValue": "Default Value",
-            "description": ""
+            "defaultValue": "1",
+            "description": "<p>Type, size, parameter, default value and description.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
+            "allowedValues": [
+              "\"value 1\""
+            ],
             "optional": false,
             "field": "param21",
-            "description": "<p>(4711)                 Type, parameter, allowed value and description.</p>"
+            "description": "<p>Type, parameter and allowed string value.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
+            "allowedValues": [
+              "\"value 1\"",
+              "\"value 2\""
+            ],
             "optional": false,
             "field": "param22",
-            "description": "<p>(4711)</p>"
+            "description": "<p>Type, parameter and allowed list of string values.</p> "
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
+            "allowedValues": [
+              "4711"
+            ],
             "optional": false,
             "field": "param23",
-            "defaultValue": "Default Value",
-            "description": "<p>(4711) Type, parameter, default value, allowed value and description.</p>"
+            "description": "<p>Type, parameter and allowed value.</p> "
           },
           {
             "group": "Parameter",
-            "type": "String",
+            "type": "Number",
+            "allowedValues": [
+              "4711",
+              "4712"
+            ],
             "optional": false,
             "field": "param24",
-            "defaultValue": "Default Value",
-            "description": "<p>(4711)</p>"
+            "description": "<p>Type, parameter and allowed list of values.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
-            "optional": true,
-            "field": "param25]",
-            "description": "<p>(4711)                 Type, optional parameter, allowed value and description.</p>"
+            "size": "1,10",
+            "allowedValues": [
+              "\"value 1\""
+            ],
+            "optional": false,
+            "field": "param25",
+            "description": "<p>Type, size, parameter and allowed string value.</p> "
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "param26]",
-            "description": "<p>(4711)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
+            "type": "Number",
+            "size": "1-9999",
+            "allowedValues": [
+              "4711"
+            ],
+            "optional": false,
             "field": "param27",
-            "defaultValue": "Default Value",
-            "description": "<p>(4711) Type, optional parameter, default value, allowed value and description.</p>"
+            "description": "<p>Type, size, parameter and allowed value.</p> "
           },
           {
             "group": "Parameter",
-            "type": "String",
-            "optional": true,
+            "type": "Number",
+            "size": "1-9999",
+            "allowedValues": [
+              "4711",
+              "4712"
+            ],
+            "optional": false,
             "field": "param28",
-            "defaultValue": "Default Value",
-            "description": "<p>(4711)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "param29]",
-            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)                 Type, optional parameter, allowed strings and description.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "param30]",
-            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "param31",
-            "defaultValue": "Default Value",
-            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;) Type, optional parameter, default value, allowed strings and description.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": true,
-            "field": "param32",
-            "defaultValue": "Default Value",
-            "description": "<p>(&quot;allowed1&quot;, &quot;allowed2&quot;)</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "param33",
-            "defaultValue": "Default Value",
-            "description": "<p>{4,8} Type, parameter, default value, size and description.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "param34",
-            "defaultValue": "1",
-            "description": "<p>{1-3}               Type, parameter, default value, size and description.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "param35",
-            "defaultValue": "2",
-            "description": "<p>Type, parameter, default value and description.</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "Number",
-            "optional": false,
-            "field": "param36",
-            "defaultValue": "2",
-            "description": ""
+            "description": "<p>Type, size, parameter and allowed list of values.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/param.js",
+    "groupTitle": "Param",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/param/:id"
       }
-    ],
-    "filename": "test/fixtures/example/param.js"
+    ]
   },
   {
     "type": "get",
@@ -1285,7 +1257,7 @@ define({ api: [
     "name": "GetParam",
     "group": "Param",
     "version": "0.1.0",
-    "description": "<p>Parameters and different Versions: 0.1.0</p>",
+    "description": "<p>Parameters and different Versions: 0.1.0</p> ",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1294,14 +1266,14 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "param0",
-            "description": "<p>This param is removed in 0.1.1.</p>"
+            "description": "<p>This param is removed in 0.1.1.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
             "field": "param1",
-            "description": "<p>This is an old text.</p>"
+            "description": "<p>This is an old text.</p> "
           },
           {
             "group": "Parameter",
@@ -1316,7 +1288,7 @@ define({ api: [
             "optional": false,
             "field": "param3",
             "defaultValue": "Default Value",
-            "description": "<p>Parameter with type, description and default value.</p>"
+            "description": "<p>Parameter with type, description and default value.</p> "
           },
           {
             "group": "Parameter",
@@ -1330,7 +1302,7 @@ define({ api: [
             "group": "Parameter",
             "optional": false,
             "field": "param5",
-            "description": "<p>Basic Parameter with description.</p>"
+            "description": "<p>Basic Parameter with description.</p> "
           },
           {
             "group": "Parameter",
@@ -1343,7 +1315,7 @@ define({ api: [
             "optional": false,
             "field": "param7",
             "defaultValue": "Default Value",
-            "description": "<p>Basic Parameter with description and default value.</p>"
+            "description": "<p>Basic Parameter with description and default value.</p> "
           },
           {
             "group": "Parameter",
@@ -1355,13 +1327,13 @@ define({ api: [
           {
             "group": "Parameter",
             "optional": true,
-            "field": "param9]",
-            "description": "<p>Optional basic Parameter with description.</p>"
+            "field": "param9",
+            "description": "<p>Optional basic Parameter with description.</p> "
           },
           {
             "group": "Parameter",
             "optional": true,
-            "field": "param10]",
+            "field": "param10",
             "description": ""
           },
           {
@@ -1369,7 +1341,7 @@ define({ api: [
             "optional": true,
             "field": "param11",
             "defaultValue": "Default Value",
-            "description": "<p>Optional basic Parameter with description and default value.</p>"
+            "description": "<p>Optional basic Parameter with description and default value.</p> "
           },
           {
             "group": "Parameter",
@@ -1382,14 +1354,14 @@ define({ api: [
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "param13]",
-            "description": "<p>Optional Parameter with type and description.</p>"
+            "field": "param13",
+            "description": "<p>Optional Parameter with type and description.</p> "
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": true,
-            "field": "param14]",
+            "field": "param14",
             "description": ""
           },
           {
@@ -1398,7 +1370,7 @@ define({ api: [
             "optional": true,
             "field": "param15",
             "defaultValue": "Default Value",
-            "description": "<p>Optional Parameter with type, description and default value.</p>"
+            "description": "<p>Optional Parameter with type, description and default value.</p> "
           },
           {
             "group": "Parameter",
@@ -1411,12 +1383,13 @@ define({ api: [
         ]
       }
     },
+    "filename": "test/fixtures/example/param.js",
+    "groupTitle": "Param",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/param/:id"
       }
-    ],
-    "filename": "test/fixtures/example/param.js"
+    ]
   },
   {
     "type": "get",
@@ -1425,7 +1398,7 @@ define({ api: [
     "name": "GetParamExample",
     "group": "Param",
     "version": "0.8.0",
-    "description": "<p>Usage of @apiParamExample.</p>",
+    "description": "<p>Usage of @apiParamExample.</p> ",
     "examples": [
       {
         "title": "A common example:",
@@ -1441,7 +1414,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<p>Fullname.</p>"
+            "description": "<p>Fullname.</p> "
           }
         ]
       },
@@ -1453,12 +1426,99 @@ define({ api: [
         }
       ]
     },
+    "filename": "test/fixtures/example/param_example.js",
+    "groupTitle": "Param",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/param/example/"
       }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/param/title/",
+    "title": "Param Title",
+    "name": "GetParamTitle",
+    "group": "Param",
+    "version": "0.8.0",
+    "description": "<p>Usage of @apiParamTitle.</p> ",
+    "parameter": {
+      "fields": {
+        "Parameters only for admin users:": [
+          {
+            "group": "ParamTitleGroupname",
+            "type": "String",
+            "optional": false,
+            "field": "newPassword",
+            "description": "<p>New password.</p> "
+          },
+          {
+            "group": "ParamTitleGroupname",
+            "type": "String",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>Change password of that user.</p> "
+          }
+        ]
+      }
+    },
+    "groupTitle": "Param",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/param/title/"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/permission/",
+    "title": "Permission",
+    "name": "GetPermission",
+    "group": "Permission",
+    "version": "0.8.0",
+    "description": "<p>@apiPermission test.</p> ",
+    "permission": [
+      {
+        "name": "permission_admin",
+        "title": "Admin access.",
+        "description": ""
+      }
     ],
-    "filename": "test/fixtures/example/param_example.js"
+    "filename": "test/fixtures/example/permission.js",
+    "groupTitle": "Permission",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/permission/"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/permission/",
+    "title": "Permission",
+    "name": "GetPermission",
+    "group": "Permission",
+    "version": "0.8.0",
+    "description": "<p>@apiPermission test.</p> ",
+    "permission": [
+      {
+        "name": "permission_admin",
+        "title": "Admin access.",
+        "description": ""
+      },
+      {
+        "name": "permission_user",
+        "title": "User access.",
+        "description": ""
+      }
+    ],
+    "filename": "test/fixtures/example/permission.js",
+    "groupTitle": "Permission",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/permission/"
+      }
+    ]
   },
   {
     "type": "get",
@@ -1467,7 +1527,7 @@ define({ api: [
     "name": "GetSampleRequest",
     "group": "Sample",
     "version": "0.8.0",
-    "description": "<p>Usage of many @apiHeaderTitle with different parameters.</p>",
+    "description": "<p>Usage of many @apiHeaderTitle with different parameters.</p> ",
     "header": {
       "fields": {
         "This are the Header for Group 1:": [
@@ -1476,14 +1536,14 @@ define({ api: [
             "type": "string",
             "optional": false,
             "field": "authorization",
-            "description": "<p>The authorization code.</p>"
+            "description": "<p>The authorization code.</p> "
           },
           {
             "group": "HeaderGroup1",
             "type": "string",
             "optional": false,
             "field": "secrect",
-            "description": "<p>Additional secret.</p>"
+            "description": "<p>Additional secret.</p> "
           }
         ],
         "This are the Header for Group 2:": [
@@ -1492,21 +1552,21 @@ define({ api: [
             "type": "string",
             "optional": false,
             "field": "authorization",
-            "description": "<p>The authorization code.</p>"
+            "description": "<p>The authorization code.</p> "
           },
           {
             "group": "HeaderGroup2",
             "type": "string",
             "optional": false,
             "field": "secrect",
-            "description": "<p>Additional secret.</p>"
+            "description": "<p>Additional secret.</p> "
           },
           {
             "group": "HeaderGroup2",
             "type": "string",
             "optional": false,
             "field": "type",
-            "description": "<p>Content-Type.</p>"
+            "description": "<p>Content-Type.</p> "
           }
         ]
       }
@@ -1519,7 +1579,7 @@ define({ api: [
             "type": "String",
             "optional": false,
             "field": "name",
-            "description": "<p>Your name.</p>"
+            "description": "<p>Your name.</p> "
           }
         ],
         "This are Parameter for Group 2:": [
@@ -1528,24 +1588,24 @@ define({ api: [
             "type": "string",
             "optional": false,
             "field": "firstname",
-            "description": "<p>Your firstname.</p>"
+            "description": "<p>Your firstname.</p> "
           },
           {
             "group": "ParameterGroup2",
             "type": "string",
             "optional": false,
             "field": "lastname",
-            "description": "<p>Some lastname.</p>"
+            "description": "<p>Some lastname.</p> "
           }
         ]
       }
     },
+    "groupTitle": "Sample",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/sample/request/"
       }
-    ],
-    "filename": "test/fixtures/example/sample_request.js"
+    ]
   },
   {
     "type": "post",
@@ -1554,7 +1614,7 @@ define({ api: [
     "name": "PostStructure",
     "group": "Structure",
     "version": "0.1.0",
-    "description": "<p>Use of multiple Structures.</p>",
+    "description": "<p>Use of multiple Structures.</p> ",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -1562,29 +1622,30 @@ define({ api: [
             "group": "Parameter",
             "optional": false,
             "field": "field3",
-            "description": "<p>This is Field 3 (local).</p>"
+            "description": "<p>This is Field 3 (local).</p> "
           },
           {
             "group": "Parameter",
             "optional": false,
             "field": "field1",
-            "description": "<p>This is Field 1.</p>"
+            "description": "<p>This is Field 1.</p> "
           },
           {
             "group": "Parameter",
             "optional": false,
             "field": "field2",
-            "description": "<p>This is Field 2.</p>"
+            "description": "<p>This is Field 2.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/structure.js",
+    "groupTitle": "Structure",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/structure"
       }
-    ],
-    "filename": "test/fixtures/example/structure.js"
+    ]
   },
   {
     "type": "post",
@@ -1593,7 +1654,7 @@ define({ api: [
     "name": "PostSuccess",
     "group": "Success",
     "version": "0.1.0",
-    "description": "<p>Use of multiple SuccessStructures.</p>",
+    "description": "<p>Use of multiple SuccessStructures.</p> ",
     "success": {
       "fields": {
         "Success 200": [
@@ -1601,199 +1662,29 @@ define({ api: [
             "group": "Success 200",
             "optional": false,
             "field": "success3",
-            "description": "<p>This is Success 3 (local).</p>"
+            "description": "<p>This is Success 3 (local).</p> "
           },
           {
             "group": "Success 200",
             "optional": false,
             "field": "success1",
-            "description": "<p>This is Success 1.</p>"
+            "description": "<p>This is Success 1.</p> "
           },
           {
             "group": "Success 200",
             "optional": false,
             "field": "success2",
-            "description": "<p>This is Success 2.</p>"
+            "description": "<p>This is Success 2.</p> "
           }
         ]
       }
     },
+    "filename": "test/fixtures/example/success_structure.js",
+    "groupTitle": "Success",
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/test/success"
       }
-    ],
-    "filename": "test/fixtures/example/success_structure.js"
-  },
-  {
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "error1Error",
-            "description": "<p>This is Error 1.</p>"
-          }
-        ]
-      }
-    },
-    "group": "error_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/error_structure.js"
-  },
-  {
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "error2Error",
-            "description": "<p>This is Error 2.</p>"
-          }
-        ]
-      }
-    },
-    "group": "error_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/error_structure.js"
-  },
-  {
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "header2",
-            "description": "<p>This is Header 2.</p>"
-          }
-        ]
-      }
-    },
-    "group": "header_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/header_structure.js"
-  },
-  {
-    "header": {
-      "fields": {
-        "Header": [
-          {
-            "group": "Header",
-            "optional": false,
-            "field": "Header1",
-            "description": "<p>This is Header 1.</p>"
-          }
-        ]
-      }
-    },
-    "group": "header_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/header_structure.js"
-  },
-  {
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "field1",
-            "description": "<p>This is Field 1.</p>"
-          }
-        ]
-      }
-    },
-    "group": "structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/structure.js"
-  },
-  {
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "optional": false,
-            "field": "field2",
-            "description": "<p>This is Field 2.</p>"
-          }
-        ]
-      }
-    },
-    "group": "structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/structure.js"
-  },
-  {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "success1",
-            "description": "<p>This is Success 1.</p>"
-          }
-        ]
-      }
-    },
-    "group": "success_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/success_structure.js"
-  },
-  {
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "optional": false,
-            "field": "success2",
-            "description": "<p>This is Success 2.</p>"
-          }
-        ]
-      }
-    },
-    "group": "success_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/success_structure.js"
-  },
-  {
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "error1Error",
-            "description": "<p>This is Error 1.</p>"
-          }
-        ]
-      }
-    },
-    "group": "title_and_structure_js",
-    "type": "",
-    "url": "",
-    "version": "0.0.0",
-    "filename": "test/fixtures/example/title_and_structure.js"
+    ]
   }
 ] });

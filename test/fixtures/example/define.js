@@ -6,6 +6,13 @@
  */
 
 /**
+ * @apiDefine Structure2 title
+ * Some description.
+ *
+ * @apiParam field2 This is Field 2.
+ */
+
+/**
  * @api {get} /define Define
  * @apiName GetDefine
  * @apiGroup Define
@@ -13,6 +20,7 @@
  * @apiDescription Example of @apiDefine and @apiUse
  *
  * @apiUse Structure1
+ * @apiUse Structure2
  *
- * @apiParam field2 This is Field 2 (local).
+ * @apiParam field3 This is Field 3 (local).
  */

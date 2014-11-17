@@ -3,6 +3,6 @@
  * @apiName GetGroup
  * @apiGroup Group
  * @apiGroupDescription This is a Group Description.
- * Mulitline capable.
+ * Markdown capable.
  * @apiVersion 0.5.0
  */

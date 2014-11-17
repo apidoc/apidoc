@@ -32,8 +32,12 @@ describe('apiDoc full example', function() {
     // create
     it('case 1: should create example in tmp/', function(done) {
         exec('node ./bin/apidoc -i test/fixtures/example/ -o tmp/ -t test/template/ --silent', function(err, stdout, stderr) {
-            if (err) throw err;
-            if (stderr) throw stderr;
+            if (err)
+                throw err;
+
+            if (stderr)
+                throw stderr;
+
             done();
         });
     });
