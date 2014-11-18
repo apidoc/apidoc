@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+#### 0.8.1
+
+* Bugfix: Python regex doublequote. (https://github.com/apidoc/apidoc/issues/151)
+* Bugfix: Issue with multiple apiSuccessExample blocks. (https://github.com/apidoc/apidoc/issues/150)
+
 
 #### 0.8.0
 
