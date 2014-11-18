@@ -42,7 +42,7 @@ This is example line 6.
 @apiExample Test for indented comment.
 This is example line 2.
 This is example line 3.
-      Line 4 indented (with tab at beginning).
+        Line 4 indented (with tab at beginning).
     Line 5 indented.
 This is example line 6.
 =cut

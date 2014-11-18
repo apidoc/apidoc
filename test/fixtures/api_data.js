@@ -681,7 +681,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -703,7 +703,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -905,7 +905,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n      Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n        Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -914,6 +914,66 @@ define({ api: [
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl/podcut"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python",
+    "title": "Python",
+    "name": "GetLanguagePython",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "<p>Test for Python Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented1",
+    "title": "Python indented 1",
+    "name": "GetLanguagePythonIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
+        "type": "json"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented1"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented2",
+    "title": "Python indented 2",
+    "name": "GetLanguagePythonIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
+        "type": "json"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented2"
       }
     ]
   },
@@ -943,7 +1003,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -965,7 +1025,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
