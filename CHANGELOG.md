@@ -1,5 +1,12 @@
 # apiDoc Changelog
 
+#### 0.8.2
+
+* Bugfix: apiGroupDescription from apiDefine not working. (https://github.com/apidoc/apidoc/issues/156)
+* Bugfix: remove deprecated message for apiPermission. (https://github.com/apidoc/apidoc/issues/154)
+* Bugfix: Testclient did not send JSON format. (https://github.com/apidoc/apidoc/issues/152)
+
+
 #### 0.8.1
 
 * Bugfix: Python regex doublequote. (https://github.com/apidoc/apidoc/issues/151)
