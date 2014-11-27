@@ -130,11 +130,13 @@ require([
      * Group- and Versionlists.
      */
     var apiGroups = {};
+    var apiGroupTitles = {};
     var apiVersions = {};
     apiVersions[apiProject.version] = 1;
 
     $.each(api, function(index, entry) {
         apiGroups[entry.group] = 1;
+        apiGroupTitles[entry.group] = entry.groupTitle || entry.group;
         apiVersions[entry.version] = 1;
     });
 
@@ -155,16 +157,14 @@ require([
         nav.push({
             group: group,
             isHeader: true,
-            title: group
+            title: apiGroupTitles[group]
         });
 
         // Add Submenu.
         var oldName = '';
         api.forEach(function(entry) {
-            if(entry.group === group)
-            {
-                if(oldName !== entry.name)
-                {
+            if (entry.group === group) {
+                if (oldName !== entry.name) {
                     nav.push({
                         title: entry.title,
                         group: group,
@@ -172,9 +172,7 @@ require([
                         type: entry.type,
                         version: entry.version
                     });
-                }
-                else
-                {
+                } else {
                     nav.push({
                         title: entry.title,
                         group: group,
