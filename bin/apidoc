@@ -50,6 +50,9 @@ var argv = optimist
     .option('simulate', { boolean: true, 'default': false, describe: 'Execute but not write any file.' })
 
     // markdown settings
+    .option('marked-config',         { 'default': '',
+            describe: 'Enable custom markdown parser configs. It will overwite all other marked settings.' })
+
     .option('marked-gfm',         { boolean: true, 'default': true,
             describe: 'Enable GitHub flavored markdown.' })
 
@@ -103,6 +106,28 @@ function transformToObject(filters) {
     return result;
 }
 
+/**
+ * Sets configuration for markdown
+ *
+ * @param {Array} argv
+ * @returns {Object}
+ */
+function resolveMarkdownOptions(argv) {
+  if (argv['marked-config']) {
+    return require(path.resolve(argv['marked-config']));
+  } else {
+    return {
+      gfm:         argv['marked-gfm'],
+      tables:      argv['marked-tables'],
+      breaks:      argv['marked-breaks'],
+      pedantic:    argv['marked-pedantic'],
+      sanitize:    argv['marked-sanitize'],
+      smartLists:  argv['marked-smartLists'],
+      smartypants: argv['marked-smartypants']
+    };
+  }
+}
+
 var defaults = {
     excludeFilters: argv['exclude-filters'],
     includeFilters: argv['file-filters'],
@@ -117,15 +142,7 @@ var defaults = {
     workers:        transformToObject(argv['parse-workers']),
     silent:         argv['silent'],
     simulate:       argv['simulate'],
-    marked: {
-        gfm:         argv['marked-gfm'],
-        tables:      argv['marked-tables'],
-        breaks:      argv['marked-breaks'],
-        pedantic:    argv['marked-pedantic'],
-        sanitize:    argv['marked-sanitize'],
-        smartLists:  argv['marked-smartLists'],
-        smartypants: argv['marked-smartypants']
-    }
+    marked:         resolveMarkdownOptions(argv)
 };
 
 try {
