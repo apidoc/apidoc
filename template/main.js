@@ -46,7 +46,7 @@ require([
     'pathToRegexp'
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
 
-    // Load google web fonts.
+    // load google web fonts
     loadGoogleFontCss();
 
     var api = apiData.api;
@@ -81,13 +81,12 @@ require([
     //
     // Data transform
     //
-
-    // Grouped by group
+    // grouped by group
     var apiByGroup = _.groupBy(api, function(entry) {
         return entry.group;
     });
 
-    // Grouped by group and name
+    // grouped by group and name
     var apiByGroupAndName = {};
     $.each(apiByGroup, function(index, entries) {
         apiByGroupAndName[index] = _.groupBy(entries, function(entry) {
@@ -157,7 +156,7 @@ require([
     apiVersions.reverse();
 
     //
-    // Create Navigationlist
+    // create Navigationlist
     //
     var nav = [];
     apiGroups.forEach(function(group) {
@@ -246,6 +245,7 @@ require([
     // Render Sections and Articles
     //
     var articleVersions = {};
+    var content = '';
     apiGroups.forEach(function(groupEntry) {
         var articles = [];
         var oldName = '';
@@ -254,7 +254,7 @@ require([
         var description = '';
         articleVersions[groupEntry] = {};
 
-        // render all Articls of a group
+        // render all articles of a group
         api.forEach(function(entry) {
             if(groupEntry === entry.group) {
                 if (oldName !== entry.name) {
@@ -271,9 +271,7 @@ require([
                         article: entry,
                         versions: articleVersions[entry.group][entry.name]
                     };
-                }
-                else
-                {
+                } else {
                     fields = {
                         article: entry,
                         hidden: true,
@@ -310,8 +308,9 @@ require([
             description: description,
             articles: articles
         };
-        $('#sections').append( templateSections(fields) );
+        content += templateSections(fields);
     });
+    $('#sections').append( content );
 
     // Bootstrap Scrollspy
     var $scrollSpy = $(this).scrollspy({ target: '#scrollingNav', offset: 25 });

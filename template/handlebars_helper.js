@@ -3,6 +3,21 @@ define([
     'handlebars',
     'diffMatchPatch'
 ], function(locale, Handlebars, DiffMatchPatch) {
+
+    /**
+     * start/stop timer for simple performance check.
+     */
+    var timer;
+    Handlebars.registerHelper('startTimer', function(text) {
+        timer = new Date();
+        return '';
+    });
+
+    Handlebars.registerHelper('stopTimer', function(text) {
+        console.log(new Date() - timer);
+        return '';
+    });
+
     /**
      * Return localized Text.
      * @param string text
@@ -81,8 +96,12 @@ define([
     /**
      *
      */
+    var templateCache = {};
     Handlebars.registerHelper('subTemplate', function(name, sourceContext) {
-        var template = Handlebars.compile($('#template-' + name).html());
+        if ( ! templateCache[name])
+            templateCache[name] = Handlebars.compile($('#template-' + name).html());
+
+        var template = templateCache[name];
         var templateContext = $.extend({}, this, sourceContext.hash);
         return new Handlebars.SafeString( template(templateContext) );
     });
