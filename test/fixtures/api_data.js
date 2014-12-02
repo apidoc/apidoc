@@ -1,4 +1,4 @@
-define({ api: [
+define({ "api": [
   {
     "type": "get",
     "url": "/define",
@@ -135,7 +135,7 @@ define({ api: [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "   curl -i http://localhost/escape/text\n   <b>curl -i http://localhost/escape/html</b>\n   <xml>curl -i http://localhost/escape/xml</xml>\n",
+        "content": "    curl -i http://localhost/escape/text\n    <b>curl -i http://localhost/escape/html</b>\n    <xml>curl -i http://localhost/escape/xml</xml>",
         "type": "json"
       }
     ],
@@ -143,7 +143,7 @@ define({ api: [
       "examples": [
         {
           "title": "Example Response",
-          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value',\n field_html: '<b>html-value</b>',\n field_xml: '<xml>xml-value</xml>'\n}\n",
+          "content": "HTTP/1.1 200 OK {\n  field_text: 'text-value',\n  field_html: '<b>html-value</b>',\n  field_xml: '<xml>xml-value</xml>'\n}",
           "type": "json"
         }
       ]
@@ -167,7 +167,7 @@ define({ api: [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "   curl -i http://localhost/escape/text-old\n   <b>curl -i http://localhost/escape/html-old</b>\n   <xml>curl -i http://localhost/escape/xml-old</xml>\n",
+        "content": "    curl -i http://localhost/escape/text-old\n    <b>curl -i http://localhost/escape/html-old</b>\n    <xml>curl -i http://localhost/escape/xml-old</xml>",
         "type": "json"
       }
     ],
@@ -175,7 +175,7 @@ define({ api: [
       "examples": [
         {
           "title": "Example Response",
-          "content": "HTTP/1.1 200 OK {\n field_text: 'text-value old',\n field_html: '<b>html-value old</b>',\n field_xml: '<xml>xml-value old</xml>'\n}\n",
+          "content": "HTTP/1.1 200 OK {\n  field_text: 'text-value old',\n  field_html: '<b>html-value old</b>',\n  field_xml: '<xml>xml-value old</xml>'\n}",
           "type": "json"
         }
       ]
@@ -199,12 +199,12 @@ define({ api: [
     "examples": [
       {
         "title": "PHP Example (new)",
-        "content": "echo 'This is the content. (new)';\n",
+        "content": "echo 'This is the content. (new)';",
         "type": "PHP"
       },
       {
         "title": "JS Example",
-        "content": "console.log('This is the content.');\n",
+        "content": "console.log('This is the content.');",
         "type": "JS"
       }
     ],
@@ -212,12 +212,12 @@ define({ api: [
       "examples": [
         {
           "title": "PHP Success Example (new)",
-          "content": "echo 'This is the success content. (new)';\n",
+          "content": "echo 'This is the success content. (new)';",
           "type": "PHP"
         },
         {
           "title": "JS Success Example",
-          "content": "console.log('This is the success content.');\n",
+          "content": "console.log('This is the success content.');",
           "type": "JS"
         }
       ]
@@ -226,12 +226,12 @@ define({ api: [
       "examples": [
         {
           "title": "PHP Error Example",
-          "content": "echo 'This is the error content.';\n",
+          "content": "echo 'This is the error content.';",
           "type": "PHP"
         },
         {
           "title": "JS Error Example",
-          "content": "console.log('This is the error content.');\n",
+          "content": "console.log('This is the error content.');",
           "type": "JS"
         }
       ]
@@ -255,12 +255,12 @@ define({ api: [
     "examples": [
       {
         "title": "PHP Example",
-        "content": "echo 'This is the content.';\n",
+        "content": "echo 'This is the content.';",
         "type": "PHP"
       },
       {
         "title": "JS Example (removed)",
-        "content": "console.log('This is the content. (removed)');\n",
+        "content": "console.log('This is the content. (removed)');",
         "type": "JS"
       }
     ],
@@ -268,12 +268,12 @@ define({ api: [
       "examples": [
         {
           "title": "PHP Success Example",
-          "content": "echo 'This is the success content.';\n",
+          "content": "echo 'This is the success content.';",
           "type": "PHP"
         },
         {
           "title": "JS Success Example",
-          "content": "console.log('This is the success content.');\n",
+          "content": "console.log('This is the success content.');",
           "type": "JS"
         }
       ]
@@ -282,12 +282,12 @@ define({ api: [
       "examples": [
         {
           "title": "PHP Error Example (removed)",
-          "content": "echo 'This is the error content. (removed)';\n",
+          "content": "echo 'This is the error content. (removed)';",
           "type": "PHP"
         },
         {
           "title": "JS Error Example",
-          "content": "console.log('This is the error content.');\n",
+          "content": "console.log('This is the error content.');",
           "type": "JS"
         }
       ]
@@ -568,7 +568,7 @@ define({ api: [
       "examples": [
         {
           "title": "An example:",
-          "content": "   curl -i http://localhost/header/example/\n",
+          "content": "    curl -i http://localhost/header/example/",
           "type": "json"
         }
       ]
@@ -681,7 +681,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -703,7 +703,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -741,7 +741,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.\n",
+        "content": "\tThis is example line 2.\n\tThis is example line 3.\n\t\t    Line 4 indented (with tab at beginning).\n\t    Line 5 indented.\n\tThis is example line 6.",
         "type": "json"
       }
     ],
@@ -763,7 +763,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -801,7 +801,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -823,7 +823,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -861,7 +861,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n\tLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n\t\tLine 4 indented (with tab at beginning).\n\tLine 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -883,7 +883,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -905,7 +905,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\n     Line 4 indented (with tab at beginning).\n   Line 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n        Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -914,6 +914,66 @@ define({ api: [
     "sampleRequest": [
       {
         "url": "https://api.github.com/v1/language/perl/podcut"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python",
+    "title": "Python",
+    "name": "GetLanguagePython",
+    "group": "Language",
+    "version": "0.4.0",
+    "description": "<p>Test for Python Comment-Syntax.</p> ",
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented1",
+    "title": "Python indented 1",
+    "name": "GetLanguagePythonIndented1",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
+        "type": "json"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented1"
+      }
+    ]
+  },
+  {
+    "type": "get",
+    "url": "/language/python/indented2",
+    "title": "Python indented 2",
+    "name": "GetLanguagePythonIndented2",
+    "group": "Language",
+    "version": "0.4.0",
+    "examples": [
+      {
+        "title": "Test for indented comment.",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
+        "type": "json"
+      }
+    ],
+    "filename": "test/fixtures/example/language.py",
+    "groupTitle": "Language",
+    "sampleRequest": [
+      {
+        "url": "https://api.github.com/v1/language/python/indented2"
       }
     ]
   },
@@ -943,7 +1003,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -965,7 +1025,7 @@ define({ api: [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "This is example line 2.\nThis is example line 3.\nLine 4 indented (with tab at beginning).\nLine 5 indented.\nThis is example line 6.\n",
+        "content": "This is example line 2.\nThis is example line 3.\n    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -1402,7 +1462,7 @@ define({ api: [
     "examples": [
       {
         "title": "A common example:",
-        "content": "   curl -i http://localhost/param/example/\n",
+        "content": "    curl -i http://localhost/param/example/",
         "type": "json"
       }
     ],
@@ -1421,7 +1481,7 @@ define({ api: [
       "examples": [
         {
           "title": "A JSON example:",
-          "content": "   {\n     \"name\": \"John Doe\"\n   }\n",
+          "content": "    {\n      \"name\": \"John Doe\"\n    }",
           "type": "json"
         }
       ]

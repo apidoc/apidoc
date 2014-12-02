@@ -2,6 +2,9 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Buts Johan](https://github.com/butsjoh)
+  * Allow to include an external file which can set the markdown settings. [#166] (https://github.com/apidoc/apidoc/pull/166))
+
 * [Peter Wong](https://github.com/peterwongpp)
   * Hide the ul for tabs if no content [#142] (https://github.com/apidoc/apidoc/pull/142))
 

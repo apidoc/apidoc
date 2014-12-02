@@ -12,9 +12,16 @@ define({
     "title": "My own footer title",
     "content": "<h1 id=\"footer-md-file\">Footer .md File</h1>\n<p>Content of footer.md file.</p>\n"
   },
+  "order": [
+    "Error",
+    "Define",
+    "PostTitleAndError",
+    "NotExistingEntry",
+    "PostError"
+  ],
   "generator": {
-    "version": "0.8.0",
-    "time": "2014-11-17T17:12:45.480Z"
+    "version": "0.8.2",
+    "time": "2014-11-28T14:02:36.750Z"
   },
   "apidoc": "0.2.0"
 });

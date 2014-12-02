@@ -11,5 +11,12 @@
   "footer": {
     "title": "My own footer title",
     "filename": "footer.md"
-  }
+  },
+  "order": [
+    "Error",
+    "Define",
+    "PostTitleAndError",
+    "NotExistingEntry",
+    "PostError"
+  ]
 }
