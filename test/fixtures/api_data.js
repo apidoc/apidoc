@@ -135,7 +135,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "    curl -i http://localhost/escape/text\n    <b>curl -i http://localhost/escape/html</b>\n    <xml>curl -i http://localhost/escape/xml</xml>",
+        "content": "curl -i http://localhost/escape/text\n<b>curl -i http://localhost/escape/html</b>\n<xml>curl -i http://localhost/escape/xml</xml>",
         "type": "json"
       }
     ],
@@ -167,7 +167,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Example usage:",
-        "content": "    curl -i http://localhost/escape/text-old\n    <b>curl -i http://localhost/escape/html-old</b>\n    <xml>curl -i http://localhost/escape/xml-old</xml>",
+        "content": "curl -i http://localhost/escape/text-old\n<b>curl -i http://localhost/escape/html-old</b>\n<xml>curl -i http://localhost/escape/xml-old</xml>",
         "type": "json"
       }
     ],
@@ -568,7 +568,7 @@ define({ "api": [
       "examples": [
         {
           "title": "An example:",
-          "content": "    curl -i http://localhost/header/example/",
+          "content": "curl -i http://localhost/header/example/",
           "type": "json"
         }
       ]
@@ -741,7 +741,7 @@ define({ "api": [
     "examples": [
       {
         "title": "Test for indented comment.",
-        "content": "\tThis is example line 2.\n\tThis is example line 3.\n\t\t    Line 4 indented (with tab at beginning).\n\t    Line 5 indented.\n\tThis is example line 6.",
+        "content": "This is example line 2.\nThis is example line 3.\n\t    Line 4 indented (with tab at beginning).\n    Line 5 indented.\nThis is example line 6.",
         "type": "json"
       }
     ],
@@ -1462,7 +1462,7 @@ define({ "api": [
     "examples": [
       {
         "title": "A common example:",
-        "content": "    curl -i http://localhost/param/example/",
+        "content": "curl -i http://localhost/param/example/",
         "type": "json"
       }
     ],
@@ -1481,7 +1481,7 @@ define({ "api": [
       "examples": [
         {
           "title": "A JSON example:",
-          "content": "    {\n      \"name\": \"John Doe\"\n    }",
+          "content": "{\n  \"name\": \"John Doe\"\n}",
           "type": "json"
         }
       ]
