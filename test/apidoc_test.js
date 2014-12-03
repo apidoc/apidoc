@@ -70,11 +70,11 @@ describe('apiDoc full example', function() {
             var createdLines = createdContent.split(/\r\n/);
 
             if (fixtureLines.length !== createdLines.length)
-                throw new Error('File ./tmp/' + name + ' not equals to test/fixutres/' + name);
+                throw new Error('File ./tmp/' + name + ' not equals to test/fixtures/' + name);
 
             for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
                 if (fixtureLines[lineNumber] !== createdLines[lineNumber])
-                    throw new Error('File ./tmp/' + name + ' not equals to test/fixutres/' + name + ' in line ' + (lineNumber + 1));
+                    throw new Error('File ./tmp/' + name + ' not equals to test/fixtures/' + name + ' in line ' + (lineNumber + 1));
             }
         });
         done();
