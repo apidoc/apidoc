@@ -280,8 +280,12 @@ require([
                 }
 
                 // add prefix URL for endpoint
-                if (apiProject.url)
+                if (fields.article.url == '-') {
+                    delete fields.article.url;
+                }else if (apiProject.url){
                     fields.article.url = apiProject.url + fields.article.url;
+                }
+
 
                 addArticleSettings(fields, entry);
 
