@@ -2,8 +2,14 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Eugene Jo](https://github.com/iameugenejo)
+  * Allowed options.packageInfo to overwrite default packageInfo [#177] (https://github.com/apidoc/apidoc/pull/171))
+
+* [Sai Gunturi](https://github.com/sgunturi)
+  * Fix bug where name in package.json apidoc property is overridden [#171] (https://github.com/apidoc/apidoc/pull/171))
+
 * [Buts Johan](https://github.com/butsjoh)
-  * Allow to include an external file which can set the markdown settings. [#166] (https://github.com/apidoc/apidoc/pull/166))
+  * Allow to include an external file which can set the markdown settings [#166] (https://github.com/apidoc/apidoc/pull/166))
 
 * [Peter Wong](https://github.com/peterwongpp)
   * Hide the ul for tabs if no content [#142] (https://github.com/apidoc/apidoc/pull/142))

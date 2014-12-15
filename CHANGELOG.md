@@ -1,5 +1,16 @@
 # apiDoc Changelog
 
+#### 0.9.1
+
+* Parser
+  * Allow overwrite of packageInfo e.g. from grunt task (https://github.com/apidoc/apidoc/pull/177)
+
+* Bugfix: Extend parser regexp to allow inline comment-code (https://github.com/apidoc/apidoc/pull/180)
+* Bugfix: Slash only path in api triggered error (https://github.com/apidoc/apidoc/pull/159)
+* Bugfix: Scrollspy offset (https://github.com/apidoc/apidoc/pull/176)
+* Bugfix: Get package infos from package.json or apidoc.json (https://github.com/apidoc/apidoc/pull/169)
+
+
 #### 0.9.0
 
 * CLI
