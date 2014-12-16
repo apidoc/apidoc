@@ -110,6 +110,12 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 
 
+## Editor integration
+
+* [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
+* [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
+
+
 ## Help
 
 Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
