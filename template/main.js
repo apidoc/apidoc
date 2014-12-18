@@ -3,7 +3,7 @@ require.config({
         bootstrap: './vendor/bootstrap.min',
         diffMatchPatch: './vendor/diff_match_patch.min',
         handlebars: './vendor/handlebars.min',
-        handlebarsExtended: './handlebars_helper',
+        handlebarsExtended: './utils/handlebars_helper',
         jquery: './vendor/jquery.min',
         locales: './locales/locale',
         lodash: './vendor/lodash.min',

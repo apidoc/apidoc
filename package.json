@@ -1,25 +1,26 @@
 {
   "name": "apidoc",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/apidoc/apidoc/blob/master/LICENSE"
+  },
   "preferGlobal": true,
+  "bin": "bin/apidoc",
+  "main": "./lib/index.js",
   "homepage": "http://apidocjs.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/apidoc/apidoc.git"
   },
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/apidoc/apidoc/blob/master/LICENSE.md"
-  },
   "bugs": {
     "url": "https://github.com/apidoc/apidoc/issues"
   },
-  "main": "./lib/apidoc",
-  "bin": "bin/apidoc",
   "scripts": {
-    "test": "grunt test"
+    "test": "npm run jshint && mocha test/",
+    "jshint": "jshint lib/ test/ --exclude test/fixtures/"
   },
   "keywords": [
     "api",
@@ -33,19 +34,37 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "colors": "~1.0.3",
+    "apidoc-core": "~0.2.1",
     "fs-extra": "~0.13.0",
     "lodash": "~2.4.1",
     "marked": "~0.3.2",
-    "optimist": "~0.6.1",
-    "semver": "~4.1.0",
-    "wrench": "~1.5.8"
+    "nomnom": "~1.8.1",
+    "winston": "~0.8.3"
   },
   "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-clean": "~0.6.0",
-    "grunt-contrib-jshint": "~0.10.0",
-    "grunt-simple-mocha": "~0.4.0",
+    "apidoc-example": "*",
+    "jshint": "^2.5.10",
+    "mocha": "~2.0.1",
+    "semver": "^4.1.0",
     "should": "~4.2.1"
+  },
+  "jshintConfig": {
+    "camelcase": true,
+    "curly": false,
+    "eqeqeq": true,
+    "forin": true,
+    "latedef": false,
+    "newcap": true,
+    "undef": true,
+    "unused": true,
+    "trailing": true,
+    "node": true,
+    "browser": true,
+    "predef": [
+      "it",
+      "describe",
+      "before",
+      "after"
+    ]
   }
 }

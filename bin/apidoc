@@ -11,76 +11,72 @@
  * Licensed under the MIT license.
  */
 
-var path = require('path');
-var optimist = require('optimist');
+var path   = require('path');
+var nomnom = require('nomnom');
+var apidoc = require('../lib/index');
 
-var argv = optimist
-    .usage('Usage: $0 [options]')
+var argv = nomnom
+    .option('file-filters', { abbr: 'f', 'default': '.*\\.(coffee|cs|dart|erl|go|java|js|php?|py|rb|ts|pm)$',
+            help: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
 
-    .option('f', { alias: 'file-filters', 'default': '.*\\.(coffee|cs|dart|erl|go|java|js|php?|py|rb|ts|pm)$',
-            describe: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
+    .option('exclude-filters', { abbr: 'e', 'default': '',
+            help: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
 
-    .option('e', { alias: 'exclude-filters', 'default': '',
-            describe: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
+    .option('input', { abbr: 'i', 'default': './', help: 'Input / source dirname.' })
 
-    .option('i', { alias: 'input', 'default': './', describe: 'Input / source dirname.' })
+    .option('output', { abbr: 'o', 'default': './doc/', help: 'Output dirname.' })
 
-    .option('o', { alias: 'output', 'default': './doc/', describe: 'Output dirname.' })
+    .option('template', { abbr: 't', 'default': path.join(__dirname, '../template/'),
+            help: 'Use template for output files.' })
 
-    .option('t', { alias: 'template', 'default': path.join(__dirname, '../template/'),
-            describe: 'Use template for output files.' })
+    .option('verbose', { abbr: 'v', flag: true, 'default': false, help: 'Verbose debug output.' })
 
-    .option('v', { alias: 'verbose', boolean: true, 'default': false, describe: 'Verbose debug output.' })
+    .option('help', { abbr: 'h', flag: true, help: 'Show this help information.' })
 
-    .option('h', { alias: 'help', boolean: true, describe: 'Show this help information.' })
+    .option('debug', { flag: true, 'default': false, help: 'Show debug messages.' })
 
-    .option('debug', { boolean: true, 'default': false, describe: 'Show debug messages.' })
+    .option('color', { flag: true, 'default': true, help: 'Turn off log color.' })
 
-    .option('no-color', { boolean: true, 'default': false, describe: 'Turn off log color.' })
+    .option('parse', { flag: true, 'default': false,
+            help: 'Parse only the files and return the data, no file creation.' })
 
-    .option('parse', { boolean: true, 'default': false,
-            describe: 'Parse only the files and return the data, no file creation.' })
+    .option('parse-filters', { help: 'Optional user defined filters. Format name=filename' })
+    .option('parse-parsers', { help: 'Optional user defined parsers. Format name=filename' })
+    .option('parse-workers', { help: 'Optional user defined workers. Format name=filename' })
 
-    .option('parse-filters', { describe: 'Optional user defined filters. Format name=filename' })
-    .option('parse-parsers', { describe: 'Optional user defined parsers. Format name=filename' })
-    .option('parse-workers', { describe: 'Optional user defined workers. Format name=filename' })
+    .option('silent', { flag: true, 'default': false, help: 'Turn all output off.' })
 
-    .option('silent', { boolean: true, 'default': false, describe: 'Turn all output off.' })
-
-    .option('simulate', { boolean: true, 'default': false, describe: 'Execute but not write any file.' })
+    .option('simulate', { flag: true, 'default': false, help: 'Execute but not write any file.' })
 
     // markdown settings
+    .option('markdown', { flag: true, 'default': true, help: 'Turn off markdown parser.' })
+
     .option('marked-config',      { 'default': '',
-            describe: 'Enable custom markdown parser configs. It will overwite all other marked settings.' })
+            help: 'Enable custom markdown parser configs. It will overwite all other marked settings.' })
 
-    .option('marked-gfm',         { boolean: true, 'default': true,
-            describe: 'Enable GitHub flavored markdown.' })
+    .option('marked-gfm',         { flag: true, 'default': true,
+            help: 'Enable GitHub flavored markdown.' })
 
-    .option('marked-tables',      { boolean: true, 'default': true,
-            describe: 'Enable GFM tables. This option requires the gfm option to be true.' })
+    .option('marked-tables',      { flag: true, 'default': true,
+            help: 'Enable GFM tables. This option requires the gfm option to be true.' })
 
-    .option('marked-breaks',      { boolean: true, 'default': false,
-            describe: 'Enable GFM line breaks. This option requires the gfm option to be true.' })
+    .option('marked-breaks',      { flag: true, 'default': false,
+            help: 'Enable GFM line breaks. This option requires the gfm option to be true.' })
 
-    .option('marked-pedantic',    { boolean: true, 'default': false,
-            describe: 'Conform to obscure parts of markdown.pl as much as possible.' })
+    .option('marked-pedantic',    { flag: true, 'default': false,
+            help: 'Conform to obscure parts of markdown.pl as much as possible.' })
 
-    .option('marked-sanitize',    { boolean: true, 'default': false,
-            describe: 'Sanitize the output. Ignore any HTML that has been input.' })
+    .option('marked-sanitize',    { flag: true, 'default': false,
+            help: 'Sanitize the output. Ignore any HTML that has been input.' })
 
-    .option('marked-smartLists',  { boolean: true, 'default': false,
-            describe: 'Use smarter list behavior than the original markdown.' })
+    .option('marked-smartLists',  { flag: true, 'default': false,
+            help: 'Use smarter list behavior than the original markdown.' })
 
-    .option('marked-smartypants', { boolean: true, 'default': false,
-            describe: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
+    .option('marked-smartypants', { flag: true, 'default': false,
+            help: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
 
-    .argv
+    .parse()
 ;
-
-if (argv.help) {
-    optimist.showHelp();
-    process.exit(0);
-}
 
 /**
  * Transform parameters to object
@@ -117,34 +113,36 @@ function resolveMarkdownOptions(argv) {
         return require(path.resolve(argv['marked-config']));
     } else {
         return {
-            gfm:         argv['marked-gfm'],
-            tables:      argv['marked-tables'],
-            breaks:      argv['marked-breaks'],
-            pedantic:    argv['marked-pedantic'],
-            sanitize:    argv['marked-sanitize'],
-            smartLists:  argv['marked-smartLists'],
+            gfm        : argv['marked-gfm'],
+            tables     : argv['marked-tables'],
+            breaks     : argv['marked-breaks'],
+            pedantic   : argv['marked-pedantic'],
+            sanitize   : argv['marked-sanitize'],
+            smartLists : argv['marked-smartLists'],
             smartypants: argv['marked-smartypants']
         };
     }
 }
 
-var defaults = {
+var options = {
     excludeFilters: argv['exclude-filters'],
     includeFilters: argv['file-filters'],
-    src:            argv['input'],
-    dest:           argv['output'],
-    template:       argv['template'],
-    verbose:        argv['debug'] === true ? argv['debug'] : argv['verbose'],
-    debug:          argv['debug'],
-    parse:          argv['parse'],
-    filters:        transformToObject(argv['parse-filters']),
-    parsers:        transformToObject(argv['parse-parsers']),
-    workers:        transformToObject(argv['parse-workers']),
-    silent:         argv['silent'],
-    simulate:       argv['simulate'],
-    marked:         resolveMarkdownOptions(argv)
+    src           : argv['input'],
+    dest          : argv['output'],
+    template      : argv['template'],
+    verbose       : argv['verbose'],
+    debug         : argv['debug'],
+    parse         : argv['parse'],
+    colorize      : argv['color'],
+    filters       : transformToObject(argv['parse-filters']),
+    parsers       : transformToObject(argv['parse-parsers']),
+    workers       : transformToObject(argv['parse-workers']),
+    silent        : argv['silent'],
+    simulate      : argv['simulate'],
+    markdown      : argv['markdown'],
+    marked        : resolveMarkdownOptions(argv)
 };
 
-try {
-    require('../lib/apidoc')(defaults);
-} catch (e) {}
+if (apidoc.createDoc(options) === false) {
+    process.exit(1);
+}

@@ -1,5 +1,34 @@
 # apiDoc Changelog
 
+
+#### 0.10.0
+
+* __Split apidoc code__
+  * [apidoc](https://github.com/apidoc/apidoc) is now only the CLI-Tool with UI-Template and file creation (as you know it).
+    You can use apidoc without change anything.
+
+  * [apidoc-core](https://github.com/apidoc/apidoc-core) (for developers) is the parser and response the api-data.
+
+  * [apidoc-example](https://github.com/apidoc/apidoc-example) (for developers) are the test files for the [apidoc-spec](https://github.com/apidoc/apidoc-spec).
+
+* CLI
+  * Replace optimist (not maintained anymore) with nomnom:
+    true / false parameters can now be used, e.g. enable markdown (default) `--markdown` or disable `--no-markdown`.
+  * Add parameter `--markdown`.
+  * Replace the custom Logger with [winston](https://github.com/flatiron/winston).
+
+* Parser
+  * Bugfix: Settings to enable / disable markdown (marked-gfm was previously used).
+
+* Template
+  * Add generator.url and generator.name to the footer generator information (for custom ui-generators).
+  * Move handlebars_helper.js to utils/
+
+* Common
+  * Remove grunt dependencies (test run with `npm run test`).
+  * Change grunt-apidoc (0.10.0) to use always the latest version of apiDoc.
+
+
 #### 0.9.1
 
 * Parser

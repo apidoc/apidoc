@@ -1,6 +1,4 @@
-.settings/
-.project
+doc/
 node_modules/
 tmp/
-doc/
-.idea/
+npm-debug.log

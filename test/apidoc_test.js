@@ -1,17 +1,26 @@
+/*jshint unused:false, expr:true */
+
 /**
- * Test: apidoc.js
+ * Test: apiDoc full parse
  */
 
-// Node Module
+// node modules
+var apidoc = require('apidoc-core');
+var exec   = require('child_process').exec;
+var fs     = require('fs-extra');
+var path   = require('path');
+var semver = require('semver');
 var should = require('should');
-var fs = require('fs');
-var sys = require('sys');
-var exec = require('child_process').exec;
 
-/* --------------------------------------------------------------------------------
- * Tests
- * -------------------------------------------------------------------------------- */
+var versions = require('apidoc-example').versions;
+
 describe('apiDoc full example', function() {
+
+    // get latest example for the used apidoc-spec
+    var latestExampleVersion = semver.maxSatisfying(versions, '~' + apidoc.SPECIFICATION_VERSION); // ~0.2.0 = >=0.2.0 <0.3.0
+
+    var exampleBasePath = 'node_modules/apidoc-example/' + latestExampleVersion;
+    var fixturePath = exampleBasePath + '/fixtures';
 
     var fixtureFiles = [
         'api_data.js',
@@ -22,6 +31,8 @@ describe('apiDoc full example', function() {
     ];
 
     before(function(done) {
+        fs.removeSync('./tmp/');
+
         done();
     });
 
@@ -29,9 +40,16 @@ describe('apiDoc full example', function() {
         done();
     });
 
+    // version found
+    it('should find latest example version', function(done) {
+        should(latestExampleVersion).be.ok;
+        done();
+    });
+
     // create
-    it('case 1: should create example in tmp/', function(done) {
-        exec('node ./bin/apidoc -i test/fixtures/example/ -o tmp/ -t test/template/ --silent', function(err, stdout, stderr) {
+    it('should create example in tmp/', function(done) {
+        var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --silent';
+        exec(cmd, function(err, stdout, stderr) {
             if (err)
                 throw err;
 
@@ -43,19 +61,21 @@ describe('apiDoc full example', function() {
     });
 
     // check
-    it('case 1: should find created files', function(done) {
+    it('should find created files', function(done) {
         fixtureFiles.forEach(function(name) {
-            fs.existsSync('./tmp/' + name).should.eql(true);
+            fs.existsSync(fixturePath + '/' + name).should.eql(true);
         });
         done();
     });
 
     // compare
-    it('case 1: created files should equal to fixtures', function(done) {
+    it('created files should equal to fixtures', function(done) {
         var timeRegExp = /\"time\"\:\s\"(.*)\"/g;
         var versionRegExp = /\"version\"\:\s\"(.*)\"/g;
+        var filenameRegExp = new RegExp('(?!"filename":\\s")(' + exampleBasePath + '/)', 'g');
+
         fixtureFiles.forEach(function(name) {
-            var fixtureContent = fs.readFileSync('test/fixtures/' + name, 'utf8');
+            var fixtureContent = fs.readFileSync(fixturePath + '/' + name, 'utf8');
             var createdContent = fs.readFileSync('./tmp/' + name, 'utf8');
 
             // creation time remove (never equal)
@@ -66,15 +86,21 @@ describe('apiDoc full example', function() {
             fixtureContent = fixtureContent.replace(versionRegExp, '');
             createdContent = createdContent.replace(versionRegExp, '');
 
+            // remove the base path
+            createdContent = createdContent.replace(filenameRegExp, '');
+
             var fixtureLines = fixtureContent.split(/\r\n/);
             var createdLines = createdContent.split(/\r\n/);
 
             if (fixtureLines.length !== createdLines.length)
-                throw new Error('File ./tmp/' + name + ' not equals to test/fixtures/' + name);
+                throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name);
 
             for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
                 if (fixtureLines[lineNumber] !== createdLines[lineNumber])
-                    throw new Error('File ./tmp/' + name + ' not equals to test/fixtures/' + name + ' in line ' + (lineNumber + 1));
+                    throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
+                        '\nfixture: ' + fixtureLines[lineNumber] +
+                        '\ncreated: ' + createdLines[lineNumber]
+                    );
             }
         });
         done();

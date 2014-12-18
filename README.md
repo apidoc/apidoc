@@ -1,4 +1,4 @@
-# apiDoc 0.9.x
+# apiDoc 0.10.x
 
 Generates a RESTful web API Documentation.
 
@@ -124,12 +124,3 @@ Pull requests are welcome too!
 A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
 
 [![Gitter chat](https://badges.gitter.im/apidoc/talk.png)](https://gitter.im/apidoc/talk)
-
-
-## License
-
-Copyright (c) 2013-2014 inveris OHG
-
-Author Peter Rottmann <rottmann@inveris.de>
-
-Licensed under the MIT license.
