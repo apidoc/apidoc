@@ -2,6 +2,9 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Danny Olson](https://github.com/dbolson)
+  * Add Clojure parser.
+
 * [Eugene Jo](https://github.com/iameugenejo)
   * Allowed options.packageInfo to overwrite default packageInfo [#177] (https://github.com/apidoc/apidoc/pull/171))
 

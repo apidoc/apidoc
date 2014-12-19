@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+#### 0.10.2
+
+* Parser
+  * Add Clojure parser.
+
+
+#### 0.10.1
+
+* Bugfix: Path to apidoc-core.
+
 
 #### 0.10.0
 

@@ -20,7 +20,7 @@
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
-    "jshint": "jshint lib/ test/ --exclude test/fixtures/"
+    "jshint": "jshint lib/ test/"
   },
   "keywords": [
     "api",

@@ -58,6 +58,14 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
      */
    ```
 
+ * **Clojure**:
+
+   ```clojure
+   ;;;;
+   ;; This is a comment.
+   ;;;;
+   ```
+
  * **CoffeeScript**:
 
    ```coffeescript
