@@ -136,6 +136,7 @@ var options = {
     parse         : argv['parse'],
     colorize      : argv['color'],
     filters       : transformToObject(argv['parse-filters']),
+    languages     : transformToObject(argv['parse-languages']),
     parsers       : transformToObject(argv['parse-parsers']),
     workers       : transformToObject(argv['parse-workers']),
     silent        : argv['silent'],
