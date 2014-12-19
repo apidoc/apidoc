@@ -17,7 +17,7 @@ var versions = require('apidoc-example').versions;
 describe('apiDoc full example', function() {
 
     // get latest example for the used apidoc-spec
-    var latestExampleVersion = semver.maxSatisfying(versions, '~' + apidoc.SPECIFICATION_VERSION); // ~0.2.0 = >=0.2.0 <0.3.0
+    var latestExampleVersion = semver.maxSatisfying(versions, '~' + apidoc.getSpecificationVersion()); // ~0.2.0 = >=0.2.0 <0.3.0
 
     var exampleBasePath = 'node_modules/apidoc-example/' + latestExampleVersion;
     var fixturePath = exampleBasePath + '/fixtures';
