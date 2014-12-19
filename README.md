@@ -1,4 +1,4 @@
-# apiDoc 0.10.x
+# apiDoc
 
 Generates a RESTful web API Documentation.
 

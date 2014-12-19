@@ -1,9 +1,17 @@
 # apiDoc Changelog
 
-#### 0.10.2
+#### 0.11.0
+
+* CLI
+  * Add parameter `--parse-languages` for custom language regex.
 
 * Parser
-  * Add Clojure parser.
+  * Add Clojure parser for `.clj` files.
+  * Extend parser to transfer own language regex.
+  * Update apidoc-core interface (replace arguments with setters).
+
+* Template
+  * Add chinese and dutch translations files.
 
 
 #### 0.10.1
