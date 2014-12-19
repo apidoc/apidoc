@@ -2,6 +2,12 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [大鼻子](https://github.com/wohugb)
+  * Add chinese translation (missing translations from google).
+
+* [kimhoo](https://github.com/kimhoo)
+  * Add dutch translation (missing translations from google).
+
 * [Danny Olson](https://github.com/dbolson)
   * Add Clojure parser.
 

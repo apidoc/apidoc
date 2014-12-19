@@ -20,7 +20,8 @@
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
-    "jshint": "jshint lib/ test/"
+    "jshint": "jshint lib/ test/",
+    "build-example": "bin/apidoc -i example/ -o tmp/"
   },
   "keywords": [
     "api",
