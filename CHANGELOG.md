@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+#### 0.12.0
+
+* Parser
+  * Unindent strings in description fields. Mulitlines start with the same leading whitespaces. [173](https://github.com/apidoc/apidoc/pull/173)
+
+
 #### 0.11.0
 
 * CLI
