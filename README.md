@@ -1,10 +1,14 @@
-# apiDoc 0.7.x
+# apiDoc
 
 Generates a RESTful web API Documentation.
 
-### **Important** [markdown](https://help.github.com/articles/markdown-basics) for all description fields is now enabled!
-
 [![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
+[![Dependency Status](https://david-dm.org/apidoc/apidoc.svg)](https://david-dm.org/apidoc/apidoc)
+[![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
+
+**Changes from previous version visit [CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)**
+
+apiDoc creates a documentation from API descriptions in your source code.
 
 Documentation at [apidocjs.com](http://apidocjs.com).
 
@@ -16,9 +20,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
 `npm install apidoc -g`
 
 
+## Changelog
+
+[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
+
+
 ## Example
 
-   ```javascript
+```javascript
 /**
  * @api {get} /user/:id Request User information
  * @apiName GetUser
@@ -29,11 +38,14 @@ Documentation at [apidocjs.com](http://apidocjs.com).
  * @apiSuccess {String} firstname Firstname of the User.
  * @apiSuccess {String} lastname  Lastname of the User.
  */
-   ```
+```
 
 `apidoc -i example/ -o doc/`
 
 Creates from input files in `example/` a documentation in path `doc/`.
+
+
+More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)
 
 
 ## Supported programming languages
@@ -44,6 +56,14 @@ Creates from input files in `example/` a documentation in path `doc/`.
    /**
      * This is a comment.
      */
+   ```
+
+ * **Clojure**:
+
+   ```clojure
+   ;;;;
+   ;; This is a comment.
+   ;;;;
    ```
 
  * **CoffeeScript**:
@@ -69,7 +89,7 @@ Creates from input files in `example/` a documentation in path `doc/`.
    # This is a comment.
    #*
    ```
-   
+
    ```perl
    =pod
    This is a comment.
@@ -98,13 +118,17 @@ Creates from input files in `example/` a documentation in path `doc/`.
 [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 
 
-## Changelog
+## Editor integration
 
-[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
+* [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
+* [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
 
 
-## License
+## Help
 
-Copyright (c) 2013-2014 inveris OHG
-Author Peter Rottmann <rottmann@inveris.de>
-Licensed under the MIT license.
+Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
+Pull requests are welcome too!
+
+A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
+
+[![Gitter chat](https://badges.gitter.im/apidoc/talk.png)](https://gitter.im/apidoc/talk)

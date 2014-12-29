@@ -6,7 +6,7 @@ body {
   max-width: 1280px;
 }
 
-body, p, a, div, th, td { 
+body, p, a, div, th, td {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -87,6 +87,14 @@ article h3 {
   font-size: 16px;
   line-height: 18px;
   margin: 0 0 10px 0;
+}
+
+article h4 {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 8px 0;
 }
 
 table {
@@ -465,13 +473,20 @@ tr.del td {
 }
 
 @keyframes bouncedelay {
-  0%, 80%, 100% { 
+  0%, 80%, 100% {
     transform: scale(0.0);
     -webkit-transform: scale(0.0);
-  } 40% { 
+  } 40% {
     transform: scale(1.0);
     -webkit-transform: scale(1.0);
   }
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Tabs
+ * ------------------------------------------------------------------------------------------ */
+ul.nav-tabs {
+  margin: 0;
 }
 
 /* ------------------------------------------------------------------------------------------

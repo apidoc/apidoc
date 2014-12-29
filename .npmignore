@@ -1,6 +1,8 @@
-.settings/
-.project
+.git/
 node_modules/
+test/
 tmp/
-doc/
-.idea/
+.gitignore
+.npmignore
+.travis.yml
+npm-debug.log
