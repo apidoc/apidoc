@@ -118,6 +118,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 
 
+## Gulp Module
+
+[gulp-apidoc](https://github.com/ayhankuru/gulp-apidoc) `npm install gulp-apidoc`.
+
+
 ## Editor integration
 
 * [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
