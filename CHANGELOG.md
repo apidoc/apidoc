@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+#### 0.12.1
+
+* CLI
+  * Add some version information for verbose / debug output.
+
+* Bugfix: Parse blocks with unknown parameters (before the block was skipped).
+* Bugfix: show correct block index.
+* Update dependencies.
+
+
 #### 0.12.0
 
 * Parser
