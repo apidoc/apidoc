@@ -36,7 +36,7 @@ define([
           var group = $(element).data("sample-request-header-group-id");
           $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-header-name");
-            var value = element.value;
+            var value = element.value === "" ? (!element.optional ? element.defaultValue : element.value) : element.value;
             header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });
@@ -47,7 +47,7 @@ define([
           var group = $(element).data("sample-request-param-group-id");
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-param-name");
-            var value = element.value;
+            var value = element.value === "" ? (!element.optional ? element.defaultValue : element.value) : element.value;
             param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });
