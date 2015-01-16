@@ -37,6 +37,9 @@ define([
           $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-header-name");
             var value = element.value;
+            if (!element.optional && element.defaultValue !== "") {
+              value = element.defaultValue;
+            }            
             header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });
@@ -48,6 +51,9 @@ define([
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-param-name");
             var value = element.value;
+            if (!element.optional && element.defaultValue !== "") {
+              value = element.defaultValue;
+            }            
             param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });
