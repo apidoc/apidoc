@@ -18,7 +18,7 @@ define({
         'Send'                        : 'Envoyer',
         'Send a Sample Request'       : 'Envoyer une requête représentative',
         'show up to version:'         : 'Montrer à partir de la version :',
-        'Size range:'                 : 'Taille du périmètre :',
+        'Size range:'                 : 'Ordre de grandeur :',
         'Type'                        : 'Type',
         'url'                         : 'url'
     }
