@@ -68,17 +68,24 @@ define([
           }
       } // for
 
-      // send AJAX request, catch success or error callback
-      $.ajax({
+      var ajaxRequest = {
           url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify(param),
           headers: header,
           type: type.toUpperCase(),
           success: displaySuccess,
           error: displayError
-      });
+      };
+
+      if ( ajaxRequest.type !== "GET" ) {
+        ajaxRequest.dataType = "json";
+        ajaxRequest.data = JSON.stringify(param);
+        ajaxRequest.contentType = "application/json";
+      } else {
+        ajaxRequest.data = param;
+      }
+
+      // send AJAX request, catch success or error callback
+      $.ajax(ajaxRequest);
 
       function displaySuccess(data) {
           var jsonResponse;
