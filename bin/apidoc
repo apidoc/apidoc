@@ -40,10 +40,10 @@ var argv = nomnom
     .option('parse', { flag: true, 'default': false,
             help: 'Parse only the files and return the data, no file creation.' })
 
-    .option('parse-filters'  , { help: 'Optional user defined filters. Format name=filename' })
-    .option('parse-languages', { help: 'Optional user defined languages. Format name=filename' })
-    .option('parse-parsers'  , { help: 'Optional user defined parsers. Format name=filename' })
-    .option('parse-workers'  , { help: 'Optional user defined workers. Format name=filename' })
+    .option('parse-filters'  , { help: 'Optional user defined filters. Format name=filename', list: true })
+    .option('parse-languages', { help: 'Optional user defined languages. Format name=filename', list: true })
+    .option('parse-parsers'  , { help: 'Optional user defined parsers. Format name=filename', list: true })
+    .option('parse-workers'  , { help: 'Optional user defined workers. Format name=filename', list: true })
 
     .option('silent', { flag: true, 'default': false, help: 'Turn all output off.' })
 
