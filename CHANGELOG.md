@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.12.2
+* CLI
+  * Input Option -i can now be used with multiple locations `bin/apidoc -i common/ -i ../src`
+
 #### 0.12.1
 
 * CLI

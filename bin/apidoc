@@ -22,7 +22,7 @@ var argv = nomnom
     .option('exclude-filters', { abbr: 'e', 'default': '',
             help: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
 
-    .option('input', { abbr: 'i', 'default': './', help: 'Input / source dirname.' })
+    .option('input', { abbr: 'i', 'default': './', help: 'Input / source dirname.', list: true })
 
     .option('output', { abbr: 'o', 'default': './doc/', help: 'Output dirname.' })
 
