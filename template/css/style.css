@@ -227,7 +227,7 @@ pre code {
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 400;
-  word-wrap: normal;
+  word-wrap: break-word;
   white-space: pre;
 }
 
