@@ -227,8 +227,12 @@ pre code {
   font-family: "Source Code Pro";
   font-style: normal;
   font-weight: 400;
-  word-wrap: break-word;
+  word-wrap: normal;
   white-space: pre;
+}
+
+code.lang-text {
+  word-wrap: break-word;
 }
 
 /*
