@@ -1,13 +1,27 @@
 # apiDoc Changelog
 
+#### 0.12.2
+
+* CLI
+  * Bugfix: Multiple bin parameters. [244](https://github.com/apidoc/apidoc/issues/244)
+
+* Template
+  * Update template vendor lib path-to-regexp.
+  * Bugfix: Example overlaps navigation. [240](https://github.com/apidoc/apidoc/issues/240)
+
+* Parser
+  * Update dependencies.
+
+
 #### 0.12.1
 
 * CLI
   * Add some version information for verbose / debug output.
 
-* Bugfix: Parse blocks with unknown parameters (before the block was skipped).
-* Bugfix: show correct block index.
-* Update dependencies.
+* Parser
+  * Bugfix: Parse blocks with unknown parameters (before the block was skipped).
+  * Bugfix: show correct block index.
+  * Update dependencies.
 
 
 #### 0.12.0
