@@ -231,6 +231,10 @@ pre code {
   white-space: pre;
 }
 
+code.lang-text {
+  word-wrap: break-word;
+}
+
 /*
 pre.language-json {
   background: #f5f5f5;
