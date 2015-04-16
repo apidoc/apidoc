@@ -1,6 +1,7 @@
 define([
     './locales/de.js',
     './locales/nl.js',
+    './locales/pt_BR.js',
     './locales/zh.js'
 ], function() {
     var locales = {};
