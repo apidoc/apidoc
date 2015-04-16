@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": {
@@ -21,7 +21,8 @@
   "scripts": {
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
-    "build-example": "bin/apidoc -i example/ -o tmp/"
+    "build-example": "bin/apidoc -i example/ -o tmp/",
+    "check-updates": "npm-check-updates"
   },
   "keywords": [
     "api",
@@ -35,19 +36,21 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "apidoc-core": "~0.3.1",
-    "fs-extra": "~0.14.0",
-    "lodash": "~2.4.1",
-    "marked": "~0.3.2",
+    "apidoc-core": "~0.3.2",
+    "fs-extra": "~0.18.1",
+    "lodash": "~3.6.0",
+    "marked": "~0.3.3",
     "nomnom": "~1.8.1",
-    "winston": "~0.8.3"
+    "winston": "~1.0.0"
   },
   "devDependencies": {
     "apidoc-example": "*",
-    "jshint": "^2.5.10",
-    "mocha": "~2.1.0",
-    "semver": "^4.1.0",
-    "should": "~4.6.0"
+    "jshint": "^2.7.0",
+    "mocha": "~2.2.4",
+    "npm-check-updates": "^1.5.1",
+    "path-to-regexp": "^1.0.3",
+    "semver": "^4.3.3",
+    "should": "~6.0.1"
   },
   "jshintConfig": {
     "camelcase": true,
