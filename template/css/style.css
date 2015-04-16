@@ -257,6 +257,7 @@ pre.language-json .pun {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #f5f5f5;
+  z-index: 10;
 }
 
 .sidenav > li > a {
