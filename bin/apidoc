@@ -17,9 +17,10 @@ var apidoc = require('../lib/index');
 
 var argv = nomnom
     .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|coffee|cs|dart|erl|go|java|js|php?|py|rb|ts|pm)$',
+            list: true,
             help: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
 
-    .option('exclude-filters', { abbr: 'e', 'default': '',
+    .option('exclude-filters', { abbr: 'e', 'default': '', list: true,
             help: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
 
     .option('input', { abbr: 'i', 'default': './', help: 'Input / source dirname.' })
@@ -40,10 +41,10 @@ var argv = nomnom
     .option('parse', { flag: true, 'default': false,
             help: 'Parse only the files and return the data, no file creation.' })
 
-    .option('parse-filters'  , { help: 'Optional user defined filters. Format name=filename' })
-    .option('parse-languages', { help: 'Optional user defined languages. Format name=filename' })
-    .option('parse-parsers'  , { help: 'Optional user defined parsers. Format name=filename' })
-    .option('parse-workers'  , { help: 'Optional user defined workers. Format name=filename' })
+    .option('parse-filters'  , { list: true, help: 'Optional user defined filters. Format name=filename' })
+    .option('parse-languages', { list: true, help: 'Optional user defined languages. Format name=filename' })
+    .option('parse-parsers'  , { list: true, help: 'Optional user defined parsers. Format name=filename' })
+    .option('parse-workers'  , { list: true, help: 'Optional user defined workers. Format name=filename' })
 
     .option('silent', { flag: true, 'default': false, help: 'Turn all output off.' })
 
