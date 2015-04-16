@@ -56,7 +56,7 @@ define([
       var url = $root.find(".sample-request-url").val();
 
       // Insert url parameter
-      var pattern = pathtoRegexp(url, null);
+      var pattern = pathToRegexp(url, null);
       var matches = pattern.exec(url);
       for (var i = 1; i < matches.length; i++) {
           var key = matches[i].substr(1);
