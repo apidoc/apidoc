@@ -6,7 +6,7 @@
  * apidoc
  * http://apidocjs.com
  *
- * Copyright (c) 2013-2014 inveris OHG
+ * Copyright (c) 2013-2015 inveris OHG
  * Author Peter Rottmann <rottmann@inveris.de>
  * Licensed under the MIT license.
  */
@@ -50,7 +50,7 @@ var argv = nomnom
 
     .option('simulate', { flag: true, 'default': false, help: 'Execute but not write any file.' })
 
-    .option('markdown', { 'default': true, help: 'Turn off default markdown parser or implement a custom parser.' })
+    .option('markdown', { 'default': true, help: 'Turn off default markdown parser or set a file to a custom parser.' })
 
     .parse()
 ;
