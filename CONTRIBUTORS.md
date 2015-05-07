@@ -2,6 +2,15 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Hector Hernandez](https://github.com/alfadormx)
+  * Added support for markdown in the type section [#1](https://github.com/apidoc/apidoc-core/pull/15)
+
+* [Goonoo Kim](https://github.com/mctenshi)
+  * Added litcoffee file extension [#5](https://github.com/apidoc/apidoc-core/pull/5)
+
+* [Nil Gradisnik](https://github.com/nilgradisnik)
+  * Added scala file extension [#2](https://github.com/apidoc/apidoc-core/pull/2)
+
 * [Christopher Martin](https://github.com/chris-martin)
   * Unindent strings [#173](https://github.com/apidoc/apidoc/pull/173)
 
