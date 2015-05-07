@@ -50,32 +50,7 @@ var argv = nomnom
 
     .option('simulate', { flag: true, 'default': false, help: 'Execute but not write any file.' })
 
-    // markdown settings
-    .option('markdown', { flag: true, 'default': true, help: 'Turn off markdown parser.' })
-
-    .option('marked-config',      { 'default': '',
-            help: 'Enable custom markdown parser configs. It will overwite all other marked settings.' })
-
-    .option('marked-gfm',         { flag: true, 'default': true,
-            help: 'Enable GitHub flavored markdown.' })
-
-    .option('marked-tables',      { flag: true, 'default': true,
-            help: 'Enable GFM tables. This option requires the gfm option to be true.' })
-
-    .option('marked-breaks',      { flag: true, 'default': false,
-            help: 'Enable GFM line breaks. This option requires the gfm option to be true.' })
-
-    .option('marked-pedantic',    { flag: true, 'default': false,
-            help: 'Conform to obscure parts of markdown.pl as much as possible.' })
-
-    .option('marked-sanitize',    { flag: true, 'default': false,
-            help: 'Sanitize the output. Ignore any HTML that has been input.' })
-
-    .option('marked-smartLists',  { flag: true, 'default': false,
-            help: 'Use smarter list behavior than the original markdown.' })
-
-    .option('marked-smartypants', { flag: true, 'default': false,
-            help: 'Use \'smart\' typograhic punctuation for things like quotes and dashes.' })
+    .option('markdown', { 'default': true, help: 'Turn off default markdown parser or implement a custom parser.' })
 
     .parse()
 ;
@@ -104,28 +79,6 @@ function transformToObject(filters) {
     return result;
 }
 
-/**
- * Sets configuration for markdown
- *
- * @param {Array} argv
- * @returns {Object}
- */
-function resolveMarkdownOptions(argv) {
-    if (argv['marked-config']) {
-        return require(path.resolve(argv['marked-config']));
-    } else {
-        return {
-            gfm        : argv['marked-gfm'],
-            tables     : argv['marked-tables'],
-            breaks     : argv['marked-breaks'],
-            pedantic   : argv['marked-pedantic'],
-            sanitize   : argv['marked-sanitize'],
-            smartLists : argv['marked-smartLists'],
-            smartypants: argv['marked-smartypants']
-        };
-    }
-}
-
 var options = {
     excludeFilters: argv['exclude-filters'],
     includeFilters: argv['file-filters'],
@@ -142,8 +95,7 @@ var options = {
     workers       : transformToObject(argv['parse-workers']),
     silent        : argv['silent'],
     simulate      : argv['simulate'],
-    markdown      : argv['markdown'],
-    marked        : resolveMarkdownOptions(argv)
+    markdown      : argv['markdown']
 };
 
 if (apidoc.createDoc(options) === false) {

@@ -37,9 +37,9 @@
   },
   "dependencies": {
     "apidoc-core": "~0.3.2",
-    "fs-extra": "~0.18.1",
-    "lodash": "~3.6.0",
-    "marked": "~0.3.3",
+    "fs-extra": "~0.18.2",
+    "lodash": "~3.8.0",
+    "markdown-it": "^4.2.1",
     "nomnom": "~1.8.1",
     "winston": "~1.0.0"
   },
@@ -49,7 +49,7 @@
     "mocha": "~2.2.4",
     "npm-check-updates": "^1.5.1",
     "path-to-regexp": "^1.0.3",
-    "semver": "^4.3.3",
+    "semver": "^4.3.4",
     "should": "~6.0.1"
   },
   "jshintConfig": {
