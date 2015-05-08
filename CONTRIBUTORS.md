@@ -2,8 +2,29 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Frank Lucht](https://github.com/Digigoodz)
+  * Add multiple input locations [#239](https://github.com/apidoc/apidoc/pull/239)
+
+* [赵健](https://github.com/karboom)
+  * Add word wrap for text examples [#241](https://github.com/apidoc/apidoc/pull/241)
+
+* [Tyler Clemens](https://github.com/tielur)
+  * Add a check to see if packageJson.apidoc was defined [#227](https://github.com/apidoc/apidoc/pull/227)
+
+* [Dmitry Krasyukov](https://github.com/p00h), [Alexej Yaroshevich](https://github.com/zxqfox), [Dmitry Kirilyuk](https://github.com/Jokero)
+  * Add Russian translation [#237](https://github.com/apidoc/apidoc/pull/237)
+
+* [Bruno Wego](https://github.com/brunowego)
+  * Add Brazilian translation [#249](https://github.com/apidoc/apidoc/pull/249)
+
+* [Rafał Zielonka](https://github.com/Bombaharris)
+  * Add Polish translation [#199](https://github.com/apidoc/apidoc/pull/199)
+
+* [Vincent Hérilier](https://github.com/vherilier)
+  * Add French translation [#191](https://github.com/apidoc/apidoc/pull/191)
+
 * [Hector Hernandez](https://github.com/alfadormx)
-  * Added support for markdown in the type section [#1](https://github.com/apidoc/apidoc-core/pull/15)
+  * Added support for markdown in the type section [#1](https://github.com/apidoc/apidoc-core/pull/1)
 
 * [Goonoo Kim](https://github.com/mctenshi)
   * Added litcoffee file extension [#5](https://github.com/apidoc/apidoc-core/pull/5)
@@ -15,13 +36,13 @@ Thanks to all people that help to make apiDoc better!
   * Unindent strings [#173](https://github.com/apidoc/apidoc/pull/173)
 
 * [大鼻子](https://github.com/wohugb)
-  * Add chinese translation (missing translations from google).
+  * Add chinese translation (missing translations from google)
 
 * [kimhoo](https://github.com/kimhoo)
-  * Add dutch translation (missing translations from google).
+  * Add dutch translation (missing translations from google)
 
 * [Danny Olson](https://github.com/dbolson)
-  * Add Clojure parser.
+  * Add Clojure parser
 
 * [Eugene Jo](https://github.com/iameugenejo)
   * Allowed options.packageInfo to overwrite default packageInfo [#177](https://github.com/apidoc/apidoc/pull/171))

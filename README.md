@@ -50,7 +50,7 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 
 ## Supported programming languages
 
- * **C#, Go, Dart, Java, JavaScript, PHP** (all DocStyle capable languages):
+ * **C#, Go, Dart, Java, JavaScript, PHP, Scala** (all DocStyle capable languages):
 
    ```javascript
    /**
@@ -127,6 +127,12 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 
 * [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
 * [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
+
+
+## Converter
+
+* [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
+* [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 
 
 ## Help

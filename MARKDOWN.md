@@ -2,6 +2,9 @@
 
 By default apiDoc uses [markdown-it](https://github.com/markdown-it/markdown-it) Markdown Parser.
 
+If you need to modify the parser options or use an other markdown parser, create a .js file with a custom parser.
+
+Visit the markdown-it page for details, in particular if you want to use markdown plugins.
 
 
 ## Custom Parser
