@@ -1,7 +1,7 @@
 define({
     ru: {
         'Allowed values:'             : 'Допустимые значения:',
-        'Compare all with predecessor': 'Сравнить всё с предыдущей версией',
+        'Compare all with predecessor': 'Сравнить с предыдущей версией',
         'compare changes to:'         : 'сравнить с:',
         'compared to'                 : 'в сравнении с',
         'Default value:'              : 'По умолчанию:',
@@ -12,14 +12,14 @@ define({
         'Name'                        : 'Название',
         'No response values.'         : 'Нет значений для ответа.',
         'optional'                    : 'необязательный',
-        'Parameter'                   : 'Параметры',
-        'Permission:'                 : 'Доступ:',
+        'Parameter'                   : 'Параметр',
+        'Permission:'                 : 'Разрешено:',
         'Response'                    : 'Ответ',
         'Send'                        : 'Отправить',
         'Send a Sample Request'       : 'Отправить тестовый запрос',
         'show up to version:'         : 'показать версию:',
         'Size range:'                 : 'Ограничения:',
         'Type'                        : 'Тип',
-        'url'                         : 'url'
+        'url'                         : 'URL'
     }
 });
