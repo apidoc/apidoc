@@ -4,13 +4,13 @@
 #### 0.13.0
 
 **Important changes**:
-  * __Remove__ deprecated annotations [http://apidocjs.com/deprecated.html].
-  * __Replace__ markdown parser (markdown-it)[https://github.com/markdown-it/markdown-it].
+  * __Remove__ deprecated annotations (http://apidocjs.com/deprecated.html).
+  * __Replace__ markdown parser [markdown-it][https://github.com/markdown-it/markdown-it).
 
 * CLI
   * Add path to config file (with `-c`).
   * Add multiple input locations (with `-i`).
-  * Remove markdown config parameters, for custom configurations view [MARKDOWN.md].
+  * Remove markdown config parameters, for custom configurations view [MARKDOWN.md](https://github.com/apidoc/apidoc/blob/master/MARKDOWN.md).
   * Disable warning if packageJson.apidoc was defined.
   * Add litcoffee and scala file extension.
 
@@ -20,9 +20,9 @@
   * Add Brazilian, French, Polish and Russian translation files.
 
 * Parser
-  * Remove deprecated annotations [http://apidocjs.com/deprecated.html].
-  * Replace markdown parser with (markdown-it)[https://github.com/markdown-it/markdown-it].
-  * Add custom markdown parser support, view [MARKDOWN.md] for details.
+  * Remove deprecated annotations (http://apidocjs.com/deprecated.html).
+  * Replace markdown parser with [markdown-it](https://github.com/markdown-it/markdown-it).
+  * Add custom markdown parser support, view [MARKDOWN.md](https://github.com/apidoc/apidoc/blob/master/MARKDOWN.md) for details.
   * Add support for markdown in the type section. Example: `@apiParam {(CustomType)[http://...link-to-description.html]}`
 
 
