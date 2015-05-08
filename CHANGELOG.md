@@ -3,7 +3,7 @@
 
 #### 0.13.0
 
-**Important changes**:
+* **Important changes**:
   * __Remove__ deprecated annotations (http://apidocjs.com/deprecated.html).
   * __Replace__ markdown parser [markdown-it](https://github.com/markdown-it/markdown-it).
 
