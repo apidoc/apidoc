@@ -6,7 +6,7 @@ define({
         'compared to'                 : 'в сравнении с',
         'Default value:'              : 'По умолчанию:',
         'Description'                 : 'Описание',
-        'Field'                       : 'Название',
+        'Field'                       : 'Поле',
         'General'                     : 'Общая информация',
         'Generated with'              : 'Сгенерировано с помощью',
         'Name'                        : 'Название',
