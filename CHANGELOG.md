@@ -5,7 +5,7 @@
 
 **Important changes**:
   * __Remove__ deprecated annotations (http://apidocjs.com/deprecated.html).
-  * __Replace__ markdown parser [markdown-it][https://github.com/markdown-it/markdown-it).
+  * __Replace__ markdown parser [markdown-it](https://github.com/markdown-it/markdown-it).
 
 * CLI
   * Add path to config file (with `-c`).
