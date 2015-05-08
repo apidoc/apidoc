@@ -172,6 +172,10 @@ pre {
   margin: 10px 0 20px 0;
 }
 
+code.language-text {
+  word-wrap: break-word;
+}
+
 pre.language-json {
   overflow: auto;
 }
