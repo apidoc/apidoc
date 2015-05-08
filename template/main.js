@@ -75,6 +75,9 @@ require([
     if (apiProject.template.withGenerator == null)
         apiProject.template.withGenerator = true;
 
+    if (apiProject.template.forceLanguage)
+        locale.setLanguage(apiProject.template.forceLanguage);
+
     // Setup jQuery Ajax
     $.ajaxSetup(apiProject.template.jQueryAjaxSetup);
 

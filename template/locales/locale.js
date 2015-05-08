@@ -23,16 +23,21 @@ define([
 
     var locale = (locales[langId] ? locales[langId] : locales[language]);
 
-    var __ = function(text) {
+    function __(text) {
         var index = locale[text];
         if (index === undefined)
             return text;
         return index;
     };
 
+    function setLanguage(language) {
+        locale = locales[language];
+    }
+
     return {
-        __     : __,
-        locales: locales,
-        locale : locale
+        __         : __,
+        locales    : locales,
+        locale     : locale,
+        setLanguage: setLanguage
     };
 });
