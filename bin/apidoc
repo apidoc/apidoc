@@ -52,6 +52,8 @@ var argv = nomnom
 
     .option('markdown', { 'default': true, help: 'Turn off default markdown parser or set a file to a custom parser.' })
 
+    .option('line-ending', { help: 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.' })
+
     .parse()
 ;
 
@@ -95,7 +97,8 @@ var options = {
     workers       : transformToObject(argv['parse-workers']),
     silent        : argv['silent'],
     simulate      : argv['simulate'],
-    markdown      : argv['markdown']
+    markdown      : argv['markdown'],
+    lineEnding    : argv['line-ending'],
 };
 
 if (apidoc.createDoc(options) === false) {

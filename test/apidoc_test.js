@@ -89,8 +89,8 @@ describe('apiDoc full example', function() {
             // remove the base path
             createdContent = createdContent.replace(filenameRegExp, '');
 
-            var fixtureLines = fixtureContent.split(/\r\n/);
-            var createdLines = createdContent.split(/\r\n/);
+            var fixtureLines = fixtureContent.split(/\n/);
+            var createdLines = createdContent.split(/\n/);
 
             if (fixtureLines.length !== createdLines.length)
                 throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name);

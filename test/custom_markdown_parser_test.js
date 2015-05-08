@@ -80,7 +80,7 @@ describe('apiDoc custom markdown parser', function() {
         fixtureFiles.forEach(function(name) {
             var createdContent = fs.readFileSync('./tmp/' + name, 'utf8');
 
-            var createdLines = createdContent.split(/\r\n/);
+            var createdLines = createdContent.split(/\n/);
 
             for (var lineNumber = 0; lineNumber < createdLines.length; lineNumber += 1) {
                 if (createdLines[lineNumber].indexOf('Custom Markdown Parser: ') !== -1)
