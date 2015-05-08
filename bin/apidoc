@@ -30,6 +30,8 @@ var argv = nomnom
     .option('template', { abbr: 't', 'default': path.join(__dirname, '../template/'),
             help: 'Use template for output files.' })
 
+    .option('config', { abbr: 'c', 'default': './', help: 'Path to config file (apidoc.json)' })
+
     .option('verbose', { abbr: 'v', flag: true, 'default': false, help: 'Verbose debug output.' })
 
     .option('help', { abbr: 'h', flag: true, help: 'Show this help information.' })
@@ -87,6 +89,7 @@ var options = {
     src           : argv['input'],
     dest          : argv['output'],
     template      : argv['template'],
+    config        : argv['config'],
     verbose       : argv['verbose'],
     debug         : argv['debug'],
     parse         : argv['parse'],
