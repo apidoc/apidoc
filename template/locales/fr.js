@@ -11,7 +11,7 @@ define({
         'Generated with'              : 'Généré avec',
         'Name'                        : 'Nom',
         'No response values.'         : 'Aucune valeur de réponse.',
-        'optional'                    : 'optionel',
+        'optional'                    : 'optionnel',
         'Parameter'                   : 'Paramètre',
         'Permission:'                 : 'Permission :',
         'Response'                    : 'Réponse',
