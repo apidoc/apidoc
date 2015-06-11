@@ -73,7 +73,7 @@ define([
           url: url,
           dataType: "json",
           contentType: "application/json",
-          data: JSON.stringify(param),
+          data: $.isEmptyObject(param) ? null : JSON.stringify(param),
           headers: header,
           type: type.toUpperCase(),
           success: displaySuccess,
