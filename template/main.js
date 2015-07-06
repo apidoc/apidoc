@@ -316,7 +316,7 @@ require([
     $('#sections').append( content );
 
     // Bootstrap Scrollspy
-    var $scrollSpy = $(this).scrollspy({ target: '#scrollingNav', offset: 18 });
+    $(this).scrollspy({ target: '#scrollingNav', offset: 18 });
 
     // Content-Scroll on Navigation click.
     $('.sidenav').find('a').on('click', function(e) {
