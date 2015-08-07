@@ -10,6 +10,7 @@ require.config({
         pathToRegexp: './vendor/path-to-regexp/index',
         prettify: './vendor/prettify/prettify',
         utilsSampleRequest: './utils/send_sample_request',
+        filter: './utils/filter'
     },
     shim: {
         bootstrap: {
@@ -42,9 +43,10 @@ require([
     './api_data.js',
     'prettify',
     'utilsSampleRequest',
+    'filter',
     'bootstrap',
     'pathToRegexp'
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest) {
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, conditionFilter) {
 
     // load google web fonts
     loadGoogleFontCss();
@@ -394,6 +396,7 @@ require([
 
         // init modules
         sampleRequest.initDynamic();
+        conditionFilter.initDynamic();
     }
     initDynamic();
 
