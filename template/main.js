@@ -197,6 +197,34 @@ require([
         });
     });
 
+    /**
+     * Add navigation items by analyzing the HTML content and searching for h2 tags
+     * @param nav Object the navigation array
+     * @param content string the compiled HTML content
+     * @param index where to insert items: either 1 or nav.length
+     */
+    function add_nav(nav, content, index) {
+        if (!content)   return;
+        var topics = content.match(/<h2.*?>(.+?)<\/h2>/gi);
+        topics.forEach(function(entry) {
+            var title = entry.replace(/<.+?>/g, '');    // Remove all HTML tags for the title
+            var entry_tags = entry.match(/id="api-([^\-]+)-(.+)"/);    // Find the group and name in the id property
+            var group = (entry_tags ? entry_tags[1] : null);
+            var name = (entry_tags ? entry_tags[2] : null);
+            if (title && group && name)    {
+                nav.splice(index, 0, {
+                    group: group,
+                    name: name,
+                    isHeader: false,
+                    title: title,
+                    isFixed: false,
+                    version: '1.0'
+                });
+                index++;
+            }
+        });
+    }
+
     // Mainmenu Header entry
     if (apiProject.header) {
         nav.unshift({
@@ -205,6 +233,7 @@ require([
             title: (apiProject.header.title == null) ? locale.__('General') : apiProject.header.title,
             isFixed: true
         });
+        add_nav(nav, apiProject.header.content, 1); // Add level 2 titles
     }
 
     // Mainmenu Footer entry
@@ -215,6 +244,7 @@ require([
             title: apiProject.footer.title,
             isFixed: true
         });
+        add_nav(nav, apiProject.footer.content, nav.length); // Add level 2 titles
     }
 
     // render pagetitle
