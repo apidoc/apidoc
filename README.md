@@ -135,6 +135,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 
 
+## FAQ
+
+* [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
+
+
 ## Help
 
 Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
