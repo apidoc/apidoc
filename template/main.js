@@ -198,20 +198,33 @@ require([
     });
 
     /**
-     * Add navigation items by analyzing the HTML content and searching for h2 tags
+     * Add navigation items by analyzing the HTML content and searching for h1 and h2 tags
      * @param nav Object the navigation array
      * @param content string the compiled HTML content
-     * @param index where to insert items: either 1 or nav.length
+     * @param index where to insert items
+     * @return boolean true if any good-looking (i.e. with a group identifier) <h1> tag was found
      */
     function add_nav(nav, content, index) {
-        if (!content)   return;
-        var topics = content.match(/<h2.*?>(.+?)<\/h2>/gi);
+        var found_level1 = false;
+        if (!content)   return found_level1;
+        var topics = content.match(/<h(1|2).*?>(.+?)<\/h(1|2)>/gi);
         topics.forEach(function(entry) {
+            var level = entry.substring(2,3);
             var title = entry.replace(/<.+?>/g, '');    // Remove all HTML tags for the title
-            var entry_tags = entry.match(/id="api-([^\-]+)-(.+)"/);    // Find the group and name in the id property
+            var entry_tags = entry.match(/id="api-([^\-]+)(?:-(.+))?"/);    // Find the group and name in the id property
             var group = (entry_tags ? entry_tags[1] : null);
             var name = (entry_tags ? entry_tags[2] : null);
-            if (title && group && name)    {
+            if (level==1 && title && group)  {
+                nav.splice(index, 0, {
+                    group: group,
+                    isHeader: true,
+                    title: title,
+                    isFixed: true
+                });
+                index++;
+                found_level1 = true;
+            }
+            if (level==2 && title && group && name)    {
                 nav.splice(index, 0, {
                     group: group,
                     name: name,
@@ -223,28 +236,34 @@ require([
                 index++;
             }
         });
+        return found_level1;
     }
 
     // Mainmenu Header entry
     if (apiProject.header) {
-        nav.unshift({
-            group: '_',
-            isHeader: true,
-            title: (apiProject.header.title == null) ? locale.__('General') : apiProject.header.title,
-            isFixed: true
-        });
-        add_nav(nav, apiProject.header.content, 1); // Add level 2 titles
+        var found_level1 = add_nav(nav, apiProject.header.content, 0); // Add level 1 and 2 titles
+        if (!found_level1) {    // If no Level 1 tags were found, make a title
+            nav.unshift({
+                group: '_',
+                isHeader: true,
+                title: (apiProject.header.title == null) ? locale.__('General') : apiProject.header.title,
+                isFixed: true
+            });
+        }
     }
 
     // Mainmenu Footer entry
-    if (apiProject.footer && apiProject.footer.title != null) {
-        nav.push({
-            group: '_footer',
-            isHeader: true,
-            title: apiProject.footer.title,
-            isFixed: true
-        });
-        add_nav(nav, apiProject.footer.content, nav.length); // Add level 2 titles
+    if (apiProject.footer) {
+        var last_nav_index = nav.length;
+        var found_level1 = add_nav(nav, apiProject.footer.content, nav.length); // Add level 1 and 2 titles
+        if (!found_level1 && apiProject.footer.title != null) {    // If no Level 1 tags were found, make a title
+            nav.splice(last_nav_index, 0, {
+                group: '_footer',
+                isHeader: true,
+                title: apiProject.footer.title,
+                isFixed: true
+            });
+        }
     }
 
     // render pagetitle
