@@ -19,7 +19,7 @@ This example attempts to integrate "header.md" and "footer.md".
         },
         "footer": {
           "title": "My own footer title",
-          "filename": "footert.md"
+          "filename": "footer.md"
         }
       }
     }
