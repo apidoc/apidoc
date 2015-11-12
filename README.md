@@ -113,14 +113,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
    ```
 
 
-## Grunt Module
+## Build tools
 
-[grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
-
-
-## Gulp Module
-
-[gulp-apidoc](https://github.com/ayhankuru/gulp-apidoc) `npm install gulp-apidoc`.
+* [flask-apidoc](https://pypi.python.org/pypi/flask-apidoc/) `pip install flask-apidoc`
+* [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
+* [gulp-apidoc](https://github.com/ayhankuru/gulp-apidoc) `npm install gulp-apidoc`.
 
 
 ## Editor integration
