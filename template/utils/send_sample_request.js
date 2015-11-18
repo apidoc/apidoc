@@ -69,13 +69,33 @@ define([
       } // for
 
       // send AJAX request, catch success or error callback
+		var requestType = type.toUpperCase();
+		var requestData;
+		var serialize = function(obj, prefix) {
+		  var str = [];
+		  for(var p in obj) {
+		      if (obj.hasOwnProperty(p)) {
+				      var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+				      str.push(typeof v == "object" ?
+								          serialize(v, k) :
+								          encodeURIComponent(k) + "=" + encodeURIComponent(v));
+				    }
+		    }
+		  return str.join("&");
+		};
+		if(requestType==='GET'){
+			url = url + "?" + serialize(param);	
+		} else {
+			requestData = JSON.stringify(param);
+		}
+
       $.ajax({
           url: url,
           dataType: "json",
           contentType: "application/json",
-          data: JSON.stringify(param),
+          data: requestData,
           headers: header,
-          type: type.toUpperCase(),
+          type: requestType,
           success: displaySuccess,
           error: displayError
       });
