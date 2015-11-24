@@ -71,9 +71,7 @@ define([
       // send AJAX request, catch success or error callback
       $.ajax({
           url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify(param),
+          data: param,
           headers: header,
           type: type.toUpperCase(),
           success: displaySuccess,
