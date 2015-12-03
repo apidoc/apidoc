@@ -67,6 +67,20 @@ define([
               delete param[key];
           }
       } // for
+      
+      /**
+       * support custom content-type contents
+       */
+      
+      var contentType = "application/x-www-form-urlencoded; charset=UTF-8";
+      contentType = (header.hasOwnProperty("content-type")) ? header["content-type"] : contentType;
+      contentType = (header.hasOwnProperty("Content-Type")) ? header["Content-Type"] : contentType;
+      contentType = contentType.toLowerCase();
+      
+      if(contentType.indexOf("json") != -1) {
+    	  // encode as json
+    	  param = JSON.stringify(param);
+      }
 
       // send AJAX request, catch success or error callback
       $.ajax({
