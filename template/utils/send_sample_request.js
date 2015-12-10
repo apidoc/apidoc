@@ -81,6 +81,16 @@ define([
     	  // encode as json
     	  param = JSON.stringify(param);
       }
+      	// clear all cookies except XDEBUG
+		var cookies = Cookies.get();
+		for(var cookie in cookies) {
+			if ( cookie.trim().toUpperCase() !== 'XDEBUG_SESSION') {
+				//leave XDEBUG cookie alive!
+			
+			Cookies.remove(cookie);
+			}
+		}
+	
 
       // send AJAX request, catch success or error callback
       $.ajax({
