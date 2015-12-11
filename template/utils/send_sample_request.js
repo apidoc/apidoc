@@ -71,7 +71,6 @@ define([
       // send AJAX request, catch success or error callback
       $.ajax({
           url: url,
-          dataType: "json",
           contentType: "application/json",
           data: JSON.stringify(param),
           headers: header,
