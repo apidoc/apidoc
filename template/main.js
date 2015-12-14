@@ -387,9 +387,7 @@ require([
 
         // sample request switch
         $('.sample-request-switch').click(function (e) {
-            var name = '.' + $(this).attr('name') + '-fields';
-            $(name).addClass('hide');
-            $(this).parent().next(name).removeClass('hide');
+        	$(this).parent().next(name).toggle(this.checked);
         });
 
         // init modules
