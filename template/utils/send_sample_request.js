@@ -69,16 +69,43 @@ define([
       } // for
 
       // send AJAX request, catch success or error callback
-      $.ajax({
-          url: url,
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify(param),
-          headers: header,
-          type: type.toUpperCase(),
-          success: displaySuccess,
-          error: displayError
-      });
+      if (type === "get") {
+        $.ajax({
+            url: url + paramToQueryParms(param),
+            dataType: "text",
+            contentType: "text/plain",
+            type: type.toUpperCase(),
+            success: displaySuccess,
+            error: displayError
+        });
+      } else {
+        $.ajax({
+            url: url,
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(param),
+            headers: header,
+            type: type.toUpperCase(),
+            success: displaySuccess,
+            error: displayError
+        });
+      }
+
+      function paramToQueryParms(param) {
+        var p = 0,
+            queryParms = "";
+        
+        for (var k in param) {
+          if (p === 0) {
+            queryParms += "?" + k + "=" + param[k];
+          } else {
+            queryParms += "&" + k + "=" + param[k];
+          }
+          p++;
+        }
+        
+        return queryParms;
+      }
 
       function displaySuccess(data) {
           var jsonResponse;
