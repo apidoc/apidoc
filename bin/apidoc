@@ -30,7 +30,7 @@ var argv = nomnom
     .option('template', { abbr: 't', 'default': path.join(__dirname, '../template/'),
             help: 'Use template for output files.' })
 
-    .option('config', { abbr: 'c', 'default': './', help: 'Path to config file (apidoc.json)' })
+    .option('config', { abbr: 'c', 'default': './', help: 'Path to directory containing config file (apidoc.json)' })
 
     .option('verbose', { abbr: 'v', flag: true, 'default': false, help: 'Verbose debug output.' })
 
