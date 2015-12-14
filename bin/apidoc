@@ -16,7 +16,7 @@ var nomnom = require('nomnom');
 var apidoc = require('../lib/index');
 
 var argv = nomnom
-    .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|coffee|cs|dart|erl|exs?|go|java|js|litcoffee|php?|py|rb|scala|ts|pm)$',
+    .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|coffee|cs|dart|erl|exs?|go|groovy|java|js|litcoffee|php?|py|rb|scala|ts|pm)$',
             list: true,
             help: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
 
