@@ -1,6 +1,20 @@
 # apiDoc Changelog
 
 
+#### 0.13.2
+
+* Parser
+  * Remove p-Tags from type-Field.
+  * Update dependencies.
+  * Update fixtures (type-Fields and line endings).
+
+
+#### 0.13.1
+
+* Template
+  * Update French and Russian translation files.
+
+
 #### 0.13.0
 
 * **Important changes**:
