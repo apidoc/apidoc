@@ -9,7 +9,7 @@ define([
     './locales/zh.js',
     './locales/zh_cn.js'
 ], function() {
-    var langId = (navigator.language || navigator.userLanguage).toLowerCase();
+    var langId = (navigator.language || navigator.userLanguage).toLowerCase().replace('-', '_');
     var language = langId.substr(0, 2);
     var locales = {};
 
