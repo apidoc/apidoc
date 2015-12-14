@@ -1,5 +1,6 @@
 define([
     './locales/de.js',
+    './locales/es.js',
     './locales/fr.js',
     './locales/nl.js',
     './locales/pl.js',
