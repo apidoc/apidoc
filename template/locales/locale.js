@@ -5,7 +5,8 @@ define([
     './locales/pl.js',
     './locales/pt_br.js',
     './locales/ru.js',
-    './locales/zh.js'
+    './locales/zh.js',
+    './locales/zh_cn.js'
 ], function() {
     var langId = (navigator.language || navigator.userLanguage).toLowerCase();
     var language = langId.substr(0, 2);
