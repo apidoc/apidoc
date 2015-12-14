@@ -423,13 +423,24 @@ require([
             var version = $(this).data('version');
 
             if (version <= selectedVersion) {
-                if($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
+                if ($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
                     // enable Article
                     $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
                     // enable Navigation
                     $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
                     $('#sidenav li.nav-header[data-group=\'' + group + '\']').removeClass('hide');
                 }
+            }
+        });
+
+        // show / hide groups in content
+        $('article[data-version]').each(function(index) {
+            var group = $(this).data('group');
+            $('section#api-' + group).removeClass('hide');
+            if ($('section#api-' + group + ' article:visible').length === 0) {
+                $('section#api-' + group).addClass('hide');
+            } else {
+                $('section#api-' + group).removeClass('hide');
             }
         });
 
