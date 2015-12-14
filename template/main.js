@@ -11,6 +11,7 @@ require.config({
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
+        webfontloader: './vendor/webfontloader'
     },
     shim: {
         bootstrap: {
@@ -44,9 +45,10 @@ require([
     'prettify',
     'utilsSampleRequest',
     'semver',
+    'webfontloader',
     'bootstrap',
     'pathToRegexp'
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver) {
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
 
     // load google web fonts
     loadGoogleFontCss();
@@ -433,7 +435,8 @@ require([
             }
         });
 
-        // show / hide groups in content
+
+        // show 1st equal or lower Version of each entry
         $('article[data-version]').each(function(index) {
             var group = $(this).data('group');
             $('section#api-' + group).removeClass('hide');
@@ -657,17 +660,15 @@ require([
      * Load google fonts.
      */
     function loadGoogleFontCss() {
-        var host = document.location.hostname.toLowerCase();
-        var protocol = document.location.protocol.toLowerCase();
-        var googleCss = '//fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:400,600,700';
-        if (host == 'localhost' || !host.length || protocol === 'file:')
-            googleCss = 'http:' + googleCss;
-
-        $('<link/>', {
-            rel: 'stylesheet',
-            type: 'text/css',
-            href: googleCss
-        }).appendTo('head');
+        WebFont.load({
+            active: function() {
+                // Update scrollspy
+                $(window).scrollspy('refresh')
+            },
+            google: {
+                families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']
+            }
+        });
     }
 
     /**
