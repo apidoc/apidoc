@@ -2,6 +2,66 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Chad Auld](https://github.com/cauld)
+  * Sample requests should also support basic GET requests with standard que... [#189](https://github.com/apidoc/apidoc/pull/189)
+
+* [Vincent Hérilier](https://github.com/vherilier)
+  * Required defaults. [#193](https://github.com/apidoc/apidoc/pull/193)
+
+* [Dennis Hotson](https://github.com/dhotson)
+  * Parameter name array syntax. [#4](https://github.com/apidoc/apidoc-core/pull/4)
+
+* [ayaya](https://github.com/ayamomiji)
+  * Add Ruby comment support. [#12](https://github.com/apidoc/apidoc-core/pull/12)
+
+* [liferus](https://github.com/liferus)
+  * Patch issue #270 for apidoc. [#14](https://github.com/apidoc/apidoc-core/pull/14)
+
+* [Cosmin Cătălin SANDA](https://github.com/cosmincatalin)
+  * Sample requests with GET parameters need to be added to the query string. [#222](https://github.com/apidoc/apidoc/pull/222)
+
+* [Connor Hindley](https://github.com/connyay)
+  * Ensure params isn't empty before sending. [#230](https://github.com/apidoc/apidoc/pull/230)
+
+* [spacious](https://github.com/spacious)
+  * Add path to template variable [#269](https://github.com/apidoc/apidoc/pull/269)
+
+* [Joseph Page](https://github.com/josephpage)
+  * Add tests for node 0.12 [#291](https://github.com/apidoc/apidoc/pull/291)
+
+* [Charlie Chang](https://github.com/icharlie)
+  * Fix scrollspy issue [#299](https://github.com/apidoc/apidoc/pull/299)
+
+* [wisoot](https://github.com/wisoot)
+  * Fix handle bar expression to not apply html encode for data type field [#315](https://github.com/apidoc/apidoc/pull/315)
+
+* [Caesar Chi](https://github.com/clonn)
+  * Update to semantic tradition Chinese words [#327](https://github.com/apidoc/apidoc/pull/327)
+
+* [Tormi Tabor](https://github.com/tormi)
+  * Typo in header.md [#350](https://github.com/apidoc/apidoc/pull/350)
+
+* [Greg Leppert](https://github.com/leppert)
+  * Clarify that -c option must be a directory [#355](https://github.com/apidoc/apidoc/pull/355)
+
+* [Miguel Angel Chico](https://github.com/miguelchico)
+  * Add Spanish translation [#356](https://github.com/apidoc/apidoc/pull/356)
+
+* [Leonardo Silva](https://github.com/leosilvadev)
+  * Just adding groovy suport [#368](https://github.com/apidoc/apidoc/pull/368)
+
+* [arrowrowe](https://github.com/arrowrowe)
+  * Add Chinese Simplified (zh-cn) translation [#373](https://github.com/apidoc/apidoc/pull/373)
+
+* [sldab](https://github.com/sldab)
+  * Added Elixir support [#378](https://github.com/apidoc/apidoc/pull/378)
+
+* [Marcin Szepczyński](https://github.com/czepol)
+  * Update pl.js [#377](https://github.com/apidoc/apidoc/pull/377)
+
+* [Matheus Nunes Albino](https://github.com/TTheu)
+  * Locale don't work with pt-br [#329](https://github.com/apidoc/apidoc/issues/329)
+
 * [Frank Lucht](https://github.com/Digigoodz)
   * Add multiple input locations [#239](https://github.com/apidoc/apidoc/pull/239)
 
