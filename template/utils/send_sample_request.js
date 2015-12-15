@@ -69,19 +69,25 @@ define([
       } // for
 
       // send AJAX request, catch success or error callback
-      var requestObj = {
-          url: url,
-          dataType: "json",
-          contentType: "application/json",
+      var ajaxRequest = {
+          url    : url,
           headers: header,
-          type: type.toUpperCase(),
+          type   : type.toUpperCase(),
           success: displaySuccess,
-          error: displayError
+          error  : displayError
       };
-      if ( ! $.isEmptyObject(param)) {
-          requestObj.data = JSON.stringify(param);
+      if ( ajaxRequest.type !== "GET" ) {
+          ajaxRequest.dataType = "json";
+          ajaxRequest.contentType = "application/json";
+          if ( ! $.isEmptyObject(param)) {
+              ajaxRequest.data = JSON.stringify(param);
+          }
+      } else {
+          if ( ! $.isEmptyObject(param)) {
+              ajaxRequest.data = param;
+          }
       }
-      $.ajax(requestObj);
+      $.ajax(ajaxRequest);
 
       function displaySuccess(data) {
           var jsonResponse;
