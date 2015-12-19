@@ -235,6 +235,12 @@ pre code {
   white-space: pre;
 }
 
+pre code.sample-request-response-json {
+  white-space: pre-wrap;
+  max-height: 300px;
+  overflow: scroll;
+}
+
 /*
 pre.language-json {
   background: #f5f5f5;

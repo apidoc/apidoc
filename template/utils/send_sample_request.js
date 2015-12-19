@@ -129,7 +129,7 @@ define([
               jsonResponse = JSON.parse(jqXHR.responseText);
               jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
-              jsonResponse = jqXHR.responseText;
+              jsonResponse = escape(jqXHR.responseText);
           }
 
           if (jsonResponse)
