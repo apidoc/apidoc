@@ -81,15 +81,17 @@ define([
     	  // encode as json
     	  param = JSON.stringify(param);
       }
-      	// clear all cookies except XDEBUG
-		var cookies = Cookies.get();
-		for(var cookie in cookies) {
-			if ( cookie.trim().toUpperCase() !== 'XDEBUG_SESSION') {
-				//leave XDEBUG cookie alive!
-			
+      // clear all cookies except
+	var cookies = Cookies.get();
+	for ( var cookie in cookies) {
+		if (cookie.trim().toUpperCase() === 'XDEBUG_SESSION') {
+			// leave XDEBUG cookie alive!
+		} else if (cookie.trim().indexOf('Debugger') !== -1) {
+			// leave ZEND DEBUG cookies alive!
+		} else {
 			Cookies.remove(cookie);
-			}
 		}
+	}
 	
 
       // send AJAX request, catch success or error callback
