@@ -87,10 +87,11 @@ define([
       $.ajax(ajaxRequest);
 
 
-      function displaySuccess(data) {
+      function displaySuccess(data, status, jqXHR) {
           var jsonResponse;
           try {
-              jsonResponse = JSON.stringify(data, null, 4);
+              jsonResponse = JSON.parse(jqXHR.responseText);
+              jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
               jsonResponse = data;
           }
