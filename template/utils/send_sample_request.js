@@ -90,6 +90,7 @@ define([
       function displaySuccess(data) {
           var jsonResponse;
           try {
+              data = JSON.parse(data);
               jsonResponse = JSON.stringify(data, null, 4);
           } catch (e) {
               jsonResponse = data;
