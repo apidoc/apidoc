@@ -326,16 +326,16 @@ require([
     $('.sidenav').find('a').on('click', function(e) {
         e.preventDefault();
         var id = $(this).attr('href');
-        if ($(id).length > 0)
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
+        //if ($(id).length > 0)
+        //    $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
         window.location.hash = $(this).attr('href');
     });
 
     // Quickjump on Pageload to hash position.
     if(window.location.hash) {
         var id = window.location.hash;
-        if ($(id).length > 0)
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
+        //if ($(id).length > 0)
+        //    $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
     }
 
     /**
@@ -469,7 +469,7 @@ require([
 
         if (window.location.hash) {
             var id = window.location.hash;
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
+            //$('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
         }
     }
 
