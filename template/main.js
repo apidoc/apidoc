@@ -11,9 +11,13 @@ require.config({
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
-        webfontloader: './vendor/webfontloader'
+        webfontloader: './vendor/webfontloader',
+		json5: './vendor/json5.min'
     },
     shim: {
+		json5: {
+			exports: 'JSON5'
+		},
         bootstrap: {
             deps: ['jquery']
         },
