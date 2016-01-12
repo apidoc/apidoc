@@ -42,7 +42,7 @@ define([
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
-            header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            header[key] = value;
           });
       });
 
