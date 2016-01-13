@@ -1,6 +1,6 @@
 {
   "name": "apidoc-support-socketio",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "RESTful web API Documentation Generator",
   "author": {
     "name": "Alfred UC",
