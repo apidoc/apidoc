@@ -1,8 +1,9 @@
 define([
   'jquery',
+  'socketio',
   'lodash',
   'json5'
-], function($, _, JSON5) {
+], function($, io, _, JSON5) {
 
   var initDynamic = function() {
       // Button send
@@ -78,28 +79,60 @@ define([
           }
       } // for
 
+	  _.each( param, function( val, key ) {
+		  var t = paramType[ key ].toLowerCase();
+		  if( t === 'object' || t === 'array' ) {
+			  try {
+				  param[ key ] = JSON5.parse( val );
+			  } catch (e) {
+				  param[ key ] = "";
+			  }
+		  }
+	  });
+
+	  // flicker
+	  if($root.find(".sample-request-response").is(":visible"))
+		  $root.find(".sample-request-response").fadeTo(1, 0.1);
+		  
 	  $root.find(".sample-request-response").fadeTo(250, 1);
 	  $root.find(".sample-request-response-json").html("Loading...");
 	  refreshScrollSpy();
 
-	  _.each( param, function( val, key ) {
-		  var t = paramType[ key ].toLowerCase();
-		  if( t === 'object' || t === 'array' ) {
-			  param[ key ] = JSON5.parse( val );
+	  if( type.toUpperCase() === 'EMIT' ) {
+		  // type is 'emit', use SOCKET emit, eventName is url
+
+		  var socket;
+		  function emitBySocket() {
+			  var eventName = url.replace(/^\//,'');
+			  socket.emit( eventName, param );
+			  
+			  var totalData = [];
+			  socket.on( eventName, function( data ) {
+				  totalData.push( data );
+				  displaySuccess( totalData );
+			  });
 		  }
-	  });
-      // send AJAX request, catch success or error callback
-      var ajaxRequest = {
-          url        : url,
-          headers    : header,
-          data       : param,
-          type       : type.toUpperCase(),
-          success    : displaySuccess,
-          error      : displayError
-      };
 
-      $.ajax(ajaxRequest);
+		  if( socket && socket.connected ) {
+			  emitBySocket();
+		  } else {
+			  socket = io.connect('/');
+			  socket.on('connection', emitBySocket );
+		  }
 
+	  } else {
+		  // send AJAX request, catch success or error callback
+		  var ajaxRequest = {
+			  url        : url,
+			  headers    : header,
+			  data       : param,
+			  type       : type.toUpperCase(),
+			  success    : displaySuccess,
+			  error      : displayError
+		  };
+
+		  $.ajax(ajaxRequest);
+	  }
 
       function displaySuccess(data) {
           var jsonResponse;

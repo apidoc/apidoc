@@ -12,11 +12,15 @@ require.config({
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
         webfontloader: './vendor/webfontloader',
-		json5: './vendor/json5.min'
+		json5: './vendor/json5.min',
+		socketio: './vendor/socket.io.min'
     },
     shim: {
 		json5: {
 			exports: 'JSON5'
+		},
+		socketio: {
+			exports: 'io'
 		},
         bootstrap: {
             deps: ['jquery']
