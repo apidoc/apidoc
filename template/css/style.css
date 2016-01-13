@@ -238,7 +238,7 @@ pre code {
 pre code.sample-request-response-json {
   white-space: pre-wrap;
   max-height: 300px;
-  overflow: scroll;
+  overflow: auto;
 }
 
 /*

@@ -1,6 +1,9 @@
 define([
-  'jquery'
-], function($) {
+  'jquery',
+  'socketio',
+  'lodash',
+  'json5'
+], function($, io, _, JSON5) {
 
   var initDynamic = function() {
       // Button send
@@ -40,12 +43,13 @@ define([
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
-            header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            header[key] = value;
           });
       });
 
       // create JSON dictionary of parameters
       var param = {};
+      var paramType = {};
       $root.find(".sample-request-param:checked").each(function(i, element) {
           var group = $(element).data("sample-request-param-group-id");
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
@@ -54,7 +58,8 @@ define([
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
-            param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            param[key] = value;
+            paramType[key] = $(element).next().text();
           });
       });
 
@@ -74,18 +79,60 @@ define([
           }
       } // for
 
-      // send AJAX request, catch success or error callback
-      var ajaxRequest = {
-          url        : url,
-          headers    : header,
-          data       : param,
-          type       : type.toUpperCase(),
-          success    : displaySuccess,
-          error      : displayError
-      };
+	  _.each( param, function( val, key ) {
+		  var t = paramType[ key ].toLowerCase();
+		  if( t === 'object' || t === 'array' ) {
+			  try {
+				  param[ key ] = JSON5.parse( val );
+			  } catch (e) {
+				  param[ key ] = "";
+			  }
+		  }
+	  });
 
-      $.ajax(ajaxRequest);
+	  // flicker
+	  if($root.find(".sample-request-response").is(":visible"))
+		  $root.find(".sample-request-response").fadeTo(1, 0.1);
+		  
+	  $root.find(".sample-request-response").fadeTo(250, 1);
+	  $root.find(".sample-request-response-json").html("Loading...");
+	  refreshScrollSpy();
 
+	  if( type.toUpperCase() === 'EMIT' ) {
+		  // type is 'emit', use SOCKET emit, eventName is url
+
+		  var socket;
+		  function emitBySocket() {
+			  var eventName = url.replace(/^\//,'');
+			  socket.emit( eventName, param );
+			  
+			  var totalData = [];
+			  socket.on( eventName, function( data ) {
+				  totalData.push( data );
+				  displaySuccess( totalData );
+			  });
+		  }
+
+		  if( socket && socket.connected ) {
+			  emitBySocket();
+		  } else {
+			  socket = io.connect('/');
+			  socket.on('connection', emitBySocket );
+		  }
+
+	  } else {
+		  // send AJAX request, catch success or error callback
+		  var ajaxRequest = {
+			  url        : url,
+			  headers    : header,
+			  data       : param,
+			  type       : type.toUpperCase(),
+			  success    : displaySuccess,
+			  error      : displayError
+		  };
+
+		  $.ajax(ajaxRequest);
+	  }
 
       function displaySuccess(data) {
           var jsonResponse;
@@ -94,7 +141,6 @@ define([
           } catch (e) {
               jsonResponse = data;
           }
-          $root.find(".sample-request-response").fadeTo(250, 1);
           $root.find(".sample-request-response-json").html(jsonResponse);
           refreshScrollSpy();
       };
