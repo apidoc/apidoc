@@ -10,7 +10,7 @@
     "type": "MIT"
   },
   "preferGlobal": true,
-  "bin": "bin/apidoc",
+  "bin": "bin/apidoc-support-socketio",
   "main": "./lib/index.js",
   "homepage": "http://apidocjs.com",
   "repository": {
@@ -21,9 +21,8 @@
     "url": "https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs/apidoc-support-socketio/issues"
   },
   "scripts": {
-    "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
-    "build-example": "bin/apidoc -i example/ -o tmp/",
+    "build-example": "bin/apidoc-support-socketio -i example/ -o tmp/",
     "check-updates": "npm-check-updates"
   },
   "keywords": [
