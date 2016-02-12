@@ -268,9 +268,9 @@ require([
                     // determine versions
                     api.forEach(function(versionEntry) {
                         if (groupEntry === versionEntry.group && entry.name === versionEntry.name) {
-                            if ( ! articleVersions[entry.group][entry.name])
+                            if ( ! articleVersions[entry.group].hasOwnProperty(entry.name) ) {
                                 articleVersions[entry.group][entry.name] = [];
-
+                            }
                             articleVersions[entry.group][entry.name].push(versionEntry.version);
                         }
                     });
