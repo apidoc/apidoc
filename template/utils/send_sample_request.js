@@ -35,11 +35,16 @@ define([
       $root.find(".sample-request-header:checked").each(function(i, element) {
           var group = $(element).data("sample-request-header-group-id");
           $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
+            var optional = $(element).data("optional");
+            var defaultValue = $(element).data("default-value");
+
             var key = $(element).data("sample-request-header-name");
             var value = element.value;
-            if ( ! element.optional && element.defaultValue !== '') {
-                value = element.defaultValue;
+
+            if (!optional && defaultValue !== '') {
+              value = defaultValue;
             }
+
             header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });
@@ -49,11 +54,16 @@ define([
       $root.find(".sample-request-param:checked").each(function(i, element) {
           var group = $(element).data("sample-request-param-group-id");
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
+            var optional = $(element).data("optional");
+            var defaultValue = $(element).data("default-value");
+
             var key = $(element).data("sample-request-param-name");
             var value = element.value;
-            if ( ! element.optional && element.defaultValue !== '') {
-                value = element.defaultValue;
+
+            if (!optional && defaultValue !== '') {
+              value = defaultValue;
             }
+
             param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
           });
       });

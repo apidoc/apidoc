@@ -248,7 +248,7 @@
                 <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
                 <div class="controls">
                   <div class="input-append">
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}" required="{{#if optional}}false{{else}}true{{/if}}">
+                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}" data-optional="{{optional}}" data-default-value="{{defaultValue}}" required="{{#if optional}}false{{else}}true{{/if}}">
                     <span class="add-on">{{{type}}}</span>
                   </div>
                 </div>
@@ -270,7 +270,7 @@
                 <label class="control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="controls">
                   <div class="input-append">
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" required="{{#if optional}}false{{else}}true{{/if}}">
+                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" data-optional="{{optional}}" data-default-value="{{defaultValue}}" required="{{#if optional}}false{{else}}true{{/if}}">
                     <span class="add-on">{{{type}}}</span>
                   </div>
                 </div>
