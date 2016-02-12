@@ -235,17 +235,11 @@ pre code {
   white-space: pre;
 }
 
-/*
-pre.language-json {
-  background: #f5f5f5;
-  border: #e0e0e0 1px solid;
+pre code.sample-request-response-json {
+  white-space: pre-wrap;
+  max-height: 500px;
+  overflow: auto;
 }
-
-pre.language-json .pln,
-pre.language-json .pun {
-  color: #3a3a3a;
-}
-*/
 
 /* ------------------------------------------------------------------------------------------
  * Sidenav
