@@ -1,5 +1,25 @@
 # apiDoc Changelog
 
+#### 0.15.0
+
+* CLI
+  * Update dependencies.
+
+* Parser
+  * Upgrade markdown parser to version 0.6.
+
+* Template
+  * Make ajaxRequest simpler. [384](https://github.com/apidoc/apidoc/pull/384)
+  * Format response json. [396](https://github.com/apidoc/apidoc/pull/396)
+  * Improve sendSampelRequest. [400](https://github.com/apidoc/apidoc/pull/400)
+  * Add Catalan translation. [403](https://github.com/apidoc/apidoc/pull/403)
+  * Bugfix: zh_cn translation string. [415](https://github.com/apidoc/apidoc/pull/415)
+  * Bugfix: Template break on defined prototype methods.
+  * Update json response css.
+  * Update webfontloader.
+  * Add monospace font fallback.
+
+
 #### 0.14.0
 
 * CLI
