@@ -663,7 +663,7 @@ require([
         WebFont.load({
             active: function() {
                 // Update scrollspy
-                $(window).scrollspy('refresh')
+                $(window).scrollspy('refresh');
             },
             google: {
                 families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']

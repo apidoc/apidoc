@@ -283,10 +283,10 @@ define([
 
         var ret = '';
         var length = dataList.length;
-        for (var index in dataList) {
-            if(index == (length - 1))
-                dataList[index]['_last'] = true;
-            ret = ret + options.fn(dataList[index]);
+        for (var dindex in dataList) {
+            if(dindex == (length - 1))
+                dataList[dindex]['_last'] = true;
+            ret = ret + options.fn(dataList[dindex]);
         }
         return ret;
     }
