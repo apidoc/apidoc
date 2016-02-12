@@ -77,38 +77,15 @@ define([
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
           url        : url,
-          dataType   : "json",
-          contentType: "application/json",
           headers    : header,
+          data       : param,
           type       : type.toUpperCase(),
           success    : displaySuccess,
           error      : displayError
       };
 
-      if (type === 'get') {
-          ajaxRequest.url = url + paramToQueryParms(param),
-          ajaxRequest.dataType = "text";
-          ajaxRequest.contentType = "text/plain";
-      } else {
-          if ( ! $.isEmptyObject(param)) {
-              ajaxRequest.data = JSON.stringify(param);
-          }
-      }
       $.ajax(ajaxRequest);
 
-      function paramToQueryParms(param) {
-          var p = 0;
-          var queryParms = "";
-          for (var k in param) {
-              if (p === 0) {
-                  queryParms += "?" + k + "=" + param[k];
-              } else {
-                  queryParms += "&" + k + "=" + param[k];
-              }
-              p++;
-          }
-          return queryParms;
-      }
 
       function displaySuccess(data, status, jqXHR) {
           var jsonResponse;
@@ -130,7 +107,7 @@ define([
               jsonResponse = JSON.parse(jqXHR.responseText);
               jsonResponse = JSON.stringify(jsonResponse, null, 4);
           } catch (e) {
-              jsonResponse = jqXHR.responseText;
+              jsonResponse = escape(jqXHR.responseText);
           }
 
           if (jsonResponse)
