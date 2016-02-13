@@ -37,6 +37,11 @@ define([
           $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
             var optional = $(element).data("optional");
             var defaultValue = $(element).data("default-value");
+            var controlGroup = $(element).closest("div.control-group");
+
+            if (optional && controlGroup.find("input[type=checkbox]:not(:checked)").length) {
+              return true;
+            }
 
             var key = $(element).data("sample-request-header-name");
             var value = element.value;
@@ -56,6 +61,11 @@ define([
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
             var optional = $(element).data("optional");
             var defaultValue = $(element).data("default-value");
+            var controlGroup = $(element).closest("div.control-group");
+
+            if (optional && controlGroup.find("input[type=checkbox]:not(:checked)").length) {
+              return true;
+            }
 
             var key = $(element).data("sample-request-param-name");
             var value = element.value;

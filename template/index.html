@@ -246,7 +246,7 @@
               {{#each this}}
               <div class="control-group">
                 <label class="control-label" for="{{../../id}}-sample-request-header-field-{{@../index}}-{{@index}}">
-                  <input type="checkbox" id="{{../../id}}-sample-request-header-field-{{@../index}}-{{@index}}" style="display:none;" checked>
+                  <input type="checkbox" id="{{../../id}}-sample-request-header-field-{{@../index}}-{{@index}}" checked {{#if optional}}{{else}}disabled{{/if}}>
                   {{field}}
                 </label>
                 <div class="controls">
@@ -271,7 +271,7 @@
               {{#each this}}
               <div class="control-group">
                 <label class="control-label" for="{{../../id}}-sample-request-param-field-{{@../index}}-{{@index}}">
-                  <input type="checkbox" id="{{../../id}}-sample-request-param-field-{{@../index}}-{{@index}}" style="display:none;" checked>
+                  <input type="checkbox" id="{{../../id}}-sample-request-param-field-{{@../index}}-{{@index}}" checked {{#if optional}}{{else}}disabled{{/if}}>
                   {{field}}
                 </label>
                 <div class="controls">
