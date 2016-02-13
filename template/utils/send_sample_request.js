@@ -30,53 +30,11 @@ define([
   {
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
-      // Optional header
-      var header = {};
-      $root.find(".sample-request-header:checked").each(function(i, element) {
-          var group = $(element).data("sample-request-header-group-id");
-          $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
-            var optional = $(element).data("optional");
-            var defaultValue = $(element).data("default-value");
-            var controlGroup = $(element).closest("div.control-group");
-
-            if (optional && controlGroup.find("input[type=checkbox]:not(:checked)").length) {
-              return true;
-            }
-
-            var key = $(element).data("sample-request-header-name");
-            var value = element.value;
-
-            if (!optional && defaultValue !== '') {
-              value = defaultValue;
-            }
-
-            header[key] = $.type(value) === "string" ? escapeHtml(value) : value;
-          });
-      });
+      // optional heade
+      var header = getUserData("header");
 
       // create JSON dictionary of parameters
-      var param = {};
-      $root.find(".sample-request-param:checked").each(function(i, element) {
-          var group = $(element).data("sample-request-param-group-id");
-          $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
-            var optional = $(element).data("optional");
-            var defaultValue = $(element).data("default-value");
-            var controlGroup = $(element).closest("div.control-group");
-
-            if (optional && controlGroup.find("input[type=checkbox]:not(:checked)").length) {
-              return true;
-            }
-
-            var key = $(element).data("sample-request-param-name");
-            var value = element.value;
-
-            if (!optional && defaultValue !== '') {
-              value = defaultValue;
-            }
-
-            param[key] = $.type(value) === "string" ? escapeHtml(value) : value;
-          });
-      });
+      var param = getUserData("param");
 
       // grab user-inputted URL
       var url = $root.find(".sample-request-url").val();
@@ -106,6 +64,34 @@ define([
 
       $.ajax(ajaxRequest);
 
+      // user data
+      function getUserData(type) {
+        var data = {};
+
+        $root.find(".sample-request-" + type + ":checked").each(function(i, element) {
+            var group = $(element).data("sample-request-" + type + "-group-id");
+            $root.find("[data-sample-request-" + type + "-group=\"" + group + "\"]").each(function(i, element) {
+              var optional = $(element).data("optional");
+              var controlGroup = $(element).closest("div.control-group");
+
+              if (optional && controlGroup.find("input[type=checkbox]:not(:checked)").length) {
+                return true;
+              }
+
+              var key = $(element).data("sample-request-" + type + "-name");
+              var value = element.value;
+              var defaultValue = $(element).data("default-value");
+
+              if (!optional && defaultValue !== '') {
+                value = defaultValue;
+              }
+
+              data[key] = $.type(value) === "string" ? escapeHtml(value) : value;
+            });
+        });
+
+        return data;
+      }
 
       function displaySuccess(data) {
           var jsonResponse;
