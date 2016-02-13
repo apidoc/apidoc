@@ -245,8 +245,8 @@
             <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
-                <label class="control-label" for="sample-request-header-field-{{../../id}}-{{@../index}}-{{@index}}">
-                  <input type="checkbox" id="sample-request-header-field-{{../../id}}-{{@../index}}-{{@index}}" style="display:none;" checked>
+                <label class="control-label" for="{{../../id}}-sample-request-header-field-{{@../index}}-{{@index}}">
+                  <input type="checkbox" id="{{../../id}}-sample-request-header-field-{{@../index}}-{{@index}}" style="display:none;" checked>
                   {{field}}
                 </label>
                 <div class="controls">
@@ -270,8 +270,8 @@
             <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
-                <label class="control-label" for="sample-request-param-field-{{../../id}}-{{@../index}}-{{@index}}">
-                  <input type="checkbox" id="sample-request-param-field-{{../../id}}-{{@../index}}-{{@index}}" style="display:none;" checked>
+                <label class="control-label" for="{{../../id}}-sample-request-param-field-{{@../index}}-{{@index}}">
+                  <input type="checkbox" id="{{../../id}}-sample-request-param-field-{{@../index}}-{{@index}}" style="display:none;" checked>
                   {{field}}
                 </label>
                 <div class="controls">
