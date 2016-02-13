@@ -245,10 +245,12 @@
             <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
-                <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
+                <label class="control-label" for="sample-request-header-field-{{field}}">
+                  {{field}}
+                </label>
                 <div class="controls">
                   <div class="input-append">
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}" data-optional="{{optional}}" data-type="{{toLowerCase type}}" data-default-value="{{defaultValue}}"{{#if optional}}{{else}}required{{/if}}>
+                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}" data-optional="{{optional}}" data-type="{{toLowerCase type}}" data-default-value="{{defaultValue}}" value="{{defaultValue}}" {{#if optional}}{{else}}required{{/if}}>
                     <span class="add-on">{{{type}}}</span>
                   </div>
                 </div>
@@ -267,10 +269,12 @@
             <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
-                <label class="control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                <label class="control-label" for="sample-request-param-field-{{field}}">
+                  {{field}}
+                </label>
                 <div class="controls">
                   <div class="input-append">
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" data-optional="{{optional}}" data-type="{{toLowerCase type}}" data-default-value="{{defaultValue}}"{{#if optional}}{{else}}required{{/if}}>
+                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" data-optional="{{optional}}" data-type="{{toLowerCase type}}" data-default-value="{{defaultValue}}" value="{{defaultValue}}" {{#if optional}}{{else}}required{{/if}}>
                     <span class="add-on">{{{type}}}</span>
                   </div>
                 </div>
