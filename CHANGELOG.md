@@ -1,5 +1,12 @@
 # apiDoc Changelog
 
+
+#### 0.15.1
+
+* Parser
+  * Bugfix: Inherit error of lodash merge / mergeWidth split.
+
+
 #### 0.15.0
 
 * CLI
