@@ -2,6 +2,21 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [jacky huang](https://github.com/xiaochong0302)
+  * Bugfix: zh_cn translation string. [415](https://github.com/apidoc/apidoc/pull/415)
+
+* [Xisco Guaita](https://github.com/xguaita)
+  * Add Catalan translation. [403](https://github.com/apidoc/apidoc/pull/403)
+
+* [Alfred UC](https://github.com/b6pzeusbc54tvhw5jgpyw8pwz2x6gs)
+  * Improve sendSampelRequest. [400](https://github.com/apidoc/apidoc/pull/400)
+
+* [Adriano Fialho](https://github.com/afialho)
+  * Format response json. [396](https://github.com/apidoc/apidoc/pull/396)
+
+* [Zeno Zeng](https://github.com/zenozeng)
+  * Make ajaxRequest simpler. [#384](https://github.com/apidoc/apidoc/pull/384)
+
 * [Chad Auld](https://github.com/cauld)
   * Sample requests should also support basic GET requests with standard que... [#189](https://github.com/apidoc/apidoc/pull/189)
 
