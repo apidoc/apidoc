@@ -173,7 +173,7 @@
           <tr>
           <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
             {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         <tbody>
@@ -458,7 +458,7 @@
           <tr>
             <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
             {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         {{subTemplate "article-compare-param-block-body" source=source.value compare=compare.value _hasType=../../_hasType}}
@@ -472,7 +472,7 @@
           <tr>
             <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
             {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         {{subTemplate "article-compare-param-block-body" source=source.value compare=source.value _hasType=../../_hasType}}
@@ -486,7 +486,7 @@
           <tr>
             <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
             {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         {{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../../_hasType}}
