@@ -281,17 +281,11 @@ pre code.sample-request-response-json {
   background-color: #ffffff;
 }
 
-.sidenav > li.nav-header.active > a {
-  background-color: #0088cc;
-}
-
-.sidenav > .active > a {
-  position: relative;
-  z-index: 2;
-}
-
-.sidenav > li > a:hover {
-  background-color: #ffffff;
+.sidenav > li.active > a {
+    position: relative;
+    z-index: 2;
+    background-color: #0088cc;
+    color: #ffffff;
 }
 
 .sidenav > li.has-modifications a {

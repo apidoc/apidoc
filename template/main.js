@@ -358,13 +358,10 @@ require([
      * On Template changes, recall plugins.
      */
     function initDynamic() {
-        // bootstrap popover
-        $('a[data-toggle=popover]')
-            .popover()
-            .click(function(e) {
-                e.preventDefault();
-            })
-        ;
+        // Bootstrap popover
+        $('button[data-toggle="popover"]').popover().click(function(e) {
+            e.preventDefault();
+        });
 
         var version = $('#version strong').html();
         $('#sidenav li').removeClass('is-new');
