@@ -348,8 +348,7 @@ require([
     function _hasTypeInFields(fields) {
         var result = false;
         $.each(fields, function(name) {
-            if (_.any(fields[name], function(item) { return item.type; }) )
-                result = true;
+            result = result || _.some(fields[name], function(item) { return item.type; });
         });
         return result;
     }
