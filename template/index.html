@@ -46,12 +46,12 @@
         <strong>{{version}}</strong>&nbsp;<span class="caret"></span>
       </button>
       <ul id="versions" class="dropdown-menu open-left">
-          <li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
-          <li class="divider"></li>
-          <li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
-  {{#each versions}}
+        <li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
+        <li class="divider"></li>
+        <li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
+      {{#each versions}}
         <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+      {{/each}}
       </ul>
     </div>
   </div>
@@ -108,9 +108,9 @@
         </button>
         <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
-  {{#each versions}}
+        {{#each versions}}
           <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+        {{/each}}
         </ul>
       </div>
     </div>
@@ -161,7 +161,6 @@
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
     {{subTemplate "article-sample-request" article=article id=id}}
-
   </article>
 </script>
 
@@ -172,13 +171,13 @@
       <table>
         <thead>
           <tr>
-          <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         <tbody>
-      {{#each this}}
+        {{#each this}}
           <tr>
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#if ../../_hasType}}
@@ -198,18 +197,17 @@
             {{/if}}
             </td>
           </tr>
-      {{/each}}
+        {{/each}}
         </tbody>
       </table>
     {{/each}}
-
     {{#if_gt params.examples.length compare=0}}
       <ul class="nav nav-tabs nav-tabs-examples">
-        {{#each params.examples}}
-          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-            <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
-          </li>
-        {{/each}}
+      {{#each params.examples}}
+        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+        </li>
+      {{/each}}
       </ul>
 
       <div class="tab-content">
@@ -220,7 +218,6 @@
       {{/each}}
       </div>
     {{/if_gt}}
-
   {{/if}}
 </script>
 
@@ -280,7 +277,6 @@
               <button class="btn btn-primary sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
             </div>
           </div>
-
           <div class="form-group sample-request-response" style="display: none;">
             <h3>
               {{__ "Response"}}
@@ -288,7 +284,6 @@
             </h3>
             <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
           </div>
-
         </fieldset>
       </form>
     {{/if}}
@@ -311,9 +306,9 @@
         <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
           <li class="divider"></li>
-  {{#each versions}}
+        {{#each versions}}
           <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+        {{/each}}
         </ul>
       </div>
     </div>
@@ -333,7 +328,6 @@
 
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title article.examples compare.examples}}
-
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
           <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
@@ -351,7 +345,6 @@
           <a href="#compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
-
     {{/each_compare_title}}
     </ul>
 
@@ -465,12 +458,12 @@
         <table>
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=source.value compare=compare.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=source.value compare=compare.value _hasType=../_hasType}}
         </table>
       {{/if}}
 
@@ -479,12 +472,12 @@
         <table class="ins">
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=source.value compare=source.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=source.value compare=source.value _hasType=../_hasType}}
         </table>
       {{/if}}
 
@@ -493,19 +486,19 @@
         <table class="del">
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if _hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../_hasType}}
         </table>
       {{/if}}
     {{/each_compare_keys}}
 
+    {{#if source.examples}}
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title source.examples compare.examples}}
-
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
           <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
@@ -523,7 +516,6 @@
           <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
-
     {{/each_compare_title}}
     </ul>
 
@@ -547,10 +539,9 @@
           <pre class="prettyprint language-{{source.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
-
     {{/each_compare_title}}
     </div>
-
+    {{/if}}
   {{/if}}
 </script>
 
