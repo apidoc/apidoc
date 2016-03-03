@@ -56,6 +56,8 @@ var argv = nomnom
 
     .option('line-ending', { help: 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.' })
 
+    .option('encoding', {'default': 'utf-8', help : 'Set the encoding of the source code. Default is UTF-8.'})
+
     .parse()
 ;
 
@@ -102,6 +104,7 @@ var options = {
     simulate      : argv['simulate'],
     markdown      : argv['markdown'],
     lineEnding    : argv['line-ending'],
+    encoding      : argv['encoding'],
 };
 
 if (apidoc.createDoc(options) === false) {
