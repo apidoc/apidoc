@@ -431,7 +431,6 @@ require([
             }
         });
 
-
         // show 1st equal or lower Version of each entry
         $('article[data-version]').each(function(index) {
             var group = $(this).data('group');
