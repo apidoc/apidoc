@@ -122,9 +122,10 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 * [gulp-apidocjs](https://github.com/apriendeau/gulp-apidocjs) `npm install gulp-apidocjs`.
 
 
-## Editor integration
+## Integration
 
 * [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
+* [Microsoft WebAPI](https://github.com/chehabz/grunt-edge-apidoc-webapi-generator)
 * [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
 
 
