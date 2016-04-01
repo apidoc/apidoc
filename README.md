@@ -124,6 +124,7 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 
 ## Integration
 
+* [Eclipse Java apiDoc editor templates](https://github.com/skhani/eclipse_java_apiDoc_templates)
 * [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
 * [Microsoft WebAPI](https://github.com/chehabz/grunt-edge-apidoc-webapi-generator)
 * [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
