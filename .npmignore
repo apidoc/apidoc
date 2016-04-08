@@ -1,4 +1,5 @@
 .git/
+example/
 node_modules/
 test/
 tmp/
