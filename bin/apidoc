@@ -56,7 +56,7 @@ var argv = nomnom
 
     .option('line-ending', { help: 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.' })
 
-    .option('encoding', {'default': 'utf-8', help : 'Set the encoding of the source code. Default is UTF-8.'})
+    .option('encoding', { 'default': 'utf8', help : 'Set the encoding of the source code. [utf8].' })
 
     .parse()
 ;
