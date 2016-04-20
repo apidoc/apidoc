@@ -6,7 +6,7 @@
  * apidoc
  * http://apidocjs.com
  *
- * Copyright (c) 2013-2015 inveris OHG
+ * Copyright (c) 2013-2016 inveris OHG
  * Author Peter Rottmann <rottmann@inveris.de>
  * Licensed under the MIT license.
  */
@@ -16,7 +16,7 @@ var nomnom = require('nomnom');
 var apidoc = require('../lib/index');
 
 var argv = nomnom
-    .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|litcoffee|php|py|rb|scala|ts|pm)$',
+    .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|litcoffee|lua|php|py|rb|scala|ts|pm)$',
             list: true,
             help: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
 
