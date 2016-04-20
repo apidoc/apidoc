@@ -591,6 +591,37 @@ require([
     }
 
     /**
+     * Sort the fields.
+     */
+    function sortFields(fields_object) {
+        $.each(fields_object, function (key, fields) {
+
+            var reversed = fields.slice().reverse()
+
+            var max_dot_count = Math.max.apply(null, reversed.map(function (item) {
+                return item.field.split(".").length - 1;
+            }))
+
+            for (var dot_count = 1; dot_count <= max_dot_count; dot_count++) {
+                reversed.forEach(function (item, index) {
+                    var parts = item.field.split(".");
+                    if (parts.length - 1 == dot_count) {
+                        var fields_names = fields.map(function (item) { return item.field; });
+                        if (parts.slice(1).length  >= 1) {
+                            var prefix = parts.slice(0, parts.length - 1).join(".");
+                            var prefix_index = fields_names.indexOf(prefix);
+                            if (prefix_index > -1) {
+                                fields.splice(fields_names.indexOf(item.field), 1);
+                                fields.splice(prefix_index + 1, 0, item);
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    /**
      * Add article settings.
      */
     function addArticleSettings(fields, entry) {
@@ -599,20 +630,30 @@ require([
         fields.id = fields.article.group + '-' + fields.article.name + '-' + fields.article.version;
         fields.id = fields.id.replace(/\./g, '_');
 
-        if (entry.header && entry.header.fields)
+        if (entry.header && entry.header.fields) {
+            sortFields(entry.header.fields);
             fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
+        }
 
-        if (entry.parameter && entry.parameter.fields)
+        if (entry.parameter && entry.parameter.fields) {
+            sortFields(entry.parameter.fields);
             fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
+        }
 
-        if (entry.error && entry.error.fields)
+        if (entry.error && entry.error.fields) {
+            sortFields(entry.error.fields);
             fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
+        }
 
-        if (entry.success && entry.success.fields)
+        if (entry.success && entry.success.fields) {
+            sortFields(entry.success.fields);
             fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
+        }
 
-        if (entry.info && entry.info.fields)
+        if (entry.info && entry.info.fields) {
+            sortFields(entry.info.fields);
             fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
+        }
 
         // add template settings
         fields.template = apiProject.template;
