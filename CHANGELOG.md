@@ -10,7 +10,7 @@ apidoc search now in global node modules dir and local `node_modules` for module
 View / clone: [apidoc-plugin-example](https://github.com/apidoc/apidoc-plugin-example)
 With a plugin you can add features like new parsers (this was possible before only with CLI param) or filters and workers.
 
-Start adding [hooks](https://github.com/apidoc/apidoc-core/hooks.md).
+Start adding [hooks](https://github.com/apidoc/apidoc-core/blob/master/hooks.md).
 Hooks can be used in plugins to extend or transform data.
 
 If you need a hook in apidoc-core please add your hook and provide a pull request.
