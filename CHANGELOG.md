@@ -7,7 +7,7 @@ Greatest improvement: Plugin support
 
 apidoc search now in global node modules dir and local `node_modules` for modules that start with `apidoc-plugin-`. (local installed plugins have higher priority)
 
-View / clone: [apidoc-plugin-example](https://github.com/apidoc/apidoc-plugin-example)
+View / clone: [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)
 With a plugin you can add features like new parsers (this was possible before only with CLI param) or filters and workers.
 
 Start adding [hooks](https://github.com/apidoc/apidoc-core/blob/master/hooks.md).
