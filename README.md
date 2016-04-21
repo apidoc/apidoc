@@ -141,6 +141,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 * [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
 
 
+## Extend apiDoc and write your own Plugin
+
+For details and an example view [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)
+
+
 ## Help
 
 Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
