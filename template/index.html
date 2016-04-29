@@ -8,6 +8,7 @@
   <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
   <link href="vendor/prettify.css" rel="stylesheet" media="screen">
   <link href="css/style.css" rel="stylesheet" media="screen, print">
+  <link href="css/custome.css" rel="stylesheet" media="screen, print">
   <link href="img/favicon.ico" rel="icon" type="image/x-icon">
   <script src="vendor/polyfill.js"></script>
 </head>
@@ -183,7 +184,12 @@
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#if ../../_hasType}}
               <td>
-                {{{type}}}
+                {{#ifeq type 'String[]'}}
+                  <span class="type-String-Array ">{{{type}}}</span>
+                {{/ifeq}}
+                {{#ifne type 'String[]'}}
+                  <span class="type-{{{type}}} ">{{{type}}}</span>
+                {{/ifne}}
               </td>
             {{/if}}
             <td>
@@ -227,7 +233,7 @@
 <script id="template-article-sample-request" type="text/x-handlebars-template">
     {{#if article.sampleRequest}}
       <h2>{{__ "Send a Sample Request"}}</h2>
-      <form class="form-horizontal">
+      <form class="form-horizontal sample-request-form" data-sample-request-type="{{article.type}}" id="{{article.name}}">
         <fieldset>
           <div class="control-group">
             <div class="controls">
@@ -242,14 +248,14 @@
         {{#if article.header.fields}}
           <h3>{{__ "Headers"}}</h3>
           {{#each article.header.fields}}
-            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
             <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
                 <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
                 <div class="controls">
                   <div class="input-append">>
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
+                    <input type="text" id="sample-request-header-field-{{field}}" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
                     <span class="add-on">{{{type}}}</span>
                   </div>
                 </div>
@@ -264,15 +270,26 @@
         {{#if article.parameter.fields}}
           <h3>{{__ "Parameters"}}</h3>
           {{#each article.parameter.fields}}
-            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}" value="{{@index}}" class="sample-request-param sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
             <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
               <div class="control-group">
                 <label class="control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="controls">
                   <div class="input-append">>
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
-                    <span class="add-on">{{{type}}}</span>
+                    {{#ifeq type 'File'}}
+                    <input type="file" autocomplete="on" id="sample-request-param-field-{{field}}" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
+                    <span class="type-{{{type}}} add-on">{{{type}}}</span>
+                    {{/ifeq}}
+                    {{#ifne type 'File'}}
+                      <input type="text" autocomplete="on" id="sample-request-param-field-{{field}}" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
+                      {{#ifeq type 'String[]'}}
+                        <span class="type-String-Array add-on">{{{type}}}</span>
+                      {{/ifeq}}
+                      {{#ifne type 'String[]'}}
+                        <span class="type-{{{type}}} add-on">{{{type}}}</span>
+                      {{/ifne}}
+                    {{/ifne}}
                   </div>
                 </div>
               </div>
@@ -284,7 +301,7 @@
 
           <div class="control-group">
             <div class="controls">
-              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button type="submit" class="btn btn-default sample-request-send" data-form-id="{{article.name}}" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
             </div>
           </div>
 

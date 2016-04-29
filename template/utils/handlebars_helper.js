@@ -236,6 +236,15 @@ define([
         return ds;
     });
 
+    Handlebars.registerHelper('ifeq', function(a, b, opts) {
+        if(a == b) // Or === depending on your needs
+            return opts.fn(this);
+    });
+    Handlebars.registerHelper('ifne', function(a, b, opts) {
+        if(a != b) // Or === depending on your needs
+            return opts.fn(this);
+    });
+
     /**
      *
      */

@@ -11,7 +11,8 @@ require.config({
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
-        webfontloader: './vendor/webfontloader'
+        webfontloader: './vendor/webfontloader',
+        form: './vendor/jquery.form.min'
     },
     shim: {
         bootstrap: {
@@ -47,7 +48,8 @@ require([
     'semver',
     'webfontloader',
     'bootstrap',
-    'pathToRegexp'
+    'pathToRegexp',
+    'form'
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
 
     // load google web fonts

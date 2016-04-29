@@ -4,14 +4,14 @@ define([
 
   var initDynamic = function() {
       // Button send
-      $(".sample-request-send").off("click");
-      $(".sample-request-send").on("click", function(e) {
+      $(".sample-request-form").off("submit");
+      $(".sample-request-form").on("submit", function(e) {
           e.preventDefault();
           var $root = $(this).parents("article");
           var group = $root.data("group");
           var name = $root.data("name");
           var version = $root.data("version");
-          sendSampleRequest(group, name, version, $(this).data("sample-request-type"));
+          sendSampleRequest($(this), group, name, version, $(this).data("sample-request-type"));
       });
 
       // Button clear
@@ -26,7 +26,7 @@ define([
       });
   }; // initDynamic
 
-  function sendSampleRequest(group, name, version, type)
+  function sendSampleRequest(form, group, name, version, type)
   {
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
@@ -100,7 +100,7 @@ define([
           error      : displayError
       };
 
-      $.ajax(ajaxRequest);
+      $(form).ajaxSubmit(ajaxRequest);
 
 
       function displaySuccess(data, status, jqXHR) {

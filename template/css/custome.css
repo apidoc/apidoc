@@ -1,0 +1,28 @@
+.type-Boolean {
+  background-color:#E0AFAF !important;
+}
+.type-Number {
+  background-color:#ABC3E2 !important;
+}
+.type-Object {
+
+}
+.type-String {
+  background-color:#B1EFA1 !important;
+}
+.type-String-Array {
+  background-color:#D2C39B !important;
+}
+.type-Array {
+  background-color:#D2C39B !important;
+}
+.type-Object-Array {
+  background-color:#D2C39B !important;
+}
+required {
+    color: red;
+    font-weight: bold;
+}
+required:before {
+    content:" * ";
+}
