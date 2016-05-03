@@ -3,10 +3,7 @@
   "version": "0.16.1",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/apidoc/apidoc/blob/master/LICENSE"
-  },
+  "license": "MIT",
   "preferGlobal": true,
   "bin": "bin/apidoc",
   "main": "./lib/index.js",
