@@ -1,6 +1,44 @@
 # apiDoc Changelog
 
 
+#### 0.16.0
+
+Greatest improvement: Plugin support
+
+apidoc search now in global node modules dir and local `node_modules` for modules that start with `apidoc-plugin-`. (local installed plugins have higher priority)
+
+View / clone: [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)
+With a plugin you can add features like new parsers (this was possible before only with CLI param) or filters and workers.
+
+Start adding [hooks](https://github.com/apidoc/apidoc-core/blob/master/hooks.md).
+Hooks can be used in plugins to extend or transform data.
+
+If you need a hook in apidoc-core please add your hook and provide a pull request.
+How to add a hook into apidoc-core view [source code](https://github.com/apidoc/apidoc-core/blob/20921efd32f95e7934333d633c56ff6f60722123/lib/parser.js#L454-L458)
+
+* CLI
+  * Update dependencies.
+  * Remove not needed js-cookie module.
+  * Allow for single source configuration. [458](https://github.com/apidoc/apidoc/pull/458)
+
+* Parser
+  * Add Plugin Loader. Extend filter, parser, worker for plugin usage. [example plugin](https://github.com/apidoc/apidoc-plugin-example)
+  * Add plugin hooks for found elements. [available hooks](https://github.com/apidoc/apidoc-core/hooks.md)
+  * Add support for other encodings (default ist uf8).
+    `apidoc --encoding utf8`
+  * Add Lua support.
+  * Add cpp support.
+  * Add Arduino support.
+
+* Template
+  * Do not use monospace for sans-serif fonts, only code fonts.
+  * Sort field by grouping. [457](https://github.com/apidoc/apidoc/pull/457)
+  * Add X-UA-Compatible for Internet Explorer to prevent loading only screen.
+  * Reformat JSON example output.
+  * Example table column widths set to 100%.
+  * Add Italian translation.
+
+
 #### 0.15.1
 
 * Parser

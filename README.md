@@ -122,9 +122,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 * [gulp-apidocjs](https://github.com/apriendeau/gulp-apidocjs) `npm install gulp-apidocjs`.
 
 
-## Editor integration
+## Integration
 
+* [Eclipse Java apiDoc editor templates](https://github.com/skhani/eclipse_java_apiDoc_templates)
 * [Eclipse plugin](https://github.com/DWand/eclipse_pdt_apiDoc_editor_templates)
+* [Microsoft WebAPI](https://github.com/chehabz/grunt-edge-apidoc-webapi-generator)
 * [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
 
 
@@ -137,6 +139,11 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
 ## FAQ
 
 * [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
+
+
+## Extend apiDoc and write your own Plugin
+
+For details and an example view [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)
 
 
 ## Help

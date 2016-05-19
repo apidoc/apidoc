@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -213,7 +214,7 @@
       <div class="tab-content">
       {{#each params.examples}}
         <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{content}}</code></pre>
+        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{{reformat content type}}}</code></pre>
         </div>
       {{/each}}
       </div>

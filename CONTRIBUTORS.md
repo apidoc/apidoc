@@ -2,6 +2,39 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [will Farrell](https://github.com/willfarrell)
+  * Plugin Loader and allow parser to inject hooks. [27](https://github.com/apidoc/apidoc-core/pull/27)
+
+* [Ken VanderVeer](https://github.com/SecretAgentKen)
+  * Do not use monospace for sans-serif fonts, only code fonts. [465](https://github.com/apidoc/apidoc/pull/465)
+
+* [Tim Hobson](https://github.com/hoserdude)
+  * Allow for single source configuration. [458](https://github.com/apidoc/apidoc/pull/458)
+
+* [mauler](https://github.com/mauler)
+  * Sort field by grouping. [457](https://github.com/apidoc/apidoc/pull/457)
+
+* [keeper7](https://github.com/keeper7)
+  * Add X-UA-Compatible for Internet Explorer to prevent loading only screen. [453](https://github.com/apidoc/apidoc/pull/453)
+
+* [Juan David Orejuela Bolaños](https://github.com/orejuelajd)
+  * Add Arduino support. [441](https://github.com/apidoc/apidoc/pull/441)
+
+* [Davide Bettio](https://github.com/davidebettio)
+  * Add Italian translation. [427](https://github.com/apidoc/apidoc/pull/427)
+
+* [Haofeng Wu / 吴浩锋](https://github.com/Alphmega)
+  * Reformat JSON example output. [423](https://github.com/apidoc/apidoc/pull/423)
+
+* [Brendon Boshell](https://github.com/brendonboshell)
+  * Example table column widths set to 100%. [419](https://github.com/apidoc/apidoc/pull/419)
+
+* [leonardobsjr](https://github.com/leonardobsjr)
+  * Created support for parsing the code in other encodings. [25](https://github.com/apidoc/apidoc-core/pull/25)
+
+* [zywj](https://github.com/zywj)
+  * Add Lua support. [23](https://github.com/apidoc/apidoc-core/pull/23)
+
 * [jacky huang](https://github.com/xiaochong0302)
   * Bugfix: zh_cn translation string. [415](https://github.com/apidoc/apidoc/pull/415)
 
