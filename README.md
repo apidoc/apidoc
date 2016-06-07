@@ -112,6 +112,12 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
    =end
    ```
 
+## Plugins (extend apiDoc)
+
+apiDoc will auto include installed plugins.
+
+ * [apidoc-plugin-schema](https://github.com/willfarrell/apidoc-plugin-schema) Generates and inject apidoc elements from api schemas. `npm install apidoc-plugin-schema`
+
 
 ## Build tools
 
