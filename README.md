@@ -140,7 +140,7 @@ apiDoc will auto include installed plugins.
 
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
-
+* [Docmaster](https://github.com/bonzzy/docmaster)
 
 ## FAQ
 
