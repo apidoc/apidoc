@@ -10,7 +10,7 @@ Generates a RESTful web API Documentation.
 
 apiDoc creates a documentation from API descriptions in your source code.
 
-Documentation at [apidocjs.com](http://apidocjs.com).
+Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://github.com/pfefferle/dash-apidoc).
 
 [Example](http://apidocjs.com/example/) output.
 
