@@ -348,8 +348,7 @@ require([
     function _hasTypeInFields(fields) {
         var result = false;
         $.each(fields, function(name) {
-            if (_.any(fields[name], function(item) { return item.type; }) )
-                result = true;
+            result = result || _.some(fields[name], function(item) { return item.type; });
         });
         return result;
     }
@@ -358,13 +357,10 @@ require([
      * On Template changes, recall plugins.
      */
     function initDynamic() {
-        // bootstrap popover
-        $('a[data-toggle=popover]')
-            .popover()
-            .click(function(e) {
-                e.preventDefault();
-            })
-        ;
+        // Bootstrap popover
+        $('button[data-toggle="popover"]').popover().click(function(e) {
+            e.preventDefault();
+        });
 
         var version = $('#version strong').html();
         $('#sidenav li').removeClass('is-new');
@@ -434,7 +430,6 @@ require([
                 }
             }
         });
-
 
         // show 1st equal or lower Version of each entry
         $('article[data-version]').each(function(index) {
