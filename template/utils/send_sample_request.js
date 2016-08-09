@@ -90,6 +90,12 @@ define([
           }
       });
 
+      // Send data as raw json if content type is application/json.
+      if (typeof(header["Content-Type"]) != "undefined" &&
+          header["Content-Type"] == "application/json") 
+      {
+          param = JSON.stringify(param);
+      }
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
           url        : url,
