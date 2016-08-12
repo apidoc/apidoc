@@ -96,7 +96,6 @@ define([
           dataType   : 'json',
           contentType: 'application/json',
           headers    : header,
-          data       : param,
           type       : type.toUpperCase(),
           success    : displaySuccess,
           error      : displayError
@@ -111,23 +110,35 @@ define([
                ajaxRequest.data = JSON.stringify(param);
            }
        }
-       
+
       $.ajax(ajaxRequest);
 
       function paramToQueryParms(param) {
-        var p = 0;
-        var queryParms = "";
-        for (var k in param) {
-            if (p === 0) {
-                queryParms += "?" + k + "=" + param[k];
-            } else {
-                queryParms += "&" + k + "=" + param[k];
+        var sendString = [];
+        for (var k in param)
+        {
+          if(param[k] != null && param[k] != "")
+          {
+            var datum = param[k];
+            if (Object.prototype.toString.call(datum) === '[object Array]')
+            {
+              for (var i = 0, j = datum.length; i < j; i++)
+              {
+                sendString.push(k + '[]=' + datum[i]);
+              }
             }
-            p++;
+            else
+            {
+              sendString.push(k + '=' + datum);
+            }
+          }
         }
-        return queryParms;
+        sendString = sendString.join('&');
+
+        return sendString != "" ? "?"+sendString : "";
       }
-      
+
+
       function displaySuccess(data, status, jqXHR) {
           var jsonResponse;
           try {
