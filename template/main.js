@@ -184,7 +184,8 @@ require([
                         group: group,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 } else {
                     nav.push({
@@ -193,7 +194,8 @@ require([
                         hidden: true,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 }
                 oldName = entry.name;
