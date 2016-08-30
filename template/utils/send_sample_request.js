@@ -43,15 +43,16 @@ define([
             header[key] = value;
           });
       });
-
+	  type=type.toUpperCase();
       // create JSON dictionary of parameters
       var param = {};
       var paramType = {};
+	  var formData = new FormData();
       $root.find(".sample-request-param:checked").each(function(i, element) {
           var group = $(element).data("sample-request-param-group-id");
           $root.find("[data-sample-request-param-group=\"" + group + "\"]").each(function(i, element) {
             var key = $(element).data("sample-request-param-name");
-            var value = element.value;
+            var value = element.type=='file'?element.files[0]:element.value;
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
@@ -85,9 +86,16 @@ define([
           if ( t === 'object' || t === 'array' ) {
               try {
                   param[ key ] = JSON.parse( val );
+				if(type=="POST"){
+				 formData.append(key, param[ key ]);
+				}
               } catch (e) {
               }
-          }
+          }else{
+			if(type=="POST"){
+				 formData.append(key,val);
+			}
+		  }
       });
 
       // send AJAX request, catch success or error callback
@@ -99,7 +107,18 @@ define([
           success    : displaySuccess,
           error      : displayError
       };
-
+	if(type=="POST"){
+		ajaxRequest = {
+          url        : url,
+          headers    : header,
+          data       : formData,
+          type       : type.toUpperCase(),
+          success    : displaySuccess,
+          error      : displayError,
+		  processData: false,
+		  contentType: false
+      };
+	}
       $.ajax(ajaxRequest);
 
 

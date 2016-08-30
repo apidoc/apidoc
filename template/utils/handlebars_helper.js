@@ -68,6 +68,7 @@ define([
      */
     Handlebars.registerHelper('if_eq', function(context, options) {
         var compare = context;
+	
         // Get length if context is an object
         if (context instanceof Object && ! (options.hash.compare instanceof Object))
              compare = Object.keys(context).length;
@@ -77,7 +78,13 @@ define([
 
         return options.inverse(this);
     });
-
+Handlebars.registerHelper('ifequals', function(a, b, opts) {
+		
+    if(a.toUpperCase() == b.toUpperCase()) // Or === depending on your needs
+        return opts.fn(this);
+    else
+        return opts.inverse(this);
+});
     /**
      *
      */
