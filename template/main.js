@@ -228,12 +228,6 @@ require([
     // remove loader
     $('#loader').remove();
 
-    // render sidenav
-    var fields = {
-        nav: nav
-    };
-    $('#sidenav').append( templateSidenav(fields) );
-
     // render Generator
     $('#generator').append( templateGenerator(apiProject) );
 
@@ -242,11 +236,57 @@ require([
     $('#project').append( templateProject(apiProject) );
 
     // render apiDoc, header/footer documentation
-    if (apiProject.header)
+    if (apiProject.header) {
+        var headerNav = [];
         $('#header').append( templateHeader(apiProject.header) );
+        // Mainmenu Header entry
+        headerNav.push({
+            group: '_',
+            isHeader: true,
+            title: (apiProject.header.title == null) ? locale.__('General') : apiProject.header.title,
+            isFixed: true
+        });
+        $('#header h1, #header h2').each(function(i, elem){
+            $(elem).attr('id', 'api-header-sect-' + i + '-');
+            var prefix = ($(elem).prop('tagName')==='H2') ? '- ' : '';
+            headerNav.push({
+                group: 'header-sect-' + i,
+                title: prefix + $(elem).text()
+            });
+        });
+        nav = headerNav.concat(nav);
+    }
 
-    if (apiProject.footer)
+    if (apiProject.footer) {
+        var footerNav = [];
         $('#footer').append( templateFooter(apiProject.footer) );
+        $('#footer h1, #footer h2').each(function(i, elem){
+            $(elem).attr('id', 'api-footer-sect-' + i + '-');
+            var prefix = ($(elem).prop('tagName')==='H2') ? '- ' : '';
+            footerNav.push({
+                group: 'footer-sect-' + i,
+                title: prefix + $(elem).text()
+            });
+        });
+
+        // Mainmenu Footer entry
+        if (apiProject.footer.title != null) {
+            nav.push({
+                group: '_footer',
+                isHeader: true,
+                title: apiProject.footer.title,
+                isFixed: true
+            });
+            nav = nav.concat(footerNav);
+        }
+
+    }
+
+    // render sidenav
+    var fields = {
+        nav: nav
+    };
+    $('#sidenav').append( templateSidenav(fields) );
 
     //
     // Render Sections and Articles
