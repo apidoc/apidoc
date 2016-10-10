@@ -11,7 +11,8 @@ require.config({
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
-        webfontloader: './vendor/webfontloader'
+        webfontloader: './vendor/webfontloader',
+        'js-cookie': './vendor/js.cookie'
     },
     shim: {
         bootstrap: {
@@ -46,9 +47,10 @@ require([
     'utilsSampleRequest',
     'semver',
     'webfontloader',
+    'js-cookie',
     'bootstrap',
     'pathToRegexp'
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
+], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont, Cookies) {
 
     // load google web fonts
     loadGoogleFontCss();
@@ -83,7 +85,19 @@ require([
         locale.setLanguage(apiProject.template.forceLanguage);
 
     // Setup jQuery Ajax
+    var csrftoken = Cookies.get("csrftoken");
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
     $.ajaxSetup(apiProject.template.jQueryAjaxSetup);
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
 
     //
     // Data transform
