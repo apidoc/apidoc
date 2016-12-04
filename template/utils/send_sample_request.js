@@ -81,7 +81,7 @@ define([
       refreshScrollSpy();
 
       if (typeof header['Content-Type'] != 'undefined' && header['Content-Type'] == 'application/json') {
-          param = JSON.parse(param)  
+          param = JSON.stringify(param)  
       }
       else {
           _.each( param, function( val, key ) {
