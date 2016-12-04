@@ -80,16 +80,20 @@ define([
       $root.find(".sample-request-response-json").html("Loading...");
       refreshScrollSpy();
 
-      _.each( param, function( val, key ) {
-          var t = paramType[ key ].toLowerCase();
-          if ( t === 'object' || t === 'array' ) {
-              try {
-                  param[ key ] = JSON.parse( val );
-              } catch (e) {
+      if (typeof header['Content-Type'] != 'undefined' && header['Content-Type'] == 'application/json') {
+          param = JSON.parse(param)  
+      }
+      else {
+          _.each( param, function( val, key ) {
+              var t = paramType[ key ].toLowerCase();
+              if ( t === 'object' || t === 'array' ) {
+                  try {
+                      param[ key ] = JSON.parse( val );
+                  } catch (e) {
+                  }
               }
-          }
-      });
-
+          });
+      }
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
           url        : url,
