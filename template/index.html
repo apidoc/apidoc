@@ -15,18 +15,22 @@
 
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
-  <ul class="sidenav nav nav-list">
+  <div class="sidenav-search">
+    <label>Search</label>
+    <input class="form-control search" type="text">
+  </div>
+  <ul class="sidenav nav nav-list list">
   {{#each nav}}
     {{#if title}}
       {{#if isHeader}}
         {{#if isFixed}}
-          <li class="nav-fixed nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-fixed nav-header" data-group="{{group}}"><a class="nav-list-item" href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{else}}
-          <li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-header" data-group="{{group}}"><a class="nav-list-item" href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
         <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}">{{title}}</a>
+          <a class="nav-list-item" href="#api-{{group}}-{{name}}">{{title}}</a>
         </li>
       {{/if}}
     {{/if}}

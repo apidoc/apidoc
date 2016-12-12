@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------------------ */
 body {
   min-width: 980px;
-  max-width: 1280px;
+  /*max-width: 1280px;*/
 }
 
 body, p, a, div, th, td {
@@ -249,7 +249,7 @@ pre code.sample-request-response-json {
   margin: 0;
   padding: 20px;
   position: fixed;
-  top: 0;
+  top: 70px;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
@@ -487,6 +487,14 @@ tr.del td {
 ul.nav-tabs {
   margin: 0;
 }
+
+.sidenav-search {
+  left: 0px;
+  position: fixed;
+  padding: 10px 30px 0px 20px;
+  background-color: #F5F5F5;
+}
+
 
 /* ------------------------------------------------------------------------------------------
  * Print
