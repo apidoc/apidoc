@@ -484,6 +484,29 @@ require([
     var endpointsList = new List('scrollingNav', options);
 
     /**
+     * Set initial focus to search input
+     */
+    $('#scrollingNav .sidenav-search input.search').focus();
+
+    /**
+     * Detect ESC key to reset search
+     */
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) $('span.search-reset').click();
+    });
+
+    /**
+     * Search reset
+     */
+    $('span.search-reset').on('click', function() {
+      $('#scrollingNav .sidenav-search input.search')
+        .val("")
+        .focus()
+      ;
+      endpointsList.search();
+    });
+
+    /**
      * Change version of an article to compare it to an other version.
      */
     function changeVersionCompareTo(e) {

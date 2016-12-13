@@ -488,6 +488,9 @@ ul.nav-tabs {
   margin: 0;
 }
 
+/* ------------------------------------------------------------------------------------------
+ * Side nav search
+ * ------------------------------------------------------------------------------------------ */
 .sidenav-search {
   left: 0px;
   position: fixed;
@@ -495,6 +498,17 @@ ul.nav-tabs {
   background-color: #F5F5F5;
 }
 
+.search-reset {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  right: 34px;
+  top: 39px;
+  background-color: #fff;
+}
 
 /* ------------------------------------------------------------------------------------------
  * Print
