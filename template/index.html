@@ -15,17 +15,17 @@
 
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
-  <ul class="sidenav nav nav-list">
+  <ul class="sidenav nav">
   {{#each nav}}
     {{#if title}}
       {{#if isHeader}}
         {{#if isFixed}}
-          <li class="nav-fixed nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-fixed nav-header navbar-btn" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{else}}
           <li class="nav-header" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
-        <li {{#if hidden}}class="hide" {{/if}}data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
+        <li {{#if hidden}}class="hide" {{/if}} data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
           <a href="#api-{{group}}-{{name}}">{{title}}</a>
         </li>
       {{/if}}
@@ -43,16 +43,16 @@
   {{#if template.withCompare}}
   <div class="pull-right">
     <div class="btn-group">
-      <button id="version" class="btn btn-large dropdown-toggle" data-toggle="dropdown">
-        <strong>{{version}}</strong> <span class="caret"></span>
+      <button id="version" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
+        <strong>{{version}}</strong>&nbsp;<span class="caret"></span>
       </button>
       <ul id="versions" class="dropdown-menu open-left">
-          <li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
-          <li class="divider"></li>
-          <li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
-  {{#each versions}}
+        <li><a id="compareAllWithPredecessor" href="#">{{__ "Compare all with predecessor"}}</a></li>
+        <li class="divider"></li>
+        <li class="disabled"><a href="#">{{__ "show up to version:"}}</a></li>
+      {{#each versions}}
         <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+      {{/each}}
       </ul>
     </div>
   </div>
@@ -104,14 +104,14 @@
     {{#if template.withCompare}}
     <div class="pull-right">
       <div class="btn-group">
-        <button class="version btn dropdown-toggle" data-toggle="dropdown">
-          <strong>{{article.version}}</strong> <span class="caret"></span>
+        <button class="version btn btn-default dropdown-toggle" data-toggle="dropdown">
+          <strong>{{article.version}}</strong>&nbsp;<span class="caret"></span>
         </button>
         <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
-  {{#each versions}}
+        {{#each versions}}
           <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+        {{/each}}
         </ul>
       </div>
     </div>
@@ -130,8 +130,9 @@
         {{#each article.permission}}
           {{name}}
           {{#if title}}
-            &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br description}}" title="" data-original-title="{{title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
-            {{#unless @last}}, {{/unless}}
+          <button type="button" class="btn btn-info btn-xs" data-title="{{title}}" data-content="{{nl2br description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+              <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{/if}}
         {{/each}}
       </p>
@@ -161,7 +162,6 @@
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
     {{subTemplate "article-sample-request" article=article id=id}}
-
   </article>
 </script>
 
@@ -172,13 +172,13 @@
       <table>
         <thead>
           <tr>
-          <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
         <tbody>
-      {{#each this}}
+        {{#each this}}
           <tr>
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#if ../../_hasType}}
@@ -198,18 +198,17 @@
             {{/if}}
             </td>
           </tr>
-      {{/each}}
+        {{/each}}
         </tbody>
       </table>
     {{/each}}
-
     {{#if_gt params.examples.length compare=0}}
       <ul class="nav nav-tabs nav-tabs-examples">
-        {{#each params.examples}}
-          <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-            <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
-          </li>
-        {{/each}}
+      {{#each params.examples}}
+        <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+        </li>
+      {{/each}}
       </ul>
 
       <div class="tab-content">
@@ -220,7 +219,6 @@
       {{/each}}
       </div>
     {{/if_gt}}
-
   {{/if}}
 </script>
 
@@ -229,29 +227,26 @@
       <h2>{{__ "Send a Sample Request"}}</h2>
       <form class="form-horizontal">
         <fieldset>
-          <div class="control-group">
-            <div class="controls">
-              <div class="input-prepend">>
-                <span class="add-on">{{__ "url"}}</span>
-                <input type="text" class="input-xxlarge sample-request-url" value="{{article.sampleRequest.0.url}}" />
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="{{../id}}-sample-request-url"></label>
+              <div class="input-group">
+                <input id="{{../id}}-sample-request-url" type="text" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
+                <span class="input-group-addon">{{__ "url"}}</span>
               </div>
             </div>
-          </div>
 
       {{#if article.header}}
         {{#if article.header.fields}}
           <h3>{{__ "Headers"}}</h3>
           {{#each article.header.fields}}
-            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
+            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch" {{#if_eq @index compare=0}} checked{{/if_eq}} />{{@key}}</h4>
             <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
-              <div class="control-group">
-                <label class="control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
-                <div class="controls">
-                  <div class="input-append">>
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
-                    <span class="add-on">{{{type}}}</span>
-                  </div>
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
+                <div class="input-group">
+                  <input type="text" placeholder="{{field}}" id="sample-request-header-field-{{field}}" class="form-control sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
+                  <span class="input-group-addon">{{{type}}}</span>
                 </div>
               </div>
               {{/each}}
@@ -264,38 +259,32 @@
         {{#if article.parameter.fields}}
           <h3>{{__ "Parameters"}}</h3>
           {{#each article.parameter.fields}}
-            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch"{{#if_eq @index compare=0}} checked{{/if_eq}}> {{@key}}</h4>
-            <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
+            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" {{#if_eq @index compare=0}} checked{{/if_eq}} />{{@key}}</h4>
+            <div class="form-group {{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
               {{#each this}}
-              <div class="control-group">
-                <label class="control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
-                <div class="controls">
-                  <div class="input-append">>
-                    <input type="text" placeholder="{{field}}" class="input-xxlarge sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
-                    <span class="add-on">{{{type}}}</span>
-                  </div>
+                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                <div class="input-group">
+                  <input id="sample-request-param-field-{{field}}" type="text" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}">
+                  <div class="input-group-addon">{{{type}}}</div>
                 </div>
-              </div>
               {{/each}}
             </div>
           {{/each}}
         {{/if}}
       {{/if}}
 
-          <div class="control-group">
-            <div class="controls">
-              <button class="btn btn-default sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+          <div class="form-group">
+            <div class="controls pull-right">
+              <button class="btn btn-primary sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
             </div>
           </div>
-
-          <div class="sample-request-response" style="display: none;">
+          <div class="form-group sample-request-response" style="display: none;">
             <h3>
               {{__ "Response"}}
-              <button class="btn btn-small btn-default pull-right sample-request-clear">X</button>
+              <button class="btn btn-default btn-xs pull-right sample-request-clear">X</button>
             </h3>
             <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
           </div>
-
         </fieldset>
       </form>
     {{/if}}
@@ -313,14 +302,14 @@
           <strong>{{article.version}}</strong> {{__ "compared to"}}
         </button>
         <button class="version btn btn-danger dropdown-toggle" data-toggle="dropdown">
-          <strong>{{compare.version}}</strong> <span class="caret"></span>
+          <strong>{{compare.version}}</strong>&nbsp;<span class="caret"></span>
         </button>
         <ul class="versions dropdown-menu open-left">
           <li class="disabled"><a href="#">{{__ "compare changes to:"}}</a></li>
           <li class="divider"></li>
-  {{#each versions}}
+        {{#each versions}}
           <li class="version"><a href="#">{{this}}</a></li>
-  {{/each}}
+        {{/each}}
         </ul>
       </div>
     </div>
@@ -340,7 +329,6 @@
 
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title article.examples compare.examples}}
-
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
           <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
@@ -358,7 +346,6 @@
           <a href="#compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
-
     {{/each_compare_title}}
     </ul>
 
@@ -396,12 +383,16 @@
 </script>
 
 <script id="template-article-compare-permission" type="text/x-handlebars-template">
+  <p>
+  {{__ "Permission:"}}
   {{#each_compare_list_field article.permission compare.permission field="name"}}
     {{#if source}}
       {{#if typeSame}}
         {{source.name}}
         {{#if source.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br source.description}}" title="" data-original-title="{{source.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{source.title}}" data-content="{{nl2br source.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
@@ -409,7 +400,9 @@
       {{#if typeIns}}
         <ins>{{source.name}}</ins>
         {{#if source.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br source.description}}" title="" data-original-title="{{source.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{source.title}}" data-content="{{nl2br source.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
@@ -417,7 +410,9 @@
       {{#if typeDel}}
         <del>{{source.name}}</del>
         {{#if source.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br source.description}}" title="" data-original-title="{{source.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{source.title}}" data-content="{{nl2br source.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
@@ -425,7 +420,9 @@
       {{#if typeSame}}
         {{compare.name}}
         {{#if compare.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br compare.description}}" title="" data-original-title="{{compare.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{compare.title}}" data-content="{{nl2br compare.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
@@ -433,7 +430,9 @@
       {{#if typeIns}}
         <ins>{{compare.name}}</ins>
         {{#if compare.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br compare.description}}" title="" data-original-title="{{compare.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{compare.title}}" data-content="{{nl2br compare.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
@@ -441,12 +440,15 @@
       {{#if typeDel}}
         <del>{{compare.name}}</del>
         {{#if compare.title}}
-          &nbsp;<a href="#" data-toggle="popover" data-placement="right" data-html="true" data-content="{{nl2br compare.description}}" title="" data-original-title="{{compare.title}}"><span class="label label-info"><i class="icon icon-info-sign icon-white"></i></span></a>
+          <button type="button" class="btn btn-info btn-xs" data-title="{{compare.title}}" data-content="{{nl2br compare.description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+            <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+          </button>
           {{#unless _last}}, {{/unless}}
         {{/if}}
       {{/if}}
     {{/if}}
   {{/each_compare_list_field}}
+  </p>
 </script>
 
 <script id="template-article-compare-param-block" type="text/x-handlebars-template">
@@ -457,12 +459,12 @@
         <table>
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=source.value compare=compare.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=source.value compare=compare.value _hasType=../_hasType}}
         </table>
       {{/if}}
 
@@ -471,12 +473,12 @@
         <table class="ins">
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=source.value compare=source.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=source.value compare=source.value _hasType=../_hasType}}
         </table>
       {{/if}}
 
@@ -485,19 +487,19 @@
         <table class="del">
         <thead>
           <tr>
-            <th style="width: 30%">{{#if ../../_col1}}{{__ ../../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-            {{#if ../../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
-            <th style="width: {{#if ../../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+            <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+            {{#if ../_hasType}}<th style="width: 10%">{{__ "Type"}}</th>{{/if}}
+            <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
           </tr>
         </thead>
-        {{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../../_hasType}}
+        {{subTemplate "article-compare-param-block-body" source=compare.value compare=compare.value _hasType=../_hasType}}
         </table>
       {{/if}}
     {{/each_compare_keys}}
 
+    {{#if source.examples}}
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title source.examples compare.examples}}
-
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
           <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
@@ -515,7 +517,6 @@
           <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
-
     {{/each_compare_title}}
     </ul>
 
@@ -539,10 +540,9 @@
           <pre class="prettyprint language-{{source.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
-
     {{/each_compare_title}}
     </div>
-
+    {{/if}}
   {{/if}}
 </script>
 
@@ -627,7 +627,7 @@
 </script>
 
 <div class="container-fluid">
-  <div class="row-fluid">
+  <div class="row">
     <div id="sidenav" class="span2"></div>
     <div id="content">
       <div id="project"></div>
