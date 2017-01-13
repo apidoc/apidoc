@@ -271,6 +271,11 @@ pre code.sample-request-response-json {
   font-size: 14px;
 }
 
+.sidenav > li.nav-header {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .sidenav > li.nav-header > a {
   padding: 5px 15px;
   border: 1px solid #e5e5e5;
