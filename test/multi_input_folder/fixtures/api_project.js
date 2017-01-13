@@ -3,11 +3,12 @@ define({
   "version": "1.0.0",
   "description": "Example of feeding apidoc from multiple input folder locations",
   "sampleUrl": false,
-  "apidoc": "0.2.0",
+  "defaultVersion": "0.0.0",
+  "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2015-05-08T13:05:54.193Z",
+    "time": "2017-01-13T17:59:32.277Z",
     "url": "http://apidocjs.com",
-    "version": "0.12.3"
+    "version": "0.16.1"
   }
 });
