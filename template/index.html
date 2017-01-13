@@ -123,8 +123,11 @@
     {{/if}}
     {{#if article.deprecated}}
       <p class="deprecated"><span>DEPRECATED</span>
-        {{#if article.deprecated.url}}
-          use <a href="#api-{{article.deprecated.group}}-{{article.deprecated.url}}">{{article.deprecated.name}}</a>
+        {{#if article.deprecated.text}}
+          {{article.deprecated.text}}
+          {{#if article.deprecated.url}}
+            <a href="#api-{{article.deprecated.url}}">{{article.deprecated.group}}:{{article.deprecated.name}}</a>
+          {{/if}}
         {{/if}}
       </p>
     {{/if}}
