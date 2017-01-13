@@ -247,9 +247,9 @@ pre code.sample-request-response-json {
 .sidenav {
   width: 228px;
   margin: 0;
-  padding: 20px;
+  padding: 0 20px 20px 20px;
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
@@ -299,6 +299,34 @@ pre code.sample-request-response-json {
 
 .sidenav > li.is-new a {
   border-left: #e5e5e5 4px solid;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Side nav search
+ * ------------------------------------------------------------------------------------------ */
+.sidenav-search {
+  width: 228px;
+  left: 0px;
+  position: fixed;
+  padding: 16px 20px 10px 20px;
+  background-color: #F5F5F5;
+  z-index: 11;
+}
+
+.sidenav-search .search {
+  height: 26px;
+}
+
+.search-reset {
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  right: 28px;
+  top: 17px;
+  background-color: #fff;
 }
 
 /* ------------------------------------------------------------------------------------------

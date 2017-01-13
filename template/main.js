@@ -11,7 +11,8 @@ require.config({
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
-        webfontloader: './vendor/webfontloader'
+        webfontloader: './vendor/webfontloader',
+        list: './vendor/list.min'
     },
     shim: {
         bootstrap: {
@@ -47,7 +48,8 @@ require([
     'semver',
     'webfontloader',
     'bootstrap',
-    'pathToRegexp'
+    'pathToRegexp',
+    'list'
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
 
     // load google web fonts
@@ -516,6 +518,37 @@ require([
             $('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
         }
     }
+
+    /**
+     * Initialize search
+     */
+    var options = {
+      valueNames: [ 'nav-list-item' ]
+    };
+    var endpointsList = new List('scrollingNav', options);
+
+    /**
+     * Set initial focus to search input
+     */
+    $('#scrollingNav .sidenav-search input.search').focus();
+
+    /**
+     * Detect ESC key to reset search
+     */
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) $('span.search-reset').click();
+    });
+
+    /**
+     * Search reset
+     */
+    $('span.search-reset').on('click', function() {
+      $('#scrollingNav .sidenav-search input.search')
+        .val("")
+        .focus()
+      ;
+      endpointsList.search();
+    });
 
     /**
      * Change version of an article to compare it to an other version.
