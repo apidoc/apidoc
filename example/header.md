@@ -2,7 +2,7 @@
 
 This text is from file "header.md".
 
-## HowTo include
+## <span id="api-example-for-a-submenu-entry">HowTo include</span>
 
 In your projects "package.json" you can set "apidoc.header" with a title and a filename to include this file into your documentation.
 
