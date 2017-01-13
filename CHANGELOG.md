@@ -1,5 +1,30 @@
 # apiDoc Changelog
 
+#### 0.17.0
+
+Add new [@apiDeprecated](http://apidocjs.com/#param-api-deprecated) annotation.
+Add new @apiPrivate annotation.
+
+* CLI
+  * Add `--private false|true` parameter to export `@apiPrivate` marked methods.
+  * Add .cls, .jsx, p, .pl, .vue file extensions.
+  * Update dependencies.
+
+* Parser
+  * Add @apiDeprecated support. [52](https://github.com/apidoc/apidoc-core/pull/52)
+  * Added support for private APIs `@apiPrivate`. [530](https://github.com/apidoc/apidoc/pull/530)
+  * Add support for plugins in scoped modules. [51](https://github.com/apidoc/apidoc-core/pull/51)
+  * Remove deprecated lib wrench and replace with fs-extra.
+  * Update dependencies.
+
+* Template
+  * Update Bootstrap to 3.3.7.
+  * Navigation filter added. [562](https://github.com/apidoc/apidoc/pull/562)
+  * h2 links in Header / Footer files will now be visible in the main navigation. [525](https://github.com/apidoc/apidoc/pull/525)
+  * Fix issue of left menu displaying major function in older version. [528](https://github.com/apidoc/apidoc/pull/528)
+  * Replace lodash with only needed custom build lodash functions.
+  * Update italian language file. [507](https://github.com/apidoc/apidoc/pull/507)
+
 
 #### 0.16.0
 

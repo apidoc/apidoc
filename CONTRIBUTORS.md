@@ -2,6 +2,27 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [strabek](https://github.com/strabek)
+  * Navigation filter added. [562](https://github.com/apidoc/apidoc/pull/562)
+
+* [quick691fr](https://github.com/quick691fr)
+  * Added support for private APIs. [530](https://github.com/apidoc/apidoc/pull/530)
+
+* [quick691fr](https://github.com/quick691fr)
+  * Fix issue of left menu displaying major function in older version. [528](https://github.com/apidoc/apidoc/pull/528)
+
+* [Luca Sartori](https://github.com/phaberest)
+  * Update italian language file. [507](https://github.com/apidoc/apidoc/pull/507)
+
+* [snejku](https://github.com/snejku)
+  * h2 links in Header / Footer files will now be visible in the main navigation. [525](https://github.com/apidoc/apidoc/pull/525)
+
+* [mik115](https://github.com/mik115)
+  * Add @apiDeprecated support. [52](https://github.com/apidoc/apidoc-core/pull/52)
+
+* [Marc](https://github.com/mbernardini)
+  * Add support for plugins in scoped modules [51](https://github.com/apidoc/apidoc-core/pull/51)
+
 * [will Farrell](https://github.com/willfarrell)
   * Plugin Loader and allow parser to inject hooks. [27](https://github.com/apidoc/apidoc-core/pull/27)
 
