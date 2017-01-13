@@ -469,7 +469,7 @@ require([
             var name = $(this).data('name');
             var version = $(this).data('version');
 
-            if (version <= selectedVersion) {
+            if (semver.lte(version, selectedVersion)) {
                 if ($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
                     // enable Article
                     $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
