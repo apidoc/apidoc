@@ -118,15 +118,14 @@
     {{/if}}
     <div class="clearfix"></div>
 
+    {{#if article.deprecated}}
+      <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
+        {{{markdown article.deprecated.content}}}
+      </p>
+    {{/if}}
+
     {{#if article.description}}
       <p>{{{nl2br article.description}}}</p>
-    {{/if}}
-    {{#if article.deprecated}}
-      <p class="deprecated"><span>DEPRECATED</span>
-        {{#if article.deprecated.url}}
-          use <a href="#api-{{article.deprecated.group}}-{{article.deprecated.url}}">{{article.deprecated.name}}</a>
-        {{/if}}
-      </p>
     {{/if}}
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
 

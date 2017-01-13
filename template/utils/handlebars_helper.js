@@ -5,6 +5,23 @@ define([
 ], function(locale, Handlebars, DiffMatchPatch) {
 
     /**
+     * Return a text as markdown.
+     * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
+     * Should be replaced with a full markdown lib.
+     * @param string text
+     */
+    Handlebars.registerHelper('markdown', function(text) {
+        if ( ! text ) {
+          return text;
+        }
+        text = text.replace(/((\[(.*?)\])?\(#)((.+?):(.+?))(\))/mg, function(match, p1, p2, p3, p4, p5, p6) {
+          var link = p3 || p5 + '/' + p6;
+          return '<a href="#api-' + p5 + '-' + p6 + '">' + link + '</a>';
+        });
+        return text;
+    });
+
+    /**
      * start/stop timer for simple performance check.
      */
     var timer;
