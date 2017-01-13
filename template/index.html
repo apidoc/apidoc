@@ -121,7 +121,16 @@
     {{#if article.description}}
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
-
+    {{#if article.deprecated}}
+      <p class="deprecated"><span>DEPRECATED</span>
+        {{#if article.deprecated.text}}
+          {{article.deprecated.text}}
+          {{#if article.deprecated.url}}
+            <a href="#api-{{article.deprecated.url}}">{{article.deprecated.group}}:{{article.deprecated.name}}</a>
+          {{/if}}
+        {{/if}}
+      </p>
+    {{/if}}
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
 
     {{#if article.permission}}
