@@ -19,7 +19,8 @@
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
     "build-example": "bin/apidoc -i example/ -o tmp/",
-    "check-updates": "npm-check-updates"
+    "check-updates": "npm-check-updates",
+    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=groupBy,each,extend,some exports=amd"
   },
   "keywords": [
     "api",
@@ -43,6 +44,7 @@
   "devDependencies": {
     "apidoc-example": "*",
     "jshint": "^2.9.4",
+    "lodash-cli": "^4.17.4",
     "mocha": "~3.2.0",
     "npm-check-updates": "^2.8.9",
     "path-to-regexp": "^1.7.0",

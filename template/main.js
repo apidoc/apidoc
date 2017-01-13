@@ -6,7 +6,7 @@ require.config({
         handlebarsExtended: './utils/handlebars_helper',
         jquery: './vendor/jquery.min',
         locales: './locales/locale',
-        lodash: './vendor/lodash.min',
+        lodash: './vendor/lodash.custom.min',
         pathToRegexp: './vendor/path-to-regexp/index',
         prettify: './vendor/prettify/prettify',
         semver: './vendor/semver.min',
