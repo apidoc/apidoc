@@ -1,6 +1,7 @@
 define([
-  'jquery'
-], function($) {
+  'jquery',
+  'lodash'
+], function($, _) {
 
   var initDynamic = function() {
       // Button send
