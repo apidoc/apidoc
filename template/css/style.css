@@ -114,7 +114,7 @@ th {
 
 td {
   vertical-align: top;
-  padding: 2px 8px;
+  padding: 10px 8px 0 8px;
   border: #e0e0e0 1px solid;
 }
 
@@ -126,6 +126,8 @@ td {
 
 .label-optional {
   float: right;
+  background-color: grey;
+  margin-top: 4px;
 }
 
 .open-left {
