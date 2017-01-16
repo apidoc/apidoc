@@ -212,36 +212,40 @@ require([
      */
     function add_nav(nav, content, index) {
         var found_level1 = false;
-        if (!content)   return found_level1;
+        if ( ! content) {
+          return found_level1;
+        }
         var topics = content.match(/<h(1|2).*?>(.+?)<\/h(1|2)>/gi);
-        topics.forEach(function(entry) {
-            var level = entry.substring(2,3);
-            var title = entry.replace(/<.+?>/g, '');    // Remove all HTML tags for the title
-            var entry_tags = entry.match(/id="api-([^\-]+)(?:-(.+))?"/);    // Find the group and name in the id property
-            var group = (entry_tags ? entry_tags[1] : null);
-            var name = (entry_tags ? entry_tags[2] : null);
-            if (level==1 && title && group)  {
-                nav.splice(index, 0, {
-                    group: group,
-                    isHeader: true,
-                    title: title,
-                    isFixed: true
-                });
-                index++;
-                found_level1 = true;
-            }
-            if (level==2 && title && group && name)    {
-                nav.splice(index, 0, {
-                    group: group,
-                    name: name,
-                    isHeader: false,
-                    title: title,
-                    isFixed: false,
-                    version: '1.0'
-                });
-                index++;
-            }
-        });
+        if ( topics ) {
+          topics.forEach(function(entry) {
+              var level = entry.substring(2,3);
+              var title = entry.replace(/<.+?>/g, '');    // Remove all HTML tags for the title
+              var entry_tags = entry.match(/id="api-([^\-]+)(?:-(.+))?"/);    // Find the group and name in the id property
+              var group = (entry_tags ? entry_tags[1] : null);
+              var name = (entry_tags ? entry_tags[2] : null);
+              if (level==1 && title && group)  {
+                  nav.splice(index, 0, {
+                      group: group,
+                      isHeader: true,
+                      title: title,
+                      isFixed: true
+                  });
+                  index++;
+                  found_level1 = true;
+              }
+              if (level==2 && title && group && name)    {
+                  nav.splice(index, 0, {
+                      group: group,
+                      name: name,
+                      isHeader: false,
+                      title: title,
+                      isFixed: false,
+                      version: '1.0'
+                  });
+                  index++;
+              }
+          });
+        }
         return found_level1;
     }
 
