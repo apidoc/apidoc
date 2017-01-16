@@ -23,6 +23,8 @@ var argv = nomnom
     .option('exclude-filters', { abbr: 'e', 'default': '', list: true,
             help: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
 
+    .option('tag-filter', { abbr: 'tf', 'default': '', help: 'Tag-Filter to select which endpoints should be included'})
+
     .option('input', { abbr: 'i', 'default': './', list: true, help: 'Input / source dirname.' })
 
     .option('output', { abbr: 'o', 'default': './doc/', help: 'Output dirname.' })
@@ -88,6 +90,7 @@ function transformToObject(filters) {
 var options = {
     excludeFilters: argv['exclude-filters'],
     includeFilters: argv['file-filters'],
+    tagFilter    : argv['tag-filter'],
     src           : argv['input'],
     dest          : argv['output'],
     template      : argv['template'],

@@ -33,7 +33,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "apidoc-core": "~0.7.1",
+    "apidoc-core": "OLRG/apidoc-core#apiTagFilter",
     "fs-extra": "~0.28.0",
     "lodash": "~4.11.1",
     "markdown-it": "^6.0.1",
