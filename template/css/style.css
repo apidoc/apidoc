@@ -172,6 +172,10 @@ pre {
   margin: 10px 0 20px 0;
 }
 
+pre.prettyprint {
+  width: 100%;
+}
+
 code.language-text {
   word-wrap: break-word;
 }
@@ -181,38 +185,35 @@ pre.language-json {
 }
 
 pre.language-html {
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
-pre.language-html:before {
-  content: attr(data-type);
-  position: absolute;
-  top: -30px;
-  left: 0;
+.type {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 15px;
   display: inline-block;
-  padding: 2px 5px;
+  margin: 0 0 5px 0;
+  padding: 4px 5px;
   border-radius: 6px;
   text-transform: uppercase;
   background-color: #3387CC;
   color: #ffffff;
 }
 
-pre.language-html[data-type="get"]:before {
+.type__get {
   background-color: green;
 }
 
-pre.language-html[data-type="put"]:before {
+.type__put {
   background-color: #e5c500;
 }
 
-pre.language-html[data-type="post"]:before {
+.type__post {
   background-color: #4070ec;
 }
 
-pre.language-html[data-type="delete"]:before {
+.type__delete {
   background-color: #ed0039;
 }
 
