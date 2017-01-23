@@ -1,5 +1,30 @@
 # apiDoc Changelog
 
+#### 0.17.4
+
+* Parser
+  * Fix missing chars in root folder.
+  * Replace removed fs-extra.walkSync with klaw-sync.
+
+
+#### 0.17.3
+
+* Template
+  * Fix missing lodash dependency.
+
+
+#### 0.17.2
+
+* Template
+  * Fix hidden optional field.
+
+#### 0.17.1
+
+* Template
+  * Fix missing type in template.
+  * Add check for empty header/footer nav points.
+
+
 #### 0.17.0
 
 Add new [@apiDeprecated](http://apidocjs.com/#param-api-deprecated) annotation.

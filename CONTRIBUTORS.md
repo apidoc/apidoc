@@ -2,6 +2,12 @@
 
 Thanks to all people that help to make apiDoc better!
 
+* [Alisina Bahadori](https://github.com/alisinabh)
+  * Fix missing chars in root folder. [55](https://github.com/apidoc/apidoc-core/pull/56)
+
+* [alqu](https://github.com/alqu)
+  * Fix missing lodash dependency [581](https://github.com/apidoc/apidoc/pull/581)
+
 * [strabek](https://github.com/strabek)
   * Navigation filter added. [562](https://github.com/apidoc/apidoc/pull/562)
 
