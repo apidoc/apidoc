@@ -224,7 +224,7 @@
       <div class="tab-content">
       {{#each params.examples}}
         <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{{reformat content type}}}</code></pre>
+        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{reformat content type}}</code></pre>
         </div>
       {{/each}}
       </div>
