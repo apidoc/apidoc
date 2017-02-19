@@ -86,6 +86,10 @@ define([
       if (!contentType && header['Content-Type']) {
           contentType = header['Content-Type'];
       }
+      else if(!contentType) {
+          //default
+          contentType = 'application/x-www-form-urlencoded; charset=UTF-8'
+      }
       header['Content-Type']=contentType;
       if (contentType == 'application/json') {
           param = JSON.stringify(param)
