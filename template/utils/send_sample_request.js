@@ -12,7 +12,8 @@ define([
           var group = $root.data("group");
           var name = $root.data("name");
           var version = $root.data("version");
-          sendSampleRequest(group, name, version, $(this).data("sample-request-type"));
+          var contentType = $root.data("contenttype");
+          sendSampleRequest(group, name, version, $(this).data("sample-request-type"), contentType);
       });
 
       // Button clear
@@ -27,7 +28,7 @@ define([
       });
   }; // initDynamic
 
-  function sendSampleRequest(group, name, version, type)
+  function sendSampleRequest(group, name, version, type, contentType)
   {
       var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
@@ -81,15 +82,25 @@ define([
       $root.find(".sample-request-response-json").html("Loading...");
       refreshScrollSpy();
 
-      _.each( param, function( val, key ) {
-          var t = paramType[ key ].toLowerCase();
-          if ( t === 'object' || t === 'array' ) {
-              try {
-                  param[ key ] = JSON.parse( val );
-              } catch (e) {
+
+      if (!contentType && header['Content-Type']) {
+          contentType = header['Content-Type'];
+      }
+      header['Content-Type']=contentType;
+      if (contentType == 'application/json') {
+          param = JSON.stringify(param)
+      }
+      else {
+          _.each( param, function( val, key ) {
+              var t = paramType[ key ].toLowerCase();
+              if ( t === 'object' || t === 'array' ) {
+                  try {
+                      param[ key ] = JSON.parse( val );
+                  } catch (e) {
+                  }
               }
-          }
-      });
+          });
+      }
 
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
@@ -98,6 +109,7 @@ define([
           data       : param,
           type       : type.toUpperCase(),
           success    : displaySuccess,
+          contentType: contentType,
           error      : displayError
       };
 

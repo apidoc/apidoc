@@ -101,7 +101,7 @@
 </script>
 
 <script id="template-article" type="text/x-handlebars-template">
-  <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
+  <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-contenttype="{{article.contentType}}">
     <div class="pull-left">
       <h1>{{article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
     </div>
