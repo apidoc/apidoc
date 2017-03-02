@@ -1,0 +1,264 @@
+/* ------------------------------------------------------------------------------------------
+ * Content
+ * ------------------------------------------------------------------------------------------ */
+body {
+  max-width: 90%;
+  background-color:#F8F8F8;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.cmHeader {
+    position: fixed;
+    display: inherit;
+    width:230px;
+    height: 40px;
+    padding: 20px 40px;
+    float: left;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2), 0px 30px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 40px;
+  line-height: 50px;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+section h1 {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 40px;
+  padding-bottom: 14px;
+  margin: 0 0 20px 0;
+  padding: 0;
+  color: #018382;
+}
+
+article h1 {
+  font-family: 'Open Sans', sans-serif;  
+  font-weight: 600;
+  font-size: 22px;!important
+  line-height: 26px;
+  color: black;
+ 
+}
+
+
+section {
+  border-top: 1px solid #06D2B3;;
+  padding: 30px 0;
+  margin-top: 20px;
+}
+
+td {
+  background-color: white;
+  border: #C4CAC7 1px dashed;
+  vertical-align: middle;
+
+}
+
+th {
+  background-color: #ECECEC;
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  padding: 4px 8px;
+  border: #e0e0e0 1px solid;
+}
+
+p {
+  color: #808080;
+  margin: 10px 0;  
+}
+
+/* ------------------------------------------------------------------------------------------
+ * apidoc - intro
+ * ------------------------------------------------------------------------------------------ */
+
+
+
+/* ------------------------------------------------------------------------------------------
+ * pre / code
+ * ------------------------------------------------------------------------------------------ */
+pre {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border-style: solid;
+  border-top: thick solid #02caca;  
+}
+
+pre.language-html {
+  margin: 40px 0 40px 0;
+}
+
+pre.language-api .str {
+  color: #000;
+}
+
+pre.language-api .pln,
+pre.language-api .pun {
+  color: #018382;
+}
+
+pre code {
+  padding: 20px 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: 'Roboto Mono', serif; font-weight: 400;
+}
+
+pre.language-html:before {
+top:-40px;    
+}
+
+pre.language-html[data-type="get"]:before {
+  background-color: #00CE60;
+  padding: 5px 10px; 
+  border-radius: 4px;  
+}
+
+pre.language-html[data-type="put"]:before {
+  background-color: orange;
+  padding: 5px 10px; 
+  border-radius: 4px;  
+}
+pre.language-html[data-type="post"]:before {
+  background-color: #0AB1F6;
+  padding: 5px 10px; 
+  border-radius: 4px;  
+}
+pre.language-html[data-type="delete"]:before {
+  background-color: #FF6060;
+  padding: 5px 10px; 
+  border-radius: 4px;  
+}
+
+/*prettify CSS*/
+pre .pln {
+  color: black;
+}
+
+pre .pun {
+  color: #BBBBBB;
+}
+
+pre .str {
+    color: #777777;
+}
+
+pre .kwd {
+    color: #E8417C;
+}
+
+pre .lit {
+    color: #698DE2;
+}
+
+pre .typ {
+    color: #F0791D;
+}
+/* ------------------------------------------------------------------------------------------
+ * Sidenav
+ * ------------------------------------------------------------------------------------------ */
+.sidenav {
+  background-color: #F8F8F8;
+  top: 80px;
+  width: 270px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sidenav > li.nav-header > a {
+  background-color: transparent;
+  border: none;
+  color: #018382;
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  width: 235px;
+}
+
+.sidenav > li.is-new a {
+border-left: orange 4px solid;
+}
+
+.sidenav > li > a {
+  color: black;
+  padding: 10px 10px;
+  font-weight: 600;
+  font-size: 16px;
+  width: 240px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sidenav > li > a:hover {
+  border-radius: 5px;
+  border: solid 1px #06D2B3;
+  padding-right: 15px;
+}
+
+.sidenav > li.nav-header.active > a {
+  background-color: #06D2B3;
+  color: white;
+}
+
+.nav-list>.active>a, .nav-list>.active>a:hover, .nav-list>.active>a:focus {
+    background-color: #06D2B3; 
+    border-radius: 5px;
+    color:white
+}
+
+
+/* ------------------------------------------------------------------------------------------
+ * Compare
+ * ------------------------------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------------------------------
+ * Spinner
+ * ------------------------------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------------------------------
+ * Tabs
+ * ------------------------------------------------------------------------------------------ */
+ul.nav-tabs {
+  margin: 0;
+  background-color: transparent;
+  border:none;
+}
+
+.nav-tabs>li>a {
+    background-color: transparent;
+}
+
+.nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus {
+    border: solid 1px #E7E7E7;
+    border-radius: 20px;
+    
+}
+/* ------------------------------------------------------------------------------------------
+ * Print
+ * ------------------------------------------------------------------------------------------ */
+  #content {
+    margin-left: 350px;
+    padding-right: 30px;
+      
+  }
+
+/*Version button styles*/
+.btn{
+    background-color: white;
+    background-image: none;
+}
+
+.btn-group.open .btn.dropdown-toggle {
+    background-color: #F1F1F1; !important
+}
+
+/* Not working */
+.dropdown-menu>li>a:hover {
+    background-color: aqua; !important
+}
+/* /@media print */
