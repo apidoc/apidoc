@@ -200,6 +200,7 @@ pre.language-html {
   text-transform: uppercase;
   background-color: #3387CC;
   color: #ffffff;
+  float: left;
 }
 
 .type__get {
