@@ -195,7 +195,6 @@ pre.language-html {
   font-weight: 600;
   font-size: 15px;
   display: inline-block;
-  margin: 0 0 5px 0;
   padding: 4px 5px;
   border-radius: 6px;
   text-transform: uppercase;
@@ -236,6 +235,7 @@ pre code {
   font-weight: 400;
   word-wrap: normal;
   white-space: pre;
+  line-height: 30px;
 }
 
 pre code.sample-request-response-json {
