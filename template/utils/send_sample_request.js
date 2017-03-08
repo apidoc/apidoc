@@ -90,6 +90,10 @@ define([
               }
           }
       });
+    
+      if(header['Content-Type'] === 'application/json') {
+          param = JSON.stringify(param);
+      }
 
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
