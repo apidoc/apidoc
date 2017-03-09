@@ -56,8 +56,10 @@ define([
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
-            param[key] = value;
-            paramType[key] = $(element).next().text();
+            if (!_.isNil() || !_.isEmpty()) {
+              param[key] = value;
+              paramType[key] = $(element).next().text();
+            }
           });
       });
 
