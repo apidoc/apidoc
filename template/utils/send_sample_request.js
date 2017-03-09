@@ -56,7 +56,7 @@ define([
             if ( ! element.optional && element.defaultValue !== '') {
                 value = element.defaultValue;
             }
-            if (!_.isNil() || !_.isEmpty()) {
+            if (!$.isEmptyObject(value)) {
               param[key] = value;
               paramType[key] = $(element).next().text();
             }
