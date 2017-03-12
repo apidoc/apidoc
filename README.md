@@ -17,8 +17,28 @@ Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://gith
 
 ## Installation
 
-`npm install apidoc -g`
+```console
+$ npm install apidoc -g
+```
 
+### Alternative docker install
+
+```console
+$ docker pull apidoc/apidoc
+```
+
+Then you will need to mount your file storage `-v '<apidoc.json dir>:/apidoc'` to docker container.
+
+Example:
+
+```console
+$ docker run --rm -v '$(PWD):/apidoc' -it apidoc/apidoc \
+    --input ./example \
+    --output ./docker-example \
+    -v
+```
+
+Creates from input files in `example/` a documentation in path `docker-example/`.
 
 ## Changelog
 
@@ -40,7 +60,9 @@ Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://gith
  */
 ```
 
-`apidoc -i example/ -o doc/`
+```console
+$ apidoc -i example/ -o doc/
+```
 
 Creates from input files in `example/` a documentation in path `doc/`.
 
