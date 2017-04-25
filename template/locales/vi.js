@@ -1,5 +1,5 @@
 define({
-    de: {
+    vi: {
         'Allowed values:'             : 'Giá trị chấp nhận:',
         'Compare all with predecessor': 'So sánh với tất cả phiên bản trước',
         'compare changes to:'         : 'so sánh sự thay đổi với:',
