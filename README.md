@@ -15,6 +15,17 @@ Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://gith
 [Example](http://apidocjs.com/example/) output.
 
 
+## HELP NEEDED! Search for a Developer
+
+Because of my limited time i need one or more devs that could build and maintain a "Send Sample Request Plugin".
+
+The Plugin should be loose coupled to the template, so it should be a separate project.
+This Plugin should send example data to an API-Endpoint and process the response. Supported formats should be JSON, XML, whatever.
+
+Many issues belong to the current (unmaintained) plugin, (Milestone: Send Sample Request Plugin)(https://github.com/apidoc/apidoc/milestone/4)
+If you want ot work on this, please send me a PM.
+
+
 ## Installation
 
 `npm install apidoc -g`
