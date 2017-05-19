@@ -1,5 +1,27 @@
 # apiDoc Changelog
 
+#### 0.17.6
+
+* Common
+  * Add Docker image.
+
+* CLI
+  * Add kotlin to default file-filters.
+  * Escape content of success examples.
+
+* Template
+  * Update style.css to have horizontal scrolling for long URLs.
+  * Add Vietnamese translation.
+  * Add Turkish translation.
+  * Blank optional parameters omitted from sample request.
+
+
+#### 0.17.5
+
+* CLI
+  * Bugfix for folder problem.
+
+
 #### 0.17.4
 
 * Parser
