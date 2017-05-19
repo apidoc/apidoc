@@ -303,7 +303,7 @@
 <script id="template-compare-article" type="text/x-handlebars-template">
   <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
     <div class="pull-left">
-      <h1>{{underscoreToSpace article.group}} - {{{showDiff article.title compare.title}}}</h1>
+      <h1>{{underscoreToSpace article.groupTitle}} - {{{showDiff article.title compare.title}}}</h1>
     </div>
 
     <div class="pull-right">
@@ -333,6 +333,7 @@
       {{/if}}
     {{/if}}
 
+    <span class="type type__{{toLowerCase article.type}}">{{{showDiff article.type compare.type}}}</span>
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
