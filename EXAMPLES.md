@@ -56,7 +56,6 @@ Block 3 is the endpoint `/account/register`, which use parameters from `LoginPar
 Block 4 is the endpoint `/account/login`, which use only parameters from `LoginParam` and an extra checkbox.
 
 
-
 ### Example for a group
 
 ```js
