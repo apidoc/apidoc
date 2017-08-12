@@ -110,9 +110,9 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
  * **Elixir**:
 
    ```elixir
-   # {
+   #{
    # This is a comment.
-   # }
+   #}
    ```
 
  * **Erlang**:
