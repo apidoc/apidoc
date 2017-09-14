@@ -83,15 +83,35 @@ define([
       $root.find(".sample-request-response-json").html("Loading...");
       refreshScrollSpy();
 
-      _.each( param, function( val, key ) {
-          var t = paramType[ key ].toLowerCase();
-          if ( t === 'object' || t === 'array' ) {
-              try {
-                  param[ key ] = JSON.parse( val );
-              } catch (e) {
-              }
+      // _.each( param, function( val, key ) {
+      //     var t = paramType[ key ].toLowerCase();
+      //     if ( t === 'object' || t === 'array' ) {
+      //         try {
+      //             param[ key ] = JSON.parse( val );
+      //         } catch (e) {
+      //         }
+      //     }
+      // });
+
+      if (header['Content-Type'] == 'application/json') {
+          if(!param){
+              param = JSON.stringify({})
+          }else{
+              param = JSON.stringify(param)
           }
-      });
+
+      }
+      else {
+          _.each( param, function( val, key ) {
+              var t = paramType[ key ].toLowerCase();
+              if ( t === 'object' || t === 'array' ) {
+                  try {
+                      param[ key ] = JSON.parse( val );
+                  } catch (e) {
+                  }
+              }
+          });
+      }
 
       // send AJAX request, catch success or error callback
       var ajaxRequest = {
