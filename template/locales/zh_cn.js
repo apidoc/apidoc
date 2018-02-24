@@ -13,6 +13,8 @@ define({
         'No response values.'         : '无返回值.',
         'optional'                    : '可选',
         'Parameter'                   : '参数',
+        'Parameters'                  : '参数',
+        'Headers'                     : '头部参数',
         'Permission:'                 : '权限:',
         'Response'                    : '返回',
         'Send'                        : '发送',
