@@ -30,8 +30,11 @@ describe('apiDoc custom markdown parser', function() {
         'index.html'
     ];
 
-    var markdownFile     = './fixtures/custom_markdown_parser.js';
-    var markdownFileBase = '../test/fixtures/custom_markdown_parser.js';
+    var markdownFile        = './fixtures/custom_markdown_parser.js';
+    var markdownFileBase    = '../test/fixtures/custom_markdown_parser.js';
+    var markdownFileBase1   = './test/fixtures/custom_markdown_parser.js';
+    var markdownFileBase2   = 'test/fixtures/custom_markdown_parser.js';
+    var markdownFileBase3   = path.join(process.cwd(), 'test/fixtures/custom_markdown_parser.js');
 
     before(function(done) {
         fs.removeSync('./tmp/');
@@ -55,6 +58,45 @@ describe('apiDoc custom markdown parser', function() {
     // create
     it('should create example in tmp/', function(done) {
         var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --markdown ' + markdownFileBase + ' --silent';
+        exec(cmd, function(err, stdout, stderr) {
+            if (err)
+                throw err;
+
+            if (stderr)
+                throw stderr;
+
+            done();
+        });
+    });
+
+    it('should create example in tmp/ with relative parser location', function(done) {
+        var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --markdown ' + markdownFileBase1 + ' --silent';
+        exec(cmd, function(err, stdout, stderr) {
+            if (err)
+                throw err;
+
+            if (stderr)
+                throw stderr;
+
+            done();
+        });
+    });
+
+    it('should create example in tmp/ with cwd parser location', function(done) {
+        var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --markdown ' + markdownFileBase2 + ' --silent';
+        exec(cmd, function(err, stdout, stderr) {
+            if (err)
+                throw err;
+
+            if (stderr)
+                throw stderr;
+
+            done();
+        });
+    });
+
+    it('should create example in tmp/ with absolute parser location', function(done) {
+        var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --markdown ' + markdownFileBase3 + ' --silent';
         exec(cmd, function(err, stdout, stderr) {
             if (err)
                 throw err;
