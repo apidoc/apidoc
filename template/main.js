@@ -553,9 +553,25 @@ require([
       ;
       endpointsList.search();
     });
-
-    /**
-     * Change version of an article to compare it to an other version.
+	
+	/**
+     * Deep compare two objects
+	 */
+	
+	function deepCompare(obj1, obj2){
+	   if (typeof obj1 !== 'object' || typeof obj2 !== 'object')
+	       return obj1 === obj2;
+	   var result = true;
+	   var keys = Object.keys(obj1);
+	   for (var i=0; i<keys.length; i++){
+	       result = result && deepCompare(obj1[keys[i]], obj2[keys[i]]);
+	       if (!result) return result;
+       }
+       return result;
+    }
+	
+	/**
+	 * Change version of an article to compare it to an other version.
      */
     function changeVersionCompareTo(e) {
         e.preventDefault();
@@ -598,7 +614,7 @@ require([
                 compare: compareEntry,
                 versions: articleVersions[group][name]
             };
-
+            
             // add unique id
             // TODO: replace all group-name-version in template with id.
             fields.article.id = fields.article.group + '-' + fields.article.name + '-' + fields.article.version;
@@ -641,8 +657,17 @@ require([
             $content.find('.versions li.version a').on('click', changeVersionCompareTo);
 
             // select navigation
-            $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + currentVersion + '\']').addClass('has-modifications');
-
+            // if there are changes except in version then set modification
+            var different = false;
+            $.each(fields.article, function(field){
+                different = different || !fields.compare[field] || (['id', 'version', 'filename'].indexOf(field) <0 && !deepCompare(fields.compare[field], fields.article[field]));
+	            // console.log(field, fields.compare[field], fields.article[field], different);
+            });
+            // console.log(different);
+            if (different) {
+	            $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + currentVersion + '\']').addClass('has-modifications');
+            }
+            
             $root.remove();
             // TODO: on change main version or select the highest version re-render
         }

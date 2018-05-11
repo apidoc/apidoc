@@ -4,3 +4,4 @@ node_modules/
 tmp/
 npm-debug.log
 .idea
+.DS_Store

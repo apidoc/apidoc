@@ -121,7 +121,6 @@
     </div>
     {{/if}}
     <div class="clearfix"></div>
-
     {{#if article.deprecated}}
       <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
         {{{markdown article.deprecated.content}}}
@@ -149,6 +148,7 @@
     {{/if}}
 
     {{#if_gt article.examples.length compare=0}}
+
       <ul class="nav nav-tabs nav-tabs-examples">
         {{#each article.examples}}
           <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
@@ -213,6 +213,7 @@
       </table>
     {{/each}}
     {{#if_gt params.examples.length compare=0}}
+
       <ul class="nav nav-tabs nav-tabs-examples">
       {{#each params.examples}}
         <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
@@ -324,7 +325,11 @@
       </div>
     </div>
     <div class="clearfix"></div>
-
+  {{#if article.deprecated}}
+  <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
+    {{{markdown article.deprecated.content}}}
+  </p>
+  {{/if}}
     {{#if article.description}}
       <p>{{{showDiff article.description compare.description "nl2br"}}}</p>
     {{else}}
@@ -333,10 +338,12 @@
       {{/if}}
     {{/if}}
 
+    <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
     <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
+  {{#ifCond article.examples '&&' compare.examples}}
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title article.examples compare.examples}}
       {{#if typeSame}}
@@ -358,6 +365,7 @@
       {{/if}}
     {{/each_compare_title}}
     </ul>
+  {{/ifCond}}
 
     <div class="tab-content">
     {{#each_compare_title article.examples compare.examples}}
@@ -394,6 +402,7 @@
 
 <script id="template-article-compare-permission" type="text/x-handlebars-template">
   <p>
+  {{#ifCond article.permission '||' compare.permission}}
   {{__ "Permission:"}}
   {{#each_compare_list_field article.permission compare.permission field="name"}}
     {{#if source}}
@@ -458,6 +467,7 @@
       {{/if}}
     {{/if}}
   {{/each_compare_list_field}}
+  {{/ifCond}}
   </p>
 </script>
 
@@ -508,6 +518,7 @@
     {{/each_compare_keys}}
 
     {{#if source.examples}}
+
     <ul class="nav nav-tabs nav-tabs-examples">
     {{#each_compare_title source.examples compare.examples}}
       {{#if typeSame}}
