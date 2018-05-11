@@ -1,5 +1,5 @@
 {
-  "name": "apidoc",
+  "name": "thongdx-apidoc",
   "version": "0.17.6",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
@@ -7,13 +7,13 @@
   "preferGlobal": true,
   "bin": "bin/apidoc",
   "main": "./lib/index.js",
-  "homepage": "http://apidocjs.com",
+  "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/apidoc/apidoc.git"
+    "url": "https://github.com/athongintel/apidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/apidoc/apidoc/issues"
+    "url": "https://github.com/athongintel/apidoc/issues"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
