@@ -10,10 +10,10 @@
   "homepage": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/athongintel/apidoc.git"
+    "url": "https://github.com/apidoc/apidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/athongintel/apidoc/issues"
+    "url": "https://github.com/apidoc/issues"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
