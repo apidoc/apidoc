@@ -7,13 +7,13 @@
   "preferGlobal": true,
   "bin": "bin/apidoc",
   "main": "./lib/index.js",
-  "homepage": "",
+  "homepage": "http://apidocjs.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/apidoc/apidoc.git"
   },
   "bugs": {
-    "url": "https://github.com/apidoc/issues"
+    "url": "https://github.com/apidoc/apidoc/issues"
   },
   "scripts": {
     "test": "npm run jshint && mocha test/",
