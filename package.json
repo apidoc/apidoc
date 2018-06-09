@@ -1,5 +1,5 @@
 {
-  "name": "thongdx-apidoc",
+  "name": "apidoc",
   "version": "0.17.6",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
