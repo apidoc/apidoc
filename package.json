@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "apidoc-core": "~0.8.2",
-    "fs-extra": "~3.0.1",
-    "lodash": "~4.17.4",
+    "fs-extra": "^7.0.0",
+    "lodash": "^4.17.10",
     "markdown-it": "^8.3.1",
     "nomnom": "~1.8.1",
-    "winston": "~2.3.1"
+    "winston": "^3.0.0"
   },
   "devDependencies": {
     "apidoc-example": "*",
