@@ -47,7 +47,7 @@ var argv = cmd
 
     .option('--simulate', 'Execute but not write any file.', false)
 
-    .option('--markdown', 'Turn off default markdown parser or set a file to a custom parser.', true)
+    .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
 
     .option('--line-ending <line-ending>', 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.')
 
