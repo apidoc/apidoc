@@ -12,56 +12,60 @@
  */
 
 var path   = require('path');
-var nomnom = require('nomnom');
+var cmd    = require('commander');
 var apidoc = require('../lib/index');
 
-var argv = nomnom
-    .option('file-filters', { abbr: 'f', 'default': '.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|p|php?|pl|pm|py|rb|scala|ts|vue)$',
-            list: true,
-            help: 'RegEx-Filter to select files that should be parsed (multiple -f can be used).' })
+var argv = cmd
+    .option('-f --file-filters <file-filters>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).', collect, [])
 
-    .option('exclude-filters', { abbr: 'e', 'default': '', list: true,
-            help: 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', })
+    .option('-e, --exclude-filters <exclude-filters>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', collect, [])
 
-    .option('input', { abbr: 'i', 'default': './', list: true, help: 'Input / source dirname.' })
+    .option('-i, --input <input>',  'Input/source dirname.', collect, [])
 
-    .option('output', { abbr: 'o', 'default': './doc/', help: 'Output dirname.' })
+    .option('-o, --output <output>', 'Output dirname.', './doc/')
 
-    .option('template', { abbr: 't', 'default': path.join(__dirname, '../template/'),
-            help: 'Use template for output files.' })
+    .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
-    .option('config', { abbr: 'c', 'default': './', help: 'Path to directory containing config file (apidoc.json)' })
+    .option('-c, --config <config>', 'Path to directory containing config file (apidoc.json).', './')
 
-    .option('private', { abbr: 'p', 'default': false, help: 'Include private APIs in output.'})
+    .option('-p, --private', 'Include private APIs in output.', false)
 
-    .option('verbose', { abbr: 'v', flag: true, 'default': false, help: 'Verbose debug output.' })
+    .option('-v, --verbose', 'Verbose debug output.', false)
 
-    .option('help', { abbr: 'h', flag: true, help: 'Show this help information.' })
+    .option('--debug', 'Show debug messages.', false)
 
-    .option('debug', { flag: true, 'default': false, help: 'Show debug messages.' })
+    .option('--color', 'Turn off log color.', true)
 
-    .option('color', { flag: true, 'default': true, help: 'Turn off log color.' })
+    .option('--parse', 'Parse only the files and return the data, no file creation.', false)
 
-    .option('parse', { flag: true, 'default': false,
-            help: 'Parse only the files and return the data, no file creation.' })
+    .option('--parse-filters <parse-filters>', 'Optional user defined filters. Format name=filename', collect, [])
+    .option('--parse-languages <parse-languages>', 'Optional user defined languages. Format name=filename', collect, [])
+    .option('--parse-parsers <parse-parsers>', 'Optional user defined parsers. Format name=filename', collect, [])
+    .option('--parse-workers <parse-workers>', 'Optional user defined workers. Format name=filename', collect, [])
 
-    .option('parse-filters'  , { list: true, help: 'Optional user defined filters. Format name=filename' })
-    .option('parse-languages', { list: true, help: 'Optional user defined languages. Format name=filename' })
-    .option('parse-parsers'  , { list: true, help: 'Optional user defined parsers. Format name=filename' })
-    .option('parse-workers'  , { list: true, help: 'Optional user defined workers. Format name=filename' })
+    .option('--silent', 'Turn all output off.', false)
 
-    .option('silent', { flag: true, 'default': false, help: 'Turn all output off.' })
+    .option('--simulate', 'Execute but not write any file.', false)
 
-    .option('simulate', { flag: true, 'default': false, help: 'Execute but not write any file.' })
+    .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
 
-    .option('markdown', { 'default': true, help: 'Turn off default markdown parser or set a file to a custom parser.' })
+    .option('--line-ending <line-ending>', 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.')
 
-    .option('line-ending', { help: 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.' })
+    .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
 
-    .option('encoding', { 'default': 'utf8', help : 'Set the encoding of the source code. [utf8].' })
-
-    .parse()
+    .parse(process.argv)
 ;
+
+/**
+ * Collect options into an array
+ * @param {String} value
+ * @param {String[]} acc
+ * @returns {String[]}
+ */
+function collect(value, acc) {
+    acc.push(value);
+    return acc;
+}
 
 /**
  * Transform parameters to object
@@ -76,40 +80,40 @@ function transformToObject(filters) {
     if (typeof(filters) === 'string')
         filters = [ filters ];
 
-    var result = {};
-    filters.forEach(function(filter) {
-        var splits = filter.split('=');
-        if (splits.length === 2) {
-            var obj = {};
-            result[splits[0]] = path.resolve(splits[1], '');
-        }
-    });
-    return result;
+  var result = {};
+  filters.forEach(function(filter) {
+    var splits = filter.split('=');
+    if (splits.length === 2) {
+      var obj = {};
+      result[splits[0]] = path.resolve(splits[1], '');
+    }
+  });
+  return result;
 }
 
 var options = {
-    excludeFilters: argv['exclude-filters'],
-    includeFilters: argv['file-filters'],
-    src           : argv['input'],
-    dest          : argv['output'],
-    template      : argv['template'],
-    config        : argv['config'],
-    apiprivate    : argv['private'],
-    verbose       : argv['verbose'],
-    debug         : argv['debug'],
-    parse         : argv['parse'],
-    colorize      : argv['color'],
-    filters       : transformToObject(argv['parse-filters']),
-    languages     : transformToObject(argv['parse-languages']),
-    parsers       : transformToObject(argv['parse-parsers']),
-    workers       : transformToObject(argv['parse-workers']),
-    silent        : argv['silent'],
-    simulate      : argv['simulate'],
-    markdown      : argv['markdown'],
-    lineEnding    : argv['line-ending'],
-    encoding      : argv['encoding'],
+    excludeFilters: argv.excludeFilters.length ? argv.excludeFilters : [''],
+    includeFilters: argv.fileFilters.length ? argv.fileFilters : ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|p|php?|pl|pm|py|rb|scala|ts|vue)$'],
+    src           : argv.input.length ? argv.input : ['./'],
+    dest          : argv.output,
+    template      : argv.template,
+    config        : argv.config,
+    apiprivate    : argv.private,
+    verbose       : argv.verbose,
+    debug         : argv.debug,
+    parse         : argv.parse,
+    colorize      : argv.color,
+    filters       : transformToObject(argv.parseFilters),
+    languages     : transformToObject(argv.parseLanguages),
+    parsers       : transformToObject(argv.parseParsers),
+    workers       : transformToObject(argv.parseWorkers),
+    silent        : argv.silent,
+    simulate      : argv.simulate,
+    markdown      : argv.markdown,
+    lineEnding    : argv.lineEnding,
+    encoding      : argv.encoding
 };
 
 if (apidoc.createDoc(options) === false) {
-    process.exit(1);
+  process.exit(1);
 }
