@@ -121,6 +121,8 @@
     </div>
     {{/if}}
     <div class="clearfix"></div>
+    
+    {{#if article.author}}<h4 class="muted">Authored by: {{article.author}}</h4>{{/if}}
 
     {{#if article.deprecated}}
       <p class="deprecated"><span>{{__ "DEPRECATED"}}</span>
