@@ -157,8 +157,9 @@ apiDoc will auto include installed plugins.
 * [Docmaster](https://github.com/bonzzy/docmaster)
 
 
-## Docker image
+## Docker images
 
+* https://hub.docker.com/r/dmitrymomot/apidoc/
 * https://hub.docker.com/r/jujhars13/docker-node-apidocjs/
 
 
