@@ -32,25 +32,6 @@ If you want ot work on this, please send me a PM.
 $ npm install apidoc -g
 ```
 
-### Alternative docker install
-
-```console
-$ docker pull apidoc/apidoc
-```
-
-Then you will need to mount your file storage `-v '<apidoc.json dir>:/apidoc'` to docker container.
-
-Example:
-
-```console
-$ docker run --rm -v '$(PWD):/apidoc' -it apidoc/apidoc \
-    --input ./example \
-    --output ./docker-example \
-    -v
-```
-
-Creates from input files in `example/` a documentation in path `docker-example/`.
-
 ## Changelog
 
 [CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
@@ -174,6 +155,12 @@ apiDoc will auto include installed plugins.
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 * [Docmaster](https://github.com/bonzzy/docmaster)
+
+
+## Docker image
+
+* https://hub.docker.com/r/jujhars13/docker-node-apidocjs/
+
 
 ## FAQ
 
