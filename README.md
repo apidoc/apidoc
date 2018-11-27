@@ -159,6 +159,7 @@ apiDoc will auto include installed plugins.
 
 ## Docker images
 
+* https://hub.docker.com/r/thiagocaiubi/apidoc/
 * https://hub.docker.com/r/dmitrymomot/apidoc/
 * https://hub.docker.com/r/jujhars13/docker-node-apidocjs/
 
