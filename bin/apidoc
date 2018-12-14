@@ -28,7 +28,7 @@ var argv = cmd
 
     .option('-c, --config <config>', 'Path to directory containing config file (apidoc.json).', './')
 
-    .option('--no-copy', 'Do not copy API structure definitions.', false)
+    .option('--definitions', 'Include definitions file rather than copying definitions.', false)
 
     .option('-p, --private', 'Include private APIs in output.', false)
 
@@ -114,7 +114,7 @@ var options = {
     markdown      : argv.markdown,
     lineEnding    : argv.lineEnding,
     encoding      : argv.encoding,
-    copyDefinitions: !argv.noCopy
+    copyDefinitions: !argv.definitions,
 };
 
 if (apidoc.createDoc(options) === false) {
