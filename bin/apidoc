@@ -28,6 +28,8 @@ var argv = cmd
 
     .option('-c, --config <config>', 'Path to directory containing config file (apidoc.json).', './')
 
+    .option('--definitions', 'Include definitions file rather than copying definitions.', false)
+
     .option('-p, --private', 'Include private APIs in output.', false)
 
     .option('-v, --verbose', 'Verbose debug output.', false)
@@ -111,7 +113,8 @@ var options = {
     simulate      : argv.simulate,
     markdown      : argv.markdown,
     lineEnding    : argv.lineEnding,
-    encoding      : argv.encoding
+    encoding      : argv.encoding,
+    copyDefinitions: !argv.definitions,
 };
 
 if (apidoc.createDoc(options) === false) {
