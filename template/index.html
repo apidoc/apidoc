@@ -5,7 +5,7 @@
   <title>Loading...</title>
   <script>
     var base = document.createElement('base');
-    var href = window.location.href.split('#')[0];
+    var href = window.location.href.split(/[#?]/)[0];
     if (!href.endsWith('/')) {
       href += '/'
     }
