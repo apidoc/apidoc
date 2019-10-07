@@ -3,6 +3,15 @@
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Loading...</title>
+  <script>
+    var base = document.createElement('base');
+    var href = window.location.href;
+    if (!href.endsWith('/')) {
+      href += '/'
+    }
+    base.href = href;
+    document.getElementsByTagName('head')[0].appendChild(base)
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
