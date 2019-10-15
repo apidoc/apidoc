@@ -769,7 +769,7 @@ require([
         $root.after(content);
         var $content = $root.next();
 
-        // Event on.click muss neu zugewiesen werden (sollte eigentlich mit on automatisch funktionieren... sollte)
+        // Event on.click needs to be reassigned (should actually work with on ... automatically)
         $content.find('.versions li.version a').on('click', changeVersionCompareTo);
 
         $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('has-modifications');
