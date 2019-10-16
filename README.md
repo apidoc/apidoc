@@ -88,11 +88,19 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
    ###
    ```
 
+ * **Elixir**:
+
+   ```elixir
+   #{
+   # This is a comment.
+   #}
+   ```
+
  * **Erlang**:
 
    ```erlang
    %{
-   This is a comment.
+   % This is a comment.
    %}
    ```
 
