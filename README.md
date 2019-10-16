@@ -165,11 +165,16 @@ apiDoc will auto include installed plugins.
 * [Docmaster](https://github.com/bonzzy/docmaster)
 
 
-## Docker images
+## Docker image
 
-* https://hub.docker.com/r/thiagocaiubi/apidoc/
-* https://hub.docker.com/r/dmitrymomot/apidoc/
-* https://hub.docker.com/r/jujhars13/docker-node-apidocjs/
+You can use apidoc in Docker like this:
+
+~~~bash
+# first build the image after cloning this repository
+docker build -t apidoc/apidoc .
+# run it
+docker run --rm -v $(pwd):/home/node/apidoc apidoc/apidoc -o outputdir -i inputdir
+~~~
 
 
 ## FAQ
