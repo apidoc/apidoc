@@ -19,7 +19,6 @@
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
     "build-example": "bin/apidoc -i example/ -o tmp/",
-    "check-updates": "npm-check-updates",
     "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=groupBy,each,extend,some exports=amd"
   },
   "keywords": [
@@ -34,23 +33,22 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "apidoc-core": "~0.8.2",
-    "commander": "^2.19.0",
-    "fs-extra": "^7.0.0",
+    "apidoc-core": "~0.8.3",
+    "commander": "^2.20.0",
+    "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
-    "markdown-it": "^8.3.1",
-    "winston": "^3.0.0"
+    "markdown-it": "^10.0.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "apidoc-example": "*",
     "jshint": "^2.9.4",
-    "lodash-cli": "^4.17.4",
-    "mocha": "~3.4.1",
-    "npm-check-updates": "^2.11.1",
-    "path-to-regexp": "^1.7.0",
-    "semver": "^5.3.0",
-    "should": "~11.2.1",
-    "webfontloader": "^1.6.27"
+    "lodash-cli": "^4.17.5",
+    "mocha": "~6.2.1",
+    "path-to-regexp": "^3.1.0",
+    "semver": "^6.3.0",
+    "should": "~13.2.1",
+    "webfontloader": "^1.6.28"
   },
   "jshintConfig": {
     "camelcase": true,
