@@ -806,8 +806,8 @@ require([
             if (splitBy)
                 elements.forEach (function(element) {
                     var parts = element.split(splitBy);
-                    var key = parts[1]; // reference keep for sorting
-                    if (key == name)
+                    var key = parts[0]; // reference keep for sorting
+                    if (key == name || parts[1] == name)
                         results.push(element);
                 });
             else
