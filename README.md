@@ -17,13 +17,13 @@ Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://gith
 
 ## HELP NEEDED! Search for a Developer
 
-Because of my limited time i need one or more devs that could build and maintain a "Send Sample Request Plugin".
+Because of my limited time I need one or more devs that could build and maintain a "Send Sample Request Plugin".
 
-The Plugin should be loose coupled to the template, so it should be a separate project.
+The Plugin should be loosely coupled to the template, so it should be a separate project.
 This Plugin should send example data to an API-Endpoint and process the response. Supported formats should be JSON, XML, whatever.
 
 Many issues belong to the current (unmaintained) plugin, (Milestone: Send Sample Request Plugin)(https://github.com/apidoc/apidoc/milestone/4)
-If you want ot work on this, please send me a PM.
+If you want to work on this, please send me a PM.
 
 
 ## Installation
@@ -31,25 +31,6 @@ If you want ot work on this, please send me a PM.
 ```console
 $ npm install apidoc -g
 ```
-
-### Alternative docker install
-
-```console
-$ docker pull apidoc/apidoc
-```
-
-Then you will need to mount your file storage `-v '<apidoc.json dir>:/apidoc'` to docker container.
-
-Example:
-
-```console
-$ docker run --rm -v '$(PWD):/apidoc' -it apidoc/apidoc \
-    --input ./example \
-    --output ./docker-example \
-    -v
-```
-
-Creates from input files in `example/` a documentation in path `docker-example/`.
 
 ## Changelog
 
@@ -64,7 +45,7 @@ Creates from input files in `example/` a documentation in path `docker-example/`
  * @apiName GetUser
  * @apiGroup User
  *
- * @apiParam {Number} id Users unique ID.
+ * @apiParam {Number} id User's unique ID.
  *
  * @apiSuccess {String} firstname Firstname of the User.
  * @apiSuccess {String} lastname  Lastname of the User.
@@ -107,11 +88,19 @@ More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/a
    ###
    ```
 
+ * **Elixir**:
+
+   ```elixir
+   #{
+   # This is a comment.
+   #}
+   ```
+
  * **Erlang**:
 
    ```erlang
    %{
-   This is a comment.
+   % This is a comment.
    %}
    ```
 
@@ -174,6 +163,19 @@ apiDoc will auto include installed plugins.
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 * [Docmaster](https://github.com/bonzzy/docmaster)
+
+
+## Docker image
+
+You can use apidoc in Docker like this:
+
+~~~bash
+# first build the image after cloning this repository
+docker build -t apidoc/apidoc .
+# run it
+docker run --rm -v $(pwd):/home/node/apidoc apidoc/apidoc -o outputdir -i inputdir
+~~~
+
 
 ## FAQ
 

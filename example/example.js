@@ -25,6 +25,7 @@
  *
  * @apiError NoAccessRight Only authenticated Admins can access the data.
  * @apiError UserNotFound   The <code>id</code> of the User was not found.
+ * @apiError (500 Internal Server Error) InternalServerError The server encountered an internal error
  *
  * @apiErrorExample Response (example):
  *     HTTP/1.1 401 Not Authenticated

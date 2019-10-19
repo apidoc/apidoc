@@ -769,7 +769,7 @@ require([
         $root.after(content);
         var $content = $root.next();
 
-        // Event on.click muss neu zugewiesen werden (sollte eigentlich mit on automatisch funktionieren... sollte)
+        // Event on.click needs to be reassigned (should actually work with on ... automatically)
         $content.find('.versions li.version a').on('click', changeVersionCompareTo);
 
         $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('has-modifications');
@@ -806,8 +806,8 @@ require([
             if (splitBy)
                 elements.forEach (function(element) {
                     var parts = element.split(splitBy);
-                    var key = parts[1]; // reference keep for sorting
-                    if (key == name)
+                    var key = parts[0]; // reference keep for sorting
+                    if (key == name || parts[1] == name)
                         results.push(element);
                 });
             else
