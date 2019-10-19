@@ -3,8 +3,8 @@
   "version": "0.3.0",
   "description": "apidoc example project",
   "title": "Custom apiDoc browser title",
-  "url" : "https://api.github.com/v1",
-  "sampleUrl": "https://api.github.com/v1",
+  "url" : "https://api.example.com",
+  "sampleUrl": "https://apidoc.free.beeceptor.com",
   "header": {
     "title": "My own header title",
     "filename": "header.md"
@@ -14,7 +14,7 @@
     "filename": "footer.md"
   },
   "template": {
-  	"withCompare": true,
-  	"withGenerator": true
+    "withCompare": true,
+    "withGenerator": true
   }
 }
