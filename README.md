@@ -1,43 +1,23 @@
 # apiDoc
 
-Generates a RESTful web API Documentation.
+apiDoc creates a documentation from API descriptions in your source code.
 
 [![Build Status](https://travis-ci.org/apidoc/apidoc.svg?branch=master)](https://travis-ci.org/apidoc/apidoc)
 [![Dependency Status](https://david-dm.org/apidoc/apidoc.svg)](https://david-dm.org/apidoc/apidoc)
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
+[![Join the chat at https://gitter.im/apidoc/talk](https://badges.gitter.im/apidoc/talk.svg)](https://gitter.im/apidoc/talk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-**Changes from previous version visit [CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)**
-
-apiDoc creates a documentation from API descriptions in your source code.
-
-Documentation at [apidocjs.com](http://apidocjs.com) or as [Docset](https://github.com/pfefferle/dash-apidoc).
+Documentation: [apidocjs.com](http://apidocjs.com)
 
 [Example](http://apidocjs.com/example/) output.
 
-
-## HELP NEEDED! Search for a Developer
-
-Because of my limited time I need one or more devs that could build and maintain a "Send Sample Request Plugin".
-
-The Plugin should be loosely coupled to the template, so it should be a separate project.
-This Plugin should send example data to an API-Endpoint and process the response. Supported formats should be JSON, XML, whatever.
-
-Many issues belong to the current (unmaintained) plugin, (Milestone: Send Sample Request Plugin)(https://github.com/apidoc/apidoc/milestone/4)
-If you want to work on this, please send me a PM.
-
-
 ## Installation
 
-```console
-$ npm install apidoc -g
+```bash
+$ npm install -g apidoc
 ```
 
-## Changelog
-
-[CHANGELOG.md](https://github.com/apidoc/apidoc/blob/master/CHANGELOG.md)
-
-
-## Example
+## Usage
 
 ```javascript
 /**
@@ -52,7 +32,7 @@ $ npm install apidoc -g
  */
 ```
 
-```console
+```bash
 $ apidoc -i example/ -o doc/
 ```
 
@@ -61,6 +41,16 @@ Creates from input files in `example/` a documentation in path `doc/`.
 
 More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)
 
+## Docker image
+
+You can use apidoc in Docker like this:
+
+~~~bash
+# first build the image after cloning this repository
+docker build -t apidoc/apidoc .
+# run it
+docker run --rm -v $(pwd):/home/node/apidoc apidoc/apidoc -o outputdir -i inputdir
+~~~
 
 ## Supported programming languages
 
@@ -140,15 +130,26 @@ apiDoc will auto include installed plugins.
 
  * [apidoc-plugin-schema](https://github.com/willfarrell/apidoc-plugin-schema) Generates and inject apidoc elements from api schemas. `npm install apidoc-plugin-schema`
 
+For details and an example on how to implement your own plugin, please view [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test).
+
+## Support
+
+Please [create a new issue](https://github.com/apidoc/apidoc/issues/new/choose) if you have a suggestion/question or if you found a problem/bug.
+
+## Contributing
+
+apiDoc is a collaborative project. Pull requests are welcome. Please see the [CONTRIBUTING](https://github.com/apidoc/apidoc/blob/master/CONTRIBUTING.md) file.
+
+## FAQ
+
+* [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
 
 ## Build tools
 
 * [flask-apidoc](https://pypi.python.org/pypi/flask-apidoc/) `pip install flask-apidoc`
 * [grunt-apidoc](https://github.com/apidoc/grunt-apidoc) `npm install grunt-apidoc`.
 * [gapidoc (gulp)](https://github.com/techgaun/gulp-apidoc) `npm install gapidoc`.
-* [gulp-apidoc](https://github.com/ayhankuru/gulp-apidoc) `npm install gulp-apidoc`.
-* [gulp-apidocjs](https://github.com/apriendeau/gulp-apidocjs) `npm install gulp-apidocjs`.
-
+* [webpack-apidoc](https://github.com/c0b41/webpack-apidoc) `npm install --save-dev webpack-apidoc`.
 
 ## Integration
 
@@ -157,41 +158,9 @@ apiDoc will auto include installed plugins.
 * [Microsoft WebAPI](https://github.com/chehabz/grunt-edge-apidoc-webapi-generator)
 * [Sublime Text plugin](https://github.com/DWand/ST3_apiDocAutocompletion)
 
-
 ## Converter
 
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 * [Docmaster](https://github.com/bonzzy/docmaster)
 
-
-## Docker image
-
-You can use apidoc in Docker like this:
-
-~~~bash
-# first build the image after cloning this repository
-docker build -t apidoc/apidoc .
-# run it
-docker run --rm -v $(pwd):/home/node/apidoc apidoc/apidoc -o outputdir -i inputdir
-~~~
-
-
-## FAQ
-
-* [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
-
-
-## Extend apiDoc and write your own Plugin
-
-For details and an example view [apidoc-plugin-test](https://github.com/apidoc/apidoc-plugin-test)
-
-
-## Help
-
-Please add [issues](https://github.com/apidoc/apidoc/issues) if you have a question or found a problem.
-Pull requests are welcome too!
-
-A chat about apiDoc is on [Gitter](https://gitter.im/apidoc/talk).
-
-[![Gitter chat](https://badges.gitter.im/apidoc/talk.png)](https://gitter.im/apidoc/talk)
