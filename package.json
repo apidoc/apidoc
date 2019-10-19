@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "apidoc-example": "*",
+    "bootstrap": "3.4.1",
     "jshint": "^2.9.4",
     "lodash-cli": "^4.17.5",
     "mocha": "~6.2.1",
