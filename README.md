@@ -19,7 +19,7 @@ $ npm install -g apidoc
 
 ## Usage
 
-```javascript
+```java
 /**
  * @api {get} /user/:id Request User information
  * @apiName GetUser
