@@ -55,6 +55,8 @@ var argv = cmd
 
     .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
 
+    .option('--filter-by <tag-filter:value>', 'Filter doc by tag')
+
     .parse(process.argv)
 ;
 
@@ -115,6 +117,7 @@ var options = {
     lineEnding    : argv.lineEnding,
     encoding      : argv.encoding,
     copyDefinitions: !argv.definitions,
+    filterBy      : argv.filterBy,
 };
 
 if (apidoc.createDoc(options) === false) {
