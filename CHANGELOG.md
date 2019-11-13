@@ -1,9 +1,13 @@
 # apiDoc Changelog
 
-#### 0.17.6
+#### 0.18.0
+
+This release comes after more than two years without changes to the code. A lot of things were merged and fixed, so it is possible that this changelog is not entirely complete. Refer to the git log if necessary.
 
 * Common
-  * Add Docker image.
+  * Add Docker image and improve it (#807)
+  * Fix apiGroup showing instead of apiName in template
+  * Add support for custom markdown parser location (#714)
 
 * CLI
   * Add kotlin to default file-filters.
@@ -14,7 +18,15 @@
   * Add Vietnamese translation.
   * Add Turkish translation.
   * Blank optional parameters omitted from sample request.
+  * Update template form parameter to be in form group (#669)
+  * Improve the sorting of names (#688)
+  * Avoid underscores in article titles (#764)
+  * Add default value of the headers in the input (#806)
+  * Add notes about Elixir (#658)
+  * Send JSON body for APIs (#559)
 
+* Maintenance
+  * Update dependencies where possible
 
 #### 0.17.5
 
