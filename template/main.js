@@ -341,9 +341,12 @@ require([
                     };
                 }
 
-                // add prefix URL for endpoint
-                if (apiProject.url)
-                    fields.article.url = apiProject.url + fields.article.url;
+                // add prefix URL for endpoint unless it's already absolute
+                if (apiProject.url) {
+                    if (fields.article.url.substr(0, 4).toLowerCase() !== 'http') {
+                        fields.article.url = apiProject.url + fields.article.url;
+                    }
+                }
 
                 addArticleSettings(fields, entry);
 
