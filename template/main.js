@@ -437,11 +437,48 @@ require([
         });
         $('.nav-tabs-examples').find('a:first').tab('show');
 
+        // sample header-content-type switch
+        $('.sample-header-content-type-switch').change(function () {
+            var paramName = '.' + $(this).attr('name') + '-fields';
+            var bodyName = '.' + $(this).attr('name') + '-body';
+            var selectName = 'select[name=' + $(this).attr('name') + ']';
+            if ($(this).val() == 'body-json') {
+                $(selectName).val('undefined');
+                $(this).val('body-json');
+                $(paramName).removeClass('hide');
+                $(this).parent().nextAll(paramName).first().addClass('hide');
+                $(bodyName).addClass('hide');
+                $(this).parent().nextAll(bodyName).first().removeClass('hide');
+            } else if ($(this).val() == "body-form-data") {
+                $(selectName).val('undefined');
+                $(this).val('body-form-data');
+                $(bodyName).addClass('hide');
+                $(paramName).removeClass('hide');
+            } else {
+                $(this).parent().nextAll(paramName).first().removeClass('hide')
+                $(this).parent().nextAll(bodyName).first().addClass('hide');
+            }
+            $(this).prev('.sample-request-switch').prop('checked', true);
+        });
+
         // sample request switch
         $('.sample-request-switch').click(function (e) {
-            var name = '.' + $(this).attr('name') + '-fields';
-            $(name).addClass('hide');
-            $(this).parent().next(name).removeClass('hide');
+            var paramName = '.' + $(this).attr('name') + '-fields';
+            var bodyName = '.' + $(this).attr('name') + '-body';
+            var select = $(this).next('.' + $(this).attr('name') + '-select').val();
+            if($(this).prop("checked")){
+                if (select == 'body-json'){
+                    $(this).parent().nextAll(bodyName).first().removeClass('hide');
+                }else {
+                    $(this).parent().nextAll(paramName).first().removeClass('hide');
+                }
+            }else {
+                if (select == 'body-json'){
+                    $(this).parent().nextAll(bodyName).first().addClass('hide');
+                }else {
+                    $(this).parent().nextAll(paramName).first().addClass('hide');
+                }
+            }
         });
 
         // call scrollspy refresh method
