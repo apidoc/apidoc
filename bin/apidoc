@@ -55,7 +55,7 @@ var argv = cmd
 
     .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
 
-    .option('--filter-by <tag-filter:value>', 'Filter doc by tag')
+    .option('--filter-by <tag-filter:value>', 'Filter documentation by tag')
 
     .parse(process.argv)
 ;
