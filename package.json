@@ -41,7 +41,6 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "apidoc-example": "*",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
     "jshint": "^2.9.4",
