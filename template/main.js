@@ -84,6 +84,9 @@ require([
     if (apiProject.template.forceLanguage)
         locale.setLanguage(apiProject.template.forceLanguage);
 
+    if (apiProject.template.aloneDisplay == null)
+        apiProject.template.aloneDisplay = false;
+
     // Setup jQuery Ajax
     $.ajaxSetup(apiProject.template.jQueryAjaxSetup);
 
@@ -359,7 +362,8 @@ require([
                 articles.push({
                     article: templateArticle(fields),
                     group: entry.group,
-                    name: entry.name
+                    name: entry.name,
+                    aloneDisplay: apiProject.template.aloneDisplay
                 });
                 oldName = entry.name;
             }
@@ -370,7 +374,8 @@ require([
             group: groupEntry,
             title: title,
             description: description,
-            articles: articles
+            articles: articles,
+            aloneDisplay: apiProject.template.aloneDisplay
         };
         content += templateSections(fields);
     });
@@ -483,6 +488,28 @@ require([
             }
         });
 
+        if (apiProject.template.aloneDisplay){
+            //show group
+            $('.show-group').click(function () {
+                var apiGroup = '.' + $(this).attr('data-group') + '-group';
+                var apiGroupArticle = '.' + $(this).attr('data-group') + '-article';
+                $(".show-api-group").addClass('hide');
+                $(apiGroup).removeClass('hide');
+                $(".show-api-article").addClass('hide');
+                $(apiGroupArticle).removeClass('hide');
+            });
+
+            //show api
+            $('.show-api').click(function () {
+                var apiName = '.' + $(this).attr('data-name') + '-article';
+                var apiGroup = '.' + $(this).attr('data-group') + '-group';
+                $(".show-api-group").addClass('hide');
+                $(apiGroup).removeClass('hide');
+                $(".show-api-article").addClass('hide');
+                $(apiName).removeClass('hide');
+            });
+        }
+
         // call scrollspy refresh method
         $(window).scrollspy('refresh');
 
@@ -490,6 +517,13 @@ require([
         sampleRequest.initDynamic();
     }
     initDynamic();
+
+    if (apiProject.template.aloneDisplay) {
+        var hashVal = window.location.hash;
+        if (hashVal != null && hashVal.length !== 0) {
+            $("." + hashVal.slice(1) + "-init").click();
+        }
+    }
 
     // Pre- / Code-Format
     prettyPrint();
