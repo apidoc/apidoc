@@ -30,7 +30,7 @@
         {{/if}}
       {{else}}
         <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}" class="nav-list-item">{{title}}</a>
+          <a href="#api-{{group}}-{{name}}" title="{{url}}" class="nav-list-item">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
         </li>
       {{/if}}
     {{/if}}
