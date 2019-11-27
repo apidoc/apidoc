@@ -186,7 +186,8 @@ require([
                         group: group,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 } else {
                     nav.push({
@@ -195,7 +196,8 @@ require([
                         hidden: true,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 }
                 oldName = entry.name;
@@ -564,7 +566,7 @@ require([
      * Initialize search
      */
     var options = {
-      valueNames: [ 'nav-list-item' ]
+      valueNames: [ 'nav-list-item','nav-list-url-item']
     };
     var endpointsList = new List('scrollingNav', options);
 
