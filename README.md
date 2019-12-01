@@ -19,6 +19,8 @@ $ npm install -g apidoc
 
 ## Usage
 
+Add some apidoc comments anywhere in your source code:
+
 ```java
 /**
  * @api {get} /user/:id Request User information
@@ -32,14 +34,20 @@ $ npm install -g apidoc
  */
 ```
 
+Now generate the documentation from `src/` into `doc/`.
+
 ```bash
-$ apidoc -i example/ -o doc/
+$ apidoc -i src/ -o doc/
 ```
 
-Creates from input files in `example/` a documentation in path `doc/`.
+This repository contains and `example` folder from which you can generate a very complete documentation on an example api endpoint. It also contains best practice hints (in the `footer.md` file).
 
-
-More examples and best practice hints: [EXAMPLES.md](https://github.com/apidoc/apidoc/blob/master/EXAMPLES.md)
+```bash
+$ git clone https://github.com/apidoc/apidoc && cd apidoc
+$ npm install --prod
+$ ./bin/apidoc -i example -o /tmp/doc
+$ $BROWSER /tmp/doc
+```
 
 ## Docker image
 
