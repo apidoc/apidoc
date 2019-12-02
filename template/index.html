@@ -24,13 +24,13 @@
     {{#if title}}
       {{#if isHeader}}
         {{#if isFixed}}
-          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-name="show-api-{{group}}" class="show-api api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{else}}
-          <li class="nav-header nav-list-item" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-header nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-group="show-api-{{group}}" class="show-group api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
         <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}" class="nav-list-item">{{title}}</a>
+          <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
         </li>
       {{/if}}
     {{/if}}
@@ -66,13 +66,13 @@
 
 <script id="template-header" type="text/x-handlebars-template">
   {{#if content}}
-    <div id="api-_">{{{content}}}</div>
+    <div id="api-_" class="show-api-article show-api-_-article">{{{content}}}</div>
   {{/if}}
 </script>
 
 <script id="template-footer" type="text/x-handlebars-template">
   {{#if content}}
-    <div id="api-_footer">{{{content}}}</div>
+    <div id="api-_footer" class="show-api-article show-api-_-article">{{{content}}}</div>
   {{/if}}
 </script>
 
@@ -87,13 +87,13 @@
 </script>
 
 <script id="template-sections" type="text/x-handlebars-template">
-  <section id="api-{{group}}">
+  <section id="api-{{group}}" class="show-api-group show-api-{{group}}-group {{#if aloneDisplay}} hide{{/if}}">
     <h1>{{underscoreToSpace title}}</h1>
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
     {{#each articles}}
-      <div id="api-{{group}}-{{name}}">
+      <div id="api-{{group}}-{{name}}" class="show-api-article show-api-{{group}}-article show-api-{{group}}-{{name}}-article {{#if aloneDisplay}} hide{{/if}}">
         {{{article}}}
       </div>
     {{/each}}
