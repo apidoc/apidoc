@@ -38,6 +38,9 @@ define([
             $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
                 var key = $(element).data("sample-request-header-name");
                 var value = element.value;
+                if (typeof element.optional === 'undefined') {
+                  element.optional = true;
+                }
                 if ( ! element.optional && element.defaultValue !== '') {
                     value = element.defaultValue;
                 }
