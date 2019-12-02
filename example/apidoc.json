@@ -15,6 +15,7 @@
   },
   "template": {
     "withCompare": true,
-    "withGenerator": true
+    "withGenerator": true,
+    "aloneDisplay": false
   }
 }
