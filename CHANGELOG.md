@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+#### 0.19.1
+
+* Bring back apidoc-example as devDependencies for CI
+* Update apidoc-core version in package-lock.json
+
 #### 0.19.0
 
 The number of open pull requests in now 0! :D In this release you'll find one bugfix and also some new features/improvements.
