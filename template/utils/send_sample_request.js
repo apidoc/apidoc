@@ -53,7 +53,7 @@ define([
         var param = {};
         var paramType = {};
         var bodyFormData = {};
-        var bodyFormDataType = {};
+        var bodyFormDataOtherConfig={};
         var bodyJson = '';
         $root.find(".sample-request-param:checked").each(function(i, element) {
             var group = $(element).data("sample-request-param-group-id");
@@ -78,8 +78,14 @@ define([
                     }
                     if (contentType == "body-form-data"){
                         header['Content-Type'] = 'multipart/form-data'
+                        if(  element.type == "file") {
+                        value = element.files;
+                        bodyFormDataOtherConfig = {
+                          processData: false,
+                          contentType: false
+                        };
+                        }
                         bodyFormData[key] = value;
-                        bodyFormDataType[key] = $(element).next().text();
                     }else {
                         param[key] = value;
                         paramType[key] = $(element).next().text();
@@ -128,7 +134,8 @@ define([
             data       : param,
             type       : type.toUpperCase(),
             success    : displaySuccess,
-            error      : displayError
+            error      : displayError,
+            ...bodyFormDataOtherConfig
         };
 
         $.ajax(ajaxRequest);
