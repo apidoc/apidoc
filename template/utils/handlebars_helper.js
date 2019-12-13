@@ -242,7 +242,7 @@ define([
             if( ! compare)
                 return source;
 
-            var d = diffMatchPatch.diff_main(compare, source);
+            var d = diffMatchPatch.diff_main(stripHtml(compare), stripHtml(source));
             diffMatchPatch.diff_cleanupSemantic(d);
             ds = diffMatchPatch.diff_prettyHtml(d);
             ds = ds.replace(/&para;/gm, '');
@@ -351,6 +351,15 @@ define([
       }
       return html.join('');
     };
+
+    /**
+     * Fixes html after comparison (#506, #538, #616, #825)
+     */
+    function stripHtml(html){
+      var div = document.createElement("div");
+      div.innerHTML = html;
+      return div.textContent || div.innerText || "";
+    }
 
     // Exports
     return Handlebars;
