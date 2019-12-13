@@ -76,19 +76,19 @@ define([
                     if ( ! element.optional && element.defaultValue !== '') {
                         value = element.defaultValue;
                     }
-                    if (contentType == "body-form-data"){
-                        header['Content-Type'] = 'multipart/form-data'
-                        if(  element.type == "file") {
+                    if (contentType === "body-form-data") {
+                      header["Content-Type"] = "multipart/form-data";
+                      if (element.type == "file") {
                         value = element.files;
                         bodyFormDataOtherConfig = {
                           processData: false,
                           contentType: false
                         };
-                        }
-                        bodyFormData[key] = value;
-                    }else {
-                        param[key] = value;
-                        paramType[key] = $(element).next().text();
+                      }
+                      bodyFormData[key] = value;
+                    } else {
+                      param[key] = value;
+                      paramType[key] = $(element).next().text();
                     }
                 });
             }
