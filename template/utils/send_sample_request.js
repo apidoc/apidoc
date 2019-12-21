@@ -88,9 +88,11 @@ define([
               var nestedField = attributes.slice(1).join('.');
               if (!object[field])
                   object[field] = {};
-              object[field][nestedField] = object[key];
-              delete object[key];
-              handleNestedFields(object[field], nestedField, params);
+              if (typeof object[field] == 'object') {
+                  object[field][nestedField] = object[key];
+                  delete object[key];
+                  handleNestedFields(object[field], nestedField, params);
+              }
           }
       }
 
