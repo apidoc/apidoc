@@ -107,6 +107,15 @@ define([
             }
         } // for
 
+        //handle arrays fields
+        Object.keys(paramType).forEach(function (key) {
+            if (paramType[key].endsWith('[]')) {
+                try {
+                    param[key] = JSON.parse(JSON.parse(param[key]));
+                } catch (e) {;}
+            }
+        });
+
 
         //add url search parameter
         if (header['Content-Type'] == 'application/json' ){
