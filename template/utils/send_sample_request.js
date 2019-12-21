@@ -79,6 +79,25 @@ define([
           }
       } // for
 
+      //handle nested fields
+      function handleNestedFields(object, key, params) {
+          var attributes = key.split('.');
+          var field = attributes[0];
+          params.push(field);
+          if (attributes.length > 1 && paramType[params.join('.')] == 'Object') {
+              var nestedField = attributes.slice(1).join('.');
+              if (!object[field])
+                  object[field] = {};
+              object[field][nestedField] = object[key];
+              delete object[key];
+              handleNestedFields(object[field], nestedField, params);
+          }
+      }
+
+      Object.keys(param).forEach(function (key) {
+          handleNestedFields(param, key, []);
+      });
+
       $root.find(".sample-request-response").fadeTo(250, 1);
       $root.find(".sample-request-response-json").html("Loading...");
       refreshScrollSpy();
