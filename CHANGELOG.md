@@ -1,5 +1,29 @@
 # apiDoc Changelog
 
+#### 0.19.1
+
+* Bring back apidoc-example as devDependencies for CI
+* Update apidoc-core version in package-lock.json
+
+#### 0.19.0
+
+The number of open pull requests in now 0! :D In this release you'll find one bugfix and also some new features/improvements.
+
+* Bugfix:
+  * Fix default header being sent instead of user input (#813)
+
+* New features:
+  * Add aloneDisplay config option to filter the page after clicking menu header (#820 by @sxiazb)
+  * Add filtering navigation bar based on URL (#820 by @sxiazb)
+  * Add dropdown box for the body parameter and modify to allow multiple params (#812 by @sxiazb)
+  * Add --filter-by option (#810 by @omaretna)
+  * Add possibility to define absolute url in @api (fix #201)
+
+* Enhancements:
+  * Add mjs file extension to the list of parsed files (#815 by @mons54)
+  * Improve the example project
+  * Don't output anything by default on CLI (fix #799)
+
 #### 0.18.0
 
 This release comes after more than two years without changes to the code. A lot of things were merged and fixed, so it is possible that this changelog is not entirely complete. Refer to the git log if necessary.

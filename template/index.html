@@ -24,13 +24,13 @@
     {{#if title}}
       {{#if isHeader}}
         {{#if isFixed}}
-          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-name="show-api-{{group}}" class="show-api api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{else}}
-          <li class="nav-header nav-list-item" data-group="{{group}}"><a href="#api-{{group}}">{{underscoreToSpace title}}</a></li>
+          <li class="nav-header nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-group="show-api-{{group}}" class="show-group api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{/if}}
       {{else}}
         <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}" class="nav-list-item">{{title}}</a>
+          <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
         </li>
       {{/if}}
     {{/if}}
@@ -66,13 +66,13 @@
 
 <script id="template-header" type="text/x-handlebars-template">
   {{#if content}}
-    <div id="api-_">{{{content}}}</div>
+    <div id="api-_" class="show-api-article show-api-_-article">{{{content}}}</div>
   {{/if}}
 </script>
 
 <script id="template-footer" type="text/x-handlebars-template">
   {{#if content}}
-    <div id="api-_footer">{{{content}}}</div>
+    <div id="api-_footer" class="show-api-article show-api-_-article">{{{content}}}</div>
   {{/if}}
 </script>
 
@@ -87,13 +87,13 @@
 </script>
 
 <script id="template-sections" type="text/x-handlebars-template">
-  <section id="api-{{group}}">
+  <section id="api-{{group}}" class="show-api-group show-api-{{group}}-group {{#if aloneDisplay}} hide{{/if}}">
     <h1>{{underscoreToSpace title}}</h1>
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
     {{#each articles}}
-      <div id="api-{{group}}-{{name}}">
+      <div id="api-{{group}}-{{name}}" class="show-api-article show-api-{{group}}-article show-api-{{group}}-{{name}}-article {{#if aloneDisplay}} hide{{/if}}">
         {{{article}}}
       </div>
     {{/each}}
@@ -251,8 +251,8 @@
         {{#if article.header.fields}}
           <h3>{{__ "Headers"}}</h3>
           {{#each article.header.fields}}
-            <h4><input type="radio" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch" {{#if_eq @index compare=0}} checked{{/if_eq}} />{{__ @key}}</h4>
-            <div class="{{../id}}-sample-request-header-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
+            <h4><input type="checkbox" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch" checked />{{__ @key}}</h4>
+            <div class="{{../id}}-sample-request-header-fields">
               {{#each this}}
               <div class="form-group">
                 <label class="col-md-3 control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
@@ -271,16 +271,30 @@
         {{#if article.parameter.fields}}
           <h3>{{__ "Parameters"}}</h3>
           {{#each article.parameter.fields}}
-            <h4><input type="radio" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" {{#if_eq @index compare=0}} checked{{/if_eq}} />{{__ @key}}</h4>
-            <div class="{{../id}}-sample-request-param-fields{{#if_gt @index compare=0}} hide{{/if_gt}}">
-              {{#each this}}
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
-                    <div class="input-group">
-                      <input id="sample-request-param-field-{{field}}" type="text" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
-                      <div class="input-group-addon">{{{type}}}</div>
-                    </div>
+            <h4><input type="checkbox" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" checked/>{{__ @key}}
+              <select   name="{{../id}}-sample-header-content-type" class="{{../id}}-sample-request-param-select sample-header-content-type sample-header-content-type-switch">
+                <option value="undefined"  selected>ajax-auto</option>
+                <option value="body-json" >body/json</option>
+                <option value="body-form-data" >body/form-data</option>
+              </select>
+            </h4>
+            <div class="{{../id}}-sample-request-param-body {{../id}}-sample-header-content-type-body hide">
+              <div class="form-group">
+                <div class="input-group">
+                  <textarea id="sample-request-body-json" class="form-control sample-request-body" data-sample-request-body-group="sample-request-param-{{@./index}}" rows="6" style="OVERFLOW: visible" {{#if optional}}data-sample-request-param-optional="true"{{/if}}></textarea>
+                  <div class="input-group-addon">json</div>
                 </div>
+              </div>
+            </div>
+            <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
+              {{#each this}}
+              <div class="form-group">
+                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                <div class="input-group">
+                  <input id="sample-request-param-field-{{field}}" type="text" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
+                  <div class="input-group-addon">{{{type}}}</div>
+                </div>
+              </div>
               {{/each}}
             </div>
           {{/each}}

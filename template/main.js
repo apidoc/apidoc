@@ -84,6 +84,9 @@ require([
     if (apiProject.template.forceLanguage)
         locale.setLanguage(apiProject.template.forceLanguage);
 
+    if (apiProject.template.aloneDisplay == null)
+        apiProject.template.aloneDisplay = false;
+
     // Setup jQuery Ajax
     $.ajaxSetup(apiProject.template.jQueryAjaxSetup);
 
@@ -186,7 +189,8 @@ require([
                         group: group,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 } else {
                     nav.push({
@@ -195,7 +199,8 @@ require([
                         hidden: true,
                         name: entry.name,
                         type: entry.type,
-                        version: entry.version
+                        version: entry.version,
+                        url: entry.url
                     });
                 }
                 oldName = entry.name;
@@ -360,7 +365,8 @@ require([
                 articles.push({
                     article: templateArticle(fields),
                     group: entry.group,
-                    name: entry.name
+                    name: entry.name,
+                    aloneDisplay: apiProject.template.aloneDisplay
                 });
                 oldName = entry.name;
             }
@@ -371,7 +377,8 @@ require([
             group: groupEntry,
             title: title,
             description: description,
-            articles: articles
+            articles: articles,
+            aloneDisplay: apiProject.template.aloneDisplay
         };
         content += templateSections(fields);
     });
@@ -440,12 +447,71 @@ require([
         });
         $('.nav-tabs-examples').find('a:first').tab('show');
 
+        // sample header-content-type switch
+        $('.sample-header-content-type-switch').change(function () {
+            var paramName = '.' + $(this).attr('name') + '-fields';
+            var bodyName = '.' + $(this).attr('name') + '-body';
+            var selectName = 'select[name=' + $(this).attr('name') + ']';
+            if ($(this).val() == 'body-json') {
+                $(selectName).val('undefined');
+                $(this).val('body-json');
+                $(paramName).removeClass('hide');
+                $(this).parent().nextAll(paramName).first().addClass('hide');
+                $(bodyName).addClass('hide');
+                $(this).parent().nextAll(bodyName).first().removeClass('hide');
+            } else if ($(this).val() == "body-form-data") {
+                $(selectName).val('undefined');
+                $(this).val('body-form-data');
+                $(bodyName).addClass('hide');
+                $(paramName).removeClass('hide');
+            } else {
+                $(this).parent().nextAll(paramName).first().removeClass('hide')
+                $(this).parent().nextAll(bodyName).first().addClass('hide');
+            }
+            $(this).prev('.sample-request-switch').prop('checked', true);
+        });
+
         // sample request switch
         $('.sample-request-switch').click(function (e) {
-            var name = '.' + $(this).attr('name') + '-fields';
-            $(name).addClass('hide');
-            $(this).parent().next(name).removeClass('hide');
+            var paramName = '.' + $(this).attr('name') + '-fields';
+            var bodyName = '.' + $(this).attr('name') + '-body';
+            var select = $(this).next('.' + $(this).attr('name') + '-select').val();
+            if($(this).prop("checked")){
+                if (select == 'body-json'){
+                    $(this).parent().nextAll(bodyName).first().removeClass('hide');
+                }else {
+                    $(this).parent().nextAll(paramName).first().removeClass('hide');
+                }
+            }else {
+                if (select == 'body-json'){
+                    $(this).parent().nextAll(bodyName).first().addClass('hide');
+                }else {
+                    $(this).parent().nextAll(paramName).first().addClass('hide');
+                }
+            }
         });
+
+        if (apiProject.template.aloneDisplay){
+            //show group
+            $('.show-group').click(function () {
+                var apiGroup = '.' + $(this).attr('data-group') + '-group';
+                var apiGroupArticle = '.' + $(this).attr('data-group') + '-article';
+                $(".show-api-group").addClass('hide');
+                $(apiGroup).removeClass('hide');
+                $(".show-api-article").addClass('hide');
+                $(apiGroupArticle).removeClass('hide');
+            });
+
+            //show api
+            $('.show-api').click(function () {
+                var apiName = '.' + $(this).attr('data-name') + '-article';
+                var apiGroup = '.' + $(this).attr('data-group') + '-group';
+                $(".show-api-group").addClass('hide');
+                $(apiGroup).removeClass('hide');
+                $(".show-api-article").addClass('hide');
+                $(apiName).removeClass('hide');
+            });
+        }
 
         // call scrollspy refresh method
         $(window).scrollspy('refresh');
@@ -454,6 +520,13 @@ require([
         sampleRequest.initDynamic();
     }
     initDynamic();
+
+    if (apiProject.template.aloneDisplay) {
+        var hashVal = window.location.hash;
+        if (hashVal != null && hashVal.length !== 0) {
+            $("." + hashVal.slice(1) + "-init").click();
+        }
+    }
 
     // Pre- / Code-Format
     prettyPrint();
@@ -530,7 +603,7 @@ require([
      * Initialize search
      */
     var options = {
-      valueNames: [ 'nav-list-item' ]
+      valueNames: [ 'nav-list-item','nav-list-url-item']
     };
     var endpointsList = new List('scrollingNav', options);
 

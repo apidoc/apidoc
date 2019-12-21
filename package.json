@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.18.0",
+  "version": "0.19.1",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": "MIT",
@@ -33,7 +33,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "apidoc-core": "~0.8.3",
+    "apidoc-core": "^0.11.0",
     "commander": "^2.20.0",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
@@ -41,6 +41,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
     "jshint": "^2.9.4",
