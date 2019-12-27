@@ -4,6 +4,8 @@
 
 * Bring back apidoc-example as devDependencies for CI
 * Update apidoc-core version in package-lock.json
+* Fix documentation for filter-by option (use = instead of :)
+* Fix HTML after comparison (#827)
 
 #### 0.19.0
 
