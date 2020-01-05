@@ -111,7 +111,7 @@ define([
         Object.keys(paramType).forEach(function (key) {
             if (paramType[key].endsWith('[]')) {
                 try {
-                    param[key] = JSON.parse(JSON.parse(param[key]));
+                    param[key] = JSON.parse(param[key]);
                 } catch (e) {;}
             }
         });
