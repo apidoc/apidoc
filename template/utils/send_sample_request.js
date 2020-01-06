@@ -1,7 +1,8 @@
 define([
     'jquery',
-    'lodash'
-], function($, _) {
+    'lodash',
+    './utils/send_sample_request_utils'
+], function($, _, utils) {
 
     var initDynamic = function() {
         // Button send
@@ -113,6 +114,8 @@ define([
             }
         } // for
 
+        //handle nested fields
+        param = utils.handleNestedFields(param, paramType);
 
         //add url search parameter
         if (header['Content-Type'] == 'application/json' ){

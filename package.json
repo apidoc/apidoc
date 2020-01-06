@@ -41,6 +41,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "amdefine": "^1.0.1",
     "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
