@@ -1,7 +1,8 @@
 define([
     'jquery',
-    'lodash'
-], function($, _) {
+    'lodash',
+    './utils/send_sample_request_utils'
+], function($, _, utils) {
 
     var initDynamic = function() {
         // Button send
@@ -106,6 +107,9 @@ define([
                 delete param[key];
             }
         } // for
+
+        //handle nested fields
+        param = utils.handleNestedFields(param, paramType);
 
         //handle arrays fields
         Object.keys(paramType).forEach(function (key) {

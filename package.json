@@ -41,13 +41,14 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "amdefine": "^1.0.1",
     "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
-    "jshint": "^2.9.4",
+    "jshint": "^2.10.3",
     "lodash-cli": "^4.17.5",
-    "mocha": "~6.2.1",
-    "path-to-regexp": "^3.1.0",
+    "mocha": "^6.2.2",
+    "path-to-regexp": "^3.2.0",
     "semver": "^6.3.0",
     "should": "~13.2.1",
     "webfontloader": "^1.6.28"
