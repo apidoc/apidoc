@@ -108,18 +108,8 @@ define([
             }
         } // for
 
-        //handle nested fields
-        param = utils.handleNestedFields(param, paramType);
-
-        //handle arrays fields
-        Object.keys(paramType).forEach(function (key) {
-            if (paramType[key].endsWith('[]')) {
-                try {
-                    param[key] = JSON.parse(param[key]);
-                } catch (e) {;}
-            }
-        });
-
+        //handle nested objects and parsing fields
+        param = utils.handleNestedAndParsingFields(param, paramType);
 
         //add url search parameter
         if (header['Content-Type'] == 'application/json' ){
