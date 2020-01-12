@@ -125,14 +125,14 @@ var options = {
 
 if (argv.watch) {
   nodemon({watch: options.src});
-  console.log('Watching mode is Activated\nListening for changes ...');
+  console.log('Watching mode is Activated\nListening for changes...');
   nodemon.on('quit', function () {
-    console.log('ApiDoc has quit');
+    console.log('ApiDoc has exited');
     process.exit()
   }).on('restart', function () {
-    console.log('Changes detected, Rebuilding the docs !!!');
+    console.log('Changes detected, Rebuilding the docs...');
     apidoc.createDoc(options);
-    console.log('Listening for changes ...');
+    console.log('Listening for changes...');
   });
 }
 
