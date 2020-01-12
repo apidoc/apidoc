@@ -29,5 +29,23 @@ define([], function () {
         return result
     }
 
-    return {handleNestedFields: handleNestedFieldsForAllParams};
+    function handleArraysAndObjectFields(param, paramType) {
+        var result = Object.assign({}, param);
+        Object.keys(paramType).forEach(function (key) {
+            if (result[key] && (paramType[key].endsWith('[]') || paramType[key] === 'Object')) {
+                try {
+                    result[key] = JSON.parse(result[key]);
+                } catch (e) {;}
+            }
+        });
+        return result
+    }
+
+    function handleNestedAndParsingFields(param, paramType) {
+        var result = handleArraysAndObjectFields(param, paramType);
+        result = handleNestedFieldsForAllParams(result, paramType);
+        return result;
+    }
+
+    return {handleNestedAndParsingFields};
 });
