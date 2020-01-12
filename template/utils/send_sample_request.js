@@ -114,8 +114,8 @@ define([
             }
         } // for
 
-        //handle nested fields
-        param = utils.handleNestedFields(param, paramType);
+        //handle nested objects and parsing fields
+        param = utils.handleNestedAndParsingFields(param, paramType);
 
         //add url search parameter
         if (header['Content-Type'] == 'application/json' ){
