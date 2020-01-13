@@ -13,6 +13,7 @@
 
 var path   = require('path');
 var cmd    = require('commander');
+var nodemon = require('nodemon');
 var apidoc = require('../lib/index');
 
 var argv = cmd
@@ -56,6 +57,8 @@ var argv = cmd
     .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
 
     .option('--filter-by <tag-filter=value>', 'Filter documentation by tag')
+
+    .option('--watch', 'Watch the Input/Source dirname for changes to rebuild the docs')
 
     .parse(process.argv)
 ;
@@ -119,6 +122,19 @@ var options = {
     copyDefinitions: !argv.definitions,
     filterBy      : argv.filterBy,
 };
+
+if (argv.watch) {
+  nodemon({watch: options.src});
+  console.log('Watching mode is Activated\nListening for changes...');
+  nodemon.on('quit', function () {
+    console.log('ApiDoc has exited');
+    process.exit()
+  }).on('restart', function () {
+    console.log('Changes detected, Rebuilding the docs...');
+    apidoc.createDoc(options);
+    console.log('Listening for changes...');
+  });
+}
 
 if (apidoc.createDoc(options) === false) {
   process.exit(1);
