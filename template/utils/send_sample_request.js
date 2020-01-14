@@ -82,8 +82,8 @@ define([
                     }
                     var paramData = apiData.parameter.fields.Parameter[i]
                     if (paramData.type == 'Boolean') {
-                        var trueValue = paramData.allowedValues[0]
-                        var falseValue = paramData.allowedValues[1]
+                        var trueValue = paramData.allowedValues ? paramData.allowedValues[0] : true
+                        var falseValue = paramData.allowedValues ? paramData.allowedValues[1] : false
                         value = element.checked ? trueValue : falseValue
                     }
                     if (contentType == "body-form-data") {
