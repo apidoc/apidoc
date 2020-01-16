@@ -171,4 +171,4 @@ apiDoc is a collaborative project. Pull requests are welcome. Please see the [CO
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 * [Docmaster](https://github.com/bonzzy/docmaster)
-
+* [@rigwild/apidoc-markdown](https://github.com/rigwild/apidoc-markdown)
