@@ -48,7 +48,7 @@ var argv = cmd
 
     .option('--silent', 'Turn all output off.', false)
 
-    .option('--nosingle', 'Not output single.', false)
+    .option('--single', 'Output to single file.', false)
 
     .option('--simulate', 'Execute but not write any file.', false)
 
@@ -109,7 +109,7 @@ var options = {
     config        : argv.config,
     apiprivate    : argv.private,
     verbose       : argv.verbose,
-    single        : !argv.nosingle,
+    single        : argv.single,
     debug         : argv.debug,
     parse         : argv.parse,
     colorize      : argv.color,
