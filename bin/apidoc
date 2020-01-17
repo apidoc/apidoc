@@ -35,6 +35,8 @@ var argv = cmd
 
     .option('-v, --verbose', 'Verbose debug output.', false)
 
+    .option('-s, --single', 'Output to single file.', true)
+
     .option('--debug', 'Show debug messages.', false)
 
     .option('--color', 'Turn off log color.', true)
