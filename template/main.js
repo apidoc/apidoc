@@ -12,7 +12,9 @@ require.config({
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
         webfontloader: './vendor/webfontloader',
-        list: './vendor/list.min'
+        list: './vendor/list.min',
+        apiData: './api_data',
+        apiProject: './api_project',
     },
     shim: {
         bootstrap: {
@@ -41,8 +43,8 @@ require([
     'lodash',
     'locales',
     'handlebarsExtended',
-    './api_project.js',
-    './api_data.js',
+    'apiProject',
+    'apiData',
     'prettify',
     'utilsSampleRequest',
     'semver',

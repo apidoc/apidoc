@@ -35,8 +35,6 @@ var argv = cmd
 
     .option('-v, --verbose', 'Verbose debug output.', false)
 
-    .option('-s, --single', 'Output to single file.', true)
-
     .option('--debug', 'Show debug messages.', false)
 
     .option('--color', 'Turn off log color.', true)
@@ -49,6 +47,8 @@ var argv = cmd
     .option('--parse-workers <parse-workers>', 'Optional user defined workers. Format name=filename', collect, [])
 
     .option('--silent', 'Turn all output off.', false)
+
+    .option('--nosingle', 'Not output single.', false)
 
     .option('--simulate', 'Execute but not write any file.', false)
 
@@ -109,6 +109,7 @@ var options = {
     config        : argv.config,
     apiprivate    : argv.private,
     verbose       : argv.verbose,
+    single        : !argv.nosingle,
     debug         : argv.debug,
     parse         : argv.parse,
     colorize      : argv.color,
