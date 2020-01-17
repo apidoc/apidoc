@@ -1,5 +1,13 @@
 # apiDoc Changelog
 
+#### 0.20.0
+
+* Add `@rigwild/apidoc-markdown` converter in README (#839)
+* Add --watch command line option to generate doc if source changes (#835)
+* Handle parsing of array fields (#829)
+* Handle nested fields when sending the request (#828)
+* Revert back the api Group/Name change in template (#821)
+
 #### 0.19.1
 
 * Bring back apidoc-example as devDependencies for CI

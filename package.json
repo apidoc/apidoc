@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.19.1",
+  "version": "0.20.0",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": "MIT",
@@ -46,7 +46,7 @@
     "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
-    "jshint": "^2.10.3",
+    "jshint": "^2.11.0",
     "lodash-cli": "^4.17.5",
     "mocha": "^6.2.2",
     "path-to-regexp": "^3.2.0",
