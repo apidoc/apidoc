@@ -50,6 +50,7 @@
     "lodash-cli": "^4.17.5",
     "mocha": "^6.2.2",
     "path-to-regexp": "^3.2.0",
+    "requirejs": "^2.3.6",
     "semver": "^6.3.0",
     "should": "~13.2.1",
     "webfontloader": "^1.6.28"
