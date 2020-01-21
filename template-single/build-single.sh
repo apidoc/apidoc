@@ -7,20 +7,21 @@ DIRNAME=$(dirname "$0")
 SCRIPTPATH=$(cd "$DIRNAME"; pwd)
 cd "$SCRIPTPATH"
 
+PROJECTPATH=$(dirname "$SCRIPTPATH")
+
 # define path
-TEMPDIR="tmp"
-RJS="node ../node_modules/requirejs/bin/r.js"
+TEMPDIR=$(mktemp -d -t apidoc-XXXXXXXXXX)
+TEMPLATE="$PROJECTPATH/template"
+RJS="node $PROJECTPATH/node_modules/requirejs/bin/r.js"
 RJS_CONFIG="$TEMPDIR/config.js"
-RAW_INDEX_TPL="../template/index.html"
+RAW_INDEX_TPL="$TEMPLATE/index.html"
 INDEX_TPL="$TEMPDIR/index.html"
 API_DATA="$TEMPDIR/api_data.js"
 API_PROJECT="$TEMPDIR/api_project.js"
 API_STYLE="$TEMPDIR/style.css"
 API_STYLE_PKG="$TEMPDIR/style_pkg.css"
 MAIN_PKG="$TEMPDIR/main.js"
-INDEX_PKG="index.html"
-
-mkdir -p $TEMPDIR
+INDEX_PKG="$SCRIPTPATH/index.html"
 
 # generate html template
 cp -f $RAW_INDEX_TPL $INDEX_TPL
@@ -52,9 +53,9 @@ EOF
 
 (
 cat <<EOF
-@import url("../../template/vendor/bootstrap.min.css");
-@import url("../../template/vendor/prettify.css");
-@import url("../../template/css/style.css");
+@import url("$TEMPLATE/vendor/bootstrap.min.css");
+@import url("$TEMPLATE/vendor/prettify.css");
+@import url("$TEMPLATE/css/style.css");
 EOF
 ) > $API_STYLE
 
@@ -62,9 +63,9 @@ EOF
 (
 cat <<EOF
 ({
-  baseUrl: '../../template',
+  baseUrl: '$TEMPLATE',
   name: 'main',
-  out: '../../template-single/tmp/main.js',
+  out: '$MAIN_PKG',
   optimize: 'none',
 
   paths: {
@@ -83,8 +84,8 @@ cat <<EOF
     utilsSampleRequest: './utils/send_sample_request',
     webfontloader: './vendor/webfontloader',
     list: './vendor/list.min',
-    apiData: '../template-single/tmp/api_data',
-    apiProject: '../template-single/tmp/api_project',
+    apiData: '${API_DATA:0:-3}',
+    apiProject: '${API_PROJECT:0:-3}',
   },
   shim: {
     jquery: {
@@ -112,13 +113,17 @@ EOF
 ) > $RJS_CONFIG
 
 # build js & css
+# cd $TEMPLATE
 $RJS -o $RJS_CONFIG
 $RJS -o cssIn=$API_STYLE out=$API_STYLE_PKG optimizeCss=standard
 
 # setting template
 cp -f $INDEX_TPL $INDEX_PKG
-echo "<style>$(cat $API_STYLE_PKG)</style>" >> $INDEX_PKG
-echo "<script>$(cat $MAIN_PKG)</script>" >> $INDEX_PKG
+
+cat >> $INDEX_PKG <<EOF
+<style>$(cat $API_STYLE_PKG)</style>
+<script>$(cat $MAIN_PKG)</script>
+EOF
 
 # clean files
 rm -rf $TEMPDIR
