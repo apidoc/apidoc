@@ -24,9 +24,9 @@ MAIN_PKG="$TEMPDIR/main.js"
 INDEX_PKG="$SCRIPTPATH/index.html"
 
 # generate html template
-cp -f $RAW_INDEX_TPL $INDEX_TPL
-sed -i 's|<link[^>]*>||g' $INDEX_TPL # remove link tag
-sed -i 's|<script *[src*|data-main*][^>]*>*<\/script>||g' $INDEX_TPL # remove ref js file script tag
+cp -f "$RAW_INDEX_TPL" "$INDEX_TPL"
+sed -i 's|<link[^>]*>||g' "$INDEX_TPL" # remove link tag
+sed -i 's|<script *[src*|data-main*][^>]*>*<\/script>||g' "$INDEX_TPL" # remove ref js file script tag
 (
 cat <<EOF
 <script>
@@ -35,21 +35,21 @@ var APIPROJECT = __API_PROJECT__
 </script>
 
 EOF
-) >> $INDEX_TPL
+) >> "$INDEX_TPL"
 
 # generate api_data.js
 (
 cat <<EOF
 define(APIDATA)
 EOF
-) > $API_DATA
+) > "$API_DATA"
 
 # generate api_project.js
 (
 cat <<EOF
 define(APIPROJECT)
 EOF
-) > $API_PROJECT
+) > "$API_PROJECT"
 
 (
 cat <<EOF
@@ -57,7 +57,7 @@ cat <<EOF
 @import url("$TEMPLATE/vendor/prettify.css");
 @import url("$TEMPLATE/css/style.css");
 EOF
-) > $API_STYLE
+) > "$API_STYLE"
 
 # generate r.js config
 (
@@ -110,20 +110,20 @@ cat <<EOF
   },
 })
 EOF
-) > $RJS_CONFIG
+) > "$RJS_CONFIG"
 
 # build js & css
 # cd $TEMPLATE
-$RJS -o $RJS_CONFIG
-$RJS -o cssIn=$API_STYLE out=$API_STYLE_PKG optimizeCss=standard
+$RJS -o "$RJS_CONFIG"
+$RJS -o cssIn="$API_STYLE" out="$API_STYLE_PKG" optimizeCss=standard
 
 # setting template
-cp -f $INDEX_TPL $INDEX_PKG
+cp -f "$INDEX_TPL" "$INDEX_PKG"
 
-cat >> $INDEX_PKG <<EOF
-<style>$(cat $API_STYLE_PKG)</style>
-<script>$(cat $MAIN_PKG)</script>
+cat >> "$INDEX_PKG" <<EOF
+<style>$(cat "$API_STYLE_PKG")</style>
+<script>$(cat "$MAIN_PKG")</script>
 EOF
 
 # clean files
-rm -rf $TEMPDIR
+rm -rf "$TEMPDIR"
