@@ -11,23 +11,12 @@ body, p, a, div, th, td {
   font-size: 16px;
 }
 
-@media (max-width: 767.98px) {
+@media (min-width: 1200px) {
   body.container-fluid {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  body.container-fluid::before {
-    display: table;
-    content: " ";
-  }
-
-  body.container-fluid::after {
-    clear: both;
-    display: table;
-    content: " ";
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
   }
 }
 
