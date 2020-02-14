@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.20.1
+
+* Avoid using container-fluid on the body if the screen is larger than 1200px (#846)
+
 #### 0.20.0
 
 * Add `@rigwild/apidoc-markdown` converter in README (#839)
