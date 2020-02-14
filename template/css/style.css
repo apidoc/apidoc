@@ -11,6 +11,15 @@ body, p, a, div, th, td {
   font-size: 16px;
 }
 
+@media (min-width: 1200px) {
+  body.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
 td.code {
   font-size: 14px;
   font-family: "Source Code Pro", monospace;
