@@ -72,7 +72,7 @@ function postUser() { return; }
  * @apiDescription This function has same errors like POST /user, but errors not defined again, they were included with "apiErrorStructure"
  *
  * @apiParam {String} name Name of the User.
- * @apiParam {file} avatar upload avatar.
+ * @apiParam {File} avatar Upload avatar.
  *
  * @apiUse CreateUserError
  */

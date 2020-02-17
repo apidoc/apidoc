@@ -53,8 +53,7 @@ define([
         // create JSON dictionary of parameters
         var param = {};
         var paramType = {};
-        var bodyFormData = {};
-        var bodyFormDataOtherConfig={};
+        var bodyFormData = new FormData();
         var bodyJson = '';
         $root.find(".sample-request-param:checked").each(function(i, element) {
             var group = $(element).data("sample-request-param-group-id");
@@ -78,15 +77,12 @@ define([
                         value = element.defaultValue;
                     }
                     if (contentType === "body-form-data") {
-                      header["Content-Type"] = "multipart/form-data";
-                      if (element.type == "file") {
-                        value = element.files;
-                        bodyFormDataOtherConfig = {
-                          processData: false,
-                          contentType: false
-                        };
+                        header["Content-Type"] = "multipart/form-data";
+                        if (element.type == "file") {
+                        value = element.files[0];
+                       
                       }
-                      bodyFormData[key] = value;
+                      bodyFormData.append(key,value);
                     } else {
                       param[key] = value;
                       paramType[key] = $(element).next().text();
@@ -125,7 +121,6 @@ define([
             url = url + encodeSearchParams(param);
             param = bodyFormData;
         }
-
         $root.find(".sample-request-response").fadeTo(250, 1);
         $root.find(".sample-request-response-json").html("Loading...");
         refreshScrollSpy();
@@ -138,9 +133,13 @@ define([
             type       : type.toUpperCase(),
             success    : displaySuccess,
             error      : displayError,
-            ...bodyFormDataOtherConfig
         };
 
+        if(header['Content-Type'] == 'multipart/form-data'){
+            ajaxRequest.headers={};
+            ajaxRequest.contentType=false;
+            ajaxRequest.processData=false;
+        }
         $.ajax(ajaxRequest);
 
 

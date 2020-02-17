@@ -25,7 +25,7 @@ define([
      * set paramater type.
      */
     Handlebars.registerHelper("setInputType", function(text) {
-          if (text==='file') {
+          if (text === "File") {
             return "file";
           }
           return "text";
