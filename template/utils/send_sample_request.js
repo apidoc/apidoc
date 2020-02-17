@@ -136,7 +136,7 @@ define([
         };
 
         if(header['Content-Type'] == 'multipart/form-data'){
-            ajaxRequest.headers={};
+            delete ajaxRequest.headers['Content-Type'];
             ajaxRequest.contentType=false;
             ajaxRequest.processData=false;
         }
