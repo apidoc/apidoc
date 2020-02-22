@@ -48,6 +48,8 @@ var argv = cmd
 
     .option('--silent', 'Turn all output off.', false)
 
+    .option('--single', 'Output to single file.', false)
+
     .option('--simulate', 'Execute but not write any file.', false)
 
     .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
@@ -107,6 +109,7 @@ var options = {
     config        : argv.config,
     apiprivate    : argv.private,
     verbose       : argv.verbose,
+    single        : argv.single,
     debug         : argv.debug,
     parse         : argv.parse,
     colorize      : argv.color,
