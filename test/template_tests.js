@@ -23,8 +23,8 @@ describe('send sample request utils', function () {
             'profile': '',
             'profile.name': 'john doe',
             'profile.birthday': '',
-            'profile.birthday.day': 10,
-            'profile.birthday.year': 2030,
+            'profile.birthday.day': '10',
+            'profile.birthday.year': '2030',
         };
         var paramType = {
             'profile': 'Object',
@@ -54,8 +54,8 @@ describe('send sample request utils', function () {
             'profile': '',
             'profile.name': 'john doe',
             'profile.birthday': '',
-            'profile.birthday.day': 10,
-            'profile.birthday.year': 2030,
+            'profile.birthday.day': '10',
+            'profile.birthday.year': '2030',
         };
         var paramType = {
             'profile': 'String',
@@ -75,8 +75,8 @@ describe('send sample request utils', function () {
             'profile': 'randomValue',
             'profile.name': 'john doe',
             'profile.birthday': '',
-            'profile.birthday.day': 10,
-            'profile.birthday.year': 2030,
+            'profile.birthday.day': '10',
+            'profile.birthday.year': '2030',
         };
         var paramType = {
             'profile': 'Object',
@@ -135,8 +135,8 @@ describe('send sample request utils', function () {
             'profile': '',
             'profile.name': 'john doe',
             'profile.birthday': '',
-            'profile.birthday.day': 10,
-            'profile.birthday.year': 2030,
+            'profile.birthday.day': '10',
+            'profile.birthday.year': '2030',
             'profile.info': '',
             'profile.info.skills': '["js","node"]',
             'profile.info.job': '{"company":"piedpiper"}',
@@ -168,6 +168,106 @@ describe('send sample request utils', function () {
 
         var result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
         should.deepEqual(result, expectedResult);
+        done();
+    });
+
+    it('should properly parse boolean and number fields on a parsed object', function (done) {
+        var parsedJson = {
+            profile: {
+                name: 'john doe',
+                birthday: {
+                    day: '10',
+                    year: '2030'
+                },
+                info: {
+                    skills: ["js", "node"],
+                    job: {company: 'piedpiper'},
+                    registered: 'true'
+                },
+            },
+            active: 'true'
+        };
+        var paramType = {
+            'active': 'Boolean',
+            'profile': 'Object',
+            'profile.name': 'String',
+            'profile.birthday': 'Object',
+            'profile.birthday.day': 'Number',
+            'profile.birthday.year': 'Number',
+            'profile.info': 'Object',
+            'profile.info.skills': 'String[]',
+            'profile.info.job': 'Object',
+            'profile.info.registered': 'Boolean'
+        };
+        var expectedJson = {
+            profile: {
+                name: parsedJson.profile.name,
+                birthday: {
+                    day: 10,
+                    year: 2030
+                },
+                info: {
+                    skills: parsedJson.profile.info.skills,
+                    job: parsedJson.profile.info.job,
+                    registered: true
+                }
+            },
+            active: true
+        };
+
+        var result = sendSampleRequestUtils.tryParsingWithTypes(parsedJson, paramType);
+        should.deepEqual(result, expectedJson);
+        done();
+    });
+
+    it('should not affect boolean and number fields which cannot be parsed', function (done) {
+        var parsedJson = {
+            profile: {
+                name: 'john doe',
+                birthday: {
+                    day: 'invalid-date',
+                    year: '2030'
+                },
+                info: {
+                    skills: ["js", "node"],
+                    job: {company: 'piedpiper'},
+                    registered: 'true'
+                },
+            },
+            active: 'n/a'
+        };
+        var paramType = {
+            'active': 'Boolean',
+            'profile': 'Object',
+            'profile.name': 'String',
+            'profile.birthday': 'Object',
+            'profile.birthday.day': 'Number',
+            'profile.birthday.year': 'Number',
+            'profile.info': 'Object',
+            'profile.info.skills': 'String[]',
+            'profile.info.job': 'Object',
+            'profile.info.registered': 'Boolean'
+        };
+        var expectedJson = {
+            profile: {
+                name: parsedJson.profile.name,
+                birthday: {
+                    // when Number field cannot be parsed, don't touch original field
+                    day: parsedJson.profile.birthday.day,
+                    year: 2030
+                },
+                info: {
+                    skills: parsedJson.profile.info.skills,
+                    job: parsedJson.profile.info.job,
+                    registered: true
+                }
+            },
+            // when boolean field cannot be parsed as 'true' or 'false', don't touch original field
+            active: parsedJson.active
+        };
+
+        var result = sendSampleRequestUtils.tryParsingWithTypes(parsedJson, paramType);
+        should.deepEqual(result, expectedJson);
         done();
     });
 });
