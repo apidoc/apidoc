@@ -132,7 +132,7 @@ define([
                 // bodyJson not set, but Content-Type: application/json header was set. In this case, send parameters
                 // as JSON body. First, try parsing fields of object with given paramType definition so that the json
                 // is valid against the parameter spec (e.g. Boolean params are boolean instead of strings in final json)
-                param = utils.tryParsingWithTypes(param);
+                param = utils.tryParsingWithTypes(param, paramType);
                 param = JSON.stringify(param);
             }
         }else if (header['Content-Type'] == 'multipart/form-data'){
