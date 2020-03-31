@@ -112,9 +112,17 @@ define([
         param = utils.handleNestedAndParsingFields(param, paramType);
 
         //add url search parameter
-        if (header['Content-Type'] == 'application/json' ){
-            url = url + encodeSearchParams(param);
-            param = bodyJson;
+        if (header['Content-Type'] == 'application/json') {
+            if (bodyJson) {
+                // bodyJson is set to value if request body: 'body/json' was selected and manual json was input
+                // in this case, use the given bodyJson and add other params in query string
+                url = url + encodeSearchParams(param);
+                param = bodyJson;
+            } else {
+                // bodyJson not set, but Content-Type: application/json header was set. In this case, send parameters
+                // as JSON body
+                param = JSON.stringify(param);
+            }
         }else if (header['Content-Type'] == 'multipart/form-data'){
             url = url + encodeSearchParams(param);
             param = bodyFormData;
