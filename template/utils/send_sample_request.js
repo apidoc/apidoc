@@ -100,10 +100,20 @@ define([
         var matches = pattern.exec(url);
         for (var i = 1; i < matches.length; i++) {
             var key = matches[i].substr(1);
+            var optional = false
+            if (key[key.length - 1] === '?') {
+                optional = true;
+                key = key.substr(0, key.length - 1);
+            }
             if (param[key] !== undefined) {
                 url = url.replace(matches[i], encodeURIComponent(param[key]));
 
                 // remove URL parameters from list
+                delete param[key];
+            } else if (optional) {
+                // if parameter is optional denoted by ending '?' in param (:param?)
+                // and no parameter is given, replace parameter with empty string instead
+                url = url.replace(matches[i], '');
                 delete param[key];
             }
         } // for
