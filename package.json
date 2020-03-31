@@ -19,7 +19,7 @@
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
     "build-example": "bin/apidoc -i example/ -o tmp/",
-    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some exports=amd"
+    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd"
   },
   "keywords": [
     "api",
