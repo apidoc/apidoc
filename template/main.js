@@ -565,16 +565,53 @@ require(['jquery', 'lodash', 'locales', 'handlebarsExtended', 'apiProject', 'api
   // Pre- / Code-Format
   prettyPrint();
 
-  //
-  // HTML-Template specific jQuery-Functions
-  //
-  // Change Main Version
-  $('#versions li.version a').on('click', function(e) {
-    e.preventDefault();
+  /*
+    Return base URL with ?param=paramVal added or updated
+    */
+  function updateURLParameter(url, param, paramVal) {
+    var TheAnchor = null;
+    var newAdditionalURL = '';
+    var tempArray = url.split('?');
+    var baseURL = tempArray[0];
+    var additionalURL = tempArray[1];
+    var temp = '';
 
-    var selectedVersion = $(this).html();
+    if (additionalURL) {
+      var tmpAnchor = additionalURL.split('#');
+      var TheParams = tmpAnchor[0];
+      TheAnchor = tmpAnchor[1];
+      if (TheAnchor) additionalURL = TheParams;
+
+      tempArray = additionalURL.split('&');
+
+      for (var i = 0; i < tempArray.length; i++) {
+        if (tempArray[i].split('=')[0] != param) {
+          newAdditionalURL += temp + tempArray[i];
+          temp = '&';
+        }
+      }
+    } else {
+      var tmpAnchor = baseURL.split('#');
+      var TheParams = tmpAnchor[0];
+      TheAnchor = tmpAnchor[1];
+
+      if (TheParams) baseURL = TheParams;
+    }
+
+    if (TheAnchor) paramVal += '#' + TheAnchor;
+
+    var rows_txt = temp + '' + param + '=' + paramVal;
+    return baseURL + '?' + newAdditionalURL + rows_txt;
+  }
+
+  // Refresh with new version param
+  var refreshWithVersion = function(version) {
+    selectedVersion = version;
+
+    // Update URL path
+    window.history.replaceState('', '', updateURLParameter(window.location.href, 'version', selectedVersion));
+
     $('#version strong').html(selectedVersion);
-
     // hide all
     $('article').addClass('hide');
     $('#sidenav li:not(.nav-fixed)').addClass('hide');
@@ -608,6 +645,15 @@ require(['jquery', 'lodash', 'locales', 'handlebarsExtended', 'apiProject', 'api
     });
 
     initDynamic();
+  };
+
+  //
+  // HTML-Template specific jQuery-Functions
+  //
+  // Change Main Version
+  $('#versions li.version a').on('click', function(e) {
+    e.preventDefault();
+    refreshWithVersion($(this).html());
     return;
   });
 
@@ -630,6 +676,15 @@ require(['jquery', 'lodash', 'locales', 'handlebarsExtended', 'apiProject', 'api
     if (window.location.hash) {
       var id = window.location.hash;
       $('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
+    }
+  }
+
+  if ($.urlParam('version')) {
+    // URL Paramter ?version=x is set
+    var versionAsked = $.urlParam('version');
+    if (versionAsked && apiVersions.indexOf(versionAsked) > -1) {
+      // If version asked exits, refresh doc
+      refreshWithVersion(versionAsked);
     }
   }
 
