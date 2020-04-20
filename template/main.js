@@ -43,8 +43,8 @@ require([
     'lodash',
     'locales',
     'handlebarsExtended',
-    './api_project.js',
-    './api_data.js',
+    'apiProject',
+    'apiData',
     'prettify',
     'utilsSampleRequest',
     'semver',
@@ -585,24 +585,24 @@ require([
         $('#sidenav li:not(.nav-fixed)').addClass('hide');
 
         // show 1st equal or lower Version of each entry
-        $('article[data-version]').each(function (index) {
+        $('article[data-version]').each(function(index) {
             var group = $(this).data('group');
             var name = $(this).data('name');
             var version = $(this).data('version');
 
             if (semver.lte(version, selectedVersion)) {
-                if ($("article[data-group='" + group + "'][data-name='" + name + "']:visible").length === 0) {
+                if ($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
                     // enable Article
-                    $("article[data-group='" + group + "'][data-name='" + name + "'][data-version='" + version + "']").removeClass('hide');
+                    $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
                     // enable Navigation
-                    $("#sidenav li[data-group='" + group + "'][data-name='" + name + "'][data-version='" + version + "']").removeClass('hide');
-                    $("#sidenav li.nav-header[data-group='" + group + "']").removeClass('hide');
+                    $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
+                    $('#sidenav li.nav-header[data-group=\'' + group + '\']').removeClass('hide');
                 }
             }
         });
 
         // show 1st equal or lower Version of each entry
-        $('article[data-version]').each(function (index) {
+        $('article[data-version]').each(function(index) {
             var group = $(this).data('group');
             $('section#api-' + group).removeClass('hide');
             if ($('section#api-' + group + ' article:visible').length === 0) {
