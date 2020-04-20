@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.21.0
+
+* Add --single option to output in a single HTML file (#840) by @eyasliu
+
 #### 0.20.1
 
 * Avoid using container-fluid on the body if the screen is larger than 1200px (#846)
