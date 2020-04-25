@@ -47,5 +47,9 @@ define([], function () {
         return result;
     }
 
-    return {handleNestedAndParsingFields};
+    function convertPathParams(url) {
+        return url.replace(/{(.+?)}/g, ':$1');
+    }
+
+    return {handleNestedAndParsingFields,convertPathParams};
 });

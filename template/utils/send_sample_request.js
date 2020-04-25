@@ -93,7 +93,7 @@ define([
         var url = $root.find(".sample-request-url").val();
 
         //Convert {param} form to :param
-        url = url.replace(/{(.+?)}/g, ':$1');
+        url = utils.convertPathParams(url);
 
         // Insert url parameter
         var pattern = pathToRegexp(url, null);
