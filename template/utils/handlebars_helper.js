@@ -30,7 +30,7 @@ define([
           }
           return "text";
     });
-        
+
     /**
      * start/stop timer for simple performance check.
      */
