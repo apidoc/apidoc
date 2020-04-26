@@ -537,10 +537,7 @@ require([
     // HTML-Template specific jQuery-Functions
     //
     // Change Main Version
-    $('#versions li.version a').on('click', function(e) {
-        e.preventDefault();
-
-        var selectedVersion = $(this).html();
+    function setMainVersion(selectedVersion) {
         $('#version strong').html(selectedVersion);
 
         // hide all
@@ -577,6 +574,12 @@ require([
 
         initDynamic();
         return;
+    }
+
+    $('#versions li.version a').on('click', function(e) {
+        e.preventDefault();
+
+        setMainVersion($(this).html());
     });
 
     // compare all article with their predecessor
