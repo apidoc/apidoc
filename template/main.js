@@ -538,7 +538,12 @@ require([
     //
     // Change Main Version
     function setMainVersion(selectedVersion) {
-        $('#version strong').html(selectedVersion);
+        if (typeof(selectedVersion) === 'undefined') {
+            selectedVersion = $('#version strong').html();
+        }
+        else {
+            $('#version strong').html(selectedVersion);
+        }
 
         // hide all
         $('article').addClass('hide');
@@ -575,6 +580,7 @@ require([
         initDynamic();
         return;
     }
+    setMainVersion();
 
     $('#versions li.version a').on('click', function(e) {
         e.preventDefault();
