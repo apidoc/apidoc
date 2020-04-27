@@ -537,11 +537,13 @@ require([
     // HTML-Template specific jQuery-Functions
     //
     // Change Main Version
-    $('#versions li.version a').on('click', function(e) {
-        e.preventDefault();
-
-        var selectedVersion = $(this).html();
-        $('#version strong').html(selectedVersion);
+    function setMainVersion(selectedVersion) {
+        if (typeof(selectedVersion) === 'undefined') {
+            selectedVersion = $('#version strong').html();
+        }
+        else {
+            $('#version strong').html(selectedVersion);
+        }
 
         // hide all
         $('article').addClass('hide');
@@ -577,6 +579,13 @@ require([
 
         initDynamic();
         return;
+    }
+    setMainVersion();
+
+    $('#versions li.version a').on('click', function(e) {
+        e.preventDefault();
+
+        setMainVersion($(this).html());
     });
 
     // compare all article with their predecessor
