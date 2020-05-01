@@ -18,8 +18,12 @@ describe('apiDoc full example with no config path', function() {
     testFullExample();
 });
 
-describe('apiDoc full example with config path for file', function() {
+describe('apiDoc full example with config path for .json file', function() {
     testFullExample('./apidoc-test.json');
+});
+
+describe('apiDoc full example with config path for .js file', function() {
+    testFullExample('./apidoc-test.config.js');
 });
 
 describe('apiDoc full example with config path for dir', function() {
@@ -28,7 +32,14 @@ describe('apiDoc full example with config path for dir', function() {
 
 function testFullExample(config) {
 
-    var isConfigDir = config ? (config.substr(-5) !== '.json') : false;
+    var isJson = false;
+    var isJs = false;
+    var isConfigDir = false;
+    if (config) {
+        isJson = config.substr(-5) === '.json';
+        isJs = config.substr(-3) === '.js';
+        isConfigDir = !isJson && !isJs;
+    }
     var configFilePath = isConfigDir ? path.join(config, 'apidoc.json') : config;
 
     // get latest example for the used apidoc-spec
@@ -50,10 +61,16 @@ function testFullExample(config) {
         fs.removeSync('./tmp/');
 
         if (config) {
-            if (isConfigDir && !fs.existsSync(config)) {
-                fs.mkdirSync(config);
+            if (isJs) {
+                // Create .js config from apidoc.json.
+                var jsonConfig = fs.readFileSync(filePath, 'utf8');
+                fs.writeFileSync(configFilePath, 'module.exports = ' + jsonConfig + ';');
+            } else {
+                if (isConfigDir && !fs.existsSync(config)) {
+                    fs.mkdirSync(config);
+                }
+                fs.copyFileSync(filePath, configFilePath);
             }
-            fs.copyFileSync(filePath, configFilePath);
         }
 
         done();
