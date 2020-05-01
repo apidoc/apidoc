@@ -27,7 +27,7 @@ var argv = cmd
 
     .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
-    .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json).', '')
+    .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
 
     .option('--definitions', 'Include definitions file rather than copying definitions.', false)
 
