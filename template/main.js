@@ -54,9 +54,22 @@ require([
     'list'
 ], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
 
-    // load google web fonts
-    loadGoogleFontCss();
+    // Load google web fonts.
+    WebFont.load({
+        active: function() {
+            // Update scrollspy
+            $(window).scrollspy('refresh');
 
+            // Only init after fonts are loaded.
+            init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver);
+        },
+        google: {
+            families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']
+        }
+    });
+});
+
+function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver) {
     var api = apiData.api;
 
     //
@@ -866,21 +879,6 @@ require([
     }
 
     /**
-     * Load google fonts.
-     */
-    function loadGoogleFontCss() {
-        WebFont.load({
-            active: function() {
-                // Update scrollspy
-                $(window).scrollspy('refresh')
-            },
-            google: {
-                families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']
-            }
-        });
-    }
-
-    /**
      * Return ordered entries by custom order and append not defined entries to the end.
      * @param  {String[]} elements
      * @param  {String[]} order
@@ -910,5 +908,4 @@ require([
         });
         return results;
     }
-
-});
+}
