@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+#### 0.22.1
+
+* Fix initial jump with hashed URL (#871) by @rafaelgssa
+
 #### 0.22.0
 
 * Fix issue with newer api endpoint showing up on first page load (#869) by @Yopai
