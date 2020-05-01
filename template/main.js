@@ -57,9 +57,6 @@ require([
     // Load google web fonts.
     WebFont.load({
         active: function() {
-            // Update scrollspy
-            $(window).scrollspy('refresh');
-
             // Only init after fonts are loaded.
             init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver);
         },
@@ -400,7 +397,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
     $('#sections').append( content );
 
     // Bootstrap Scrollspy
-    $(this).scrollspy({ target: '#scrollingNav', offset: 18 });
+    $(this).scrollspy({ target: '#scrollingNav' });
 
     // Content-Scroll on Navigation click.
     $('.sidenav').find('a').on('click', function(e) {
@@ -410,13 +407,6 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
             $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
         window.location.hash = $(this).attr('href');
     });
-
-    // Quickjump on Pageload to hash position.
-    if(window.location.hash) {
-        var id = window.location.hash;
-        if ($(id).length > 0)
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
-    }
 
     /**
      * Check if Parameter (sub) List has a type Field.
@@ -616,11 +606,17 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
     if ($.urlParam('compare')) {
         // URL Paramter ?compare=1 is set
         $('#compareAllWithPredecessor').trigger('click');
+    }
 
-        if (window.location.hash) {
-            var id = window.location.hash;
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) - 18 }, 0);
-        }
+    // Quick jump on page load to hash position.
+    // Should happen after setting the main version
+    // and after triggering the click on the compare button,
+    // as these actions modify the content
+    // and would make it jump to the wrong position or not jump at all.
+    if (window.location.hash) {
+        var id = window.location.hash;
+        if ($(id).length > 0)
+            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
     }
 
     /**
