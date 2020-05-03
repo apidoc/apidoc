@@ -14,13 +14,29 @@ var should = require('should');
 
 var versions = require('apidoc-example').versions;
 
-describe('apiDoc full example', function() {
+describe('apiDoc full example with no config path', function() {
+    testFullExample();
+});
+
+describe('apiDoc full example with config path for file', function() {
+    testFullExample('./apidoc-test.json');
+});
+
+describe('apiDoc full example with config path for dir', function() {
+    testFullExample('./apidoc-test/');
+});
+
+function testFullExample(config) {
+
+    var isConfigDir = config ? (config.substr(-5) !== '.json') : false;
+    var configFilePath = isConfigDir ? path.join(config, 'apidoc.json') : config;
 
     // get latest example for the used apidoc-spec
     var latestExampleVersion = semver.maxSatisfying(versions, '~' + apidoc.getSpecificationVersion()); // ~0.2.0 = >=0.2.0 <0.3.0
 
     var exampleBasePath = 'node_modules/apidoc-example/' + latestExampleVersion;
     var fixturePath = exampleBasePath + '/fixtures';
+    var filePath = exampleBasePath + '/src/apidoc.json';
 
     var fixtureFiles = [
         'api_data.js',
@@ -33,10 +49,26 @@ describe('apiDoc full example', function() {
     before(function(done) {
         fs.removeSync('./tmp/');
 
+        if (config) {
+            if (isConfigDir && !fs.existsSync(config)) {
+                fs.mkdirSync(config);
+            }
+            fs.copyFileSync(filePath, configFilePath);
+        }
+
         done();
     });
 
     after(function(done) {
+        if (config) {
+            if (fs.existsSync(configFilePath)) {
+                fs.unlinkSync(configFilePath);
+            }
+            if (isConfigDir && fs.existsSync(config)) {
+                fs.rmdirSync(config);
+            }
+        }
+
         done();
     });
 
@@ -48,7 +80,7 @@ describe('apiDoc full example', function() {
 
     // create
     it('should create example in tmp/', function(done) {
-        var cmd = 'node ./bin/apidoc -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --silent';
+        var cmd = 'node ./bin/apidoc ' + (config ? ('-c ' + config) : '') + ' -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --silent';
         exec(cmd, function(err, stdout, stderr) {
             if (err)
                 throw err;
@@ -106,4 +138,4 @@ describe('apiDoc full example', function() {
         done();
     });
 
-});
+}
