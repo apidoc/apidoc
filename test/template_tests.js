@@ -270,4 +270,23 @@ describe('send sample request utils', function () {
         should.deepEqual(result, expectedJson);
         done();
     });
+    it('should convert path params to the accepted format', function (done) {
+        var urls = [
+            '/department/{dep}/employee/{emp}',
+            '/employee/{emp}',
+        ];
+        
+        var expectedResults = [
+            '/department/:dep/employee/:emp',
+            '/employee/:emp',
+        ];
+
+        var results = [];
+        urls.forEach(function (url) {
+            var result = sendSampleRequestUtils.convertPathParams(url);
+            results.push(result);
+        });
+        should.deepEqual(results, expectedResults);
+        done();
+    });
 });

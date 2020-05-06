@@ -77,5 +77,10 @@ define(['lodash'], function (_) {
         return result;
     }
 
-    return {handleNestedAndParsingFields, tryParsingWithTypes};
+    // Converts path params in the {param} format to the accepted :param format, used before inserting the URL params.
+    function convertPathParams(url) {
+        return url.replace(/{(.+?)}/g, ':$1');
+    }
+
+    return {handleNestedAndParsingFields,convertPathParams,tryParsingWithTypes};
 });

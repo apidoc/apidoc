@@ -1,5 +1,20 @@
 # apiDoc Changelog
 
+#### 0.22.1
+
+* Fix initial jump with hashed URL (#871) by @rafaelgssa
+
+#### 0.22.0
+
+* Fix issue with newer api endpoint showing up on first page load (#869) by @Yopai
+* Update Handlebars to latest version (fix security issue) (#867) by @NicolasCARPi
+* Allow several path parameters (#866) by @rafaelgssa
+* Add param file upload support (#850) by @aqnaruto
+
+#### 0.21.0
+
+* Add --single option to output in a single HTML file (#840) by @eyasliu
+
 #### 0.20.1
 
 * Avoid using container-fluid on the body if the screen is larger than 1200px (#846)
