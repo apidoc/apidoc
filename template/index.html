@@ -44,8 +44,8 @@
     <h1>{{name}}</h1>
     {{#if description}}<h2>{{{nl2br description}}}</h2>{{/if}}
   </div>
-  {{#if template.withCompare}}
   <div class="pull-right">
+    {{#if template.withCompare}}
     <div class="btn-group">
       <button id="version" class="btn btn-lg btn-default dropdown-toggle" data-toggle="dropdown">
         <strong>{{version}}</strong>&nbsp;<span class="caret"></span>
@@ -59,8 +59,12 @@
       {{/each}}
       </ul>
     </div>
+    {{else}}
+    <div id="version" class="well well-sm">
+      <strong>{{version}}</strong>
+    </div>
+    {{/if}}
   </div>
-  {{/if}}
   <div class="clearfix"></div>
 </script>
 
