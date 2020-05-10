@@ -27,7 +27,7 @@ var argv = cmd
 
     .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
-    .option('-c, --config <config>', 'Path to directory containing config file (apidoc.json).', './')
+    .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
 
     .option('--definitions', 'Include definitions file rather than copying definitions.', false)
 
@@ -101,7 +101,7 @@ function transformToObject(filters) {
 }
 
 var options = {
-    excludeFilters: argv.excludeFilters.length ? argv.excludeFilters : [''],
+    excludeFilters: ['apidoc\\.config\\.js$'].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
     includeFilters: argv.fileFilters.length ? argv.fileFilters : ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'],
     src           : argv.input.length ? argv.input : ['./'],
     dest          : argv.output,
