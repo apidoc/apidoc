@@ -626,7 +626,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
 
         initDynamic();
         return;
-    };
+    }
     setMainVersion();
 
     $('#versions li.version a').on('click', function(e) {
