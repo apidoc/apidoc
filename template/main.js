@@ -14,7 +14,7 @@ require.config({
         webfontloader: './vendor/webfontloader',
         list: './vendor/list.min',
         apiData: './api_data',
-        apiProject: './api_project'
+        apiProject: './api_project',
     },
     shim: {
         bootstrap: {
@@ -537,7 +537,7 @@ require([
       Return base URL with ?param=paramVal added or updated
     */
     function updateURLParameter(url, param, paramVal) {
-        var TheAnchor = null;
+        var theAnchor = null;
         var newAdditionalURL = '';
         var tempArray = url.split('?');
         var baseURL = tempArray[0];
@@ -546,9 +546,9 @@ require([
 
         if (additionalURL) {
             var tmpAnchor = additionalURL.split('#');
-            var TheParams = tmpAnchor[0];
-            TheAnchor = tmpAnchor[1];
-            if (TheAnchor) additionalURL = TheParams;
+            var theParams = tmpAnchor[0];
+            theAnchor = tmpAnchor[1];
+            if (theAnchor) additionalURL = theParams;
 
             tempArray = additionalURL.split('&');
 
@@ -560,13 +560,15 @@ require([
             }
         } else {
             var tmpAnchor = baseURL.split('#');
-            var TheParams = tmpAnchor[0];
-            TheAnchor = tmpAnchor[1];
+            var theParams = tmpAnchor[0];
+            theAnchor = tmpAnchor[1];
 
-            if (TheParams) baseURL = TheParams;
+            if (theParams) {
+                baseURL = theParams;
+            }
         }
 
-        if (TheAnchor) paramVal += '#' + TheAnchor;
+        if (theAnchor) paramVal += '#' + theAnchor;
 
         var rows_txt = temp + '' + param + '=' + paramVal;
         return baseURL + '?' + newAdditionalURL + rows_txt;
