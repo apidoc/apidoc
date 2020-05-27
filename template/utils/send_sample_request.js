@@ -101,10 +101,20 @@ define([
         var matches = pattern.exec(url);
         for (var i = 1; i < matches.length; i++) {
             var key = matches[i].substr(1);
+            var optional = false
+            if (key[key.length - 1] === '?') {
+                optional = true;
+                key = key.substr(0, key.length - 1);
+            }
             if (param[key] !== undefined) {
                 url = url.replace(matches[i], encodeURIComponent(param[key]));
 
                 // remove URL parameters from list
+                delete param[key];
+            } else if (optional) {
+                // if parameter is optional denoted by ending '?' in param (:param?)
+                // and no parameter is given, replace parameter with empty string instead
+                url = url.replace(matches[i], '');
                 delete param[key];
             }
         } // for
@@ -113,9 +123,19 @@ define([
         param = utils.handleNestedAndParsingFields(param, paramType);
 
         //add url search parameter
-        if (header['Content-Type'] == 'application/json' ){
-            url = url + encodeSearchParams(param);
-            param = bodyJson;
+        if (header['Content-Type'] == 'application/json') {
+            if (bodyJson) {
+                // bodyJson is set to value if request body: 'body/json' was selected and manual json was input
+                // in this case, use the given bodyJson and add other params in query string
+                url = url + encodeSearchParams(param);
+                param = bodyJson;
+            } else {
+                // bodyJson not set, but Content-Type: application/json header was set. In this case, send parameters
+                // as JSON body. First, try parsing fields of object with given paramType definition so that the json
+                // is valid against the parameter spec (e.g. Boolean params are boolean instead of strings in final json)
+                param = utils.tryParsingWithTypes(param, paramType);
+                param = JSON.stringify(param);
+            }
         }else if (header['Content-Type'] == 'multipart/form-data'){
             url = url + encodeSearchParams(param);
             param = bodyFormData;
