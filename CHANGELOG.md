@@ -7,6 +7,7 @@
 * Add support for javascript config files (#872)
 * Add support for different config files (#874)
 * Fix tests for Windows (#873)
+* Fix pre borders overflowing on print view (#887)
 
 #### 0.22.1
 
