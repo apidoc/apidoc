@@ -1,5 +1,13 @@
 # apiDoc Changelog
 
+#### 0.23.0
+
+* Send sample request auto json body if body/json is not used but Content-Type application/json header is set (#862)
+* Fix documentation not showing / Show version when withCompare is set to false (#880) Fix #879
+* Add support for javascript config files (#872)
+* Add support for different config files (#874)
+* Fix tests for Windows (#873)
+
 #### 0.22.1
 
 * Fix initial jump with hashed URL (#871) by @rafaelgssa
