@@ -8,7 +8,7 @@ require.config({
         locales: './locales/locale',
         lodash: './vendor/lodash.custom.min',
         pathToRegexp: './vendor/path-to-regexp/index',
-        prettify: './vendor/prettify/prettify',
+        prismjs: './vendor/prism',
         semver: './vendor/semver.min',
         utilsSampleRequest: './utils/send_sample_request',
         webfontloader: './vendor/webfontloader',
@@ -30,9 +30,9 @@ require.config({
             deps: ['jquery', 'handlebars'],
             exports: 'Handlebars'
         },
-        prettify: {
-            exports: 'prettyPrint'
-        }
+        prismjs: {
+            exports: 'Prism'
+        },
     },
     urlArgs: 'v=' + (new Date()).getTime(),
     waitSeconds: 15
@@ -45,20 +45,20 @@ require([
     'handlebarsExtended',
     'apiProject',
     'apiData',
-    'prettify',
+    'prismjs',
     'utilsSampleRequest',
     'semver',
     'webfontloader',
     'bootstrap',
     'pathToRegexp',
     'list'
-], function($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver, WebFont) {
+], function($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver, WebFont) {
 
     // Load google web fonts.
     WebFont.load({
         active: function() {
             // Only init after fonts are loaded.
-            init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver);
+            init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
         },
         google: {
             families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']
@@ -66,7 +66,7 @@ require([
     });
 });
 
-function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sampleRequest, semver) {
+function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver) {
     var api = apiData.api;
 
     //
@@ -523,6 +523,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
 
         // init modules
         sampleRequest.initDynamic();
+        Prism.highlightAll()
     }
     initDynamic();
 
@@ -532,9 +533,6 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
             $("." + hashVal.slice(1) + "-init").click();
         }
     }
-
-    // Pre- / Code-Format
-    prettyPrint();
 
     //
     // HTML-Template specific jQuery-Functions
@@ -904,4 +902,5 @@ function init($, _, locale, Handlebars, apiProject, apiData, prettyPrint, sample
         });
         return results;
     }
+    Prism.highlightAll()
 }
