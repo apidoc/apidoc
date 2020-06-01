@@ -171,35 +171,8 @@ td {
 }
 
 /* ------------------------------------------------------------------------------------------
- * pre / code
+ * Request type
  * ------------------------------------------------------------------------------------------ */
-pre {
-  background-color: #292b36;
-  color: #ffffff;
-  padding: 10px;
-  border-radius: 6px;
-  position: relative;
-  margin: 10px 0 20px 0;
-  overflow-x: auto;
-  box-sizing: border-box;
-}
-
-pre.prettyprint {
-  width: 100%;
-}
-
-code.language-text {
-  word-wrap: break-word;
-}
-
-pre.language-json {
-  overflow: auto;
-}
-
-pre.language-html {
-  margin: 0 0 20px 0;
-}
-
 .type {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
@@ -227,31 +200,6 @@ pre.language-html {
 
 .type__delete {
   background-color: #ed0039;
-}
-
-pre.language-api .str {
-  color: #ffffff;
-}
-
-pre.language-api .pln,
-pre.language-api .pun {
-  color: #65B042;
-}
-
-pre code {
-  display: block;
-  font-size: 14px;
-  font-family: "Source Code Pro", monospace;
-  font-style: normal;
-  font-weight: 400;
-  word-wrap: normal;
-  white-space: pre;
-}
-
-pre code.sample-request-response-json {
-  white-space: pre-wrap;
-  max-height: 500px;
-  overflow: auto;
 }
 
 /* ------------------------------------------------------------------------------------------

@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
-  <link href="vendor/prettify.css" rel="stylesheet" media="screen">
+  <link href="vendor/prism.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" media="screen, print">
   <link href="img/favicon.ico" rel="icon" type="image/x-icon">
   <script src="vendor/polyfill.js"></script>
@@ -138,7 +138,7 @@
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
     <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
-    <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
+    <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
 
     {{#if article.permission}}
       <p>
@@ -154,6 +154,7 @@
       </p>
     {{/if}}
 
+    {{!-- CODE EXAMPLES IN TABS --}}
     {{#if_gt article.examples.length compare=0}}
       <ul class="nav nav-tabs nav-tabs-examples">
         {{#each article.examples}}
@@ -166,7 +167,7 @@
       <div class="tab-content">
       {{#each article.examples}}
         <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="examples-{{../id}}-{{@index}}">
-          <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{content}}</code></pre>
+          <pre data-type="{{type}}"><code class="language-{{type}}">{{content}}</code></pre>
         </div>
       {{/each}}
       </div>
@@ -230,7 +231,7 @@
       <div class="tab-content">
       {{#each params.examples}}
         <div class="tab-pane{{#if_eq @index compare=0}} active{{/if_eq}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre class="prettyprint language-{{type}}" data-type="{{type}}"><code>{{reformat content type}}</code></pre>
+        <pre data-type="{{type}}"><code class="language-{{type}}">{{reformat content type}}</code></pre>
         </div>
       {{/each}}
       </div>
@@ -315,7 +316,7 @@
               {{__ "Response"}}
               <button class="btn btn-default btn-xs pull-right sample-request-clear">X</button>
             </h3>
-            <pre class="prettyprint language-json" data-type="json"><code class="sample-request-response-json"></code></pre>
+            <pre data-type="json"><code class="language-json sample-request-response-json"></code></pre>
           </div>
         </fieldset>
       </form>
@@ -355,7 +356,7 @@
       {{/if}}
     {{/if}}
 
-    <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{{showDiff article.url compare.url}}}</code></pre>
+    <pre data-type="{{toLowerCase article.type}}"><code class="language-html">{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
@@ -386,19 +387,19 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
 
@@ -557,19 +558,19 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{showDiff source.content compare.content}}}</code></pre>
+          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{source.type}}"><code>{{{source.content}}}</code></pre>
+          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#if_eq index compare=0}} active{{/if_eq}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre class="prettyprint language-{{source.type}}" data-type="{{compare.type}}"><code>{{{compare.content}}}</code></pre>
+          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
     {{/each_compare_title}}

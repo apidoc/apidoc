@@ -12,7 +12,7 @@
  *     "Authorization: token 5f048fe"
  * @apiParam {Number} id The Users-ID.
  *
- * @apiExample {curl} Curl example
+ * @apiExample {bash} Curl example
  * curl -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
  * @apiExample {js} Javascript example
  * const client = AcmeCorpApi('5f048fe');
@@ -92,7 +92,7 @@ function putUser() { return; }
  *     "Authorization: token 5f048fe"
  * @apiParam {Number} id <code>id</code> of the user.
  *
- * @apiExample {curl} Curl example
+ * @apiExample {bash} Curl example
  * curl -X DELETE -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
  * @apiExample {js} Javascript example
  * const client = AcmeCorpApi('5f048fe');
