@@ -108,6 +108,8 @@ cat <<EOF
       exports: 'Prism'
     }
   },
+  urlArgs: 'v=' + (new Date()).getTime(),
+  waitSeconds: 150
 })
 EOF
 ) > "$RJS_CONFIG"
