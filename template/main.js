@@ -60,6 +60,10 @@ require([
             // Only init after fonts are loaded.
             init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
         },
+        inactive: function() {
+            // Run init, even if loading fonts fails
+            init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
+        },
         google: {
             families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7']
         }
