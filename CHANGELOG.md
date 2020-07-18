@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+#### 0.24.0
+
+* Fix output when offline (#894) by @SecretAgentKen
+* Increase require.js timeout (#889) by @NicolasCARPi
+* Use Prism.js instead of deprecated prettify.js (#888) by @NicolasCARPi
+
 #### 0.23.0
 
 * Send sample request auto json body if body/json is not used but Content-Type application/json header is set (#862)
