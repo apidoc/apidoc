@@ -37,17 +37,17 @@
     "commander": "^2.20.0",
     "fs-extra": "^8.1.0",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "markdown-it": "^10.0.0",
-    "nodemon": "^2.0.3",
-    "winston": "^3.2.1"
+    "nodemon": "^2.0.4",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "amdefine": "^1.0.1",
     "apidoc-example": "^0.2.1",
     "bootstrap": "3.4.1",
     "jquery": "3.4.1",
-    "jshint": "^2.11.0",
+    "jshint": "^2.11.1",
     "lodash-cli": "^4.17.5",
     "mocha": "^6.2.3",
     "path-to-regexp": "^3.2.0",
