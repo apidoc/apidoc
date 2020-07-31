@@ -49,6 +49,33 @@ $ ./bin/apidoc -i example -o /tmp/doc
 $ $BROWSER /tmp/doc
 ```
 
+### Programmatic usage
+
+You can generate the documentation programmatically.
+
+```ts
+import path from 'path'
+import { createDoc } from 'apidoc'
+
+const doc = createDoc({
+  src: path.resolve(__dirname, 'src'),
+  dest: path.resolve(__dirname, 'doc')
+})
+
+if (typeof doc !== 'boolean') {
+  // Documentation was generated!
+
+  console.log(doc.data) // `api_data.json` file content
+  console.log(doc.project) // `api_project.json` file content
+}
+```
+
+Install type definitions (see [@types/apidoc](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/apidoc/index.d.ts):
+
+```bash
+$ npm install -D @types/apidoc
+```
+
 ## Docker image
 
 You can use apidoc in Docker like this:
@@ -171,4 +198,4 @@ apiDoc is a collaborative project. Pull requests are welcome. Please see the [CO
 * [apidoc-swagger](https://github.com/fsbahman/apidoc-swagger)
 * [gulp-apidoc-swagger](https://github.com/fsbahman/gulp-apidoc-swagger)
 * [Docmaster](https://github.com/bonzzy/docmaster)
-* [@rigwild/apidoc-markdown](https://github.com/rigwild/apidoc-markdown)
+* [apidoc-markdown](https://github.com/rigwild/apidoc-markdown)
