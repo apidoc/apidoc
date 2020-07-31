@@ -51,7 +51,7 @@ $ $BROWSER /tmp/doc
 
 ### Programmatic usage
 
-You can generate the documentation programmatically.
+You can generate the documentation programmatically:
 
 ```ts
 import path from 'path'
@@ -64,13 +64,12 @@ const doc = createDoc({
 
 if (typeof doc !== 'boolean') {
   // Documentation was generated!
-
   console.log(doc.data) // `api_data.json` file content
   console.log(doc.project) // `api_project.json` file content
 }
 ```
 
-Install type definitions (see [@types/apidoc](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/apidoc/index.d.ts):
+Install type definitions (see [@types/apidoc](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/apidoc/index.d.ts)):
 
 ```bash
 $ npm install -D @types/apidoc
