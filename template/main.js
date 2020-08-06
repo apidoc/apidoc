@@ -619,7 +619,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
         var id = decodeURI(window.location.hash);
         if(!!id) {
             try {
-                // Prevent special characters from causing errors
+                // Prevent special characters from causing errors, such as / , Space , ( , ) , .
                 id = id.replace(/\//, '\\\/').replace(/\s/g, "-").replace("(", "\\(").replace(")", "\\)").replace(/\./,'\\.');
             } catch(ex) {
             }
