@@ -616,15 +616,10 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     // as these actions modify the content
     // and would make it jump to the wrong position or not jump at all.
     if (window.location.hash) {
-        var id = decodeURI(window.location.hash);
-        if(!!id) {
-            try {
-                // Prevent special characters from causing errors, such as / , Space , ( , ) , .
-                id = id.replace(/\//, '\\\/').replace(/\s/g, "-").replace("(", "\\(").replace(")", "\\)").replace(/\./,'\\.');
-            } catch(ex) {
-            }
-            if ($(id).length > 0)
-                $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
+        // use decodeURIComponent instead of decodeURI
+        var id = decodeURIComponent(window.location.hash);
+        if ($(id).length > 0)
+            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
         }
     }
 
