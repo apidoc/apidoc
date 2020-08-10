@@ -618,8 +618,14 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     if (window.location.hash) {
         // use decodeURIComponent instead of decodeURI
         var id = decodeURIComponent(window.location.hash);
-        if ($(id).length > 0)
-            $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
+        if(!!id) {
+            try {
+                // Prevent special characters from causing errors, such as / , Space , ( , ) , .
+                id = id.replace(/\//, '\\\/').replace(/\s/g, "-").replace("(", "\\(").replace(")", "\\)").replace(/\./,'\\.');
+            } catch(ex) {
+            }
+            if ($(id).length > 0)
+                $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 0);
         }
     }
 
