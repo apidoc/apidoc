@@ -5,6 +5,8 @@ if (typeof define !== 'function') {
 
 define(['lodash'], function (_) {
 
+    var log = console;
+
     function handleNestedFields(object, key, params, paramType) {
         var attributes = key.split('.');
         var field = attributes[0];
@@ -50,14 +52,14 @@ define(['lodash'], function (_) {
                 } else if (val === 'false') {
                     _.set(object, path, false);
                 } else {
-                    console.warn('Failed to parse object value at path [' + path + ']. Value: (' + val + '). Type: (' + type + ')');
+                    log.warn('Failed to parse object value at path [' + path + ']. Value: (' + val + '). Type: (' + type + ')');
                 }
             } else if (type === 'Number') {
                 var parsedInt = parseInt(val, 10);
                 if (!_.isNaN(parsedInt)) {
                     _.set(object, path, parsedInt);
                 } else {
-                    console.warn('Failed to parse object value at path [' + path + ']. Value: (' + val + '). Type: (' + type + ')');
+                    log.warn('Failed to parse object value at path [' + path + ']. Value: (' + val + '). Type: (' + type + ')');
                 }
             }
         }
@@ -82,5 +84,14 @@ define(['lodash'], function (_) {
         return url.replace(/{(.+?)}/g, ':$1');
     }
 
-    return {handleNestedAndParsingFields,convertPathParams,tryParsingWithTypes};
+    function setLogger(logger) {
+      log = logger;
+    }
+
+    return {
+        handleNestedAndParsingFields,
+        convertPathParams,
+        tryParsingWithTypes,
+        setLogger
+    };
 });
