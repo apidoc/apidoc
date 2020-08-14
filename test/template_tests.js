@@ -7,7 +7,6 @@
 var sendSampleRequestUtils = require('../template/utils/send_sample_request_utils');
 var should = require('should');
 
-
 describe('send sample request utils', function () {
 
     before(function (done) {
@@ -266,16 +265,20 @@ describe('send sample request utils', function () {
             active: parsedJson.active
         };
 
+        // disable console log
+        sendSampleRequestUtils.setLogger({ warn: function() {} });
+
         var result = sendSampleRequestUtils.tryParsingWithTypes(parsedJson, paramType);
         should.deepEqual(result, expectedJson);
         done();
     });
+
     it('should convert path params to the accepted format', function (done) {
         var urls = [
             '/department/{dep}/employee/{emp}',
             '/employee/{emp}',
         ];
-        
+ 
         var expectedResults = [
             '/department/:dep/employee/:emp',
             '/employee/:emp',
