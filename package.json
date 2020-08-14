@@ -7,7 +7,7 @@
   "preferGlobal": true,
   "bin": "bin/apidoc",
   "main": "./lib/index.js",
-  "homepage": "http://apidocjs.com",
+  "homepage": "https://apidocjs.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/apidoc/apidoc.git"
@@ -35,24 +35,24 @@
   "dependencies": {
     "apidoc-core": "^0.11.1",
     "commander": "^2.20.0",
-    "fs-extra": "^8.1.0",
+    "fs-extra": "^9.0.1",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.19",
-    "markdown-it": "^10.0.0",
+    "lodash": "^4.17.20",
+    "markdown-it": "^11.0.0",
     "nodemon": "^2.0.4",
     "winston": "^3.3.3"
   },
   "devDependencies": {
     "amdefine": "^1.0.1",
-    "apidoc-example": "^0.2.1",
+    "apidoc-example": "^0.2.3",
     "bootstrap": "3.4.1",
-    "jquery": "3.4.1",
-    "jshint": "^2.11.1",
+    "jquery": "3.5.1",
+    "jshint": "^2.12.0",
     "lodash-cli": "^4.17.5",
-    "mocha": "^6.2.3",
+    "mocha": "^8.1.1",
     "path-to-regexp": "^3.2.0",
     "requirejs": "^2.3.6",
-    "semver": "^6.3.0",
+    "semver": "^7.3.2",
     "should": "~13.2.3",
     "webfontloader": "^1.6.28"
   },
