@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+### 0.25.0
+
+* Add programmatic usage to README (#898 by rigwild)
+* Fix page refresh on non ascii characters (#896)
+
 #### 0.24.0
 
 * Fix output when offline (#894) by @SecretAgentKen
