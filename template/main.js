@@ -85,9 +85,9 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     var templateSections       = Handlebars.compile( $('#template-sections').html() );
     var templateSidenav        = Handlebars.compile( $('#template-sidenav').html() );
 
-    // 
-    // host url
-    // 
+    //
+    // Default host url used if no sampleUrl is present in config
+    //
     var baseURL = window.location.origin;
 
     //
