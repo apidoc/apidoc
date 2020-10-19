@@ -85,6 +85,11 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     var templateSections       = Handlebars.compile( $('#template-sections').html() );
     var templateSidenav        = Handlebars.compile( $('#template-sidenav').html() );
 
+    // 
+    // host url
+    // 
+    var baseURL = window.location.origin;
+
     //
     // apiProject defaults
     //
@@ -360,6 +365,14 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                         hidden: true,
                         versions: articleVersions[entry.group][entry.name]
                     };
+                }
+
+                if (apiProject.sampleUrl == false) {
+                    fields.article.sampleRequest = [
+                        {
+                            "url": baseURL + fields.article.url
+                        }
+                    ];
                 }
 
                 // add prefix URL for endpoint unless it's already absolute
