@@ -1,7 +1,7 @@
-name: example
+name: build-example
 on: [push, pull_request]
 jobs:
-  build-example:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
