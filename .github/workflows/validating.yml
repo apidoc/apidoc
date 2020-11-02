@@ -14,4 +14,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm i
-      - run: npm run jshint
+      - run: npm run jshint --verbose
