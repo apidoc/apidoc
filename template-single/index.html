@@ -1621,8 +1621,10 @@ define('handlebarsExtended',[
     Handlebars.registerHelper('nl2br', function(text) {
         return _handlebarsNewlineToBreak(text);
     });
+
     /**
-     *
+     * Convert JSON data to a string with JSON formating
+     * @param Object JSON data
      */
     Handlebars.registerHelper('gen_body', function(context, options) {
       let strBody = {};
