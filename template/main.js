@@ -90,6 +90,13 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     //
     var baseURL = window.location.origin;
 
+    /**
+     * Replace dom attribute special character to _
+     *
+     * Reference: https://github.com/jquery/jquery/blob/master/src/selector/escapeSelector.js#L5
+     */
+    var rcssescape = /([\0-\x1f\x7f]|^-?\d)|^-$|[^\x80-\uFFFF\w-]/g;
+
     //
     // apiProject defaults
     //
@@ -195,7 +202,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     apiGroups.forEach(function(group) {
         // Mainmenu entry
         nav.push({
-            group: group,
+            group: group.replace(rcssescape, '_'),
             isHeader: true,
             title: apiGroupTitles[group]
         });
@@ -207,8 +214,8 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                 if (oldName !== entry.name) {
                     nav.push({
                         title: entry.title,
-                        group: group,
-                        name: entry.name,
+                        group: group.replace(rcssescape, '_'),
+                        name: entry.name.replace(rcssescape, '_'),
                         type: entry.type,
                         version: entry.version,
                         url: entry.url
@@ -216,9 +223,9 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                 } else {
                     nav.push({
                         title: entry.title,
-                        group: group,
+                        group: group.replace(rcssescape, '_'),
                         hidden: true,
-                        name: entry.name,
+                        name: entry.name.replace(rcssescape, '_'),
                         type: entry.type,
                         version: entry.version,
                         url: entry.url
@@ -391,10 +398,13 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                 if (entry.groupDescription)
                     description = entry.groupDescription;
 
+                fields.article.group = fields.article.group.replace(rcssescape, '_');
+                fields.article.name = fields.article.name.replace(rcssescape, '_');
+
                 articles.push({
                     article: templateArticle(fields),
-                    group: entry.group,
-                    name: entry.name,
+                    group: entry.group.replace(rcssescape, '_'),
+                    name: entry.name.replace(rcssescape, '_'),
                     aloneDisplay: apiProject.template.aloneDisplay
                 });
                 oldName = entry.name;
@@ -403,7 +413,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
 
         // render Section with Articles
         var fields = {
-            group: groupEntry,
+            group: groupEntry.replace(rcssescape, '_'),
             title: title,
             description: description,
             articles: articles,
