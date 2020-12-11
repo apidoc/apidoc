@@ -10,7 +10,7 @@
  * @apiHeader {String} Authorization The token can be generated from your user profile.
  * @apiHeaderExample {Header} Header-Example
  *     "Authorization: token 5f048fe"
- * @apiParam {Number} id The Users-ID.
+ * @apiQuery {Number} id The Users-ID.
  *
  * @apiExample {bash} Curl example
  * curl -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
@@ -54,7 +54,9 @@ function getUser() { return; }
  * @apiDescription In this case "apiErrorStructure" is defined and used.
  * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
  *
- * @apiParam {String} name Name of the User.
+ * @apiQuery {String} name Name of the User.
+ *
+ * @apiBody {String} age Age of the User
  *
  * @apiSuccess {Number} id         The new Users-ID.
  *
@@ -90,7 +92,7 @@ function putUser() { return; }
  * @apiHeader {String} Authorization The token can be generated from your user profile.
  * @apiHeaderExample {Header} Header-Example
  *     "Authorization: token 5f048fe"
- * @apiParam {Number} id <code>id</code> of the user.
+ * @apiQuery {Number} id <code>id</code> of the user.
  *
  * @apiExample {bash} Curl example
  * curl -X DELETE -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
