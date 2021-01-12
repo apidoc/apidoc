@@ -366,8 +366,11 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                         versions: articleVersions[entry.group][entry.name]
                     };
                 }
-
-                if (apiProject.sampleUrl == false) {
+                
+                //
+                // Use host Url as sample Url if "hostAsSampleUrl" is true
+                //
+                if (apiProject.useHostUrlAsSampleUrl === true && !fields.article.sampleRequest) {
                     fields.article.sampleRequest = [
                         {
                             "url": baseURL + fields.article.url
