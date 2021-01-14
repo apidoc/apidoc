@@ -368,7 +368,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                 }
                 
                 //
-                // Use host Url as sample Url if "hostAsSampleUrl" is true
+                // Use host Url as sample Url if "useHostAsSampleUrl" is true
                 //
                 if (apiProject.useHostUrlAsSampleUrl === true && !fields.article.sampleRequest) {
                     fields.article.sampleRequest = [
