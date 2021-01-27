@@ -25,6 +25,8 @@ var argv = cmd
 
     .option('-o, --output <output>', 'Output dirname.', './doc/')
 
+    .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', 'amd')
+
     .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
     .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
@@ -105,6 +107,7 @@ var options = {
     includeFilters: argv.fileFilters.length ? argv.fileFilters : ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'],
     src           : argv.input.length ? argv.input : ['./'],
     dest          : argv.output,
+    mode          : argv.mode,
     template      : argv.template,
     config        : argv.config,
     apiprivate    : argv.private,
