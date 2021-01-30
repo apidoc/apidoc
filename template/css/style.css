@@ -522,3 +522,31 @@ p.deprecated span{
   }
 
 } /* /@media print */
+
+details {
+  padding: 5px 20px;
+  background-color: #eee;
+}
+
+summary {
+  user-select: none;
+  outline: 0;
+}
+.details::-details-marker, .details::-webkit-details-marker {
+  display: none;
+}
+.try-btn {
+  text-align: right;
+}
+.try-btn::before {
+  content: ''
+}
+.try-btn span {
+  padding: 4px 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 2px solid #0088cc;
+  border-radius: 5px;
+  background-color: #0088cc;
+  color: white;
+}

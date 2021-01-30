@@ -33,7 +33,7 @@ define([
         var $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
         // Optional header
-        var header = {};
+        var header = {'Content-Type':'application/json'};
         $root.find(".sample-request-header:checked").each(function(i, element) {
             var group = $(element).data("sample-request-header-group-id");
             $root.find("[data-sample-request-header-group=\"" + group + "\"]").each(function(i, element) {
@@ -48,7 +48,22 @@ define([
                 header[key] = value;
             });
         });
-
+        // TODO: fuck query
+        var query = {}
+        $root.find(".sample-request-query:checked").each(function(i, element) {
+            var group = $(element).data("sample-request-query-group-id");
+            $root.find("[data-sample-request-query-group=\"" + group + "\"]").each(function(i, element) {
+                var key = $(element).data("sample-request-query-name");
+                var value = element.value;
+                if (typeof element.optional === 'undefined') {
+                  element.optional = true;
+                }
+                if ( ! element.optional && element.defaultValue !== '') {
+                    value = element.defaultValue;
+                }
+                query[key] = value;
+            });
+        });
 
         // create JSON dictionary of parameters
         var param = {};
@@ -62,9 +77,9 @@ define([
                 $root.find("[data-sample-request-body-group=\"" + group + "\"]").not(function(){
                     return $(this).val() == "" && $(this).is("[data-sample-request-param-optional='true']");
                 }).each(function(i, element) {
-                    if (isJson(element.value)){
+                    if (isJson(element.value.replace(/,\s*\}$/, '}'))){
                         header['Content-Type'] = 'application/json';
-                        bodyJson = element.value;
+                        bodyJson = element.value.replace(/,\s*\}$/, '}');
                     }
                 });
             }else {
@@ -127,7 +142,7 @@ define([
             if (bodyJson) {
                 // bodyJson is set to value if request body: 'body/json' was selected and manual json was input
                 // in this case, use the given bodyJson and add other params in query string
-                url = url + encodeSearchParams(param);
+                // FUCK: url = url + encodeSearchParams(queparamry);
                 param = bodyJson;
             } else {
                 // bodyJson not set, but Content-Type: application/json header was set. In this case, send parameters
@@ -137,7 +152,7 @@ define([
                 param = JSON.stringify(param);
             }
         }else if (header['Content-Type'] == 'multipart/form-data'){
-            url = url + encodeSearchParams(param);
+            // FUCK: url = url + encodeSearchParams(param);
             param = bodyFormData;
         }
 
@@ -147,7 +162,7 @@ define([
 
         // send AJAX request, catch success or error callback
         var ajaxRequest = {
-            url        : url,
+            url        : url + encodeSearchParams(query),
             headers    : header,
             data       : param,
             type       : type.toUpperCase(),

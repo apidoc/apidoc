@@ -33,7 +33,7 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "apidoc-core": "^0.12.0",
+    "apidoc-core": "git+https://github.com/apidoc/apidoc-core.git#c32ada3e585f81d985ffc4148d3e6060c3cf1c93",
     "commander": "^2.20.0",
     "fs-extra": "^9.0.1",
     "handlebars": "^4.7.6",
