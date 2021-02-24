@@ -200,7 +200,7 @@
       <tbody>
         {{#each params}}
           <tr>
-            <td class="code">{{this.field}}</td>
+            <td class="code">{{this.field}}{{#if this.optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#unless this.Type compare=null}}
               <td>{{this.type}}</td>
             {{/unless}}
@@ -228,7 +228,7 @@
       <tbody>
         {{#each params}}
           <tr>
-            <td class="code">{{this.field}}</td>
+            <td class="code">{{this.field}}{{#if this.optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#unless this.Type compare=null}}
               <td>{{this.type}}</td>
             {{/unless}}
