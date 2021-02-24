@@ -175,9 +175,9 @@
 
     {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
-    {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
     {{subTemplate "article-query-block" params=article.query _hasType=_hasTypeInParameterFields section="query"}}
     {{subTemplate "article-body-block" params=article.body _hasType=_hasTypeInParameterFields section="body"}}
+    {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
     {{subTemplate "article-sample-request" article=article id=id}}
