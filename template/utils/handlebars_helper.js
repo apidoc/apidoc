@@ -214,6 +214,46 @@ define([
     /**
      *
      */
+    Handlebars.registerHelper('gen_body', function(context, options) {
+      let strBody = {};
+      context.forEach(element => {
+        element.field = element.field.replace("]", "");
+        switch (element.type.toLowerCase()) {
+          case "string":
+            if (element.field.includes('[')) {
+              if (strBody[element.field.split("[")[0]] === undefined) {
+                strBody[element.field.split("[")[0]] = {};
+              }
+              strBody[element.field.split("[")[0]][element.field.split("[")[1]] = (element.defaultValue || "");
+              break;
+            }
+            strBody[element.field] = (element.defaultValue || "");
+            break;
+          case "number":
+            if (element.field.includes('[')) {
+              if (strBody[element.field.split("[")[0]] === undefined) {
+                strBody[element.field.split("[")[0]] = {};
+              }
+              strBody[element.field.split("[")[0]][element.field.split("[")[1]] = (element.defaultValue || 0);
+              break;
+            }
+            strBody[element.field] = (element.defaultValue || 0);
+            break;
+          case "object":
+            if (strBody[element.field] === undefined) {
+              strBody[element.field] = {};
+            }
+            break;
+          default:
+            strBody[element.field] = null;
+        }
+      });
+      return JSON.stringify(strBody, null, 4);
+    });
+
+    /**
+     *
+     */
     Handlebars.registerHelper('each_compare_field', function(source, compare, options) {
         return _handlebarsEachCompared('field', source, compare, options);
     });

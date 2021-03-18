@@ -179,10 +179,83 @@
     {{subTemplate "article-param-block" params=article.header _hasType=_hasTypeInHeaderFields section="header"}}
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
     {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
+    {{subTemplate "article-query-block" params=article.query _hasType=_hasTypeInParameterFields section="query"}}
+    {{subTemplate "article-param-block" params=article.body _hasType=_hasTypeInSuccessFields section="body"}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
     {{subTemplate "article-sample-request" article=article id=id}}
   </article>
+</script>
+
+<script id="template-article-query-block" type="text/x-handlebars-template">
+  {{#if article.query}}
+    <h2>Query Parameter(s)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+          {{#if_neq this.Type compare=null}}
+            <th style="width: 10%">{{__ "Type"}}</th>
+          {{/if_neq}}
+          <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each params}}
+          <tr>
+            <td class="code">{{this.field}}</td>
+            {{#if_neq this.Type compare=null}}
+              <td>{{this.type}}</td>
+            {{/if_neq}}
+            <td>{{{nl2br this.description}}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+</script>
+
+<script id="template-article-body-block" type="text/x-handlebars-template">
+  {{#if article.body}}
+    <h2>Request Body</h2>
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+          {{#if_neq this.Type compare=null}}
+            <th style="width: 10%">{{__ "Type"}}</th>
+          {{/if_neq}}
+          <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each params}}
+          <tr>
+            <td class="code">{{this.field}}</td>
+            {{#if_neq this.Type compare=null}}
+              <td>{{this.type}}</td>
+            {{/if_neq}}
+            <td>
+              {{{nl2br this.description}}}
+              {{#if defaultValue}}
+                <p class="default-value">{{__ "Default value:"}} <code>{{{defaultValue}}}</code></p>
+              {{/if}}
+              {{#if size}}
+                <p class="type-size">{{__ "Size range:"}} <code>{{{size}}}</code></p>
+              {{/if}}
+              {{#if allowedValues}}
+                <p class="type-size">{{__ "Allowed values:"}}
+                  {{#each allowedValues}}
+                    <code>{{{this}}}</code>{{#unless @last}}, {{/unless}}
+                  {{/each}}
+                </p>
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
 </script>
 
 <script id="template-article-param-block" type="text/x-handlebars-template">
@@ -307,6 +380,54 @@
             </div>
           {{/each}}
         {{/if}}
+      {{/if}}
+
+      {{#if article.query}}
+            <h3>{{__ "Query Parameters"}}</h3>
+            <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
+              {{#each article.query}}
+                <div class="form-group">
+                  <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                  <div class="input-group">
+                    <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
+                      data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true" {{/if}}>
+                    <div class="input-group-addon">{{{type}}}</div>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          {{/if}}
+
+      {{#if article.body}}
+        {{log this}}
+        <h3>{{__ "Body"}}</h3>
+        <h4><input type="checkbox" data-sample-request-param-group-id="sample-request-param-{{@index}}" name="{{this.id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" checked />{{__ @key}}
+          <select name="{{this.id}}-sample-header-content-type" class="{{this.id}}-sample-request-param-select sample-header-content-type sample-header-content-type-switch">
+            <option value="body-json" selected>body/json</option>
+            <option value="body-form-data">body/form-data</option>
+          </select>
+        </h4>
+        <div class="{{this.id}}-sample-request-param-body {{this.id}}-sample-header-content-type-body">
+          <div class="form-group">
+            <div class="input-group">
+              <textarea id="sample-request-body-json" class="form-control sample-request-body" data-sample-request-body-group="sample-request-param-{{@./index}}" rows="6" style="OVERFLOW: visible"
+                {{#if optional}}data-sample-request-param-optional="true" {{/if}}>{{gen_body article.body}}</textarea>
+              <div class="input-group-addon">json</div>
+            </div>
+          </div>
+        </div>
+        <div class="{{this.id}}-sample-request-param-fields {{this.id}}-sample-header-content-type-fields hide">
+          {{#each article.body}}
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+              <div class="input-group">
+                <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
+                  data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true" {{/if}}>
+                <div class="input-group-addon">{{{type}}}</div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
       {{/if}}
 
           <div class="form-group">
