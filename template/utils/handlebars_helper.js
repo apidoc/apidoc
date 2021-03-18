@@ -248,7 +248,6 @@ define([
             strBody[element.field] = null;
         }
       });
-      console.log(strBody);
       return JSON.stringify(strBody, null, 4);
     });
 
