@@ -14,8 +14,17 @@ var should = require('should');
 
 var versions = require('apidoc-example').versions;
 
+
 describe('apiDoc full example with no config path', function() {
     testFullExample();
+});
+
+describe('apiDoc full example with no config path for es output', function() {
+    testFullExample(false, 'es');
+});
+
+describe('apiDoc full example with no config path for commonJS output', function() {
+    testFullExample(false, 'commonJS');
 });
 
 describe('apiDoc full example with config path for .json file', function() {
@@ -30,7 +39,7 @@ describe('apiDoc full example with config path for dir', function() {
     testFullExample('./apidoc-test/');
 });
 
-function testFullExample(config) {
+function testFullExample(config, mode) {
 
     var isJson = false;
     var isJs = false;
@@ -46,13 +55,17 @@ function testFullExample(config) {
     var latestExampleVersion = semver.maxSatisfying(versions, '~' + apidoc.getSpecificationVersion()); // ~0.2.0 = >=0.2.0 <0.3.0
 
     var exampleBasePath = 'node_modules/apidoc-example/' + latestExampleVersion;
-    var fixturePath = exampleBasePath + '/fixtures';
+    // todo: add es and commonJS files to apidoc-example
+    var fixturePath = (mode ? './test/apidoc' : exampleBasePath) + '/fixtures';
     var filePath = exampleBasePath + '/src/apidoc.json';
 
+    var apiData = 'api_data' + (mode ? '.' + mode : '') + '.js';
+    var apiProject = 'api_project' + (mode ? '.' + mode : '') + '.js';
+
     var fixtureFiles = [
-        'api_data.js',
+        apiData,
         'api_data.json',
-        'api_project.js',
+        apiProject,
         'api_project.json',
         'index.html'
     ];
@@ -98,6 +111,10 @@ function testFullExample(config) {
     // create
     it('should create example in tmp/', function(done) {
         var cmd = 'node ./bin/apidoc ' + (config ? ('-c ' + config) : '') + ' -i ' + exampleBasePath + '/src/ -o tmp/ -t test/template/ --silent';
+        if (mode) {
+            cmd += ' -m ' + mode;
+        }
+
         exec(cmd, function(err, stdout, stderr) {
             if (err)
                 throw err;
@@ -124,8 +141,9 @@ function testFullExample(config) {
         var filenameRegExp = new RegExp('(?!"filename":\\s")(' + exampleBasePath + '/)', 'g');
 
         fixtureFiles.forEach(function(name) {
+            var outputName = mode ? name.replace('.' + mode, '') : name;
             var fixtureContent = fs.readFileSync(fixturePath + '/' + name, 'utf8');
-            var createdContent = fs.readFileSync('./tmp/' + name, 'utf8');
+            var createdContent = fs.readFileSync('./tmp/' + outputName, 'utf8');
 
             // creation time remove (never equal)
             fixtureContent = fixtureContent.replace(timeRegExp, '');
@@ -142,13 +160,13 @@ function testFullExample(config) {
             var createdLines = createdContent.split(/\r?\n|\r/);
 
             if (fixtureLines.length !== createdLines.length)
-                throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name);
+                throw new Error('File ./tmp/' + outputName + ' not equals to ' + fixturePath + '/' + name);
 
             for (var lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
                 if (fixtureLines[lineNumber] !== createdLines[lineNumber])
-                    throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
-                        '\nfixture: ' + fixtureLines[lineNumber] +
-                        '\ncreated: ' + createdLines[lineNumber]
+                    throw new Error('File ./tmp/' + outputName + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
+                      '\nfixture: ' + fixtureLines[lineNumber] +
+                      '\ncreated: ' + createdLines[lineNumber]
                     );
             }
         });

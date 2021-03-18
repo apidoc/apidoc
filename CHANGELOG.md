@@ -1,5 +1,17 @@
 # apiDoc Changelog
 
+### 0.27.0
+* Maintain comment order for @apiParam and @apiSuccess (fix #206 via #951 by Matheus Giovani)
+* Add option for JavaScript output mode (#933 by refineddigital)
+* Add new configuration variable `useHostUrlAsSampleUrl` (#930) by Shivam Kumar Jha
+* Add new favicon (#926 by Francisko Arenas)
+* Implement apiBody parsing into single page template (#916 by Seth Wheeler)
+
+### 0.26.0
+* Clean up useless CSS rule (#923)
+* Enable GitHub actions (#918 by @tommy87)
+* Send sample url request to url hosting the documentation when no sampleUrl is provided in config (#915 by @thealphadollar)
+
 ### 0.25.0
 
 * Add programmatic usage to README (#898 by rigwild)

@@ -787,28 +787,57 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
      */
     function sortFields(fields_object) {
         $.each(fields_object, function (key, fields) {
+            // Find only object fields
+            var objects = fields.filter(function(item) { return item.type === "Object"; });
 
-            var reversed = fields.slice().reverse()
+            // Check if has any object
+            if (objects.length === 0) {
+                return;
+            }
 
-            var max_dot_count = Math.max.apply(null, reversed.map(function (item) {
-                return item.field.split(".").length - 1;
-            }))
+            // Iterate over all objects
+            for(var object of objects) {
+                // Retrieve the index
+                var index = fields.indexOf(object);
 
-            for (var dot_count = 1; dot_count <= max_dot_count; dot_count++) {
-                reversed.forEach(function (item, index) {
-                    var parts = item.field.split(".");
-                    if (parts.length - 1 == dot_count) {
-                        var fields_names = fields.map(function (item) { return item.field; });
-                        if (parts.slice(1).length  >= 1) {
-                            var prefix = parts.slice(0, parts.length - 1).join(".");
-                            var prefix_index = fields_names.indexOf(prefix);
-                            if (prefix_index > -1) {
-                                fields.splice(fields_names.indexOf(item.field), 1);
-                                fields.splice(prefix_index + 1, 0, item);
-                            }
-                        }
-                    }
-                });
+                // Find all child fields for this object
+                var objectFields = fields.filter(function(item) { return item.field.indexOf(object.field + ".") > -1; });
+
+                // Get the child index
+                var firstIndex = fields.indexOf(objectFields[0]);
+
+                // Put the object it before the first child index
+                fields.splice(index, 1);
+                fields.splice(firstIndex, 0, object);
+
+                // Startup the last index with the object index 
+                var lastIndex = firstIndex;
+
+                // Iterate over all children
+                for(var child of objectFields) {
+                    lastIndex++;
+
+                    // Retrieve the index
+                    var childIndex = fields.indexOf(child);
+
+                    // Put it after the object declaration
+                    fields.splice(childIndex, 1);
+                    fields.splice(lastIndex, 0, child);
+                }
+            }
+
+            // Retrieve the first object field index
+            var firstObjectIndex = fields.indexOf(objects[0]);
+
+            // Find all non-object fields that doesn't contain dot notation
+            var nonObjects = fields.filter(function(item) { return item.field.indexOf(".") === -1 && item.type !== "Object"; });
+
+            // Iterate over all non-objects
+            for(var nonObject of nonObjects) {
+                // Put it before the first object field
+                var index = fields.indexOf(nonObject);
+                fields.splice(index, 1);
+                fields.splice(firstObjectIndex, 0, nonObject);
             }
         });
     }
