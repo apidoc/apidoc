@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+### 0.28.0
+* Use npm lockfile v2
+* Update handlebar to fix vulnerability (#962)
+* Fix runtime error in single page template (#944 via #945 by Ashlanfox)
+* Implement apiBody parsing into multi page template (#953 by Seth Wheeler)
+
 ### 0.27.0
 * Maintain comment order for @apiParam and @apiSuccess (fix #206 via #951 by Matheus Giovani)
 * Add option for JavaScript output mode (#933 by refineddigital)
