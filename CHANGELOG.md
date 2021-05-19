@@ -1,5 +1,8 @@
 # apiDoc Changelog
 
+### 0.28.1
+* Fix issue with handlebar (#967)
+
 ### 0.28.0
 * Use npm lockfile v2
 * Update handlebar to fix vulnerability (#962)
