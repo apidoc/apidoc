@@ -23,7 +23,7 @@
  *
  * @apiSuccess {Number}   id            The Users-ID.
  * @apiSuccess {Date}     registered    Registration Date.
- * @apiSuccess {Date}     name          Fullname of the User.
+ * @apiSuccess {String}   name          Fullname of the User.
  * @apiSuccess {String[]} nicknames     List of Users nicknames (Array of Strings).
  * @apiSuccess {Object}   profile       Profile data (example for an Object)
  * @apiSuccess {Number}   profile.age   Users age.
