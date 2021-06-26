@@ -788,7 +788,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     function sortFields(fields_object) {
         $.each(fields_object, function (key, fields) {
             // Find only object fields
-            var objects = fields.filter(function(item) { return item.type === "Object"; });
+            var objects = fields.filter(function(item) { return item.type === "Object" || item.type === "Object[]"; });
 
             // Check if has any object
             if (objects.length === 0) {
