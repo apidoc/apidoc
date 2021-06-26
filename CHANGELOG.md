@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+### 0.29.0
+* Fix broken handlebar
+* [DEV] add a npm run serve command
+* Remove space that was added for optional params
+* Make the 'optional' label unselectable (#970 by Thomas Bruun)
+
 ### 0.28.1
 * Fix issue with handlebar (#967)
 
