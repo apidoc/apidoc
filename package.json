@@ -18,8 +18,9 @@
   "scripts": {
     "test": "npm run jshint && mocha test/",
     "jshint": "jshint lib/ test/",
-    "build-example": "bin/apidoc -v -i example/ -o tmp/",
-    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd"
+    "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
+    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd",
+    "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx"
   },
   "keywords": [
     "api",
