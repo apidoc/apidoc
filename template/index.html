@@ -194,9 +194,9 @@
       <thead>
         <tr>
           <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-          {{#if_neq this.Type compare=null}}
+          {{#unless this.Type compare=null}}
             <th style="width: 10%">{{__ "Type"}}</th>
-          {{/if_neq}}
+          {{/unless}}
           <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
         </tr>
       </thead>
@@ -204,9 +204,9 @@
         {{#each params}}
           <tr>
             <td class="code">{{this.field}}</td>
-            {{#if_neq this.Type compare=null}}
+            {{#unless this.Type compare=null}}
               <td>{{this.type}}</td>
-            {{/if_neq}}
+            {{/unless}}
             <td>{{{nl2br this.description}}}</td>
           </tr>
         {{/each}}
@@ -222,9 +222,9 @@
       <thead>
         <tr>
           <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
-          {{#if_neq this.Type compare=null}}
+          {{#unless this.Type compare=null}}
             <th style="width: 10%">{{__ "Type"}}</th>
-          {{/if_neq}}
+          {{/unless}}
           <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
         </tr>
       </thead>
@@ -232,9 +232,9 @@
         {{#each params}}
           <tr>
             <td class="code">{{this.field}}</td>
-            {{#if_neq this.Type compare=null}}
+            {{#unless this.Type compare=null}}
               <td>{{this.type}}</td>
-            {{/if_neq}}
+            {{/unless}}
             <td>
               {{{nl2br this.description}}}
               {{#if defaultValue}}
@@ -273,7 +273,7 @@
         <tbody>
         {{#each this}}
           <tr>
-            <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}} <span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
+            <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}}<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#if ../../_hasType}}
               <td>
                 {{{type}}}
