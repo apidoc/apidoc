@@ -46,7 +46,7 @@
   "devDependencies": {
     "amdefine": "^1.0.1",
     "apidoc-example": "^0.2.3",
-    "bootstrap": "3.4.1",
+    "bootstrap": "5.0.2",
     "jquery": "3.5.1",
     "jshint": "^2.12.0",
     "lodash-cli": "^4.17.5",
