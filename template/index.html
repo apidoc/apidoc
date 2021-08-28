@@ -480,6 +480,7 @@
       {{/if}}
     {{/if}}
 
+    <span class="type type__{{toLowerCase compare.type}}">{{toLowerCase compare.type}}</span>
     <pre data-type="{{toLowerCase article.type}}"><code class="language-html">{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
