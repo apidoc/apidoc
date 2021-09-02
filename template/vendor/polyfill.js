@@ -2,25 +2,25 @@
 if (!Object.keys) {
   Object.keys = (function () {
     'use strict';
-    const hasOwnProperty = Object.prototype.hasOwnProperty;
-    const hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString');
-    const dontEnums = [
-      'toString',
-      'toLocaleString',
-      'valueOf',
-      'hasOwnProperty',
-      'isPrototypeOf',
-      'propertyIsEnumerable',
-      'constructor',
-    ];
-    const dontEnumsLength = dontEnums.length;
+    var hasOwnProperty = Object.prototype.hasOwnProperty,
+        hasDontEnumBug = !({toString: null}).propertyIsEnumerable('toString'),
+        dontEnums = [
+          'toString',
+          'toLocaleString',
+          'valueOf',
+          'hasOwnProperty',
+          'isPrototypeOf',
+          'propertyIsEnumerable',
+          'constructor'
+        ],
+        dontEnumsLength = dontEnums.length;
 
     return function (obj) {
       if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
         throw new TypeError('Object.keys called on non-object');
       }
 
-      const result = []; let prop; let i;
+      var result = [], prop, i;
 
       for (prop in obj) {
         if (hasOwnProperty.call(obj, prop)) {
@@ -40,27 +40,27 @@ if (!Object.keys) {
   }());
 }
 
-// Production steps of ECMA-262, Edition 5, 15.4.4.18
-// Reference: http://es5.github.com/#x15.4.4.18
+//Production steps of ECMA-262, Edition 5, 15.4.4.18
+//Reference: http://es5.github.com/#x15.4.4.18
 if (!Array.prototype.forEach) {
   Array.prototype.forEach = function (callback, thisArg) {
-    let T, k;
+    var T, k;
 
     if (this == null) {
       throw new TypeError(' this is null or not defined');
     }
 
     // 1. Let O be the result of calling ToObject passing the |this| value as the argument.
-    const O = Object(this);
+    var O = Object(this);
 
     // 2. Let lenValue be the result of calling the Get internal method of O with the argument "length".
     // 3. Let len be ToUint32(lenValue).
-    const len = O.length >>> 0;
+    var len = O.length >>> 0;
 
     // 4. If IsCallable(callback) is false, throw a TypeError exception.
     // See: http://es5.github.com/#x9.11
-    if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
+    if (typeof callback !== "function") {
+      throw new TypeError(callback + " is not a function");
     }
 
     // 5. If thisArg was supplied, let T be thisArg; else let T be undefined.
