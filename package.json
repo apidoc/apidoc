@@ -68,6 +68,7 @@
     "camelcase": true,
     "curly": false,
     "eqeqeq": true,
+    "esversion": 11,
     "forin": true,
     "latedef": false,
     "newcap": true,

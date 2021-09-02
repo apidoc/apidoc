@@ -9,6 +9,8 @@
 Note that the option useHostUrlAsSampleUrl has no longer any effect and can be safely removed. Use a value of `true` for `sampleUrl` to get the same behavior.
 
 * Add request method to compare template (#986 by @klickagent)
+* Merge apidoc-core back into the apidoc repository. The apidoc-core repository is now read-only.
+* Add .eslintrc.js and enforce coding style everywhere
 
 ### 0.29.0
 * Fix broken handlebar
