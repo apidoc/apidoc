@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+### 0.30.0
+
+* Fix sampleUrl config option behavior:
+  - if it is absent or `false`, no sample block will be generated
+  - if it is `true`, the current page location will be used
+  - if it is an url, that will be used
+Note that the option useHostUrlAsSampleUrl has no longer any effect and can be safely removed. Use a value of `true` for `sampleUrl` to get the same behavior.
+
+* Add request method to compare template (#986 by @klickagent)
+
 ### 0.29.0
 * Fix broken handlebar
 * [DEV] add a npm run serve command
