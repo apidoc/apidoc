@@ -180,7 +180,7 @@
     {{subTemplate "article-param-block" params=article.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
     {{subTemplate "article-param-block" params=article.success _hasType=_hasTypeInSuccessFields section="success"}}
     {{subTemplate "article-query-block" params=article.query _hasType=_hasTypeInParameterFields section="query"}}
-    {{subTemplate "article-param-block" params=article.body _hasType=_hasTypeInSuccessFields section="body"}}
+    {{subTemplate "article-body-block" params=article.body _hasType=_hasTypeInParameterFields section="body"}}
     {{subTemplate "article-param-block" params=article.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
     {{subTemplate "article-sample-request" article=article id=id}}
@@ -231,7 +231,7 @@
       <tbody>
         {{#each params}}
           <tr>
-            <td class="code">{{this.field}}</td>
+            <td class="code">{{this.field}}{{#if optional}}&nbsp;&nbsp;<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#unless this.Type compare=null}}
               <td>{{this.type}}</td>
             {{/unless}}
