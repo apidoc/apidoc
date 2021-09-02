@@ -86,11 +86,6 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
     var templateSidenav        = Handlebars.compile( $('#template-sidenav').html() );
 
     //
-    // Default host url used if no sampleUrl is present in config
-    //
-    var baseURL = window.location.origin;
-
-    //
     // apiProject defaults
     //
     if ( ! apiProject.template)
@@ -367,12 +362,17 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                     };
                 }
 
-                if (apiProject.sampleUrl == false) {
+                // sampleUrl config can be an url or true
+                if (apiProject.sampleUrl) {
+                    // a sampleUrl of true means we want to use the current location as sample url
+                    if (apiProject.sampleUrl === true) {
+                        apiProject.sampleUrl = window.location.origin;
+                    }
                     fields.article.sampleRequest = [
-                        {
-                            "url": baseURL + fields.article.url
-                        }
-                    ];
+                      {
+                          "url": apiProject.sampleUrl + fields.article.url
+                      }
+                  ];
                 }
 
                 // add prefix URL for endpoint unless it's already absolute
@@ -810,7 +810,7 @@ function init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReques
                 fields.splice(index, 1);
                 fields.splice(firstIndex, 0, object);
 
-                // Startup the last index with the object index 
+                // Startup the last index with the object index
                 var lastIndex = firstIndex;
 
                 // Iterate over all children
