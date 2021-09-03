@@ -25,7 +25,7 @@ const argv = cmd
 
   .option('-o, --output <output>', 'Output dirname.', './doc/')
 
-  .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', 'amd')
+  .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
 
   .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
