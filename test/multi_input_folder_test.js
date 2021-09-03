@@ -1,5 +1,3 @@
-/* jshint unused:false, expr:true */
-
 /**
  * Test: apiDoc creation from multiple folder
  */

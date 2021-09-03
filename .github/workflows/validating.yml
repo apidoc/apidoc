@@ -8,10 +8,10 @@ jobs:
       - uses: actions/setup-node@v1
       - run: npm i
       - run: npx mocha --colors test/
-  run-jshint:
+  run-eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm i
-      - run: npm run jshint --verbose
+      - run: npm run eslint

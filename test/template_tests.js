@@ -1,5 +1,3 @@
-/* jshint unused:false, expr:true */
-
 /**
  * Test: Send sample request utils
  */

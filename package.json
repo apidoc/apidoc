@@ -16,8 +16,8 @@
     "url": "https://github.com/apidoc/apidoc/issues"
   },
   "scripts": {
-    "test": "npm run jshint && mocha test/",
-    "jshint": "jshint lib/ test/",
+    "test": "mocha test/",
+    "eslint": "./node_modules/.bin/eslint lib",
     "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
     "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd",
     "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx"
@@ -55,7 +55,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "jquery": "3.5.1",
-    "jshint": "^2.12.0",
     "lodash-cli": "^4.17.5",
     "mocha": "^8.1.1",
     "path-to-regexp": "^3.2.0",
@@ -63,25 +62,5 @@
     "semver": "^7.3.2",
     "should": "~13.2.3",
     "webfontloader": "^1.6.28"
-  },
-  "jshintConfig": {
-    "camelcase": true,
-    "curly": false,
-    "eqeqeq": true,
-    "esversion": 11,
-    "forin": true,
-    "latedef": false,
-    "newcap": true,
-    "undef": true,
-    "unused": true,
-    "trailing": true,
-    "node": true,
-    "browser": true,
-    "predef": [
-      "it",
-      "describe",
-      "before",
-      "after"
-    ]
   }
 }
