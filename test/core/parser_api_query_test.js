@@ -2,11 +2,8 @@
  * Test: Parser apiParam
  */
 
-// node modules
-const should = require('should');
-
 // lib modules
-const parser = require('../lib/parsers/api_query');
+const parser = require('../../lib/core/parsers/api_query');
 
 describe('Parser: apiQuery', function () {
   // TODO: Add 1.000 more possible cases ;-)
@@ -74,8 +71,9 @@ describe('Parser: apiQuery', function () {
   it('case 1: should pass all regexp test cases', function (done) {
     testCases.forEach(function (testCase) {
       const parsed = parser.parse(testCase.content);
-      (parsed !== null).should.equal(true, 'Title: ' + testCase.title + ', Source: ' + testCase.content);
-      parsed.should.eql(testCase.expected);
+      // TODO
+      //(parsed !== null).should.equal(true, 'Title: ' + testCase.title + ', Source: ' + testCase.content);
+      assert.strictEqual(parsed, testCase.expected);
     });
     done();
   });

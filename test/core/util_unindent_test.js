@@ -1,48 +1,46 @@
 /**
  * Test: Util unindent
  */
-
-// node modules
-const should = require('should');
+const assert = require('assert');
 
 // lib modules
-const unindent = require('../lib/utils/unindent');
+const unindent = require('../../lib/core/utils/unindent');
 
 describe('Util: unindent', function () {
   it('should strip common leading spaces', function (done) {
-    unindent('  a\n    b\n   c').should.equal('a\n  b\n c');
+    assert.strictEqual(unindent('  a\n    b\n   c'), 'a\n  b\n c');
     done();
   });
 
   it('should strip common leading tabs', function (done) {
-    unindent('\t\ta\n\t\t\t\tb\n\t\t\tc').should.equal('a\n\t\tb\n\tc');
+    assert.strictEqual(unindent('\t\ta\n\t\t\t\tb\n\t\t\tc'), 'a\n\t\tb\n\tc');
     done();
   });
 
   it('should strip all leading whitespace from a single line', function (done) {
-    unindent('   \t   a').should.equal('a');
+    assert.strictEqual(unindent('   \t   a'), 'a');
     done();
   });
 
   it('should not modify the empty string', function (done) {
     const s = '';
-    unindent(s).should.equal(s);
+    assert.strictEqual(unindent(s), s);
     done();
   });
 
   it('should not modify if any line starts with non-whitespace', function (done) {
     const s = '    a\n   b\nc   d\n   e';
-    unindent(s).should.equal(s);
+    assert.strictEqual(unindent(s), s);
     done();
   });
 
   it('should strip common leading tabs and keep spaces', function (done) {
-    unindent('\ta\n\t  b\n\t c').should.equal('a\n  b\n c');
+    assert.strictEqual(unindent('\ta\n\t  b\n\t c'), 'a\n  b\n c');
     done();
   });
 
   it('should strip common leading tabs and 1 space on each line', function (done) {
-    unindent('\t  a\n\t  b\n\t c').should.equal(' a\n b\nc');
+    assert.strictEqual(unindent('\t  a\n\t  b\n\t c'), ' a\n b\nc');
     done();
   });
 });

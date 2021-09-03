@@ -6,8 +6,8 @@
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const should = require('should');
 const Markdown = require('markdown-it');
+const assert = require('assert');
 
 const versions = require('apidoc-example').versions;
 
@@ -52,12 +52,6 @@ describe('apiDoc full parse', function () {
   });
 
   after(function (done) {
-    done();
-  });
-
-  // version found
-  it('should find latest example version', function (done) {
-    should(latestExampleVersion).be.ok;
     done();
   });
 

@@ -8,7 +8,7 @@ const exec = require('child_process').exec;
 const fs = require('fs-extra');
 const path = require('path');
 const semver = require('semver');
-const should = require('should');
+const assert = require('assert');
 
 const versions = require('apidoc-example').versions;
 
@@ -48,7 +48,7 @@ describe('apiDoc custom markdown parser', function () {
     const Markdown = require(markdownFile);
     const markdownParser = new Markdown();
     const text = markdownParser.render('some text');
-    should(text).equal('Custom Markdown Parser: some text');
+    assert.strictEqual(text, 'Custom Markdown Parser: some text');
     done();
   });
 
@@ -100,7 +100,8 @@ describe('apiDoc custom markdown parser', function () {
   // check
   it('should find created files', function (done) {
     fixtureFiles.forEach(function (name) {
-      fs.existsSync(fixturePath + '/' + name).should.eql(true);
+      const res = fs.existsSync(fixturePath + '/' + name);
+      assert.strictEqual(res, true);
     });
     done();
   });
@@ -118,7 +119,7 @@ describe('apiDoc custom markdown parser', function () {
       }
     });
 
-    should.notEqual(countCustomText, 0);
+    assert.notEqual(countCustomText, 0);
 
     done();
   });

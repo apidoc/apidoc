@@ -8,7 +8,7 @@ const apidoc = require('../lib/core/index');
 const exec = require('child_process').exec;
 const fs = require('fs-extra');
 const path = require('path');
-const should = require('should');
+const assert = require('assert');
 
 describe('apiDoc full example with no config path', function () {
   testFullExample();
@@ -97,7 +97,8 @@ function testFullExample (config, mode) {
   // check
   it('should find created files', function (done) {
     fixtureFiles.forEach(function (name) {
-      fs.existsSync(fixturePath + '/' + name).should.eql(true);
+      const res = fs.existsSync(fixturePath + '/' + name);
+      assert.strictEqual(res, true);
     });
     done();
   });

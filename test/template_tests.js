@@ -3,7 +3,7 @@
  */
 
 const sendSampleRequestUtils = require('../template/utils/send_sample_request_utils');
-const should = require('should');
+const assert = require('assert');
 
 describe('send sample request utils', function () {
   before(function (done) {
@@ -41,7 +41,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, expectedResult);
+    assert.deepEqual(result, expectedResult);
     done();
   });
 
@@ -62,7 +62,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, param);
+    assert.deepEqual(result, param);
     done();
   });
 
@@ -83,7 +83,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, param);
+    assert.deepEqual(result, param);
     done();
   });
 
@@ -101,7 +101,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, expectedResult);
+    assert.deepEqual(result, expectedResult);
     done();
   });
 
@@ -122,7 +122,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, expectedResult);
+    assert.deepEqual(result, expectedResult);
     done();
   });
 
@@ -163,7 +163,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.handleNestedAndParsingFields(param, paramType);
-    should.deepEqual(result, expectedResult);
+    assert.deepEqual(result, expectedResult);
     done();
   });
 
@@ -212,7 +212,7 @@ describe('send sample request utils', function () {
     };
 
     const result = sendSampleRequestUtils.tryParsingWithTypes(parsedJson, paramType);
-    should.deepEqual(result, expectedJson);
+    assert.deepEqual(result, expectedJson);
     done();
   });
 
@@ -266,7 +266,7 @@ describe('send sample request utils', function () {
     sendSampleRequestUtils.setLogger({ warn: function () {} });
 
     const result = sendSampleRequestUtils.tryParsingWithTypes(parsedJson, paramType);
-    should.deepEqual(result, expectedJson);
+    assert.deepEqual(result, expectedJson);
     done();
   });
 
@@ -286,7 +286,7 @@ describe('send sample request utils', function () {
       const result = sendSampleRequestUtils.convertPathParams(url);
       results.push(result);
     });
-    should.deepEqual(results, expectedResults);
+    assert.deepEqual(results, expectedResults);
     done();
   });
 });

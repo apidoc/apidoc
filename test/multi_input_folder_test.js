@@ -5,7 +5,6 @@
 const fs = require('fs-extra');
 const exec = require('child_process').exec;
 const path = require('path');
-const should = require('should');
 
 describe('apiDoc multiple folder input', function () {
   const fixturePath = 'test/multi_input_folder/fixtures';

@@ -60,7 +60,6 @@
     "path-to-regexp": "^3.2.0",
     "requirejs": "^2.3.6",
     "semver": "^7.3.2",
-    "should": "~13.2.3",
     "webfontloader": "^1.6.28"
   }
 }
