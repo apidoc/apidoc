@@ -4,6 +4,7 @@
 
 // lib modules
 const parser = require('../../lib/core/parsers/api_query');
+const assert = require('assert');
 
 describe('Parser: apiQuery', function () {
   // TODO: Add 1.000 more possible cases ;-)
@@ -73,7 +74,7 @@ describe('Parser: apiQuery', function () {
       const parsed = parser.parse(testCase.content);
       // TODO
       //(parsed !== null).should.equal(true, 'Title: ' + testCase.title + ', Source: ' + testCase.content);
-      assert.strictEqual(parsed, testCase.expected);
+      assert.deepEqual(parsed, testCase.expected);
     });
     done();
   });

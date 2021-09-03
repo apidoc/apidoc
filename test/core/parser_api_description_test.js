@@ -52,7 +52,7 @@ describe('Parser: apiDescription', function () {
       const parsed = parser.parse(testCase.content);
       // TODO
       //(parsed !== null).should.equal(true, 'Title: ' + testCase.title + ', Source: ' + testCase.content);
-      assert.strictEqual(parsed, testCase.expected);
+      assert.deepEqual(parsed, testCase.expected);
     });
     done();
   });

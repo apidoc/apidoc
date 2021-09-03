@@ -6,7 +6,7 @@
 const assert = require('assert');
 
 // lib modules
-const worker = require('../lib/workers/api_use');
+const worker = require('../../lib/core/workers/api_use');
 
 describe('Worker: apiUse', function () {
   const packageInfos = {

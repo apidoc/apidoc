@@ -1,8 +1,8 @@
 /**
  * Test: parseSource
  */
-const deepEqual = require('deep-equal');
-const apidoc = require('../lib/index');
+const apidoc = require('../../lib/core/index');
+const assert = require('assert');
 
 function log () {
 }
@@ -42,11 +42,14 @@ describe('parseSource', function () {
             fields: {
               body: [
                 {
-                  group: 'body',
-                  type: 'String',
-                  field: 'name',
-                  optional: true,
+                  allowedValues: undefined,
+                  defaultValue: undefined,
                   description: '',
+                  field: 'name',
+                  group: 'body',
+                  optional: true,
+                  size: undefined,
+                  type: 'String'
                 },
               ],
             },
@@ -55,11 +58,14 @@ describe('parseSource', function () {
             fields: {
               'Success 200': [
                 {
+                  allowedValues: undefined,
+                  defaultValue: undefined,
                   group: 'Success 200',
                   type: 'Number',
                   optional: false,
                   field: 'code',
                   description: '200',
+                  size: undefined,
                 },
               ],
             },
@@ -80,7 +86,7 @@ describe('parseSource', function () {
     testCases.forEach(function (testCase) {
       apidoc.setLogger(logger);
       const parsed = apidoc.parseSource(Buffer.from(testCase.source));
-      deepEqual(parsed, testCase.expected);
+      assert.deepEqual(parsed[0], testCase.expected);
     });
     done();
   });
