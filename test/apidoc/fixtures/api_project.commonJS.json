@@ -1,4 +1,4 @@
-export default {
+{
   "name": "AcmeCorp Api documentation",
   "version": "0.3.0",
   "description": "Documentation for the REST api access provided at AcmeCorp",
@@ -22,8 +22,8 @@ export default {
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-09-03T21:15:14.128Z",
+    "time": "2021-09-03T21:16:22.229Z",
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }
-};
+}

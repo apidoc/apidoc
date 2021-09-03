@@ -114,12 +114,7 @@
       ]
     },
     "filename": "example/example.js",
-    "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user/:id"
-      }
-    ]
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -292,12 +287,7 @@
       ]
     },
     "filename": "example/example.js",
-    "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user/:id"
-      }
-    ]
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -360,12 +350,7 @@
       }
     },
     "filename": "example/_apidoc.js",
-    "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user/:id"
-      }
-    ]
+    "groupTitle": "User"
   },
   {
     "type": "get",
@@ -428,12 +413,7 @@
       }
     },
     "filename": "example/_apidoc.js",
-    "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user/:id"
-      }
-    ]
+    "groupTitle": "User"
   },
   {
     "type": "post",
@@ -481,11 +461,6 @@
     },
     "filename": "example/example.js",
     "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user"
-      }
-    ],
     "error": {
       "fields": {
         "Error 4xx": [
@@ -553,11 +528,6 @@
     },
     "filename": "example/_apidoc.js",
     "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user"
-      }
-    ],
     "error": {
       "fields": {
         "Error 4xx": [
@@ -619,11 +589,6 @@
     },
     "filename": "example/example.js",
     "groupTitle": "User",
-    "sampleRequest": [
-      {
-        "url": "https://apidoc.free.beeceptor.com/user/:id"
-      }
-    ],
     "error": {
       "fields": {
         "Error 4xx": [

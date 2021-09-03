@@ -1,13 +1,13 @@
 define({
-  "name": "Multiple Input Folder Test",
-  "version": "1.0.0",
-  "description": "Example of feeding apidoc from multiple input folder locations",
+  "name": "apidoc",
+  "version": "0.30.0",
+  "description": "RESTful web API Documentation Generator",
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-09-03T21:57:32.060Z",
+    "time": "2021-09-03T21:50:37.954Z",
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }

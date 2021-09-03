@@ -1,4 +1,4 @@
-export default {
+{
   "name": "AcmeCorp Api documentation",
   "version": "0.3.0",
   "description": "Documentation for the REST api access provided at AcmeCorp",
@@ -26,4 +26,4 @@ export default {
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }
-};
+}
