@@ -11,6 +11,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
   },
+  ignorePatterns: ['**/vendor/*.js', '**/vendor/path-to-regexp/*.js'],
   rules: {
     'semi': ['error', 'always'],
     'quotes': ['error', 'single'],
