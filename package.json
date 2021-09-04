@@ -42,6 +42,7 @@
     "lodash": "^4.17.20",
     "markdown-it": "^11.0.0",
     "nodemon": "^2.0.4",
+    "requirejs": "^2.3.6",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -58,7 +59,6 @@
     "lodash-cli": "^4.17.5",
     "mocha": "^9.1.1",
     "path-to-regexp": "^3.2.0",
-    "requirejs": "^2.3.6",
     "semver": "^7.3.2",
     "webfontloader": "^1.6.28"
   }
