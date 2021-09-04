@@ -34,7 +34,7 @@ require.config({
       exports: 'Prism',
     },
   },
-  urlArgs: 'v=' + (new Date()).getTime(),
+  urlArgs: 'v=' + new Date().getTime(),
   waitSeconds: 150,
 });
 
@@ -234,8 +234,8 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
         const level = entry.substring(2, 3);
         const title = entry.replace(/<.+?>/g, ''); // Remove all HTML tags for the title
         const entryTags = entry.match(/id="api-([^-]+)(?:-(.+))?"/); // Find the group and name in the id property
-        const group = (entryTags ? entryTags[1] : null);
-        const name = (entryTags ? entryTags[2] : null);
+        const group = entryTags ? entryTags[1] : null;
+        const name = entryTags ? entryTags[2] : null;
         if (level === '1' && title && group) {
           nav.splice(index, 0, {
             group: group,
@@ -270,7 +270,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
       nav.unshift({
         group: '_',
         isHeader: true,
-        title: (apiProject.header.title == null) ? locale.__('General') : apiProject.header.title,
+        title: apiProject.header.title == null ? locale.__('General') : apiProject.header.title,
         isFixed: true,
       });
     }
@@ -445,7 +445,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
         const name = $(this).data('name');
         const length = $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\']').length;
         const index = $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\']').index($(this));
-        if (length === 1 || index === (length - 1)) { $(this).addClass('is-new'); }
+        if (length === 1 || index === length - 1) { $(this).addClass('is-new'); }
       });
     }
 
@@ -543,7 +543,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   //
   // Change Main Version
   function setMainVersion (selectedVersion) {
-    if (typeof (selectedVersion) === 'undefined') {
+    if (typeof selectedVersion === 'undefined') {
       selectedVersion = $('#version strong').html();
     } else {
       $('#version strong').html(selectedVersion);
@@ -600,7 +600,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   // compare url-parameter
   $.urlParam = function (name) {
     const results = new RegExp('[\\?&amp;]' + name + '=([^&amp;#]*)').exec(window.location.href);
-    return (results && results[1]) ? results[1] : null;
+    return results && results[1] ? results[1] : null;
   };
 
   if ($.urlParam('compare')) {
@@ -671,7 +671,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
     if (!compareVersion && version === selectedVersion) { return; }
 
-    if ((compareVersion && (articleVersions[group][name][0] === selectedVersion)) || version === selectedVersion) {
+    if ((compareVersion && (articleVersions[group][name][0] === selectedVersion)) || version === selectedVersion) { // eslint-disable-line no-extra-parens
       // the version of the entry is set to the highest version (reset)
       resetArticle(group, name, version);
     } else {
