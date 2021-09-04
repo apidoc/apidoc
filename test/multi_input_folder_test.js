@@ -10,7 +10,7 @@ describe('apiDoc multiple folder input', function () {
   const fixturePath = 'test/multi_input_folder/fixtures';
   const projectBaseBath = 'test/multi_input_folder/testproject';
 
-  const testTargetPath = './tmp/apidocmulti';
+  const outputPath = './tmp';
 
   const fixtureFiles = [
     'api_data.js',
@@ -21,7 +21,7 @@ describe('apiDoc multiple folder input', function () {
   ];
 
   before(function (done) {
-    fs.removeSync(testTargetPath);
+    fs.removeSync(outputPath);
 
     done();
   });
@@ -30,18 +30,19 @@ describe('apiDoc multiple folder input', function () {
     done();
   });
 
-  it('should create apidoc in /tmp/apidocmulti with multiple input folders', function (done) {
-    const commonDefinitions = path.join('', 'folder1');
-    const historyDefinition = path.join('', 'folder2');
-    const srcFolder = path.join('', 'src');
+  it('should create apidoc in ' + outputPath + ' with multiple input folders', function (done) {
+    const commonDefinitions = path.join('./test/multi_input_folder/testproject', 'folder1');
+    const historyDefinition = path.join('./test/multi_input_folder/testproject', 'folder2');
+    const srcFolder = path.join('./test/multi_input_folder/testproject', 'src');
+    const configFilePath = path.join('./test/multi_input_folder/testproject', 'apidoc.json');
 
-    let cmd = 'cd ' + projectBaseBath + ' && ';
-    cmd += 'node ../../../bin/apidoc';
+    let cmd = 'node ./bin/apidoc';
+    cmd += ' -c ' + configFilePath;
     cmd += ' -i ' + commonDefinitions;
     cmd += ' -i ' + historyDefinition;
     cmd += ' -i ' + srcFolder;
-    cmd += ' -o ../../../tmp/apidocmulti';
-    cmd += ' -t ../../template/';
+    cmd += ' -o ' + outputPath;
+    cmd += ' -t ./test/template/';
 
     exec(cmd, function (err, stdout, stderr) {
       if (err) { throw err; }
@@ -59,7 +60,7 @@ describe('apiDoc multiple folder input', function () {
 
     fixtureFiles.forEach(function (name) {
       let fixtureContent = fs.readFileSync(path.join(fixturePath, name), 'utf8');
-      let createdContent = fs.readFileSync(path.join(testTargetPath, name), 'utf8');
+      let createdContent = fs.readFileSync(path.join(outputPath, name), 'utf8');
 
       // creation time remove (never equal)
       fixtureContent = fixtureContent.replace(timeRegExp, '');
@@ -75,11 +76,11 @@ describe('apiDoc multiple folder input', function () {
       const fixtureLines = fixtureContent.split(/\r?\n|\r/);
       const createdLines = createdContent.split(/\r?\n|\r/);
 
-      if (fixtureLines.length !== createdLines.length) { throw new Error('File ' + path.join(testTargetPath, name) + ' not equals to ' + fixturePath + '/' + name); }
+      if (fixtureLines.length !== createdLines.length) { throw new Error('File ' + path.join(outputPath, name) + ' not equals to ' + fixturePath + '/' + name); }
 
       for (let lineNumber = 0; lineNumber < fixtureLines.length; lineNumber += 1) {
         if (fixtureLines[lineNumber] !== createdLines[lineNumber]) {
-          throw new Error('File ' + path.join(testTargetPath, name) + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
+          throw new Error('File ' + path.join(outputPath, name) + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
                         '\nfixture: ' + fixtureLines[lineNumber] +
                         '\ncreated: ' + createdLines[lineNumber],
           );
