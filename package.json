@@ -51,7 +51,6 @@
   },
   "devDependencies": {
     "amdefine": "^1.0.1",
-    "apidoc-example": "^0.2.3",
     "eslint": "^7.32.0",
     "eslint-config-recommended": "^4.1.0",
     "eslint-config-standard": "^16.0.3",
