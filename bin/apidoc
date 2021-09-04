@@ -13,15 +13,20 @@
 
 const apidoc = require('../lib/index');
 const path = require('path');
-const cmd = require('commander');
 const nodemon = require('nodemon');
+const { Command } = require('commander');
+const program = new Command();
+const pkgjson = require('../package.json');
 
-const argv = cmd
-  .option('-f --file-filters <file-filters>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).', collect, [])
+// set the version so it is available with --version
+program.version(pkgjson.version);
 
-  .option('-e, --exclude-filters <exclude-filters>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', collect, [])
+program
+  .option('-f --file-filters <file-filters...>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).')
 
-  .option('-i, --input <input>', 'Input/source dirname.', collect, [])
+  .option('-e, --exclude-filters <exclude-filters...>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).')
+
+  .option('-i, --input <input...>', 'Input/source dirname.')
 
   .option('-o, --output <output>', 'Output dirname.', './doc/')
 
@@ -43,10 +48,10 @@ const argv = cmd
 
   .option('--parse', 'Parse only the files and return the data, no file creation.', false)
 
-  .option('--parse-filters <parse-filters>', 'Optional user defined filters. Format name=filename', collect, [])
-  .option('--parse-languages <parse-languages>', 'Optional user defined languages. Format name=filename', collect, [])
-  .option('--parse-parsers <parse-parsers>', 'Optional user defined parsers. Format name=filename', collect, [])
-  .option('--parse-workers <parse-workers>', 'Optional user defined workers. Format name=filename', collect, [])
+  .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename')
+  .option('--parse-languages <parse-languages...>', 'Optional user defined languages. Format name=filename')
+  .option('--parse-parsers <parse-parsers...>', 'Optional user defined parsers. Format name=filename')
+  .option('--parse-workers <parse-workers...>', 'Optional user defined workers. Format name=filename')
 
   .option('--silent', 'Turn all output off.', false)
 
@@ -62,20 +67,11 @@ const argv = cmd
 
   .option('--filter-by <tag-filter=value>', 'Filter documentation by tag')
 
-  .option('--watch', 'Watch the Input/Source dirname for changes to rebuild the docs')
+  .option('-w, --watch', 'Watch input files for changes to rebuild the docs')
 
   .parse(process.argv);
 
-/**
- * Collect options into an array
- * @param {String} value
- * @param {String[]} acc
- * @returns {String[]}
- */
-function collect (value, acc) {
-  acc.push(value);
-  return acc;
-}
+const argv = program.opts();
 
 /**
  * Transform parameters to object
@@ -98,10 +94,12 @@ function transformToObject (filters) {
   return result;
 }
 
+const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$']
+
 const options = {
-  excludeFilters: ['apidoc\\.config\\.js$'].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
-  includeFilters: argv.fileFilters.length ? argv.fileFilters : ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'],
-  src: argv.input.length ? argv.input : ['./'],
+  excludeFilters: ['apidoc\\.config\\.js$'].concat(typeof argv.excludeFilters !== 'undefined' ? argv.excludeFilters : []),
+  includeFilters: typeof argv.fileFilters !== 'undefined' ? argv.fileFilters : defaultIncludeFilters,
+  src: typeof argv.input !== 'undefined' ? argv.input : ['./'],
   dest: argv.output,
   mode: argv.mode,
   template: argv.template,
