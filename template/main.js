@@ -752,66 +752,6 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   }
 
   /**
-     * Sort the fields.
-     */
-  function sortFields (fields_object) {
-    $.each(fields_object, function (key, fields) {
-      // Find only object fields
-      const objects = fields.filter(function (item) { return item.type === 'Object'; });
-
-      // Check if has any object
-      if (objects.length === 0) {
-        return;
-      }
-
-      // Iterate over all objects
-      for (var object of objects) {
-        // Retrieve the index
-        var index = fields.indexOf(object);
-
-        // Find all child fields for this object
-        const objectFields = fields.filter(function (item) { return item.field.indexOf(object.field + '.') > -1; });
-
-        // Get the child index
-        const firstIndex = fields.indexOf(objectFields[0]);
-
-        // Put the object it before the first child index
-        fields.splice(index, 1);
-        fields.splice(firstIndex, 0, object);
-
-        // Startup the last index with the object index
-        let lastIndex = firstIndex;
-
-        // Iterate over all children
-        for (const child of objectFields) {
-          lastIndex++;
-
-          // Retrieve the index
-          const childIndex = fields.indexOf(child);
-
-          // Put it after the object declaration
-          fields.splice(childIndex, 1);
-          fields.splice(lastIndex, 0, child);
-        }
-      }
-
-      // Retrieve the first object field index
-      const firstObjectIndex = fields.indexOf(objects[0]);
-
-      // Find all non-object fields that doesn't contain dot notation
-      const nonObjects = fields.filter(function (item) { return item.field.indexOf('.') === -1 && item.type !== 'Object'; });
-
-      // Iterate over all non-objects
-      for (const nonObject of nonObjects) {
-        // Put it before the first object field
-        var index = fields.indexOf(nonObject);
-        fields.splice(index, 1);
-        fields.splice(firstObjectIndex, 0, nonObject);
-      }
-    });
-  }
-
-  /**
      * Add article settings.
      */
   function addArticleSettings (fields, entry) {
@@ -821,27 +761,22 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     fields.id = fields.id.replace(/\./g, '_');
 
     if (entry.header && entry.header.fields) {
-      sortFields(entry.header.fields);
       fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields);
     }
 
     if (entry.parameter && entry.parameter.fields) {
-      sortFields(entry.parameter.fields);
       fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields);
     }
 
     if (entry.error && entry.error.fields) {
-      sortFields(entry.error.fields);
       fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields);
     }
 
     if (entry.success && entry.success.fields) {
-      sortFields(entry.success.fields);
       fields._hasTypeInSuccessFields = _hasTypeInFields(entry.success.fields);
     }
 
     if (entry.info && entry.info.fields) {
-      sortFields(entry.info.fields);
       fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields);
     }
 
