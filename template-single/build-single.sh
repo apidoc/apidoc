@@ -70,7 +70,6 @@ cat <<EOF
 
   paths: {
     requirejs: './vendor/require.min',
-    polyfill: './vendor/polyfill',
     bootstrap: './vendor/bootstrap.min',
     diffMatchPatch: './vendor/diff_match_patch.min',
     handlebars: './vendor/handlebars.min',
@@ -89,7 +88,7 @@ cat <<EOF
   },
   shim: {
     jquery: {
-      deps: ['polyfill', 'requirejs']
+      deps: ['requirejs']
     },
     bootstrap: {
       deps: ['jquery']
