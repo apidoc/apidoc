@@ -26,7 +26,7 @@ define([
 
   if (!locales[langId] && !locales[language]) { language = 'en'; }
 
-  let locale = (locales[langId] ? locales[langId] : locales[language]);
+  let locale = locales[langId] ? locales[langId] : locales[language];
 
   function __ (text) {
     const index = locale[text];
