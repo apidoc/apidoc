@@ -19,8 +19,8 @@ define([
   let language = langId.substr(0, 2);
   const locales = {};
 
-  for (index in arguments) {
-    for (property in arguments[index]) { locales[property] = arguments[index][property]; }
+  for (const index in arguments) {
+    for (const property in arguments[index]) { locales[property] = arguments[index][property]; }
   }
   if (!locales.en) { locales.en = {}; }
 

@@ -1,7 +1,9 @@
 // this block is used to make this module works with Node (CommonJS module format)
+/*
 if (typeof define !== 'function') {
   var define = require('amdefine')(module);
 }
+*/
 
 define(['lodash'], function (_) {
   let log = console;
@@ -10,7 +12,7 @@ define(['lodash'], function (_) {
     const attributes = key.split('.');
     const field = attributes[0];
     params.push(field);
-    if (attributes.length > 1 && paramType[params.join('.')] == 'Object') {
+    if (attributes.length > 1 && paramType[params.join('.')] === 'Object') {
       const nestedField = attributes.slice(1).join('.');
       if (!object[field]) { object[field] = {}; }
       if (typeof object[field] === 'object') {

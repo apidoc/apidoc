@@ -55,9 +55,9 @@ define([
     $root.find('.sample-request-param:checked').each(function (i, element) {
       const group = $(element).data('sample-request-param-group-id');
       const contentType = $(element).nextAll('.sample-header-content-type-switch').first().val();
-      if (contentType == 'body-json') {
+      if (contentType === 'body-json') {
         $root.find('[data-sample-request-body-group="' + group + '"]').not(function () {
-          return $(this).val() == '' && $(this).is('[data-sample-request-param-optional=\'true\']');
+          return $(this).val() === '' && $(this).is('[data-sample-request-param-optional=\'true\']');
         }).each(function (i, element) {
           if (isJson(element.value)) {
             header['Content-Type'] = 'application/json';
@@ -66,16 +66,16 @@ define([
         });
       } else {
         $root.find('[data-sample-request-param-group="' + group + '"]').not(function () {
-          return $(this).val() == '' && $(this).is('[data-sample-request-param-optional=\'true\']');
+          return $(this).val() === '' && $(this).is('[data-sample-request-param-optional=\'true\']');
         }).each(function (i, element) {
           const key = $(element).data('sample-request-param-name');
           let value = element.value;
           if (!element.optional && element.defaultValue !== '') {
             value = element.defaultValue;
           }
-          if (contentType == 'body-form-data') {
+          if (contentType === 'body-form-data') {
             header['Content-Type'] = 'multipart/form-data';
-            if (element.type == 'file') {
+            if (element.type === 'file') {
               value = element.files[0];
             }
             bodyFormData.append(key, value);
@@ -94,7 +94,7 @@ define([
     url = utils.convertPathParams(url);
 
     // Insert url parameter
-    const pattern = pathToRegexp(url, null);
+    const pattern = pathToRegexp(url, null); // eslint-disable-line no-undef
     const matches = pattern.exec(url);
     for (let i = 1; i < matches.length; i++) {
       let key = matches[i].substr(1);
@@ -120,7 +120,7 @@ define([
     param = utils.handleNestedAndParsingFields(param, paramType);
 
     // add url search parameter
-    if (header['Content-Type'] == 'application/json') {
+    if (header['Content-Type'] === 'application/json') {
       if (bodyJson) {
         // bodyJson is set to value if request body: 'body/json' was selected and manual json was input
         // in this case, use the given bodyJson and add other params in query string
@@ -133,7 +133,7 @@ define([
         param = utils.tryParsingWithTypes(param, paramType);
         param = JSON.stringify(param);
       }
-    } else if (header['Content-Type'] == 'multipart/form-data') {
+    } else if (header['Content-Type'] === 'multipart/form-data') {
       url = url + encodeSearchParams(param);
       param = bodyFormData;
     }
@@ -152,7 +152,7 @@ define([
       error: displayError,
     };
 
-    if (header['Content-Type'] == 'multipart/form-data') {
+    if (header['Content-Type'] === 'multipart/form-data') {
       delete ajaxRequest.headers['Content-Type'];
       ajaxRequest.contentType = false;
       ajaxRequest.processData = false;
@@ -215,12 +215,6 @@ define([
     $('[data-spy="scroll"]').each(function () {
       $(this).scrollspy('refresh');
     });
-  }
-
-  function escapeHtml (str) {
-    const div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
   }
 
   /**

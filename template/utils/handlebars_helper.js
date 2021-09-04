@@ -1,8 +1,9 @@
 define([
+  'jquery',
   'locales',
   'handlebars',
   'diffMatchPatch',
-], function (locale, Handlebars, DiffMatchPatch) {
+], function ($, locale, Handlebars, DiffMatchPatch) {
   /**
      * Return a text as markdown.
      * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
@@ -120,7 +121,9 @@ define([
      */
   const templateCache = {};
   Handlebars.registerHelper('subTemplate', function (name, sourceContext) {
-    if (!templateCache[name]) { templateCache[name] = Handlebars.compile($('#template-' + name).html()); }
+    if (!templateCache[name]) {
+      templateCache[name] = Handlebars.compile(document.getElementById('template-' + name).innerHTML);
+    }
 
     const template = templateCache[name];
     const templateContext = $.extend({}, this, sourceContext.hash);
@@ -245,25 +248,16 @@ define([
     return JSON.stringify(strBody, null, 4);
   });
 
-  /**
-     *
-     */
   Handlebars.registerHelper('each_compare_field', function (source, compare, options) {
     return _handlebarsEachCompared('field', source, compare, options);
   });
 
-  /**
-     *
-     */
   Handlebars.registerHelper('each_compare_title', function (source, compare, options) {
     return _handlebarsEachCompared('title', source, compare, options);
   });
 
-  /**
-     *
-     */
   Handlebars.registerHelper('reformat', function (source, type) {
-    if (type == 'json') {
+    if (type === 'json') {
       try {
         return JSON.stringify(JSON.parse(source.trim()), null, '    ');
       } catch (e) {
@@ -273,9 +267,6 @@ define([
     return source;
   });
 
-  /**
-     *
-     */
   Handlebars.registerHelper('showDiff', function (source, compare, options) {
     let ds = '';
     if (source === compare) {
@@ -295,12 +286,9 @@ define([
     return ds;
   });
 
-  /**
-     *
-     */
   function _handlebarsEachCompared (fieldname, source, compare, options) {
     const dataList = [];
-    var index = 0;
+    let index = 0;
     if (source) {
       source.forEach(function (sourceEntry) {
         let found = false;
@@ -353,37 +341,37 @@ define([
 
     let ret = '';
     const length = dataList.length;
-    for (var index in dataList) {
-      if (index == (length - 1)) { dataList[index]._last = true; }
+    for (const index in dataList) {
+      if (index === (length - 1)) { dataList[index]._last = true; }
       ret = ret + options.fn(dataList[index]);
     }
     return ret;
   }
 
-  var diffMatchPatch = new DiffMatchPatch();
+  const diffMatchPatch = new DiffMatchPatch();
 
   /**
-     * Overwrite Colors
-     */
+   * Overwrite Colors
+   */
   DiffMatchPatch.prototype.diff_prettyHtml = function (diffs) {
     const html = [];
-    const pattern_amp = /&/g;
-    const pattern_lt = /</g;
-    const pattern_gt = />/g;
-    const pattern_para = /\n/g;
+    const patternAmp = /&/g;
+    const patternLt = /</g;
+    const patternGt = />/g;
+    const patternPara = /\n/g;
     for (let x = 0; x < diffs.length; x++) {
       const op = diffs[x][0]; // Operation (insert, delete, equal)
       const data = diffs[x][1]; // Text of change.
-      const text = data.replace(pattern_amp, '&amp;').replace(pattern_lt, '&lt;')
-        .replace(pattern_gt, '&gt;').replace(pattern_para, '&para;<br>');
+      const text = data.replace(patternAmp, '&amp;').replace(patternLt, '&lt;')
+        .replace(patternGt, '&gt;').replace(patternPara, '&para;<br>');
       switch (op) {
-        case DIFF_INSERT:
+        case diffMatchPatch.DIFF_INSERT:
           html[x] = '<ins>' + text + '</ins>';
           break;
-        case DIFF_DELETE:
+        case diffMatchPatch.DIFF_DELETE:
           html[x] = '<del>' + text + '</del>';
           break;
-        case DIFF_EQUAL:
+        case diffMatchPatch.DIFF_EQUAL:
           html[x] = '<span>' + text + '</span>';
           break;
       }

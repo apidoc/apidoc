@@ -11,6 +11,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
   },
+  env: {
+    'browser': true,
+    'amd': true,
+  },
   ignorePatterns: ['**/vendor/*.js', '**/vendor/path-to-regexp/*.js'],
   rules: {
     'semi': ['error', 'always'],
