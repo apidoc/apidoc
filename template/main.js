@@ -223,20 +223,20 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
      * @param index where to insert items
      * @return boolean true if any good-looking (i.e. with a group identifier) <h1> tag was found
      */
-  function add_nav (nav, content, index) {
-    let found_level1 = false;
+  function addNav (nav, content, index) {
+    let foundLevel1 = false;
     if (!content) {
-      return found_level1;
+      return foundLevel1;
     }
     const topics = content.match(/<h(1|2).*?>(.+?)<\/h(1|2)>/gi);
     if (topics) {
       topics.forEach(function (entry) {
         const level = entry.substring(2, 3);
         const title = entry.replace(/<.+?>/g, ''); // Remove all HTML tags for the title
-        const entry_tags = entry.match(/id="api-([^\-]+)(?:-(.+))?"/); // Find the group and name in the id property
-        const group = (entry_tags ? entry_tags[1] : null);
-        const name = (entry_tags ? entry_tags[2] : null);
-        if (level == 1 && title && group) {
+        const entryTags = entry.match(/id="api-([^-]+)(?:-(.+))?"/); // Find the group and name in the id property
+        const group = (entryTags ? entryTags[1] : null);
+        const name = (entryTags ? entryTags[2] : null);
+        if (level === '1' && title && group) {
           nav.splice(index, 0, {
             group: group,
             isHeader: true,
@@ -244,9 +244,9 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
             isFixed: true,
           });
           index++;
-          found_level1 = true;
+          foundLevel1 = true;
         }
-        if (level == 2 && title && group && name) {
+        if (level === '2' && title && group && name) {
           nav.splice(index, 0, {
             group: group,
             name: name,
@@ -259,13 +259,14 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
         }
       });
     }
-    return found_level1;
+    return foundLevel1;
   }
 
+  let foundLevel1;
   // Mainmenu Header entry
   if (apiProject.header) {
-    var found_level1 = add_nav(nav, apiProject.header.content, 0); // Add level 1 and 2 titles
-    if (!found_level1) { // If no Level 1 tags were found, make a title
+    foundLevel1 = addNav(nav, apiProject.header.content, 0); // Add level 1 and 2 titles
+    if (!foundLevel1) { // If no Level 1 tags were found, make a title
       nav.unshift({
         group: '_',
         isHeader: true,
@@ -277,10 +278,10 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
   // Mainmenu Footer entry
   if (apiProject.footer) {
-    const last_nav_index = nav.length;
-    var found_level1 = add_nav(nav, apiProject.footer.content, nav.length); // Add level 1 and 2 titles
-    if (!found_level1 && apiProject.footer.title != null) { // If no Level 1 tags were found, make a title
-      nav.splice(last_nav_index, 0, {
+    const lastNavIndex = nav.length;
+    foundLevel1 = addNav(nav, apiProject.footer.content, nav.length); // Add level 1 and 2 titles
+    if (!foundLevel1 && apiProject.footer.title != null) { // If no Level 1 tags were found, make a title
+      nav.splice(lastNavIndex, 0, {
         group: '_footer',
         isHeader: true,
         title: apiProject.footer.title,
@@ -322,7 +323,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   apiGroups.forEach(function (groupEntry) {
     const articles = [];
     let oldName = '';
-    var fields = {};
+    let fields = {};
     let title = groupEntry;
     let description = '';
     articleVersions[groupEntry] = {};
@@ -334,7 +335,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
           // determine versions
           api.forEach(function (versionEntry) {
             if (groupEntry === versionEntry.group && entry.name === versionEntry.name) {
-              if (!articleVersions[entry.group].hasOwnProperty(entry.name)) {
+              if (!Object.prototype.hasOwnProperty.call(articleVersions[entry.group], entry.name)) {
                 articleVersions[entry.group][entry.name] = [];
               }
               articleVersions[entry.group][entry.name].push(versionEntry.version);
@@ -390,7 +391,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     });
 
     // render Section with Articles
-    var fields = {
+    fields = {
       group: groupEntry,
       title: title,
       description: description,
@@ -460,14 +461,14 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
       const paramName = '.' + $(this).attr('name') + '-fields';
       const bodyName = '.' + $(this).attr('name') + '-body';
       const selectName = 'select[name=' + $(this).attr('name') + ']';
-      if ($(this).val() == 'body-json') {
+      if ($(this).val() === 'body-json') {
         $(selectName).val('undefined');
         $(this).val('body-json');
         $(paramName).removeClass('hide');
         $(this).parent().nextAll(paramName).first().addClass('hide');
         $(bodyName).addClass('hide');
         $(this).parent().nextAll(bodyName).first().removeClass('hide');
-      } else if ($(this).val() == 'body-form-data') {
+      } else if ($(this).val() === 'body-form-data') {
         $(selectName).val('undefined');
         $(this).val('body-form-data');
         $(bodyName).addClass('hide');
@@ -485,13 +486,13 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
       const bodyName = '.' + $(this).attr('name') + '-body';
       const select = $(this).next('.' + $(this).attr('name') + '-select').val();
       if ($(this).prop('checked')) {
-        if (select == 'body-json') {
+        if (select === 'body-json') {
           $(this).parent().nextAll(bodyName).first().removeClass('hide');
         } else {
           $(this).parent().nextAll(paramName).first().removeClass('hide');
         }
       } else {
-        if (select == 'body-json') {
+        if (select === 'body-json') {
           $(this).parent().nextAll(bodyName).first().addClass('hide');
         } else {
           $(this).parent().nextAll(paramName).first().addClass('hide');
@@ -623,7 +624,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   const options = {
     valueNames: ['nav-list-item', 'nav-list-url-item'],
   };
-  const endpointsList = new List('scrollingNav', options);
+  const endpointsList = new List('scrollingNav', options); // eslint-disable-line no-undef
 
   /**
      * Set initial focus to search input
@@ -668,14 +669,12 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
     if (compareVersion === selectedVersion) { return; }
 
-    if (!compareVersion && version == selectedVersion) { return; }
+    if (!compareVersion && version === selectedVersion) { return; }
 
-    if (compareVersion && articleVersions[group][name][0] === selectedVersion || version === selectedVersion) {
+    if ((compareVersion && (articleVersions[group][name][0] === selectedVersion)) || version === selectedVersion) {
       // the version of the entry is set to the highest version (reset)
       resetArticle(group, name, version);
     } else {
-      const $compareToArticle = $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + selectedVersion + '\']');
-
       let sourceEntry = {};
       let compareEntry = {};
       $.each(apiByGroupAndName[group][name], function (index, entry) {
@@ -697,7 +696,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
       fields.compare.id = fields.compare.group + '-' + fields.compare.name + '-' + fields.compare.version;
       fields.compare.id = fields.compare.id.replace(/\./g, '_');
 
-      var entry = sourceEntry;
+      let entry = sourceEntry;
       if (entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }
@@ -706,7 +705,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
       if (entry.info && entry.info.fields) { fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields); }
 
-      var entry = compareEntry;
+      entry = compareEntry;
       if (fields._hasTypeInParameterFields !== true && entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (fields._hasTypeInErrorFields !== true && entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }
@@ -834,11 +833,11 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
         elements.forEach(function (element) {
           const parts = element.split(splitBy);
           const key = parts[0]; // reference keep for sorting
-          if (key == name || parts[1] == name) { results.push(element); }
+          if (key === name || parts[1] === name) { results.push(element); }
         });
       } else {
         elements.forEach(function (key) {
-          if (key == name) { results.push(name); }
+          if (key === name) { results.push(name); }
         });
       }
     });
