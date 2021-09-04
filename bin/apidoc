@@ -127,14 +127,15 @@ const options = {
 
 if (argv.watch) {
   nodemon({ watch: options.src });
-  console.log('Watching mode is Activated\nListening for changes...');
+  console.log('Watch mode enabled\nListening for changes on input files...');
   nodemon.on('quit', function () {
-    console.log('ApiDoc has exited');
+    console.log('\nProcess terminated.');
     process.exit();
   }).on('restart', function () {
-    console.log('Changes detected, Rebuilding the docs...');
+    console.log('Changes detected, rebuilding...');
     apidoc.createDoc(options);
-    console.log('Listening for changes...');
+    const d = new Date();
+    console.log(`Build finished at ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`);
   });
 }
 
