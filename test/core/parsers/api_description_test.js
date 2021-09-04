@@ -4,7 +4,7 @@
 const assert = require('assert');
 
 // lib modules
-const parser = require('../../lib/core/parsers/api_description');
+const parser = require('../../../lib/core/parsers/api_description');
 
 describe('Parser: apiDescription', function () {
   // TODO: Add 1.000 more possible cases ;-)
