@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm i
-      - run: npx mocha --colors test/**/*_test.js
+      - run: npm run test
   run-eslint:
     runs-on: ubuntu-latest
     steps:
