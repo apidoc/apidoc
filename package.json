@@ -17,6 +17,7 @@
   },
   "scripts": {
     "test": "mocha --colors --no-package --no-config 'test/**/*_test.js'",
+    "regenerate-fixtures": "./bin/apidoc -i example -o test/apidoc/fixtures -t test/template && ./bin/apidoc -m es -i example -o test/apidoc/fixtures-es -t test/template && ./bin/apidoc -m commonJS -i example -o test/apidoc/fixtures-commonJS -t test/template && ./bin/apidoc -c apidoc.json -i example -o test/apidoc/fixtures-withconfig -t test/template",
     "eslint": "./node_modules/.bin/eslint lib bin/apidoc template",
     "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
     "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd",

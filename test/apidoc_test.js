@@ -46,24 +46,24 @@ function testFullExample (config, mode) {
     isJs = config.substr(-3) === '.js';
     isConfigDir = !isJson && !isJs;
   }
-  const configFilePath = isConfigDir ? path.join(config, 'apidoc.json') : config;
+  //const configFilePath = isConfigDir ? path.join(config, 'apidoc.json') : config;
 
   // tests will happen in this directory
   const outputPath = './tmp';
-  const fixturePath = './test/apidoc/fixtures';
+  let fixturePath = './test/apidoc/fixtures';
 
-  // es and commonJS modes will get different fixture files in js
-  let extension = '';
+  // adjust fixture path for different tests
   if (mode) {
-    extension =  '.' + mode;
+    fixturePath += '-' + mode;
   }
-  const apiData = 'api_data' + extension + '.js';
-  const apiProject = 'api_project' + extension + '.js';
+  if (config) {
+    fixturePath += '-withconfig';
+  }
 
   const fixtureFiles = [
-    apiData,
+    'api_data.js',
     'api_data.json',
-    apiProject,
+    'api_project.js',
     'api_project.json',
     'index.html',
   ];
@@ -106,23 +106,15 @@ function testFullExample (config, mode) {
   // compare
   it('created files should equal to fixtures', function (done) {
     fixtureFiles.forEach(function (name) {
-      // with a config the fixture name is not the same
-      let configext = '';
-      if (config) {
-        configext = 'withconfig';
-      }
-      const outputFixName = config ? name.replace('.js', '.withconfig.js') : name;
-      let fixtureContent = fs.readFileSync(fixturePath + '/' + outputFixName, 'utf8');
-
-      const outputName = mode ? name.replace('.' + mode, '') : name;
-      let createdContent = fs.readFileSync('./tmp/' + outputName, 'utf8');
+      let fixtureContent = fs.readFileSync(path.join(fixturePath, name), 'utf8');
+      let createdContent = fs.readFileSync(path.join(outputPath,  name), 'utf8');
 
       const fixtureLines = fixtureContent.split(/\r?\n|\r/);
       const createdLines = createdContent.split(/\r?\n|\r/);
 
       // lines count should be the same
       if (fixtureLines.length !== createdLines.length) {
-        throw new Error('File ./tmp/' + outputName + ' not equals to ' + fixturePath + '/' + name);
+        throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name);
       }
 
       // now go over each line and compare them
@@ -132,7 +124,7 @@ function testFullExample (config, mode) {
           continue;
         }
         if (fixtureLines[lineNumber] !== createdLines[lineNumber]) {
-          throw new Error('File ./tmp/' + outputName + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
+          throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
                       '\nfixture: ' + fixtureLines[lineNumber] +
                       '\ncreated: ' + createdLines[lineNumber],
           );

@@ -1,4 +1,4 @@
-define({ "api": [
+export default { "api": [
   {
     "type": "delete",
     "url": "/user/:id",
@@ -666,4 +666,4 @@ define({ "api": [
       }
     ]
   }
-] });
+] };

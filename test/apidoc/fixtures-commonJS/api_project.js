@@ -1,4 +1,4 @@
-{
+module.exports = {
   "name": "AcmeCorp Api documentation",
   "version": "0.3.0",
   "description": "Documentation for the REST api access provided at AcmeCorp",
@@ -22,8 +22,8 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-09-04T07:27:04.092Z",
+    "time": "2021-09-04T07:27:04.464Z",
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }
-}
+};

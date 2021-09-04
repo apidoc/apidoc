@@ -1,4 +1,4 @@
-define({ "api": [
+module.exports = { "api": [
   {
     "type": "delete",
     "url": "/user/:id",
@@ -666,4 +666,4 @@ define({ "api": [
       }
     ]
   }
-] });
+] };
