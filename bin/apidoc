@@ -94,7 +94,7 @@ function transformToObject (filters) {
   return result;
 }
 
-const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$']
+const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'];
 
 const options = {
   excludeFilters: ['apidoc\\.config\\.js$'].concat(typeof argv.excludeFilters !== 'undefined' ? argv.excludeFilters : []),
