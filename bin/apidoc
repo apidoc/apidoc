@@ -86,7 +86,7 @@ function collect (value, acc) {
 function transformToObject (filters) {
   if (!filters) { return; }
 
-  if (typeof (filters) === 'string') { filters = [filters]; }
+  if (typeof filters === 'string') { filters = [filters]; }
 
   const result = {};
   filters.forEach(function (filter) {

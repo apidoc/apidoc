@@ -17,8 +17,9 @@ module.exports = {
   },
   ignorePatterns: ['**/vendor/*.js', '**/vendor/path-to-regexp/*.js'],
   rules: {
-    'semi': ['error', 'always'],
-    'quotes': ['error', 'single'],
     'comma-dangle': ['error', 'always-multiline'],
+    'no-extra-parens': ['error', 'all'],
+    'quotes': ['error', 'single'],
+    'semi': ['error', 'always'],
   }
 }
