@@ -1,7 +1,6 @@
-doc/
-docker-example/
 node_modules/
-tmp/
 npm-debug.log
+# used in tests
+tmp/
 .idea
 test/apidoc/fixtures*/vendor/
