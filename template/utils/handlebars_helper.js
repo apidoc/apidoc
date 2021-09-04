@@ -75,7 +75,7 @@ define([
      */
   Handlebars.registerHelper('assign', function (name) {
     if (arguments.length > 0) {
-      const type = typeof (arguments[1]);
+      const type = typeof arguments[1];
       let arg = null;
       if (type === 'string' || type === 'number' || type === 'boolean') arg = arguments[1];
       Handlebars.registerHelper(name, function () { return arg; });
@@ -134,7 +134,7 @@ define([
      *
      */
   Handlebars.registerHelper('toLowerCase', function (value) {
-    return (value && typeof value === 'string') ? value.toLowerCase() : '';
+    return value && typeof value === 'string' ? value.toLowerCase() : '';
   });
 
   /**
@@ -221,20 +221,20 @@ define([
             if (strBody[element.field.split('[')[0]] === undefined) {
               strBody[element.field.split('[')[0]] = {};
             }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = (element.defaultValue || '');
+            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || '';
             break;
           }
-          strBody[element.field] = (element.defaultValue || '');
+          strBody[element.field] = element.defaultValue || '';
           break;
         case 'number':
           if (element.field.includes('[')) {
             if (strBody[element.field.split('[')[0]] === undefined) {
               strBody[element.field.split('[')[0]] = {};
             }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = (element.defaultValue || 0);
+            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || 0;
             break;
           }
-          strBody[element.field] = (element.defaultValue || 0);
+          strBody[element.field] = element.defaultValue || 0;
           break;
         case 'object':
           if (strBody[element.field] === undefined) {
@@ -342,7 +342,7 @@ define([
     let ret = '';
     const length = dataList.length;
     for (const index in dataList) {
-      if (index === (length - 1)) { dataList[index]._last = true; }
+      if (index === length - 1) { dataList[index]._last = true; }
       ret = ret + options.fn(dataList[index]);
     }
     return ret;
