@@ -80,7 +80,7 @@ function testFullExample (config, mode) {
 
   // create
   it('should create example in ' + outputPath, function (done) {
-    let cmd = 'node ./bin/apidoc ' + (config ? ('-c ' + config) : '') + ' -i ' + 'example -o ' + outputPath + ' -t test/template/ --silent';
+    let cmd = 'node ./bin/apidoc ' + (config ? ('-c ' + config) : '') + ' -i ' + 'example -o ' + outputPath + ' -t test/template/ -q';
     if (mode) {
       cmd += ' -m ' + mode;
     }

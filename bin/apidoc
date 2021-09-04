@@ -51,7 +51,7 @@ program
 
   .option('--color', 'Turn off log color.', true)
 
-  .option('--debug', 'Show debug messages.', false)
+  .option('-d, --debug', 'Show debug messages.', false)
 
   .option('--definitions', 'Include definitions file rather than copying definitions.', false)
 
@@ -85,7 +85,7 @@ program
 
   .option('-p, --private', 'Include private APIs in output.', false)
 
-  .option('--silent', 'Turn all output off.', false)
+  .option('-q, --quiet', 'Turn all output off.', false)
 
   .option('--simulate', 'Execute but not write any file.', false)
 
@@ -121,7 +121,7 @@ const options = {
   languages: transformToObject(argv.parseLanguages),
   parsers: transformToObject(argv.parseParsers),
   workers: transformToObject(argv.parseWorkers),
-  silent: argv.silent,
+  silent: argv.quiet,
   simulate: argv.simulate,
   markdown: argv.markdown,
   lineEnding: argv.lineEnding,

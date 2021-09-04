@@ -44,7 +44,7 @@ describe('apiDoc custom markdown parser', function () {
 
   // create
   it('should create example in ' + outputPath, function (done) {
-    const cmd = 'node ./bin/apidoc -i ' + inputPath + ' -o ' + outputPath + ' -t test/template/ --markdown ' + markdownParser + ' --silent';
+    const cmd = 'node ./bin/apidoc -i ' + inputPath + ' -o ' + outputPath + ' -t test/template/ --markdown ' + markdownParser + ' -q';
     exec(cmd, function (err, stdout, stderr) {
       if (err) { throw err; }
 
