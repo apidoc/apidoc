@@ -49,7 +49,7 @@ program.version(pkgjson.version);
 program
   .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
 
-  .option('--color', 'Turn off log color.', true)
+  .option('--no-color', 'Turn off log color.', false)
 
   .option('-d, --debug', 'Show debug messages.', false)
 

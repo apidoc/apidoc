@@ -5,6 +5,7 @@
 #### BREAKING CHANGES
 
 * --silent renamed to --quiet or -q for short
+* --color renamed to --no-color to disable color in log output
 
 #### FIXED
 
@@ -16,6 +17,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 
 * Fix non working sortFields function (fix #968)
 * Fix syntax highlighting for markdown parsed text
+* Fix color in logs was not showing since upgrade to winston 3
 
 #### ADDED
 
