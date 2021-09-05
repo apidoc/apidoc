@@ -33,8 +33,15 @@
     "restful"
   ],
   "engines": {
-    "node": ">= 0.10.0"
+    "node": "^14.0.0"
   },
+  "os": [
+    "darwin",
+    "freebsd",
+    "linux",
+    "openbsd",
+    "win32"
+  ],
   "dependencies": {
     "bootstrap": "3.4.1",
     "commander": "^8.1.0",
