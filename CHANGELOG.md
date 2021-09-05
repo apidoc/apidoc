@@ -15,12 +15,12 @@
 Note that the option useHostUrlAsSampleUrl has no longer any effect and can be safely removed. Use a value of `true` for `sampleUrl` to get the same behavior.
 
 * Fix non working sortFields function (fix #968)
+* Fix syntax highlighting for markdown parsed text
 
 #### ADDED
 
 * Add request method to compare template (#986 by @klickagent)
 * Add some shorthand options, see apidoc -h
-* Add syntax highlighting to markdown parser
 
 #### ENHANCEMENTS
 

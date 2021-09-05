@@ -40,7 +40,6 @@
     "commander": "^8.1.0",
     "fs-extra": "^9.0.1",
     "handlebars": "^4.7.7",
-    "highlight.js": "^11.2.0",
     "iconv-lite": "^0.6.3",
     "jquery": "3.5.1",
     "klaw-sync": "^6.0.0",
