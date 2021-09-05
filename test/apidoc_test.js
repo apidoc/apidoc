@@ -23,7 +23,7 @@ describe('apiDoc full example with no config path for commonJS output', function
 });
 
 describe('apiDoc full example with config path for .json file', function () {
-  testFullExample('apidoc.json');
+  testFullExample('example/apidoc.json');
 });
 
 /* TODO

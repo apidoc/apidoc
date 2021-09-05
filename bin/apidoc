@@ -73,7 +73,7 @@ program
 
   .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
 
-  .option('-o, --output <output>', 'Output dirname.', './doc/')
+  .option('-o, --output <output>', 'Output dirname.', 'doc/')
 
   .option('--parse', 'Parse only the files and return the data, no file creation.', false)
 

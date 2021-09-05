@@ -114,7 +114,12 @@ define({ "api": [
       ]
     },
     "filename": "example.js",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -287,7 +292,12 @@ define({ "api": [
       ]
     },
     "filename": "example.js",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -350,7 +360,12 @@ define({ "api": [
       }
     },
     "filename": "_apidoc.js",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ]
   },
   {
     "type": "get",
@@ -413,7 +428,12 @@ define({ "api": [
       }
     },
     "filename": "_apidoc.js",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ]
   },
   {
     "type": "post",
@@ -461,6 +481,11 @@ define({ "api": [
     },
     "filename": "example.js",
     "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user"
+      }
+    ],
     "error": {
       "fields": {
         "Error 4xx": [
@@ -528,6 +553,11 @@ define({ "api": [
     },
     "filename": "_apidoc.js",
     "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user"
+      }
+    ],
     "error": {
       "fields": {
         "Error 4xx": [
@@ -589,6 +619,11 @@ define({ "api": [
     },
     "filename": "example.js",
     "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ],
     "error": {
       "fields": {
         "Error 4xx": [
@@ -624,6 +659,11 @@ define({ "api": [
     "group": "User",
     "description": "<p>This is here to have a long name in the left menu.</p>",
     "filename": "example.js",
-    "groupTitle": "User"
+    "groupTitle": "User",
+    "sampleRequest": [
+      {
+        "url": "https://apidoc.free.beeceptor.com/user/:id"
+      }
+    ]
   }
 ] });
