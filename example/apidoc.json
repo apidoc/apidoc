@@ -5,6 +5,10 @@
   "title": "Custom apiDoc browser title",
   "url" : "https://api.example.com",
   "sampleUrl": "https://apidoc.free.beeceptor.com",
+  "output": "/tmp/apidoc-output",
+  "input": [
+    "example"
+  ],
   "header": {
     "title": "Introduction",
     "filename": "header.md"

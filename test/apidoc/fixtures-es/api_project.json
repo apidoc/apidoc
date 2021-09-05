@@ -5,6 +5,10 @@
   "title": "Custom apiDoc browser title",
   "url": "https://api.example.com",
   "sampleUrl": "https://apidoc.free.beeceptor.com",
+  "output": "/tmp/apidoc-output",
+  "input": [
+    "example"
+  ],
   "header": {
     "title": "Introduction",
     "content": "<h1>Introduction</h1>\n<p>This example documentation contains all the possible configuration options for apidoc.</p>\n<p>To generate this documentation:</p>\n<pre><code class=\"language-bash\">git clone https://github.com/apidoc/apidoc && cd apidoc\nnpm install --prod\n./bin/apidoc -i example -o /tmp/doc\n$BROWSER /tmp/doc\n</code></pre>\n<p>Note that this text is from the file &quot;header.md&quot;.</p>\n<h2><span id=\"api-example-for-a-submenu-entry\">Adding a header</span></h2>\n<p>In your projects &quot;package.json&quot; you can set &quot;apidoc.header&quot; with a title and a filename to include this file into your documentation.</p>\n<p>This example configuration attempts to integrate &quot;header.md&quot; and &quot;footer.md&quot;.</p>\n<pre><code class=\"language-json\">{\n  \"name\": \"example\",\n  \"version\": \"0.3.0\",\n  \"description\": \"apidoc example project.\",\n  \"apidoc\": {\n    \"header\": {\n      \"title\": \"Introduction\",\n      \"filename\": \"header.md\"\n    },\n    \"footer\": {\n      \"title\": \"Best practices\",\n      \"filename\": \"footer.md\"\n    }\n  }\n}\n</code></pre>\n"
@@ -22,7 +26,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-09-05T05:45:54.898Z",
+    "time": "2021-09-05T17:02:00.809Z",
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }
