@@ -67,6 +67,8 @@ program
 
   .option('--line-ending <line-ending>', 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.', os.EOL)
 
+  .option('--log-format <format>', 'Change log format. Allowed values: simple, json.', 'simple')
+
   .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
 
   .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
@@ -128,6 +130,7 @@ const options = {
   encoding: argv.encoding,
   copyDefinitions: !argv.definitions,
   filterBy: argv.filterBy,
+  logFormat: argv.logFormat,
 };
 
 if (options.debug) {

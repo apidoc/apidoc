@@ -23,13 +23,14 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 
 * Add request method to compare template (#986 by @klickagent)
 * Add some shorthand options, see apidoc -h
+* Add --log-format option for json output (default is not json)
 
 #### ENHANCEMENTS
 
+* HUGE CLEANUP OF THE CODEBASE
 * Merge apidoc-core back into the apidoc repository. The apidoc-core repository is now read-only.
 * Add .eslintrc.js and enforce coding style everywhere
-* Huge cleanup of the codebase
-* Update many dependencies
+* Update many dependencies to their latest version
 * Make sidenav wider and template more responsive (fix #851)
 
 ### 0.29.0
