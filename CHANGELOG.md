@@ -6,6 +6,7 @@
 
 * --silent renamed to --quiet or -q for short
 * --color renamed to --no-color to disable color in log output
+* --parse was deleted because it is the same as --simulate
 
 #### FIXED
 

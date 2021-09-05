@@ -75,8 +75,6 @@ program
 
   .option('-o, --output <output>', 'Output dirname.', 'doc/')
 
-  .option('--parse', 'Parse only the files and return the data, no file creation.', false)
-
   .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename', [])
 
   .option('--parse-languages <parse-languages...>', 'Optional user defined languages. Format name=filename', [])
@@ -89,7 +87,7 @@ program
 
   .option('-q, --quiet', 'Turn all output off.', false)
 
-  .option('--simulate', 'Execute but not write any file.', false)
+  .option('--simulate', 'Execute but do not write any file.', false)
 
   .option('-S, --single', 'Output to single file.', false)
 
@@ -117,7 +115,6 @@ const options = {
   verbose: argv.verbose,
   single: argv.single,
   debug: argv.debug,
-  parse: argv.parse,
   colorize: argv.color,
   filters: transformToObject(argv.parseFilters),
   languages: transformToObject(argv.parseLanguages),
