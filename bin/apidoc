@@ -97,7 +97,7 @@ program
 
   .option('-v, --verbose', 'Verbose output.', false)
 
-  .option('-w, --watch', 'Watch input files for changes to rebuild the docs.')
+  .option('-w, --watch', 'Watch input files for changes to rebuild the docs.', false)
 
   .parse(process.argv);
 
