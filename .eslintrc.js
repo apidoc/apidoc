@@ -14,6 +14,7 @@ module.exports = {
   env: {
     'browser': true,
     'amd': true,
+    'es6': true,
   },
   ignorePatterns: ['**/vendor/*.js', '**/vendor/path-to-regexp/*.js'],
   rules: {
