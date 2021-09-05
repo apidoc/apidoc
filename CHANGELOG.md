@@ -20,6 +20,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 
 * Add request method to compare template (#986 by @klickagent)
 * Add some shorthand options, see apidoc -h
+* Add syntax highlighting to markdown parser
 
 #### ENHANCEMENTS
 

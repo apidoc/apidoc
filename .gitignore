@@ -4,3 +4,4 @@ npm-debug.log
 tmp/
 .idea
 test/apidoc/fixtures*/vendor/
+test/apidoc/fixtures*/css/
