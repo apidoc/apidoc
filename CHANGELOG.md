@@ -1,6 +1,6 @@
 # apiDoc Changelog
 
-### 0.30.0
+### 0.50.0
 
 #### BREAKING CHANGES
 
@@ -25,6 +25,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Add request method to compare template (#986 by @klickagent)
 * Add some shorthand options, see apidoc -h
 * Add --log-format option for json output (default is not json)
+* Add ascii art in verbose mode
 
 #### ENHANCEMENTS
 

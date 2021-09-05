@@ -123,6 +123,9 @@ function testFullExample (config, mode) {
         if (createdLines[lineNumber].trim().startsWith('"time"')) {
           continue;
         }
+        if (createdLines[lineNumber].trim().startsWith('"version"')) {
+          continue;
+        }
         if (fixtureLines[lineNumber] !== createdLines[lineNumber]) {
           throw new Error('File ./tmp/' + name + ' not equals to ' + fixturePath + '/' + name + ' in line ' + (lineNumber + 1) +
                       '\nfixture: ' + fixtureLines[lineNumber] +
