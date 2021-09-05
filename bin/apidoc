@@ -11,15 +11,14 @@
  * Licensed under the MIT license.
  */
 
-const apidoc = require('../lib/index');
-const path = require('path');
 const os = require('os');
-
+const path = require('path');
 // library for watch mode
 const nodemon = require('nodemon');
 // library to parse arguments/options
 const { Command } = require('commander');
-const program = new Command();
+
+const apidoc = require(path.join('..', 'lib', 'index'));
 
 /**
  * Transform parameters to object
@@ -42,8 +41,11 @@ function transformToObject (filters) {
   return result;
 }
 
+// init program
+const program = new Command();
+
 // set the version from package.json so it is available with --version
-const pkgjson = require('../package.json');
+const pkgjson = require(path.join('..', 'package.json'));
 program.version(pkgjson.version);
 
 program
@@ -133,6 +135,19 @@ const options = {
 if (options.debug) {
   console.debug('[debug] Parsed options:\n');
   console.debug(options);
+}
+
+// display ascii art in verbose mode (but not for json format)
+if (options.verbose && options.logFormat === 'simple') {
+  const asciiArt = `
+              _     _
+   __ _ _ __ (_) __| | ___   ___
+  / _' | '_ \\| |/ _' |/ _ \\ / __|
+ | (_| | |_) | | (_| | (_) | (__
+  \\__,_| .__/|_|\\__,_|\\___/ \\___|
+       |_|                v${pkgjson.version}
+   `;
+  console.info(asciiArt);
 }
 
 // Watch mode (-w/--watch)
