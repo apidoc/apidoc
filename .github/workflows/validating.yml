@@ -6,12 +6,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-      - run: npm i
-      - run: npx mocha --colors test/
-  run-jshint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - run: npm i
-      - run: npm run jshint --verbose
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+      - name: Run linter
+        run: npm run eslint

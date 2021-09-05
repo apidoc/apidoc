@@ -2,7 +2,7 @@
  * Content
  * ------------------------------------------------------------------------------------------ */
 body {
-  max-width: 1280px;
+  max-width: 90%;
 }
 
 body, p, a, div, th, td {
@@ -30,7 +30,7 @@ td.code {
 #content {
   padding-top: 16px;
   z-Index: -1;
-  margin-left: 270px;
+  margin-left: 18%;
 }
 
 p {
@@ -205,7 +205,7 @@ td {
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
 .sidenav {
-  width: 228px;
+  width: 15%;
   margin: 0;
   padding: 0 20px 20px 20px;
   position: fixed;
@@ -220,7 +220,6 @@ td {
 
 .sidenav > li > a {
   display: block;
-  width: 192px;
   margin: 0;
   padding: 2px 11px;
   border: 0;
@@ -265,7 +264,7 @@ td {
  * Side nav search
  * ------------------------------------------------------------------------------------------ */
 .sidenav-search {
-  width: 228px;
+  width: 15%;
   left: 0px;
   position: fixed;
   padding: 16px 20px 10px 20px;

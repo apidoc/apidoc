@@ -2,13 +2,36 @@
 
 ### 0.30.0
 
+#### BREAKING CHANGES
+
+* --silent renamed to --quiet or -q for short
+* --color renamed to --no-color to disable color in log output
+
+#### FIXED
+
 * Fix sampleUrl config option behavior:
   - if it is absent or `false`, no sample block will be generated
   - if it is `true`, the current page location will be used
   - if it is an url, that will be used
 Note that the option useHostUrlAsSampleUrl has no longer any effect and can be safely removed. Use a value of `true` for `sampleUrl` to get the same behavior.
 
+* Fix non working sortFields function (fix #968)
+* Fix syntax highlighting for markdown parsed text
+* Fix color in logs was not showing since upgrade to winston 3
+
+#### ADDED
+
 * Add request method to compare template (#986 by @klickagent)
+* Add some shorthand options, see apidoc -h
+* Add --log-format option for json output (default is not json)
+
+#### ENHANCEMENTS
+
+* HUGE CLEANUP OF THE CODEBASE
+* Merge apidoc-core back into the apidoc repository. The apidoc-core repository is now read-only.
+* Add .eslintrc.js and enforce coding style everywhere
+* Update many dependencies to their latest version
+* Make sidenav wider and template more responsive (fix #851)
 
 ### 0.29.0
 * Fix broken handlebar

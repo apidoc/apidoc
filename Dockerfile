@@ -1,5 +1,5 @@
 # Dockerfile for apidoc
-FROM node:12-alpine
+FROM node:14-alpine
 
 LABEL org.label-schema.name="apidoc" \
     org.label-schema.description="apidoc Docker image" \

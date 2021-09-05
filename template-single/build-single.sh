@@ -52,12 +52,12 @@ EOF
 ) > "$API_PROJECT"
 
 (
+cat '../node_modules/bootstrap/dist/css/bootstrap.min.css' > "$API_STYLE"
 cat <<EOF
-@import url("$TEMPLATE/vendor/bootstrap.min.css");
 @import url("$TEMPLATE/vendor/prism.css");
 @import url("$TEMPLATE/css/style.css");
 EOF
-) > "$API_STYLE"
+) >> "$API_STYLE"
 
 # generate r.js config
 (
@@ -69,27 +69,26 @@ cat <<EOF
   optimize: 'none',
 
   paths: {
-    requirejs: './vendor/require.min',
-    polyfill: './vendor/polyfill',
-    bootstrap: './vendor/bootstrap.min',
+    requirejs: '../node_modules/requirejs/require',
+    bootstrap: '../node_modules/bootstrap/dist/js/bootstrap.min',
     diffMatchPatch: './vendor/diff_match_patch.min',
-    handlebars: './vendor/handlebars.min',
+    handlebars: '../node_modules/handlebars/dist/handlebars.min',
     handlebarsExtended: './utils/handlebars_helper',
-    jquery: './vendor/jquery.min',
+    jquery: '../node_modules/jquery/dist/jquery.min',
     locales: './locales/locale',
     lodash: './vendor/lodash.custom.min',
     pathToRegexp: './vendor/path-to-regexp/index',
     prismjs: './vendor/prism',
     semver: './vendor/semver.min',
     utilsSampleRequest: './utils/send_sample_request',
-    webfontloader: './vendor/webfontloader',
+    webfontloader: '../node_modules/webfontloader/webfontloader',
     list: './vendor/list.min',
     apiData: '${API_DATA:0:-3}',
     apiProject: '${API_PROJECT:0:-3}',
   },
   shim: {
     jquery: {
-      deps: ['polyfill', 'requirejs']
+      deps: ['requirejs']
     },
     bootstrap: {
       deps: ['jquery']

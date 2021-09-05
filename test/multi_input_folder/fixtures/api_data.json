@@ -26,7 +26,7 @@
         ]
       }
     },
-    "filename": "src/test_api.js",
+    "filename": "test_api.js",
     "groupTitle": "Authentication",
     "error": {
       "fields": {
@@ -56,7 +56,7 @@
     "description": "<p>Get the subscription information from an authenticated user.</p>",
     "group": "Authentication",
     "name": "GetSubscriptionInfo",
-    "filename": "src/test_api.js",
+    "filename": "test_api.js",
     "groupTitle": "Authentication",
     "header": {
       "fields": {
@@ -119,7 +119,7 @@
     },
     "group": "Authentication",
     "name": "GetSubscriptionInfo",
-    "filename": "folder2/History.js",
+    "filename": "History.js",
     "groupTitle": "Authentication",
     "error": {
       "fields": {

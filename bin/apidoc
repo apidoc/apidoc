@@ -4,79 +4,22 @@
 
 /*
  * apidoc
- * http://apidocjs.com
+ * https://apidocjs.com
  *
- * Copyright (c) 2013-2016 inveris OHG
+ * Copyright (c) 2013 inveris OHG
  * Author Peter Rottmann <rottmann@inveris.de>
  * Licensed under the MIT license.
  */
 
-var path   = require('path');
-var cmd    = require('commander');
-var nodemon = require('nodemon');
-var apidoc = require('../lib/index');
+const apidoc = require('../lib/index');
+const path = require('path');
+const os = require('os');
 
-var argv = cmd
-    .option('-f --file-filters <file-filters>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).', collect, [])
-
-    .option('-e, --exclude-filters <exclude-filters>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', collect, [])
-
-    .option('-i, --input <input>',  'Input/source dirname.', collect, [])
-
-    .option('-o, --output <output>', 'Output dirname.', './doc/')
-
-    .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', 'amd')
-
-    .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
-
-    .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
-
-    .option('--definitions', 'Include definitions file rather than copying definitions.', false)
-
-    .option('-p, --private', 'Include private APIs in output.', false)
-
-    .option('-v, --verbose', 'Verbose debug output.', false)
-
-    .option('--debug', 'Show debug messages.', false)
-
-    .option('--color', 'Turn off log color.', true)
-
-    .option('--parse', 'Parse only the files and return the data, no file creation.', false)
-
-    .option('--parse-filters <parse-filters>', 'Optional user defined filters. Format name=filename', collect, [])
-    .option('--parse-languages <parse-languages>', 'Optional user defined languages. Format name=filename', collect, [])
-    .option('--parse-parsers <parse-parsers>', 'Optional user defined parsers. Format name=filename', collect, [])
-    .option('--parse-workers <parse-workers>', 'Optional user defined workers. Format name=filename', collect, [])
-
-    .option('--silent', 'Turn all output off.', false)
-
-    .option('--single', 'Output to single file.', false)
-
-    .option('--simulate', 'Execute but not write any file.', false)
-
-    .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
-
-    .option('--line-ending <line-ending>', 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.')
-
-    .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
-
-    .option('--filter-by <tag-filter=value>', 'Filter documentation by tag')
-
-    .option('--watch', 'Watch the Input/Source dirname for changes to rebuild the docs')
-
-    .parse(process.argv)
-;
-
-/**
- * Collect options into an array
- * @param {String} value
- * @param {String[]} acc
- * @returns {String[]}
- */
-function collect(value, acc) {
-    acc.push(value);
-    return acc;
-}
+// library for watch mode
+const nodemon = require('nodemon');
+// library to parse arguments/options
+const { Command } = require('commander');
+const program = new Command();
 
 /**
  * Transform parameters to object
@@ -84,64 +27,134 @@ function collect(value, acc) {
  * @param {String|String[]} filters
  * @returns {Object}
  */
-function transformToObject(filters) {
-    if ( ! filters)
-        return;
+function transformToObject (filters) {
+  if (!filters) { return; }
 
-    if (typeof(filters) === 'string')
-        filters = [ filters ];
+  if (typeof filters === 'string') { filters = [filters]; }
 
-  var result = {};
-  filters.forEach(function(filter) {
-    var splits = filter.split('=');
+  const result = {};
+  filters.forEach(function (filter) {
+    const splits = filter.split('=');
     if (splits.length === 2) {
-      var obj = {};
       result[splits[0]] = path.resolve(splits[1], '');
     }
   });
   return result;
 }
 
-var options = {
-    excludeFilters: ['apidoc\\.config\\.js$'].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
-    includeFilters: argv.fileFilters.length ? argv.fileFilters : ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'],
-    src           : argv.input.length ? argv.input : ['./'],
-    dest          : argv.output,
-    mode          : argv.mode,
-    template      : argv.template,
-    config        : argv.config,
-    apiprivate    : argv.private,
-    verbose       : argv.verbose,
-    single        : argv.single,
-    debug         : argv.debug,
-    parse         : argv.parse,
-    colorize      : argv.color,
-    filters       : transformToObject(argv.parseFilters),
-    languages     : transformToObject(argv.parseLanguages),
-    parsers       : transformToObject(argv.parseParsers),
-    workers       : transformToObject(argv.parseWorkers),
-    silent        : argv.silent,
-    simulate      : argv.simulate,
-    markdown      : argv.markdown,
-    lineEnding    : argv.lineEnding,
-    encoding      : argv.encoding,
-    copyDefinitions: !argv.definitions,
-    filterBy      : argv.filterBy,
+// set the version from package.json so it is available with --version
+const pkgjson = require('../package.json');
+program.version(pkgjson.version);
+
+program
+  .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
+
+  .option('--no-color', 'Turn off log color.', false)
+
+  .option('-d, --debug', 'Show debug messages.', false)
+
+  .option('--definitions', 'Include definitions file rather than copying definitions.', false)
+
+  .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
+
+  .option('-e, --exclude-filters <exclude-filters...>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', [])
+
+  .option('-f --file-filters <file-filters...>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).', [])
+
+  .option('--filter-by <tag-filter=value>', 'Filter documentation by tag', '')
+
+  .option('-i, --input <input...>', 'Input/source dirname.', ['./src'])
+
+  .option('--line-ending <line-ending>', 'Turn off autodetect line-ending. Allowed values: LF, CR, CRLF.', os.EOL)
+
+  .option('--log-format <format>', 'Change log format. Allowed values: simple, json.', 'simple')
+
+  .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
+
+  .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
+
+  .option('-o, --output <output>', 'Output dirname.', './doc/')
+
+  .option('--parse', 'Parse only the files and return the data, no file creation.', false)
+
+  .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename', [])
+
+  .option('--parse-languages <parse-languages...>', 'Optional user defined languages. Format name=filename', [])
+
+  .option('--parse-parsers <parse-parsers...>', 'Optional user defined parsers. Format name=filename', [])
+
+  .option('--parse-workers <parse-workers...>', 'Optional user defined workers. Format name=filename', [])
+
+  .option('-p, --private', 'Include private APIs in output.', false)
+
+  .option('-q, --quiet', 'Turn all output off.', false)
+
+  .option('--simulate', 'Execute but not write any file.', false)
+
+  .option('-S, --single', 'Output to single file.', false)
+
+  .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
+
+  .option('-v, --verbose', 'Verbose output.', false)
+
+  .option('-w, --watch', 'Watch input files for changes to rebuild the docs.', false)
+
+  .parse(process.argv);
+
+const argv = program.opts();
+
+const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'];
+
+const options = {
+  excludeFilters: [/apidoc\.config\.js$/].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
+  includeFilters: argv.fileFilters.length ? argv.fileFilters : defaultIncludeFilters,
+  src: argv.input,
+  dest: argv.output,
+  mode: argv.mode,
+  template: argv.template,
+  config: argv.config,
+  apiprivate: argv.private,
+  verbose: argv.verbose,
+  single: argv.single,
+  debug: argv.debug,
+  parse: argv.parse,
+  colorize: argv.color,
+  filters: transformToObject(argv.parseFilters),
+  languages: transformToObject(argv.parseLanguages),
+  parsers: transformToObject(argv.parseParsers),
+  workers: transformToObject(argv.parseWorkers),
+  silent: argv.quiet,
+  simulate: argv.simulate,
+  markdown: argv.markdown,
+  lineEnding: argv.lineEnding,
+  encoding: argv.encoding,
+  copyDefinitions: !argv.definitions,
+  filterBy: argv.filterBy,
+  logFormat: argv.logFormat,
 };
 
+if (options.debug) {
+  console.debug('[debug] Parsed options:\n');
+  console.debug(options);
+}
+
+// Watch mode (-w/--watch)
 if (argv.watch) {
-  nodemon({watch: options.src});
-  console.log('Watching mode is Activated\nListening for changes...');
+  nodemon({ watch: options.src });
+  console.info('Watch mode enabled\nListening for changes on input files...');
   nodemon.on('quit', function () {
-    console.log('ApiDoc has exited');
-    process.exit()
+    console.info('\nProcess terminated.');
+    process.exit();
   }).on('restart', function () {
-    console.log('Changes detected, Rebuilding the docs...');
+    console.info('Changes detected, rebuilding...');
     apidoc.createDoc(options);
-    console.log('Listening for changes...');
+    const d = new Date();
+    console.info(`Build finished at ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`);
   });
 }
 
+// Create documentation
 if (apidoc.createDoc(options) === false) {
+  console.error('[error] apidoc encountered an error during documentation generation!');
   process.exit(1);
 }
