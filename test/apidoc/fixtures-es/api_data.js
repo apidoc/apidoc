@@ -113,7 +113,7 @@ export default { "api": [
         }
       ]
     },
-    "filename": "example/example.js",
+    "filename": "example.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -291,7 +291,7 @@ export default { "api": [
         }
       ]
     },
-    "filename": "example/example.js",
+    "filename": "example.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -359,7 +359,7 @@ export default { "api": [
         ]
       }
     },
-    "filename": "example/_apidoc.js",
+    "filename": "_apidoc.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -427,7 +427,7 @@ export default { "api": [
         ]
       }
     },
-    "filename": "example/_apidoc.js",
+    "filename": "_apidoc.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -479,7 +479,7 @@ export default { "api": [
         ]
       }
     },
-    "filename": "example/example.js",
+    "filename": "example.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -551,7 +551,7 @@ export default { "api": [
         ]
       }
     },
-    "filename": "example/_apidoc.js",
+    "filename": "_apidoc.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -617,7 +617,7 @@ export default { "api": [
         ]
       }
     },
-    "filename": "example/example.js",
+    "filename": "example.js",
     "groupTitle": "User",
     "sampleRequest": [
       {
@@ -658,7 +658,7 @@ export default { "api": [
     "name": "ThankUser",
     "group": "User",
     "description": "<p>This is here to have a long name in the left menu.</p>",
-    "filename": "example/example.js",
+    "filename": "example.js",
     "groupTitle": "User",
     "sampleRequest": [
       {

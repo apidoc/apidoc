@@ -22,7 +22,7 @@ export default {
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2021-09-05T02:02:15.708Z",
+    "time": "2021-09-05T05:45:54.898Z",
     "url": "https://apidocjs.com",
     "version": "0.30.0"
   }
