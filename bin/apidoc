@@ -89,7 +89,7 @@ program
 
   .option('--simulate', 'Execute but not write any file.', false)
 
-  .option('--single', 'Output to single file.', false)
+  .option('-S, --single', 'Output to single file.', false)
 
   .option('-t, --template <template>', 'Use template for output files.', path.join(__dirname, '../template/'))
 
