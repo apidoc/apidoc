@@ -5,7 +5,7 @@ const assert = require('assert');
 const path = require('path');
 
 const logger = require('./silentlogger');
-const Reader = require('../lib/reader');
+const { Reader, defaultConfig } = require('../lib/reader');
 
 describe('test reader module', function () {
   it('should return the given config', function (done) {
@@ -21,6 +21,20 @@ describe('test reader module', function () {
 
     const reader = new Reader(app);
     assert.strictEqual(reader.read(), content);
+    done();
+  });
+
+  it('should return default config when there is no config to find', function (done) {
+    const app = {
+      options: {
+        src: ['/tmp/emptydir'],
+        simulate: true,
+      },
+      log: logger
+    };
+
+    const reader = new Reader(app);
+    assert.strictEqual(reader.read(), defaultConfig);
     done();
   });
 });
