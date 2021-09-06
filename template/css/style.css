@@ -4,6 +4,7 @@
 :root {
   --primary: #0088cc;
   --white: #fff;
+  --light-gray: #ccc;
   --main-gray: #777;
   --dark-gray: #2d2d2d;
   --hover-gray: #666;
@@ -49,7 +50,7 @@ section {
 }
 
 article {
-  border-top: 1px solid var(--main-gray);
+  border-top: 1px solid var(--light-gray);
   padding: 14px 0 30px 0;
 }
 
