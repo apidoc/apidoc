@@ -7,9 +7,9 @@ apiDoc creates a documentation from API descriptions in your source code.
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
 [![Join the chat at https://gitter.im/apidoc/talk](https://badges.gitter.im/apidoc/talk.svg)](https://gitter.im/apidoc/talk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Documentation: [apidocjs.com](http://apidocjs.com)
+### Documentation: [apidocjs.com](http://apidocjs.com)
 
-[Example](http://apidocjs.com/example/) output.
+### [Live DEMO](http://apidocjs.com/example/)
 
 ## Installation
 
