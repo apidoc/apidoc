@@ -152,7 +152,9 @@ define([
      * @returns {String}
      */
   function _handlebarsNewlineToBreak (text) {
-    return ('' + text).replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
+    return ('' + text).replace(/(?:^|<\/pre>)[^]*?(?:<pre>|$)/g, m => {
+      return m.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
+    });
   }
 
   /**
