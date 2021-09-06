@@ -1,5 +1,7 @@
 node_modules/
 npm-debug.log
+# default output dir
+doc/
 # used in tests
 tmp/
 .idea

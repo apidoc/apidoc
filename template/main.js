@@ -1,3 +1,4 @@
+/** apidoc template main.js */
 require.config({
   paths: {
     bootstrap: './vendor/bootstrap.min',

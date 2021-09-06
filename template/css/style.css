@@ -154,19 +154,27 @@ td.code {
   background-color: var(--main-gray);
 }
 
+
 .sidenav > li.active > a {
   position: relative;
   background-color: var(--primary);
   color: var(--white);
 }
 
+/**
+ * TODO: commented out for the moment
 .sidenav > li.has-modifications a {
   border-right: 4px solid var(--main-gray);
 }
 
-.sidenav > li.is-new a {
+.nav-list-item :not(.is-new) {
   border-left: 4px solid var(--main-gray);
 }
+
+.sidenav > li.is-new a {
+  border-left: 4px solid var(--primary);
+}
+*/
 
 /* ------------------------------------------------------------------------------------------
  * Side nav search
@@ -391,7 +399,6 @@ p.deprecated span{
  * Footer
  */
 #generator {
-  border-top: 1px solid var(--main-gray);
   padding: 10px 0;
 }
 
