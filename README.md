@@ -174,10 +174,6 @@ Please [create a new issue](https://github.com/apidoc/apidoc/issues/new/choose) 
 
 apiDoc is a collaborative project. Pull requests are welcome. Please see the [CONTRIBUTING](https://github.com/apidoc/apidoc/blob/master/CONTRIBUTING.md) file.
 
-## FAQ
-
-* [Filter for public / private API](https://github.com/apidoc/grunt-apidoc/issues/27#issuecomment-147664797)
-
 ## Build tools
 
 * [flask-apidoc](https://pypi.python.org/pypi/flask-apidoc/) `pip install flask-apidoc`
