@@ -97,6 +97,8 @@ program
 
   .option('-v, --verbose', 'Verbose output.', false)
 
+  .option('--warn-error', 'Treat warnings as error and exit with error code.', false)
+
   .option('-w, --watch', 'Watch input files for changes to rebuild the docs.', false)
 
   .parse(process.argv);
@@ -130,6 +132,7 @@ const options = {
   copyDefinitions: !argv.definitions,
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
+  warnError: argv.warnError,
 };
 
 if (options.debug) {

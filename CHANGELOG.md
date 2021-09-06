@@ -7,6 +7,7 @@
 * --silent renamed to --quiet or -q for short
 * --color renamed to --no-color to disable color in log output
 * --parse was deleted because it is the same as --simulate
+* Default output is not json, use "--log-format json" to get json
 
 #### FIXED
 
@@ -19,6 +20,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Fix non working sortFields function (fix #968)
 * Fix syntax highlighting for markdown parsed text
 * Fix color in logs was not showing since upgrade to winston 3
+* Fix newlines being removed in pre tags (fix #809 by @JayBerlin)
 
 #### ADDED
 
@@ -26,6 +28,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Add some shorthand options, see apidoc -h
 * Add --log-format option for json output (default is not json)
 * Add ascii art in verbose mode
+* Add --warn-error to treat warnings as error (fix #703)
 
 #### ENHANCEMENTS
 
@@ -34,6 +37,10 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Add .eslintrc.js and enforce coding style everywhere
 * Update many dependencies to their latest version
 * Make sidenav wider and template more responsive (fix #851)
+* Big CSS code overhaul and change
+* Ignore node_modules by default (fix #936)
+* Add ASCII art in verbose mode
+* Allow setting input and output in apidoc.json (fix #630)
 
 ### 0.29.0
 * Fix broken handlebar
