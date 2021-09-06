@@ -106,7 +106,7 @@ const argv = program.opts();
 const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'];
 
 const options = {
-  excludeFilters: [/apidoc\.config\.js$/].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
+  excludeFilters: ['apidoc.config.js', 'node_modules'].concat(argv.excludeFilters.length ? argv.excludeFilters : []),
   includeFilters: argv.fileFilters.length ? argv.fileFilters : defaultIncludeFilters,
   src: argv.input,
   dest: argv.output,
