@@ -4,6 +4,7 @@
 const assert = require('assert');
 const path = require('path');
 
+const logger = require('./silentlogger');
 const Reader = require('../lib/reader');
 
 describe('test reader module', function () {
@@ -13,10 +14,7 @@ describe('test reader module', function () {
     }
     const app = {
       options: options,
-      log: {
-        warn: msg => {},
-        debug: msg => {},
-      },
+      log: logger
     };
 
     const content = require(path.resolve(app.options.config));
