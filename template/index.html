@@ -324,13 +324,13 @@
       <h2>{{__ "Send a Sample Request"}}</h2>
       <form class="form-horizontal">
         <fieldset>
-            <div class="form-group">
-              <label class="col-md-3 control-label" for="{{../id}}-sample-request-url"></label>
-              <div class="input-group">
-                <input id="{{../id}}-sample-request-url" type="text" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
-                <span class="input-group-addon">{{__ "url"}}</span>
-              </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" for="{{../id}}-sample-request-url">URL</label>
+            <div class="input-group">
+              <input id="{{../id}}-sample-request-url" type="text" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
+              <span class="input-group-addon">{{__ "url"}}</span>
             </div>
+          </div>
 
       {{#if article.header}}
         {{#if article.header.fields}}
