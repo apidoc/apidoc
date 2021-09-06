@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -13,8 +12,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
 </head>
+
 <body class="container-fluid">
 
+<!-- SIDENAV -->
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav">
   <div class="sidenav-search">
@@ -41,6 +42,7 @@
 </nav>
 </script>
 
+<!-- PROJECT -->
 <script id="template-project" type="text/x-handlebars-template">
   <div class="pull-left">
     <h1>{{name}}</h1>
@@ -85,8 +87,10 @@
 <script id="template-generator" type="text/x-handlebars-template">
   {{#if template.withGenerator}}
     {{#if generator}}
-      <div class="content">
-        {{__ "Generated with"}} <a href="{{{generator.url}}}">{{{generator.name}}}</a> {{{generator.version}}} - {{{generator.time}}}
+      <div>
+        <p class="text-muted">
+          {{__ "Generated with"}} <a href="{{{generator.url}}}">{{{generator.name}}}</a> {{{generator.version}}} - {{{generator.time}}}
+        </p>
       </div>
     {{/if}}
   {{/if}}
@@ -94,7 +98,7 @@
 
 <script id="template-sections" type="text/x-handlebars-template">
   <section id="api-{{group}}" class="show-api-group show-api-{{group}}-group {{#if aloneDisplay}} hide{{/if}}">
-    <h1>{{underscoreToSpace title}}</h1>
+    <h1 class="color-primary font-weight-bold">{{underscoreToSpace title}}</h1>
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
@@ -109,7 +113,7 @@
 <script id="template-article" type="text/x-handlebars-template">
   <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
     <div class="pull-left">
-      <h1>{{underscoreToSpace article.groupTitle}}{{#if article.title}} - {{article.title}}{{/if}}</h1>
+      <h1><span class="color-primary">{{underscoreToSpace article.groupTitle}}</span>{{#if article.title}} <span class="text-muted">|</span> {{article.title}}{{/if}}</h1>
     </div>
     {{#if template.withCompare}}
     <div class="pull-right">
@@ -139,7 +143,7 @@
     {{#if article.description}}
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
-    <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
+    <span class="method meth-{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
     <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
 
     {{#if article.permission}}
@@ -315,7 +319,8 @@
 </script>
 
 <script id="template-article-sample-request" type="text/x-handlebars-template">
-    {{#if article.sampleRequest}}
+  {{#if article.sampleRequest}}
+    <div class="well">
       <h2>{{__ "Send a Sample Request"}}</h2>
       <form class="form-horizontal">
         <fieldset>
@@ -443,7 +448,8 @@
           </div>
         </fieldset>
       </form>
-    {{/if}}
+    </div>
+  {{/if}}
 </script>
 
 <script id="template-compare-article" type="text/x-handlebars-template">
@@ -479,7 +485,7 @@
       {{/if}}
     {{/if}}
 
-    <span class="type type__{{toLowerCase compare.type}}">{{toLowerCase compare.type}}</span>
+    <span class="method meth-{{toLowerCase compare.type}}">{{toLowerCase compare.type}}</span>
     <pre data-type="{{toLowerCase article.type}}"><code class="language-html">{{{showDiff article.url compare.url}}}</code></pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
