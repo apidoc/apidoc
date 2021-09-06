@@ -208,7 +208,7 @@
           <tr>
             <td class="code">{{this.field}}</td>
             {{#unless this.Type compare=null}}
-              <td>{{this.type}}</td>
+              <td class="code">{{this.type}}</td>
             {{/unless}}
             <td>{{{nl2br this.description}}}</td>
           </tr>
@@ -236,7 +236,7 @@
           <tr>
             <td class="code">{{this.field}}{{#if optional}}&nbsp;&nbsp;<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#unless this.Type compare=null}}
-              <td>{{this.type}}</td>
+              <td class="code">{{this.type}}</td>
             {{/unless}}
             <td>
               {{{nl2br this.description}}}
@@ -278,7 +278,7 @@
           <tr>
             <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}}<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
             {{#if ../../_hasType}}
-              <td>
+              <td class="code">
                 {{{type}}}
               </td>
             {{/if}}

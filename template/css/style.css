@@ -68,22 +68,13 @@ th {
 }
 
 td {
-  vertical-align: top;
-  padding: 10px 8px 0 8px;
+  padding: 5px;
   border: 1px solid var(--main-gray);
 }
 
 td.code {
-  font-size: 14px;
   font-family: "Source Code Pro", monospace;
-  font-style: normal;
-  font-weight: 400;
-}
-
-
-#generator {
-  border-top: 1px solid var(--main-gray);
-  padding: 10px 0;
+  font-weight: 600;
 }
 
 .label-optional {
@@ -393,6 +384,14 @@ p.deprecated span{
   color: var(--red);
   font-weight: bold;
   text-decoration: underline;
+}
+
+/**
+ * Footer
+ */
+#generator {
+  border-top: 1px solid var(--main-gray);
+  padding: 10px 0;
 }
 
 /* ------------------------------------------------------------------------------------------
