@@ -8,10 +8,10 @@ const logger = require('./silentlogger');
 const Writer = require('../lib/writer');
 
 describe('test writer module', function () {
-  it('should return false in simulate mode', function (done) {
+  it('should return false in dry run mode', function (done) {
     const app = {
       options: {
-        simulate: true,
+        dryRun: true,
       },
       log: logger,
     };

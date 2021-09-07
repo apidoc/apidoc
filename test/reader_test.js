@@ -28,7 +28,7 @@ describe('test reader module', function () {
     const app = {
       options: {
         src: ['/tmp/emptydir'],
-        simulate: true,
+        dryRun: true,
       },
       log: logger
     };

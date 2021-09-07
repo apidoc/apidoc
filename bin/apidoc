@@ -75,6 +75,8 @@ program
 
   .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
 
+  .option('-n, --dry-run', 'Parse source files but do not write any output files.', false)
+
   .option('-o, --output <output>', 'Output dirname.', 'doc/')
 
   .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename', [])
@@ -88,8 +90,6 @@ program
   .option('-p, --private', 'Include private APIs in output.', false)
 
   .option('-q, --quiet', 'Turn all output off.', false)
-
-  .option('--simulate', 'Execute but do not write any file.', false)
 
   .option('-S, --single', 'Output to single file.', false)
 
@@ -125,7 +125,7 @@ const options = {
   parsers: transformToObject(argv.parseParsers),
   workers: transformToObject(argv.parseWorkers),
   silent: argv.quiet,
-  simulate: argv.simulate,
+  dryRun: argv.dryRun,
   markdown: argv.markdown,
   lineEnding: argv.lineEnding,
   encoding: argv.encoding,

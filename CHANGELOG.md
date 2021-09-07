@@ -7,6 +7,7 @@
 * --silent renamed to --quiet or -q for short
 * --color renamed to --no-color to disable color in log output
 * --parse was deleted because it is the same as --simulate
+* --simulate renamed to --dry-run / -n
 * Default output is not json, use "--log-format json" to get json
 
 #### FIXED
