@@ -1,15 +1,18 @@
-define([
-  'jquery',
-  'locales',
-  'handlebars',
-  'diffMatchPatch',
-], function ($, locale, Handlebars, DiffMatchPatch) {
+/**
+ * Helper functions for HandleBars
+ */
+import Handlebars from 'handlebars';
+import locale from './locales/locale';
+import $ from 'jquery';
+
+// this will register all helpers
+export function register () {
   /**
-     * Return a text as markdown.
-     * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
-     * Should be replaced with a full markdown lib.
-     * @param string text
-     */
+   * Return a text as markdown.
+   * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
+   * Should be replaced with a full markdown lib.
+   * @param string text
+   */
   Handlebars.registerHelper('markdown', function (text) {
     if (!text) {
       return text;
@@ -278,10 +281,14 @@ define([
 
       if (!compare) { return source; }
 
+      /*
       const d = diffMatchPatch.diff_main(stripHtml(compare), stripHtml(source));
       diffMatchPatch.diff_cleanupSemantic(d);
       ds = diffMatchPatch.diff_prettyHtml(d);
       ds = ds.replace(/&para;/gm, '');
+      */
+      // TODO FIXME
+      // const ds = '';
     }
     if (options === 'nl2br') { ds = _handlebarsNewlineToBreak(ds); }
 
@@ -350,11 +357,13 @@ define([
     return ret;
   }
 
-  const diffMatchPatch = new DiffMatchPatch();
+  // TODO FIXME
+  // const diffMatchPatch = new DiffMatchPatch();
 
   /**
    * Overwrite Colors
    */
+  /*
   DiffMatchPatch.prototype.diff_prettyHtml = function (diffs) {
     const html = [];
     const patternAmp = /&/g;
@@ -380,16 +389,15 @@ define([
     }
     return html.join('');
   };
+  */
 
   /**
      * Fixes html after comparison (#506, #538, #616, #825)
-     */
+     * TODO FIXME commented because only used in tmp commented function
   function stripHtml (html) {
     const div = document.createElement('div');
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   }
-
-  // Exports
-  return Handlebars;
-});
+  */
+}

@@ -17,12 +17,11 @@
   },
   "scripts": {
     "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
-    "eslint": "./node_modules/.bin/eslint lib bin/apidoc template",
+    "eslint": "./node_modules/.bin/eslint lib bin/apidoc template/src",
     "pre-commit": "npm run eslint && npm run test",
     "regenerate-fixtures": "./bin/apidoc -i example -o test/apidoc/fixtures -t test/template && ./bin/apidoc -m es -i example -o test/apidoc/fixtures-es -t test/template && ./bin/apidoc -m commonJS -i example -o test/apidoc/fixtures-commonJS -t test/template && ./bin/apidoc -c example/apidoc.json -i example -o test/apidoc/fixtures-withconfig -t test/template && ./bin/apidoc -c test/multi_input_folder/testproject/apidoc.json -i test/multi_input_folder/testproject/folder1 -i test/multi_input_folder/testproject/folder2 -i test/multi_input_folder/testproject/src -o test/multi_input_folder/fixtures -t test/template",
     "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx",
-    "test": "mocha --colors --no-package --no-config 'test/**/*_test.js'",
-    "update-lodash": "./node_modules/lodash-cli/bin/lodash -p -o template/vendor/lodash.custom.min.js include=get,set,groupBy,each,extend,some,isNaN exports=amd"
+    "test": "mocha --colors --no-package --no-config 'test/**/*_test.js'"
   },
   "keywords": [
     "api",
@@ -45,29 +44,32 @@
   "dependencies": {
     "bootstrap": "3.4.1",
     "commander": "^8.1.0",
+    "expose-loader": "^3.0.0",
     "fs-extra": "^10.0.0",
+    "glob": "^7.1.7",
     "handlebars": "^4.7.7",
     "iconv-lite": "^0.6.3",
     "jquery": "^3.6.0",
     "klaw-sync": "^6.0.0",
+    "list": "^2.0.19",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.0",
     "nodemon": "^2.0.4",
+    "path-to-regexp": "^3.2.0",
+    "prismjs": "^1.24.1",
     "requirejs": "^2.3.6",
-    "webfontloader": "^1.6.28",
+    "semver": "^7.3.2",
+    "style-loader": "^3.2.1",
+    "webpack-cli": "^4.8.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "amdefine": "^1.0.1",
     "eslint": "^7.32.0",
     "eslint-config-recommended": "^4.1.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "lodash-cli": "^4.17.5",
-    "mocha": "^9.1.1",
-    "path-to-regexp": "^3.2.0",
-    "semver": "^7.3.2"
+    "mocha": "^9.1.1"
   }
 }
