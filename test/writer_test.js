@@ -8,7 +8,7 @@ const logger = require('./silentlogger');
 const Writer = require('../lib/writer');
 
 describe('test writer module', function () {
-  it('should return false in dry run mode', function (done) {
+  it('should work in dry run mode', async function () {
     const app = {
       options: {
         dryRun: true,
@@ -17,7 +17,6 @@ describe('test writer module', function () {
     };
 
     const writer = new Writer({}, app);
-    assert.strictEqual(writer.write(), false);
-    done();
+    return writer.write();
   });
 });
