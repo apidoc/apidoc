@@ -3,7 +3,8 @@
  */
 
 // node_modules
-const exec = require('child_process').exec;
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
 const fs = require('fs-extra');
 const path = require('path');
 const assert = require('assert');
@@ -31,15 +32,9 @@ function testFullExample (config) {
   });
 
   // create
-  it('should create example in ' + outputPath, done => {
+  it('should create example in ' + outputPath, async function () {
     const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' -i ' + 'example -o ' + outputPath + ' -q';
-    exec(cmd, (err, stdout, stderr) => {
-      if (err) { throw err; }
-
-      if (stderr) { throw stderr; }
-
-      done();
-    });
+    const { stdout, stderr } = await exec(cmd);
   });
 
   // check we actually created output files
