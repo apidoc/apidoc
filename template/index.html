@@ -403,7 +403,6 @@
           {{/if}}
 
       {{#if article.body}}
-        {{log this}}
         <h3>{{__ "Body"}}</h3>
         <h4><input type="checkbox" data-sample-request-param-group-id="sample-request-param-{{@index}}" name="{{this.id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" checked />{{__ @key}}
           <select name="{{this.id}}-sample-header-content-type" class="{{this.id}}-sample-request-param-select sample-header-content-type sample-header-content-type-switch">
