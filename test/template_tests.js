@@ -1,8 +1,10 @@
 /**
  * Test: Send sample request utils
+ * TODO FIXME this is not running because the filename ends with an s
+ * and this will need cleanup once all the send sample stuff is cleaned up too
  */
 
-const sendSampleRequestUtils = require('../template/utils/send_sample_request_utils');
+const sendSampleRequestUtils = require('../template/src/send_sample_request_utils');
 const assert = require('assert');
 
 describe('send sample request utils', function () {

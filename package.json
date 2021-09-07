@@ -19,7 +19,6 @@
     "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
     "eslint": "./node_modules/.bin/eslint lib bin/apidoc template/src",
     "pre-commit": "npm run eslint && npm run test",
-    "regenerate-fixtures": "./bin/apidoc -i example -o test/apidoc/fixtures -t test/template && ./bin/apidoc -m es -i example -o test/apidoc/fixtures-es -t test/template && ./bin/apidoc -m commonJS -i example -o test/apidoc/fixtures-commonJS -t test/template && ./bin/apidoc -c example/apidoc.json -i example -o test/apidoc/fixtures-withconfig -t test/template && ./bin/apidoc -c test/multi_input_folder/testproject/apidoc.json -i test/multi_input_folder/testproject/folder1 -i test/multi_input_folder/testproject/folder2 -i test/multi_input_folder/testproject/src -o test/multi_input_folder/fixtures -t test/template",
     "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx",
     "test": "mocha --colors --no-package --no-config 'test/**/*_test.js'"
   },
