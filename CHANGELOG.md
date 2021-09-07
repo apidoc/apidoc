@@ -9,6 +9,7 @@
 * --parse was deleted because it is the same as --simulate
 * --simulate renamed to --dry-run / -n
 * Default output is not json, use "--log-format json" to get json
+* --config / -c must be a path to a file, not a directory
 
 #### FIXED
 
