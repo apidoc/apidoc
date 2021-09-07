@@ -34,7 +34,8 @@ function testFullExample (config) {
   // create
   it('should create example in ' + outputPath, async function () {
     const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' -i ' + 'example -o ' + outputPath + ' -q';
-    const { stdout, stderr } = await exec(cmd);
+    //const { stdout, stderr } = await exec(cmd);
+    return exec(cmd);
   });
 
   // check we actually created output files
