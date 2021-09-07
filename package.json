@@ -57,7 +57,6 @@
     "nodemon": "^2.0.4",
     "path-to-regexp": "^3.2.0",
     "prismjs": "^1.24.1",
-    "requirejs": "^2.3.6",
     "semver": "^7.3.2",
     "style-loader": "^3.2.1",
     "webpack-cli": "^4.8.0",
