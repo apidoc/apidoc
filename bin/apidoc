@@ -49,7 +49,7 @@ const pkgjson = require(path.join('..', 'package.json'));
 program.version(pkgjson.version);
 
 program
-  .option('-c, --config <config>', 'Path to config file or to directory containing config file (apidoc.json or apidoc.config.js).', '')
+  .option('-c, --config <config>', 'Path to config file (json or javascript).', '')
 
   .option('--no-color', 'Turn off log color.', false)
 
