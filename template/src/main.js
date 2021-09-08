@@ -372,7 +372,7 @@ function init () {
   $('#sections').append(content);
 
   // Bootstrap Scrollspy
-  $(this).scrollspy({ target: '#scrollingNav' });
+  $('body').scrollspy({ target: '#scrollingNav' });
 
   // Content-Scroll on Navigation click.
   $('.sidenav').find('a').on('click', function (e) {
@@ -400,8 +400,7 @@ function init () {
   /**
      * On Template changes, recall plugins.
      */
-  // TODO FIXME
-  function initDynamic () { // eslint-disable-line no-unused-vars
+  function initDynamic () {
     // Bootstrap popover
     $('button[data-toggle="popover"]').popover().click(function (e) {
       e.preventDefault();
@@ -493,7 +492,7 @@ function init () {
     }
 
     // call scrollspy refresh method
-    $(window).scrollspy('refresh');
+    $('body').scrollspy('refresh');
   }
 
   if (apiProject.template.aloneDisplay) {
@@ -807,4 +806,5 @@ function init () {
     });
     return results;
   }
+  initDynamic();
 }
