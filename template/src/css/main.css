@@ -30,10 +30,6 @@ body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-.sidenav a:hover {
-  background-color: var(--hover-gray) !important;
-}
-
 a:focus {
   background-color: var(--primary);
 }
@@ -144,6 +140,11 @@ td.code {
   color: var(--white);
   display: block;
   padding: 8px 13px;
+}
+
+/* non active sidenav link are highlighted on hover */
+.sidenav > li:not(.active) > a:hover {
+  background-color: var(--hover-gray);
 }
 
 .sidenav > li.nav-header {
