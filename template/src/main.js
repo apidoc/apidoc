@@ -400,7 +400,8 @@ function init () {
   /**
      * On Template changes, recall plugins.
      */
-  function initDynamic () {
+  // TODO FIXME
+  function initDynamic () { // eslint-disable-line no-unused-vars
     // Bootstrap popover
     $('button[data-toggle="popover"]').popover().click(function (e) {
       e.preventDefault();
@@ -806,5 +807,4 @@ function init () {
     });
     return results;
   }
-  initDynamic();
 }

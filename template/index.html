@@ -162,10 +162,10 @@
 
     {{!-- CODE EXAMPLES IN TABS --}}
     {{#if_gt article.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+      <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
         {{#each article.examples}}
           <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-            <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+            <a href="#examples-{{../id}}-{{@index}}" role="tab" data-toggle="tab">{{title}}</a>
           </li>
         {{/each}}
       </ul>
@@ -299,10 +299,10 @@
       </table>
     {{/each}}
     {{#if_gt params.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+      <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
       {{#each params.examples}}
         <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}" role="tab" data-toggle="tab">{{title}}</a>
         </li>
       {{/each}}
       </ul>
@@ -489,11 +489,11 @@
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
     {{#each_compare_title article.examples compare.examples}}
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
-          <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+          <a href="#compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
@@ -660,11 +660,11 @@
     {{/each_compare_keys}}
 
     {{#if source.examples}}
-    <ul class="nav nav-tabs nav-tabs-examples">
+    <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
     {{#each_compare_title source.examples compare.examples}}
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
