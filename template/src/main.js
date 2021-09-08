@@ -9,9 +9,10 @@ import semver from 'semver';
 import Handlebars from 'handlebars';
 import { List } from 'list';
 // bootstrap plugins
-import 'bootstrap/js/scrollspy';
+import 'bootstrap/js/dropdown';
 import 'bootstrap/js/tooltip';
 import 'bootstrap/js/popover';
+import 'bootstrap/js/scrollspy';
 import 'bootstrap/js/tab';
 
 // Prism is the syntax highlighting lib
