@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import pathToRegexp from 'path-to-regexp';
 import { convertPathParams, handleNestedAndParsingFields, tryParsingWithTypes } from './send_sample_request_utils.js';
 
 export function initSampleRequest () {
@@ -92,7 +93,7 @@ function sendSampleRequest (group, name, version, type) {
   url = convertPathParams(url);
 
   // Insert url parameter
-  const pattern = pathToRegexp(url, null); // eslint-disable-line no-undef
+  const pattern = pathToRegexp(url, null);
   const matches = pattern.exec(url);
   for (let i = 1; i < matches.length; i++) {
     let key = matches[i].substr(1);
