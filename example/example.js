@@ -114,6 +114,7 @@ function putUser() { return; }
  * user = client.delete_user(42)
  *
  * @apiSuccess {String} result <code>ok</code> if everything went fine.
+ * @apiSuccess {String} [nullableField] This response field is not always there (can be null).
  * @apiSuccessExample {json} Success-Example
  *     HTTP/1.1 200 OK
  *     {
