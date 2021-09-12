@@ -31,6 +31,9 @@ export function body2json (context) {
     context.forEach(entry => {
       let val = '';
       switch (entry.type.toLowerCase()) {
+        case 'string':
+          val = entry.defaultValue || '';
+          break;
         case 'number':
           val = parseInt(entry.defaultValue || 0, 10);
           break;
