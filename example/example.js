@@ -63,6 +63,8 @@ function getUser() { return; }
  * @apiBody {Date} extraInfo.hireDate Date when user was hired
  * @apiBody {Date} extraInfo.hireDateWithDefault=2021-09-01 Date when user was hired with default
  * @apiBody {String} extraInfo.nickname Nickname of the user
+ * @apiBody {Boolean} extraInfo.isVegan=true Is the user vegan? (boolean with default)
+ * @apiBody {Boolean} extraInfo.isAlive Is the user alive? (boolean with no default)
  * @apiBody {String} extraInfo.secrets.crush The user secret crush
  * @apiBody {Number} extraInfo.secrets.hair=1000 Number of hair of user
  *

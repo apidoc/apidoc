@@ -34,6 +34,9 @@ export function body2json (context) {
         case 'string':
           val = entry.defaultValue || '';
           break;
+        case 'boolean':
+          val = Boolean(entry.defaultValue) || false;
+          break;
         case 'number':
           val = parseInt(entry.defaultValue || 0, 10);
           break;
