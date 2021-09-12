@@ -1,4 +1,8 @@
 /**
+ * apidoc main css file
+ */
+
+/**
  * Define colors
  */
 :root {
@@ -12,22 +16,45 @@
   --meth-put: #e5c500;
   --meth-post: #4070ec;
   --meth-delete: #ed0039;
-  --red: red;
+  --red: #dc3545;
 }
 
 .color-primary {
   color: var(--primary);
 }
 
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-red {
+  color: var(--white);
+  background-color: var(--red);
+}
+
+.border-danger {
+  border: 1px solid var(--red);
+}
+
+/** for some reason the iOS safari style is applied on date inputs */
+input[type="date"] {
+  line-height: 1.4 !important;
+}
+
 /* ------------------------------------------------------------------------------------------
  * Content
  * ------------------------------------------------------------------------------------------ */
-body {
-  font-family: "Source Sans Pro", sans-serif;
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('./glyphicons-halflings-regular.eot');
+  src: url('./glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+    url('./glyphicons-halflings-regular.woff') format('woff'),
+    url('./glyphicons-halflings-regular.ttf') format('truetype'),
+    url('./glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-.sidenav a:hover {
-  background-color: var(--hover-gray) !important;
+body {
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 a:focus {
@@ -140,6 +167,11 @@ td.code {
   color: var(--white);
   display: block;
   padding: 8px 13px;
+}
+
+/* non active sidenav link are highlighted on hover */
+.sidenav > li:not(.active) > a:hover {
+  background-color: var(--hover-gray);
 }
 
 .sidenav > li.nav-header {

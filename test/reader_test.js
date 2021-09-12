@@ -34,7 +34,7 @@ describe('test reader module', function () {
     };
 
     const reader = new Reader(app);
-    assert.strictEqual(reader.read(), defaultConfig);
+    assert.deepEqual(reader.read(), defaultConfig);
     done();
   });
 });

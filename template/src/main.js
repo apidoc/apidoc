@@ -1,81 +1,51 @@
 /** apidoc template main.js */
-require.config({
-  paths: {
-    bootstrap: './vendor/bootstrap.min',
-    diffMatchPatch: './vendor/diff_match_patch.min',
-    handlebars: './vendor/handlebars.min',
-    handlebarsExtended: './utils/handlebars_helper',
-    jquery: './vendor/jquery.min',
-    locales: './locales/locale',
-    lodash: './vendor/lodash.custom.min',
-    pathToRegexp: './vendor/path-to-regexp/index',
-    prismjs: './vendor/prism',
-    semver: './vendor/semver.min',
-    utilsSampleRequest: './utils/send_sample_request',
-    webfontloader: './vendor/webfontloader',
-    list: './vendor/list.min',
-    apiData: './api_data',
-    apiProject: './api_project',
-  },
-  shim: {
-    bootstrap: {
-      deps: ['jquery'],
-    },
-    diffMatchPatch: {
-      exports: 'diff_match_patch',
-    },
-    handlebars: {
-      exports: 'Handlebars',
-    },
-    handlebarsExtended: {
-      deps: ['jquery', 'handlebars'],
-      exports: 'Handlebars',
-    },
-    prismjs: {
-      exports: 'Prism',
-    },
-  },
-  urlArgs: 'v=' + new Date().getTime(),
-  waitSeconds: 150,
+
+// with webpack 5 we can use css-loader
+// import './src/css/style.css';
+
+import $ from 'jquery';
+import { groupBy, extend, some } from 'lodash';
+import semver from 'semver';
+import Handlebars from 'handlebars';
+import { List } from 'list';
+// bootstrap plugins
+import 'bootstrap/js/dropdown';
+import 'bootstrap/js/tooltip';
+import 'bootstrap/js/popover';
+import 'bootstrap/js/scrollspy';
+import 'bootstrap/js/tab';
+
+// Prism is the syntax highlighting lib
+import Prism from 'prismjs';
+// languages highlighted by Prism
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-http';
+import 'prismjs/components/prism-python';
+
+import { initSampleRequest } from './send_sample_request.js';
+import locale from './locales/locale';
+// import DiffMatchPatch from './vendor/diff_match_patch.min';
+
+// helpers for HandleBars
+import { register } from './hb_helpers';
+
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  initSampleRequest();
+  Prism.highlightAll();
 });
 
-require([
-  'jquery',
-  'lodash',
-  'locales',
-  'handlebarsExtended',
-  'apiProject',
-  'apiData',
-  'prismjs',
-  'utilsSampleRequest',
-  'semver',
-  'webfontloader',
-  'bootstrap',
-  'pathToRegexp',
-  'list',
-], function ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver, WebFont) {
-  // Load google web fonts.
-  WebFont.load({
-    active: function () {
-      // Only init after fonts are loaded.
-      init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
-    },
-    inactive: function () {
-      // Run init, even if loading fonts fails
-      init($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver);
-    },
-    google: {
-      families: ['Source Code Pro', 'Source Sans Pro:n4,n6,n7'],
-    },
-  });
-});
+function init () {
+  // the data is injected at compile time by webpack
+  let api = API_DATA; // eslint-disable-line no-undef
+  const apiProject = API_PROJECT; // eslint-disable-line no-undef
 
-function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleRequest, semver) {
-  let api = apiData.api;
+  // HANDLEBARS //
+  // register HandleBars helper functions
+  register();
 
-  //
-  // Templates
-  //
+  // Compile templates
   const templateHeader = Handlebars.compile($('#template-header').html());
   const templateFooter = Handlebars.compile($('#template-footer').html());
   const templateArticle = Handlebars.compile($('#template-article').html());
@@ -85,9 +55,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   const templateSections = Handlebars.compile($('#template-sections').html());
   const templateSidenav = Handlebars.compile($('#template-sidenav').html());
 
-  //
   // apiProject defaults
-  //
   if (!apiProject.template) { apiProject.template = {}; }
 
   if (apiProject.template.withCompare == null) { apiProject.template.withCompare = true; }
@@ -105,14 +73,14 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   // Data transform
   //
   // grouped by group
-  const apiByGroup = _.groupBy(api, function (entry) {
+  const apiByGroup = groupBy(api, entry => {
     return entry.group;
   });
 
   // grouped by group and name
   const apiByGroupAndName = {};
-  $.each(apiByGroup, function (index, entries) {
-    apiByGroupAndName[index] = _.groupBy(entries, function (entry) {
+  $.each(apiByGroup, (index, entries) => {
+    apiByGroupAndName[index] = groupBy(entries, entry => {
       return entry.name;
     });
   });
@@ -121,15 +89,15 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   // sort api within a group by title ASC and custom order
   //
   const newList = [];
-  const umlauts = { ä: 'ae', ü: 'ue', ö: 'oe', ß: 'ss' }; // TODO: remove in version 1.0
-  $.each(apiByGroupAndName, function (index, groupEntries) {
+  // const umlauts = { ä: 'ae', ü: 'ue', ö: 'oe', ß: 'ss' }; // TODO: remove in version 1.0
+  $.each(apiByGroupAndName, (index, groupEntries) => {
     // get titles from the first entry of group[].name[] (name has versioning)
     let titles = [];
-    $.each(groupEntries, function (titleName, entries) {
+    $.each(groupEntries, (titleName, entries) => {
       const title = entries[0].title;
-      if (title !== undefined) {
-        title.toLowerCase().replace(/[äöüß]/g, function ($0) { return umlauts[$0]; });
-        titles.push(title + '#~#' + titleName); // '#~#' keep reference to titleName after sorting
+      if (title) {
+        // title.toLowerCase().replace(/[äöüß]/g, function ($0) { return umlauts[$0]; });
+        titles.push(title.toLowerCase() + '#~#' + titleName); // '#~#' keep reference to titleName after sorting
       }
     });
     // sort by name ASC
@@ -139,14 +107,15 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     if (apiProject.order) { titles = sortByOrder(titles, apiProject.order, '#~#'); }
 
     // add single elements to the new list
-    titles.forEach(function (name) {
+    titles.forEach(name => {
       const values = name.split('#~#');
       const key = values[1];
-      groupEntries[key].forEach(function (entry) {
+      groupEntries[key].forEach(entry => {
         newList.push(entry);
       });
     });
   });
+
   // api overwrite with ordered list
   api = newList;
 
@@ -158,7 +127,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   let apiVersions = {};
   apiVersions[apiProject.version] = 1;
 
-  $.each(api, function (index, entry) {
+  $.each(api, (index, entry) => {
     apiGroups[entry.group] = 1;
     apiGroupTitles[entry.group] = entry.groupTitle || entry.group;
     apiVersions[entry.version] = 1;
@@ -180,7 +149,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   // create Navigationlist
   //
   const nav = [];
-  apiGroups.forEach(function (group) {
+  apiGroups.forEach(group => {
     // Mainmenu entry
     nav.push({
       group: group,
@@ -190,7 +159,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
     // Submenu
     let oldName = '';
-    api.forEach(function (entry) {
+    api.forEach(entry => {
       if (entry.group === group) {
         if (oldName !== entry.name) {
           nav.push({
@@ -308,7 +277,7 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   $('#generator').append(templateGenerator(apiProject));
 
   // render Project
-  _.extend(apiProject, { versions: apiVersions });
+  extend(apiProject, { versions: apiVersions });
   $('#project').append(templateProject(apiProject));
 
   // render apiDoc, header/footer documentation
@@ -404,7 +373,12 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
   $('#sections').append(content);
 
   // Bootstrap Scrollspy
-  $(this).scrollspy({ target: '#scrollingNav' });
+  $('body').scrollspy({ target: '#scrollingNav' });
+
+  // when we click on an input that was previously highlighted because it was empty, remove the red border
+  $('.form-control').on('focus', function () {
+    $(this).removeClass('border-danger');
+  });
 
   // Content-Scroll on Navigation click.
   $('.sidenav').find('a').on('click', function (e) {
@@ -423,8 +397,8 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
      */
   function _hasTypeInFields (fields) {
     let result = false;
-    $.each(fields, function (name) {
-      result = result || _.some(fields[name], function (item) { return item.type; });
+    $.each(fields, name => {
+      result = result || some(fields[name], item => { return item.type; });
     });
     return result;
   }
@@ -457,47 +431,14 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     });
     $('.nav-tabs-examples').find('a:first').tab('show');
 
-    // sample header-content-type switch
-    $('.sample-header-content-type-switch').change(function () {
-      const paramName = '.' + $(this).attr('name') + '-fields';
-      const bodyName = '.' + $(this).attr('name') + '-body';
-      const selectName = 'select[name=' + $(this).attr('name') + ']';
-      if ($(this).val() === 'body-json') {
-        $(selectName).val('undefined');
-        $(this).val('body-json');
-        $(paramName).removeClass('hide');
-        $(this).parent().nextAll(paramName).first().addClass('hide');
-        $(bodyName).addClass('hide');
-        $(this).parent().nextAll(bodyName).first().removeClass('hide');
-      } else if ($(this).val() === 'body-form-data') {
-        $(selectName).val('undefined');
-        $(this).val('body-form-data');
-        $(bodyName).addClass('hide');
-        $(paramName).removeClass('hide');
+    // switch content-type for body inputs (json or form-data)
+    $('.sample-request-content-type-switch').change(function () {
+      if ($(this).val() === 'body-form-data') {
+        $('#sample-request-body-json-input-' + $(this).data('id')).hide();
+        $('#sample-request-body-form-input-' + $(this).data('id')).show();
       } else {
-        $(this).parent().nextAll(paramName).first().removeClass('hide');
-        $(this).parent().nextAll(bodyName).first().addClass('hide');
-      }
-      $(this).prev('.sample-request-switch').prop('checked', true);
-    });
-
-    // sample request switch
-    $('.sample-request-switch').click(function (e) {
-      const paramName = '.' + $(this).attr('name') + '-fields';
-      const bodyName = '.' + $(this).attr('name') + '-body';
-      const select = $(this).next('.' + $(this).attr('name') + '-select').val();
-      if ($(this).prop('checked')) {
-        if (select === 'body-json') {
-          $(this).parent().nextAll(bodyName).first().removeClass('hide');
-        } else {
-          $(this).parent().nextAll(paramName).first().removeClass('hide');
-        }
-      } else {
-        if (select === 'body-json') {
-          $(this).parent().nextAll(bodyName).first().addClass('hide');
-        } else {
-          $(this).parent().nextAll(paramName).first().addClass('hide');
-        }
+        $('#sample-request-body-form-input-' + $(this).data('id')).hide();
+        $('#sample-request-body-json-input-' + $(this).data('id')).show();
       }
     });
 
@@ -524,13 +465,8 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     }
 
     // call scrollspy refresh method
-    $(window).scrollspy('refresh');
-
-    // init modules
-    sampleRequest.initDynamic();
-    Prism.highlightAll();
+    $('body').scrollspy('refresh');
   }
-  initDynamic();
 
   if (apiProject.template.aloneDisplay) {
     const hashVal = window.location.hash;
@@ -581,8 +517,6 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
         $('section#api-' + group).removeClass('hide');
       }
     });
-
-    initDynamic();
   }
   setMainVersion();
 
@@ -728,8 +662,6 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
       $root.remove();
       // TODO: on change main version or select the highest version re-render
     }
-
-    initDynamic();
   }
 
   /**
@@ -748,7 +680,6 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
 
       if ($foundElement) { $foundElement.trigger('click'); }
     });
-    initDynamic();
   }
 
   /**
@@ -848,5 +779,5 @@ function init ($, _, locale, Handlebars, apiProject, apiData, Prism, sampleReque
     });
     return results;
   }
-  Prism.highlightAll();
+  initDynamic();
 }

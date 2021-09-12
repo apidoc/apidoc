@@ -1,15 +1,30 @@
-define([
-  'jquery',
-  'locales',
-  'handlebars',
-  'diffMatchPatch',
-], function ($, locale, Handlebars, DiffMatchPatch) {
+/*
+ * apidoc
+ * https://apidocjs.com
+ *
+ * Authors:
+ * Peter Rottmann <rottmann@inveris.de>
+ * Nicolas CARPi @ Deltablot
+ * Copyright (c) 2013 inveris OHG
+ * Licensed under the MIT license.
+ */
+
+/**
+ * Helper functions for HandleBars
+ */
+import Handlebars from 'handlebars';
+import locale from './locales/locale';
+import $ from 'jquery';
+import { body2json } from './jsonifier';
+
+// this will register all helpers
+export function register () {
   /**
-     * Return a text as markdown.
-     * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
-     * Should be replaced with a full markdown lib.
-     * @param string text
-     */
+   * Return a text as markdown.
+   * Currently only a little helper to replace apidoc-inline Links (#Group:Name).
+   * Should be replaced with a full markdown lib.
+   * @param string text
+   */
   Handlebars.registerHelper('markdown', function (text) {
     if (!text) {
       return text;
@@ -25,10 +40,16 @@ define([
      * set paramater type.
      */
   Handlebars.registerHelper('setInputType', function (text) {
-    if (text === 'File') {
-      return 'file';
+    switch (text) {
+      case 'File':
+      case 'Email':
+      case 'Color':
+      case 'Number':
+      case 'Date':
+        return text[0].toLowerCase() + text.substring(1);
+      default:
+        return 'text';
     }
-    return 'text';
   });
 
   /**
@@ -210,44 +231,8 @@ define([
     return _handlebarsEachCompared('key', newSource, newCompare, options);
   });
 
-  /**
-     *
-     */
-  Handlebars.registerHelper('gen_body', function (context, options) {
-    const strBody = {};
-    context.forEach(element => {
-      element.field = element.field.replace(']', '');
-      switch (element.type.toLowerCase()) {
-        case 'string':
-          if (element.field.includes('[')) {
-            if (strBody[element.field.split('[')[0]] === undefined) {
-              strBody[element.field.split('[')[0]] = {};
-            }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || '';
-            break;
-          }
-          strBody[element.field] = element.defaultValue || '';
-          break;
-        case 'number':
-          if (element.field.includes('[')) {
-            if (strBody[element.field.split('[')[0]] === undefined) {
-              strBody[element.field.split('[')[0]] = {};
-            }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || 0;
-            break;
-          }
-          strBody[element.field] = element.defaultValue || 0;
-          break;
-        case 'object':
-          if (strBody[element.field] === undefined) {
-            strBody[element.field] = {};
-          }
-          break;
-        default:
-          strBody[element.field] = null;
-      }
-    });
-    return JSON.stringify(strBody, null, 4);
+  Handlebars.registerHelper('body2json', function (context, options) {
+    return body2json(context);
   });
 
   Handlebars.registerHelper('each_compare_field', function (source, compare, options) {
@@ -278,10 +263,14 @@ define([
 
       if (!compare) { return source; }
 
+      /*
       const d = diffMatchPatch.diff_main(stripHtml(compare), stripHtml(source));
       diffMatchPatch.diff_cleanupSemantic(d);
       ds = diffMatchPatch.diff_prettyHtml(d);
       ds = ds.replace(/&para;/gm, '');
+      */
+      // TODO FIXME
+      // const ds = '';
     }
     if (options === 'nl2br') { ds = _handlebarsNewlineToBreak(ds); }
 
@@ -350,11 +339,13 @@ define([
     return ret;
   }
 
-  const diffMatchPatch = new DiffMatchPatch();
+  // TODO FIXME
+  // const diffMatchPatch = new DiffMatchPatch();
 
   /**
    * Overwrite Colors
    */
+  /*
   DiffMatchPatch.prototype.diff_prettyHtml = function (diffs) {
     const html = [];
     const patternAmp = /&/g;
@@ -380,16 +371,15 @@ define([
     }
     return html.join('');
   };
+  */
 
   /**
      * Fixes html after comparison (#506, #538, #616, #825)
-     */
+     * TODO FIXME commented because only used in tmp commented function
   function stripHtml (html) {
     const div = document.createElement('div');
     div.innerHTML = html;
     return div.textContent || div.innerText || '';
   }
-
-  // Exports
-  return Handlebars;
-});
+  */
+}

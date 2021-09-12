@@ -4,16 +4,16 @@
   <title>Loading...</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen">
-  <link href="vendor/prism.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet" media="screen, print">
-  <link href="img/favicon.ico" rel="icon" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+  <link href="assets/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="assets/prism.css" rel="stylesheet" />
+  <link href="assets/main.css" rel="stylesheet" media="screen, print">
+  <link href="assets/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="assets/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="assets/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
+  <link href="assets/favicon-16x16.png"rel="icon" type="image/png" sizes="16x16">
 </head>
 
-<body class="container-fluid">
+<body data-spy="scroll" class="container-fluid">
 
 <!-- SIDENAV -->
 <script id="template-sidenav" type="text/x-handlebars-template">
@@ -162,10 +162,10 @@
 
     {{!-- CODE EXAMPLES IN TABS --}}
     {{#if_gt article.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+      <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
         {{#each article.examples}}
           <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-            <a href="#examples-{{../id}}-{{@index}}">{{title}}</a>
+            <a href="#examples-{{../id}}-{{@index}}" role="tab" data-toggle="tab">{{title}}</a>
           </li>
         {{/each}}
       </ul>
@@ -299,10 +299,10 @@
       </table>
     {{/each}}
     {{#if_gt params.examples.length compare=0}}
-      <ul class="nav nav-tabs nav-tabs-examples">
+      <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
       {{#each params.examples}}
         <li{{#if_eq @index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../section}}-examples-{{../id}}-{{@index}}">{{title}}</a>
+          <a href="#{{../section}}-examples-{{../id}}-{{@index}}" role="tab" data-toggle="tab">{{title}}</a>
         </li>
       {{/each}}
       </ul>
@@ -321,14 +321,14 @@
 <script id="template-article-sample-request" type="text/x-handlebars-template">
   {{#if article.sampleRequest}}
     <div class="well">
-      <h2>{{__ "Send a Sample Request"}}</h2>
+      <h3>{{__ "Send a Sample Request"}}</h3>
       <form class="form-horizontal">
         <fieldset>
           <div class="form-group">
             <label class="col-md-3 control-label" for="{{../id}}-sample-request-url">URL</label>
             <div class="input-group">
-              <input id="{{../id}}-sample-request-url" type="text" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
               <span class="input-group-addon">{{__ "url"}}</span>
+              <input id="{{../id}}-sample-request-url" type="url" class="form-control sample-request-url" value="{{article.sampleRequest.0.url}}" />
             </div>
           </div>
 
@@ -336,13 +336,18 @@
         {{#if article.header.fields}}
           <h3>{{__ "Headers"}}</h3>
           {{#each article.header.fields}}
-            <h4><input type="checkbox" data-sample-request-header-group-id="sample-request-header-{{@index}}" name="{{../id}}-sample-request-header" value="{{@index}}" class="sample-request-header sample-request-switch" checked />{{__ @key}}</h4>
             <div class="{{../id}}-sample-request-header-fields">
               {{#each this}}
               <div class="form-group">
                 <label class="col-md-3 control-label" for="sample-request-header-field-{{field}}">{{field}}</label>
                 <div class="input-group">
-                  <input type="text" placeholder="{{field}}" value="{{defaultValue}}" id="sample-request-header-field-{{field}}" class="form-control sample-request-header" data-sample-request-header-name="{{field}}" data-sample-request-header-group="sample-request-header-{{@../index}}">
+                  <input type="text" id="sample-request-header-field-{{field}}"
+                    class="form-control sample-request-input"
+                    value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
+                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
+                    data-family="header"
+                    data-name="{{field}}"
+                    data-group="{{@../index}}">
                   <span class="input-group-addon">{{{type}}}</span>
                 </div>
               </div>
@@ -356,13 +361,14 @@
         {{#if article.parameter.fields}}
           <h3>{{__ "Parameters"}}</h3>
           {{#each article.parameter.fields}}
-            <h4><input type="checkbox" data-sample-request-param-group-id="sample-request-param-{{@index}}"  name="{{../id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" checked/>{{__ @key}}
+            <div class="col-md-3">
               <select   name="{{../id}}-sample-header-content-type" class="{{../id}}-sample-request-param-select sample-header-content-type sample-header-content-type-switch">
-                <option value="undefined"  selected>ajax-auto</option>
-                <option value="body-json" >body/json</option>
-                <option value="body-form-data" >body/form-data</option>
+                <option value="auto" selected>ajax-auto</option>
+                <option value="json" >json</option>
+                <option value="form-data" >form-data</option>
               </select>
-            </h4>
+            </div>
+
             <div class="{{../id}}-sample-request-param-body {{../id}}-sample-header-content-type-body hide">
               <div class="form-group">
                 <div class="input-group">
@@ -387,47 +393,69 @@
       {{/if}}
 
       {{#if article.query}}
-            <h3>{{__ "Query Parameters"}}</h3>
-            <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
-              {{#each article.query}}
-                <div class="form-group">
-                  <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
-                  <div class="input-group">
-                    <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
-                      data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true" {{/if}}>
-                    <div class="input-group-addon">{{{type}}}</div>
-                  </div>
-                </div>
-              {{/each}}
+        <h3>{{__ "Query Parameters"}}</h3>
+        <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
+          {{#each article.query}}
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
+              <div class="input-group col-md-6">
+                <div class="input-group-addon">{{{type}}}</div>
+                <input id="sample-request-param-field-{{field}}"
+                  class="form-control sample-request-input"
+                  type="{{setInputType type}}"
+                  value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
+                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
+                  data-name="{{field}}"
+                  data-family="query"
+                  data-group="{{@../index}}"
+                  {{#if optional}}data-optional="true"{{/if}}>
+              </div>
             </div>
-          {{/if}}
+          {{/each}}
+        </div>
+      {{/if}}
 
       {{#if article.body}}
-        {{log this}}
         <h3>{{__ "Body"}}</h3>
-        <h4><input type="checkbox" data-sample-request-param-group-id="sample-request-param-{{@index}}" name="{{this.id}}-sample-request-param" value="{{@index}}" class="sample-request-param sample-request-switch" checked />{{__ @key}}
-          <select name="{{this.id}}-sample-header-content-type" class="{{this.id}}-sample-request-param-select sample-header-content-type sample-header-content-type-switch">
-            <option value="body-json" selected>body/json</option>
-            <option value="body-form-data">body/form-data</option>
+
+        <div class="col-md-3">
+          <label for="body-content-type-{{this.id}}">{{__ "Content-Type"}}</label>
+          <select id="body-content-type-{{this.id}}" data-id="{{this.id}}" class="sample-request-content-type-switch form-control">
+            <option value="body-json" selected>json</option>
+            <option value="body-form-data">form-data</option>
           </select>
-        </h4>
-        <div class="{{this.id}}-sample-request-param-body {{this.id}}-sample-header-content-type-body">
+        </div>
+
+        <div class="col-md-9" id="sample-request-body-json-input-{{this.id}}">
           <div class="form-group">
             <div class="input-group">
-              <textarea id="sample-request-body-json" class="form-control sample-request-body" data-sample-request-body-group="sample-request-param-{{@./index}}" rows="6" style="OVERFLOW: visible"
-                {{#if optional}}data-sample-request-param-optional="true" {{/if}}>{{gen_body article.body}}</textarea>
               <div class="input-group-addon">json</div>
+              <textarea class="form-control sample-request-input" rows="6"
+                data-family="body-json"
+                data-group="{{@../index}}"
+                data-name={{"body"}}
+                data-content-type="json"
+                {{#if optional}}data-optional="true"{{/if}}>{{body2json article.body}}</textarea>
             </div>
           </div>
         </div>
-        <div class="{{this.id}}-sample-request-param-fields {{this.id}}-sample-header-content-type-fields hide">
+
+        <div hidden class="col-md-9" id="sample-request-body-form-input-{{this.id}}">
           {{#each article.body}}
             <div class="form-group">
               <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
               <div class="input-group">
-                <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
-                  data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true" {{/if}}>
                 <div class="input-group-addon">{{{type}}}</div>
+                <input id="sample-request-param-field-{{field}}"
+                  class="form-control sample-request-input"
+                  type="{{setInputType type}}"
+                  value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
+                  placeholder="{{field}}"
+                  data-family="body"
+                  data-name="{{field}}"
+                  data-group="{{@../index}}"
+                  data-content-type="form"
+                  {{#if optional}}data-optional="true"{{/if}}>
               </div>
             </div>
           {{/each}}
@@ -436,10 +464,11 @@
 
           <div class="form-group">
             <div class="controls pull-right">
-              <button class="btn btn-primary sample-request-send" data-sample-request-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-primary bg-primary sample-request-send" data-type="{{article.type}}">{{__ "Send"}}</button>
+              <button class="btn btn-danger bg-red sample-request-clear" data-type="{{article.type}}">{{__ "Reset"}}</button>
             </div>
           </div>
-          <div class="form-group sample-request-response" style="display: none;">
+          <div class="form-group sample-request-response" hidden>
             <h3>
               {{__ "Response"}}
               <button class="btn btn-default btn-xs pull-right sample-request-clear">X</button>
@@ -490,11 +519,11 @@
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
-    <ul class="nav nav-tabs nav-tabs-examples">
+    <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
     {{#each_compare_title article.examples compare.examples}}
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
-          <a href="#compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+          <a href="#compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
@@ -661,11 +690,11 @@
     {{/each_compare_keys}}
 
     {{#if source.examples}}
-    <ul class="nav nav-tabs nav-tabs-examples">
+    <ul class="nav nav-tabs nav-tabs-examples" role="tablist">
     {{#each_compare_title source.examples compare.examples}}
       {{#if typeSame}}
         <li{{#if_eq index compare=0}} class="active"{{/if_eq}}>
-          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">{{{showDiff source.title compare.title}}}</a>
+          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
@@ -817,6 +846,6 @@
   </div>
 </div>
 
-<script data-main="main.js" src="vendor/require.js"></script>
+<script src="assets/main.bundle.js"></script>
 </body>
 </html>

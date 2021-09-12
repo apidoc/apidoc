@@ -1,5 +1,5 @@
 /**
- * @api {get} /user/:id Read data of a User
+ * @api {get} /user/:region/:id/:opt Read data of a User
  * @apiVersion 0.3.0
  * @apiName GetUser
  * @apiGroup User
@@ -8,12 +8,16 @@
  * @apiDescription Compare version 0.3.0 with 0.2.0 and you will see the green markers with new items in version 0.3.0 and red markers with removed items since 0.2.0.
  *
  * @apiHeader {String} Authorization The token can be generated from your user profile.
+ * @apiHeader {String} X-Apidoc-Cool-Factor=big Some other header with a default value.
  * @apiHeaderExample {Header} Header-Example
  *     "Authorization: token 5f048fe"
- * @apiQuery {Number} id The Users-ID.
+ * @apiQuery {Number} id User unique ID
+ * @apiQuery {String} region=fr-par User region
+ * @apiQuery {String} [opt] An optional param
  *
  * @apiExample {bash} Curl example
- * curl -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
+ * curl -H "Authorization: token 5f048fe" -i https://api.example.com/user/fr-par/4711
+ * curl -H "Authorization: token 5f048fe" -H "X-Apidoc-Cool-Factor: superbig" -i https://api.example.com/user/de-ber/1337/yep
  * @apiExample {js} Javascript example
  * const client = AcmeCorpApi('5f048fe');
  * const user = client.getUser(42);
@@ -54,9 +58,13 @@ function getUser() { return; }
  * @apiDescription In this case "apiErrorStructure" is defined and used.
  * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
  *
- * @apiQuery {String} name Name of the User.
- *
- * @apiBody {String} age Age of the User
+ * @apiBody {Number} age Age of the User
+ * @apiBody {String} name=Alice Name of the User
+ * @apiBody {Date} extraInfo.hireDate Date when user was hired
+ * @apiBody {Date} extraInfo.hireDateWithDefault=2021-09-01 Date when user was hired with default
+ * @apiBody {String} extraInfo.nickname Nickname of the user
+ * @apiBody {String} extraInfo.secrets.crush The user secret crush
+ * @apiBody {Number} extraInfo.secrets.hair=1000 Number of hair of user
  *
  * @apiSuccess {Number} id         The new Users-ID.
  *
