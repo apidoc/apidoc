@@ -1,162 +1,144 @@
+/*
+ * apidoc
+ * https://apidocjs.com
+ *
+ * Authors:
+ * Peter Rottmann <rottmann@inveris.de>
+ * Nicolas CARPi @ Deltablot
+ * Copyright (c) 2013 inveris OHG
+ * Licensed under the MIT license.
+ */
 import $ from 'jquery';
-import pathToRegexp from 'path-to-regexp';
-import { convertPathParams, handleNestedAndParsingFields, tryParsingWithTypes } from './send_sample_request_utils.js';
+import UrlProcessor from './sampreq_url_processor';
 
 export function initSampleRequest () {
   // Button send
   $('.sample-request-send').off('click');
   $('.sample-request-send').on('click', function (e) {
     e.preventDefault();
-    const $root = $(this).parents('article');
-    const group = $root.data('group');
-    const name = $root.data('name');
-    const version = $root.data('version');
-    sendSampleRequest(group, name, version, $(this).data('sample-request-type'));
+    const root = $(this).parents('article');
+    const group = root.data('group');
+    const name = root.data('name');
+    const version = root.data('version');
+    sendSampleRequest(group, name, version, $(this).data('type'));
   });
 
   // Button clear
   $('.sample-request-clear').off('click');
   $('.sample-request-clear').on('click', function (e) {
     e.preventDefault();
-    const $root = $(this).parents('article');
-    const group = $root.data('group');
-    const name = $root.data('name');
-    const version = $root.data('version');
+    const root = $(this).parents('article');
+    const group = root.data('group');
+    const name = root.data('name');
+    const version = root.data('version');
     clearSampleRequest(group, name, version);
   });
 }
 
-function sendSampleRequest (group, name, version, type) {
-  const $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
-
-  // Optional header
-  const header = {};
-  $root.find('.sample-request-header:checked').each(function (i, element) {
-    const group = $(element).data('sample-request-header-group-id');
-    $root.find('[data-sample-request-header-group="' + group + '"]').each(function (i, element) {
-      const key = $(element).data('sample-request-header-name');
-      let value = element.value;
-      if (typeof element.optional === 'undefined') {
-        element.optional = true;
-      }
-      if (!element.optional && element.defaultValue !== '') {
-        value = element.defaultValue;
-      }
-      header[key] = value;
-    });
-  });
-
-  // create JSON dictionary of parameters
-  let param = {};
-  const paramType = {};
-  const bodyFormData = new FormData();
-  let bodyJson = '';
-  $root.find('.sample-request-param:checked').each(function (i, element) {
-    const group = $(element).data('sample-request-param-group-id');
-    const contentType = $(element).nextAll('.sample-header-content-type-switch').first().val();
-    if (contentType === 'body-json') {
-      $root.find('[data-sample-request-body-group="' + group + '"]').not(function () {
-        return $(this).val() === '' && $(this).is('[data-sample-request-param-optional=\'true\']');
-      }).each(function (i, element) {
-        if (isJson(element.value)) {
-          header['Content-Type'] = 'application/json';
-          bodyJson = element.value;
-        }
-      });
-    } else {
-      $root.find('[data-sample-request-param-group="' + group + '"]').not(function () {
-        return $(this).val() === '' && $(this).is('[data-sample-request-param-optional=\'true\']');
-      }).each(function (i, element) {
-        const key = $(element).data('sample-request-param-name');
-        let value = element.value;
-        if (!element.optional && element.defaultValue !== '') {
-          value = element.defaultValue;
-        }
-        if (contentType === 'body-form-data') {
-          header['Content-Type'] = 'multipart/form-data';
-          if (element.type === 'file') {
-            value = element.files[0];
-          }
-          bodyFormData.append(key, value);
-        } else {
-          param[key] = value;
-          paramType[key] = $(element).next().text();
-        }
-      });
-    }
-  });
-
+// Converts path params in the {param} format to the accepted :param format, used before inserting the URL params.
+function convertPathParams (url) {
+  return url.replace(/{(.+?)}/g, ':$1');
+}
+/**
+ * Transforms https://example.org/:path/:id in https://example.org/some-path/42
+ * Based on query parameters collected
+ * @return string
+ */
+function getHydratedUrl (root, queryParameters) {
   // grab user-inputted URL
-  let url = $root.find('.sample-request-url').val();
-
+  const dryUrl = root.find('.sample-request-url').val();
+  const UrlProc = new UrlProcessor();
   // Convert {param} form to :param
-  url = convertPathParams(url);
+  // TODO check if this is necessary, do we have urls with {param} in it?
+  const url = convertPathParams(dryUrl);
+  return UrlProc.hydrate(url, queryParameters);
+}
 
-  // Insert url parameter
-  const pattern = pathToRegexp(url, null);
-  const matches = pattern.exec(url);
-  for (let i = 1; i < matches.length; i++) {
-    let key = matches[i].substr(1);
-    let optional = false;
-    if (key[key.length - 1] === '?') {
-      optional = true;
-      key = key.substr(0, key.length - 1);
+/**
+ * Grab the values from the different inputs
+ *
+ * The url in this object is already hydrated from query parameters
+ * @return {
+ *   "header": { "name": "some-name", "value": "some-value" },
+ *   "query": { "name": "some-name", "value": "some-value" },
+ *   "body": { "name": "some-name", "value": "some-value" },
+ *   "url": "http://api.example.org/user/3",
+ * }
+ */
+function collectValues (root) {
+  const parameters = {};
+  ['header', 'query', 'body'].forEach(family => {
+    // key: parameter name (e.g. 'id'), value: the content of the input
+    const inputValues = {};
+    // look for all parameters
+    try {
+      root.find($(`[data-family="${family}"]:visible`)).each((index, el) => {
+        const name = el.dataset.name;
+        const value = el.value;
+        if (!value && !el.dataset.optional) {
+          $(el).addClass('border-danger');
+          throw new Error('Empty input found!');
+        }
+        inputValues[name] = value;
+      });
+    } catch (e) {
+      return;
     }
-    if (param[key] !== undefined) {
-      url = url.replace(matches[i], encodeURIComponent(param[key]));
+    parameters[family] = inputValues;
+  });
+  // find the json body
+  const bodyJson = root.find($('[data-family="body-json"]'));
+  // load it if it's visible
+  if (bodyJson.is(':visible')) {
+    parameters.body = bodyJson.val();
+    parameters.header['Content-Type'] = 'application/json';
+  } else {
+    parameters.header['Content-Type'] = 'multipart/form-data';
+  }
+  return parameters;
+}
 
-      // remove URL parameters from list
-      delete param[key];
-    } else if (optional) {
-      // if parameter is optional denoted by ending '?' in param (:param?)
-      // and no parameter is given, replace parameter with empty string instead
-      url = url.replace(matches[i], '');
-      delete param[key];
+function sendSampleRequest (group, name, version, method) {
+  // root is the current sample request block, all is scoped within this block
+  const root = $(`article[data-group="${group}"][data-name="${name}"][data-version="${version}"]`);
+
+  const parameters = collectValues(root);
+
+  // build the object that will be passed to jquery's ajax function
+  const requestParams = {};
+  // assign the hydrated url
+  requestParams.url = getHydratedUrl(root, parameters.query);
+
+  // assign the headers
+  requestParams.headers = parameters.header;
+
+  if (requestParams.headers['Content-Type'] === 'application/json') {
+    // TODO check json is valid?
+    // or maybe have a direct feedback on the textarea onkeypress for valid/invalid json
+    requestParams.data = parameters.body;
+  } else if (requestParams.headers['Content-Type'] === 'multipart/form-data') {
+    const formData = new FormData();
+    // Note: here we don't try to handle nested fields for form-data because it doesn't make sense
+    // if you need to send non-flat data, use json, not form-data which is a flat key/value structure
+    for (const [name, value] of Object.entries(parameters.body)) {
+      formData.append(name, value);
     }
-  } // for
-
-  // handle nested objects and parsing fields
-  param = handleNestedAndParsingFields(param, paramType);
-
-  // add url search parameter
-  if (header['Content-Type'] === 'application/json') {
-    if (bodyJson) {
-      // bodyJson is set to value if request body: 'body/json' was selected and manual json was input
-      // in this case, use the given bodyJson and add other params in query string
-      url = url + encodeSearchParams(param);
-      param = bodyJson;
-    } else {
-      // bodyJson not set, but Content-Type: application/json header was set. In this case, send parameters
-      // as JSON body. First, try parsing fields of object with given paramType definition so that the json
-      // is valid against the parameter spec (e.g. Boolean params are boolean instead of strings in final json)
-      param = tryParsingWithTypes(param, paramType);
-      param = JSON.stringify(param);
-    }
-  } else if (header['Content-Type'] === 'multipart/form-data') {
-    url = url + encodeSearchParams(param);
-    param = bodyFormData;
+    requestParams.data = formData;
+    // if it's a form-data, remove the content-type?? TODO
+    delete requestParams.headers['Content-Type'];
+    requestParams.headers['Content-Type'] = false;
+    requestParams.processData = false;
   }
 
-  $root.find('.sample-request-response').fadeTo(250, 1);
-  $root.find('.sample-request-response-json').html('Loading...');
-  refreshScrollSpy();
+  requestParams.type = method;
+  requestParams.success = displaySuccess;
+  requestParams.error = displayError;
 
-  // send AJAX request, catch success or error callback
-  const ajaxRequest = {
-    url: url,
-    headers: header,
-    data: param,
-    type: type.toUpperCase(),
-    success: displaySuccess,
-    error: displayError,
-  };
+  // Do the request!
+  $.ajax(requestParams);
 
-  if (header['Content-Type'] === 'multipart/form-data') {
-    delete ajaxRequest.headers['Content-Type'];
-    ajaxRequest.contentType = false;
-    ajaxRequest.processData = false;
-  }
-  $.ajax(ajaxRequest);
+  root.find('.sample-request-response').fadeTo(200, 1);
+  root.find('.sample-request-response-json').html('Loading...');
 
   function displaySuccess (data, status, jqXHR) {
     let jsonResponse;
@@ -166,8 +148,7 @@ function sendSampleRequest (group, name, version, type) {
     } catch (e) {
       jsonResponse = jqXHR.responseText;
     }
-    $root.find('.sample-request-response-json').text(jsonResponse);
-    refreshScrollSpy();
+    root.find('.sample-request-response-json').text(jsonResponse);
   }
 
   function displayError (jqXHR, textStatus, error) {
@@ -183,65 +164,29 @@ function sendSampleRequest (group, name, version, type) {
     if (jsonResponse) { message += '\n' + jsonResponse; }
 
     // flicker on previous error to make clear that there is a new response
-    if ($root.find('.sample-request-response').is(':visible')) { $root.find('.sample-request-response').fadeTo(1, 0.1); }
+    if (root.find('.sample-request-response').is(':visible')) { root.find('.sample-request-response').fadeTo(1, 0.1); }
 
-    $root.find('.sample-request-response').fadeTo(250, 1);
-    $root.find('.sample-request-response-json').text(message);
-    refreshScrollSpy();
+    root.find('.sample-request-response').fadeTo(250, 1);
+    root.find('.sample-request-response-json').text(message);
   }
 }
 
 function clearSampleRequest (group, name, version) {
-  const $root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
+  const root = $('article[data-group="' + group + '"][data-name="' + name + '"][data-version="' + version + '"]');
 
   // hide sample response
-  $root.find('.sample-request-response-json').html('');
-  $root.find('.sample-request-response').hide();
+  root.find('.sample-request-response-json').html('');
+  root.find('.sample-request-response').hide();
 
   // reset value of parameters
-  $root.find('.sample-request-param').each(function (i, element) {
-    element.value = '';
+  root.find('.sample-request-input').each((idx, el) => {
+    // placeholder is the name of the input if there are no default value
+    // so replace by the placeholder if it's different (input has a default value)
+    // or empty string if there is no default value
+    el.value = el.placeholder !== el.dataset.name ? el.placeholder : '';
   });
 
   // restore default URL
-  const $urlElement = $root.find('.sample-request-url');
+  const $urlElement = root.find('.sample-request-url');
   $urlElement.val($urlElement.prop('defaultValue'));
-
-  refreshScrollSpy();
-}
-
-function refreshScrollSpy () {
-  $('[data-spy="scroll"]').each(function () {
-    $(this).scrollspy('refresh');
-  });
-}
-
-/**
-   * is Json
-   */
-function isJson (str) {
-  if (typeof str === 'string') {
-    try {
-      const obj = JSON.parse(str);
-      if (typeof obj === 'object' && obj) {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      return false;
-    }
-  }
-}
-
-/**
-   * encode Search Params
-   */
-function encodeSearchParams (obj) {
-  const params = [];
-  Object.keys(obj).forEach((key) => {
-    const value = obj[key];
-    params.push([key, encodeURIComponent(value)].join('='));
-  });
-  return params.length === 0 ? '' : '?' + params.join('&');
 }

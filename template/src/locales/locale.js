@@ -40,6 +40,7 @@ define([
 
   return {
     __: __,
+    langId,
     locales: locales,
     locale: locale,
     setLanguage: setLanguage,

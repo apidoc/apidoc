@@ -10,6 +10,7 @@ module.exports = {
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js',
     },
+    extensions: ['.js', '.mjs'],
   },
   module: {
     rules: [

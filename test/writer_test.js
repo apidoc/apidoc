@@ -1,3 +1,14 @@
+/*
+ * apidoc
+ * https://apidocjs.com
+ *
+ * Authors:
+ * Peter Rottmann <rottmann@inveris.de>
+ * Nicolas CARPi @ Deltablot
+ * Copyright (c) 2013 inveris OHG
+ * Licensed under the MIT license.
+ */
+
 /**
  * Test the writer module
  */

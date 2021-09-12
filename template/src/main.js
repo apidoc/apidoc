@@ -375,6 +375,11 @@ function init () {
   // Bootstrap Scrollspy
   $('body').scrollspy({ target: '#scrollingNav' });
 
+  // when we click on an input that was previously highlighted because it was empty, remove the red border
+  $('.form-control').on('focus', function () {
+    $(this).removeClass('border-danger');
+  });
+
   // Content-Scroll on Navigation click.
   $('.sidenav').find('a').on('click', function (e) {
     e.preventDefault();
@@ -426,47 +431,14 @@ function init () {
     });
     $('.nav-tabs-examples').find('a:first').tab('show');
 
-    // sample header-content-type switch
-    $('.sample-header-content-type-switch').change(function () {
-      const paramName = '.' + $(this).attr('name') + '-fields';
-      const bodyName = '.' + $(this).attr('name') + '-body';
-      const selectName = 'select[name=' + $(this).attr('name') + ']';
-      if ($(this).val() === 'body-json') {
-        $(selectName).val('undefined');
-        $(this).val('body-json');
-        $(paramName).removeClass('hide');
-        $(this).parent().nextAll(paramName).first().addClass('hide');
-        $(bodyName).addClass('hide');
-        $(this).parent().nextAll(bodyName).first().removeClass('hide');
-      } else if ($(this).val() === 'body-form-data') {
-        $(selectName).val('undefined');
-        $(this).val('body-form-data');
-        $(bodyName).addClass('hide');
-        $(paramName).removeClass('hide');
+    // switch content-type for body inputs (json or form-data)
+    $('.sample-request-content-type-switch').change(function () {
+      if ($(this).val() === 'body-form-data') {
+        $('#sample-request-body-json-input-' + $(this).data('id')).hide();
+        $('#sample-request-body-form-input-' + $(this).data('id')).show();
       } else {
-        $(this).parent().nextAll(paramName).first().removeClass('hide');
-        $(this).parent().nextAll(bodyName).first().addClass('hide');
-      }
-      $(this).prev('.sample-request-switch').prop('checked', true);
-    });
-
-    // sample request switch
-    $('.sample-request-switch').click(function (e) {
-      const paramName = '.' + $(this).attr('name') + '-fields';
-      const bodyName = '.' + $(this).attr('name') + '-body';
-      const select = $(this).next('.' + $(this).attr('name') + '-select').val();
-      if ($(this).prop('checked')) {
-        if (select === 'body-json') {
-          $(this).parent().nextAll(bodyName).first().removeClass('hide');
-        } else {
-          $(this).parent().nextAll(paramName).first().removeClass('hide');
-        }
-      } else {
-        if (select === 'body-json') {
-          $(this).parent().nextAll(bodyName).first().addClass('hide');
-        } else {
-          $(this).parent().nextAll(paramName).first().addClass('hide');
-        }
+        $('#sample-request-body-form-input-' + $(this).data('id')).hide();
+        $('#sample-request-body-json-input-' + $(this).data('id')).show();
       }
     });
 

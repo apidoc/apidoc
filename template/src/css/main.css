@@ -16,11 +16,29 @@
   --meth-put: #e5c500;
   --meth-post: #4070ec;
   --meth-delete: #ed0039;
-  --red: red;
+  --red: #dc3545;
 }
 
 .color-primary {
   color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-red {
+  color: var(--white);
+  background-color: var(--red);
+}
+
+.border-danger {
+  border: 1px solid var(--red);
+}
+
+/** for some reason the iOS safari style is applied on date inputs */
+input[type="date"] {
+  line-height: 1.4 !important;
 }
 
 /* ------------------------------------------------------------------------------------------

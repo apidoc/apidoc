@@ -1,9 +1,21 @@
+/*
+ * apidoc
+ * https://apidocjs.com
+ *
+ * Authors:
+ * Peter Rottmann <rottmann@inveris.de>
+ * Nicolas CARPi @ Deltablot
+ * Copyright (c) 2013 inveris OHG
+ * Licensed under the MIT license.
+ */
+
 /**
  * Helper functions for HandleBars
  */
 import Handlebars from 'handlebars';
 import locale from './locales/locale';
 import $ from 'jquery';
+import { body2json } from './jsonifier';
 
 // this will register all helpers
 export function register () {
@@ -28,10 +40,16 @@ export function register () {
      * set paramater type.
      */
   Handlebars.registerHelper('setInputType', function (text) {
-    if (text === 'File') {
-      return 'file';
+    switch (text) {
+      case 'File':
+      case 'Email':
+      case 'Color':
+      case 'Number':
+      case 'Date':
+        return text[0].toLowerCase() + text.substring(1);
+      default:
+        return 'text';
     }
-    return 'text';
   });
 
   /**
@@ -213,44 +231,8 @@ export function register () {
     return _handlebarsEachCompared('key', newSource, newCompare, options);
   });
 
-  /**
-     *
-     */
-  Handlebars.registerHelper('gen_body', function (context, options) {
-    const strBody = {};
-    context.forEach(element => {
-      element.field = element.field.replace(']', '');
-      switch (element.type.toLowerCase()) {
-        case 'string':
-          if (element.field.includes('[')) {
-            if (strBody[element.field.split('[')[0]] === undefined) {
-              strBody[element.field.split('[')[0]] = {};
-            }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || '';
-            break;
-          }
-          strBody[element.field] = element.defaultValue || '';
-          break;
-        case 'number':
-          if (element.field.includes('[')) {
-            if (strBody[element.field.split('[')[0]] === undefined) {
-              strBody[element.field.split('[')[0]] = {};
-            }
-            strBody[element.field.split('[')[0]][element.field.split('[')[1]] = element.defaultValue || 0;
-            break;
-          }
-          strBody[element.field] = element.defaultValue || 0;
-          break;
-        case 'object':
-          if (strBody[element.field] === undefined) {
-            strBody[element.field] = {};
-          }
-          break;
-        default:
-          strBody[element.field] = null;
-      }
-    });
-    return JSON.stringify(strBody, null, 4);
+  Handlebars.registerHelper('body2json', function (context, options) {
+    return body2json(context);
   });
 
   Handlebars.registerHelper('each_compare_field', function (source, compare, options) {
