@@ -33,7 +33,7 @@ function testFullExample (config) {
 
   // create
   it('should create example in ' + outputPath, async function () {
-    const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' -i ' + 'example -o ' + outputPath + ' -q';
+    const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' -i ' + 'example -o ' + outputPath + ' -q -d';
     const { stdout, stderr } = await exec(cmd);
   }).timeout(80000);
 

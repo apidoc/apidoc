@@ -14,12 +14,11 @@ const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'main.js'),
-  // TODO check NODE_ENV to set it to development in dev
-  mode: 'production',
-  // devtool: 'inline-source-map',
+  // mode is set at runtime
   resolve: {
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js',
+      // use src jquery, not the minified version or it won't be found
       jquery: 'jquery/src/jquery',
     },
     extensions: ['.js', '.mjs'],
