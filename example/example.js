@@ -59,7 +59,7 @@ function getUser() { return; }
  * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
  *
  * @apiBody {Number} age Age of the User
- * @apiBody {String} name=Alice Name of the User
+ * @apiBody {String} name=Caroline Name of the User
  * @apiBody {Date} extraInfo.hireDate Date when user was hired
  * @apiBody {Date} extraInfo.hireDateWithDefault=2021-09-01 Date when user was hired with default
  * @apiBody {String} extraInfo.nickname Nickname of the user
@@ -141,3 +141,13 @@ function deleteUser() { return; }
  * @apiDescription This is here to have a long name in the left menu.
  */
 function thankUser() { return; }
+
+/**
+ * @api {post} /city Create a new city
+ * @apiVersion 0.3.0
+ * @apiName CreateCity
+ * @apiGroup City
+ * @apiDescription Create a new city.
+ * @apiBody {String} name=Paris Name of the city
+ */
+function createCity() { return; }
