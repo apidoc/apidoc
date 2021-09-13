@@ -16,7 +16,7 @@
     "url": "https://github.com/apidoc/apidoc/issues"
   },
   "scripts": {
-    "build-example": "./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
+    "build-example": "NODE_ENV=development ./bin/apidoc -v -i example/ -o /tmp/apidoc-output",
     "eslint": "./node_modules/.bin/eslint lib bin/apidoc template/src",
     "pre-commit": "npm run eslint && npm run test",
     "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx",

@@ -1,11 +1,22 @@
-/* apidoc assets builder config */
+/*
+ * apidoc
+ * https://apidocjs.com
+ *
+ * Authors:
+ * Peter Rottmann <rottmann@inveris.de>
+ * Nicolas CARPi @ Deltablot
+ * Copyright (c) 2013 inveris OHG
+ * Licensed under the MIT license.
+ */
+
+/* webpack js bundler config file */
 const path = require('path');
 
 module.exports = {
   entry: path.resolve(__dirname, 'main.js'),
-  mode: 'development',
-  // devtool: 'eval-source-map',
-  devtool: 'inline-source-map',
+  // TODO check NODE_ENV to set it to development in dev
+  mode: 'production',
+  // devtool: 'inline-source-map',
   resolve: {
     alias: {
       handlebars: 'handlebars/dist/handlebars.min.js',
