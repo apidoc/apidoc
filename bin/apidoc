@@ -18,7 +18,7 @@ const nodemon = require('nodemon');
 // library to parse arguments/options
 const { Command } = require('commander');
 
-const apidoc = require(path.join('..', 'lib', 'index'));
+const apidoc = require(path.join(__dirname, '..', 'lib', 'index'));
 
 /**
  * Transform parameters to object
