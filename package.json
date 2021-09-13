@@ -64,6 +64,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.172",
     "@types/mocha": "^9.0.0",
     "@types/node": "^16.9.1",
     "eslint": "^7.32.0",
