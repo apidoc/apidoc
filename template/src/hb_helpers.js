@@ -47,6 +47,8 @@ export function register () {
       case 'Number':
       case 'Date':
         return text[0].toLowerCase() + text.substring(1);
+      case 'Boolean':
+        return 'checkbox';
       default:
         return 'text';
     }
@@ -111,30 +113,33 @@ export function register () {
     return _handlebarsNewlineToBreak(text);
   });
 
-  /**
-     *
-     */
-  Handlebars.registerHelper('if_eq', function (context, options) {
-    let compare = context;
-    // Get length if context is an object
-    if (context instanceof Object && !(options.hash.compare instanceof Object)) { compare = Object.keys(context).length; }
-
-    if (compare === options.hash.compare) { return options.fn(this); }
-
-    return options.inverse(this);
-  });
-
-  /**
-     *
-     */
-  Handlebars.registerHelper('if_gt', function (context, options) {
-    let compare = context;
-    // Get length if context is an object
-    if (context instanceof Object && !(options.hash.compare instanceof Object)) { compare = Object.keys(context).length; }
-
-    if (compare > options.hash.compare) { return options.fn(this); }
-
-    return options.inverse(this);
+  // Test conditions
+  // Usage: {{#ifCond var1 '===' var2}}something{{/ifCond}}
+  Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
+    switch (operator) {
+      case '==':
+        return v1 == v2 ? options.fn(this) : options.inverse(this); // eslint-disable-line eqeqeq
+      case '===':
+        return v1 === v2 ? options.fn(this) : options.inverse(this);
+      case '!=':
+        return v1 != v2 ? options.fn(this) : options.inverse(this); // eslint-disable-line eqeqeq
+      case '!==':
+        return v1 !== v2 ? options.fn(this) : options.inverse(this);
+      case '<':
+        return v1 < v2 ? options.fn(this) : options.inverse(this);
+      case '<=':
+        return v1 <= v2 ? options.fn(this) : options.inverse(this);
+      case '>':
+        return v1 > v2 ? options.fn(this) : options.inverse(this);
+      case '>=':
+        return v1 >= v2 ? options.fn(this) : options.inverse(this);
+      case '&&':
+        return v1 && v2 ? options.fn(this) : options.inverse(this);
+      case '||':
+        return v1 || v2 ? options.fn(this) : options.inverse(this);
+      default:
+        return options.inverse(this);
+    }
   });
 
   /**
@@ -151,9 +156,6 @@ export function register () {
     return new Handlebars.SafeString(template(templateContext));
   });
 
-  /**
-     *
-     */
   Handlebars.registerHelper('toLowerCase', function (value) {
     return value && typeof value === 'string' ? value.toLowerCase() : '';
   });

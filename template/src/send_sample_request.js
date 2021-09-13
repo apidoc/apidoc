@@ -74,10 +74,20 @@ function collectValues (root) {
     try {
       root.find($(`[data-family="${family}"]:visible`)).each((index, el) => {
         const name = el.dataset.name;
-        const value = el.value;
-        if (!value && !el.dataset.optional) {
+        let value = el.value;
+        // special case for checkbox, we look at the checked property
+        if (el.type === 'checkbox') {
+          if (el.checked) {
+            value = 'on';
+          } else {
+            // don't send anything for checkbox if it's not checked
+            // without this an empty string will be sent along
+            return true;
+          }
+        }
+        if (!value && !el.dataset.optional && el.type !== 'checkbox') {
           $(el).addClass('border-danger');
-          throw new Error('Empty input found!');
+          return true;
         }
         inputValues[name] = value;
       });

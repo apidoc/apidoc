@@ -376,7 +376,8 @@ function init () {
   $('body').scrollspy({ target: '#scrollingNav' });
 
   // when we click on an input that was previously highlighted because it was empty, remove the red border
-  $('.form-control').on('focus', function () {
+  // also listen for change because for numbers you can just click the browser's up/down arrow and it will not focus
+  $('.form-control').on('focus change', function () {
     $(this).removeClass('border-danger');
   });
 
