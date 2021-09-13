@@ -37,8 +37,8 @@ export function register () {
   });
 
   /**
-     * set paramater type.
-     */
+   * Transform the parsed input type into html input type value
+   */
   Handlebars.registerHelper('setInputType', function (text) {
     switch (text) {
       case 'File':
