@@ -24,7 +24,7 @@ import 'prismjs/components/prism-http';
 import 'prismjs/components/prism-python';
 
 import { initSampleRequest } from './send_sample_request.js';
-import locale from './locales/locale';
+import { __, setLanguage } from './locales/locale.mjs';
 // import DiffMatchPatch from './vendor/diff_match_patch.min';
 
 // helpers for HandleBars
@@ -62,7 +62,7 @@ function init () {
 
   if (apiProject.template.withGenerator == null) { apiProject.template.withGenerator = true; }
 
-  if (apiProject.template.forceLanguage) { locale.setLanguage(apiProject.template.forceLanguage); }
+  if (apiProject.template.forceLanguage) { setLanguage(apiProject.template.forceLanguage); }
 
   if (apiProject.template.aloneDisplay == null) { apiProject.template.aloneDisplay = false; }
 
@@ -138,7 +138,7 @@ function init () {
   apiGroups.sort();
 
   // custom order
-  if (apiProject.order) { apiGroups = sortByOrder(apiGroups, apiProject.order); }
+  if (apiProject.order) { apiGroups = sortByOrder(apiGroups, apiProject.order, '#~#'); }
 
   // sort versions DESC
   apiVersions = Object.keys(apiVersions);
@@ -240,7 +240,7 @@ function init () {
       nav.unshift({
         group: '_',
         isHeader: true,
-        title: apiProject.header.title == null ? locale.__('General') : apiProject.header.title,
+        title: apiProject.header.title == null ? __('General') : apiProject.header.title,
         isFixed: true,
       });
     }

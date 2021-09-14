@@ -21,7 +21,7 @@
     "eslint": "./node_modules/.bin/eslint lib bin/apidoc template/src",
     "pre-commit": "npm run eslint && npm run test",
     "serve": "npm run build-example && docker run --rm --name apidoc -p 8080:80 -v /tmp/apidoc-output:/usr/share/nginx/html:ro -d nginx",
-    "test": "mocha --colors --no-package --no-config 'test/**/*_test.js'"
+    "test": "mocha --colors --no-package --no-config 'test/**/*_test.*js'"
   },
   "keywords": [
     "api",

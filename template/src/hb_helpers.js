@@ -13,7 +13,7 @@
  * Helper functions for HandleBars
  */
 import Handlebars from 'handlebars';
-import locale from './locales/locale';
+import { __ } from './locales/locale';
 import $ from 'jquery';
 import { body2json } from './jsonifier';
 
@@ -73,7 +73,7 @@ export function register () {
      * @param string text
      */
   Handlebars.registerHelper('__', function (text) {
-    return locale.__(text);
+    return __(text);
   });
 
   /**
@@ -335,7 +335,7 @@ export function register () {
     let ret = '';
     const length = dataList.length;
     for (const index in dataList) {
-      if (index === length - 1) { dataList[index]._last = true; }
+      if (parseInt(index, 10) === length - 1) { dataList[index]._last = true; }
       ret = ret + options.fn(dataList[index]);
     }
     return ret;
