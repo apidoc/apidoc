@@ -7,7 +7,6 @@ import $ from 'jquery';
 import { groupBy, extend, some } from 'lodash';
 import semver from 'semver';
 import Handlebars from 'handlebars';
-import { List } from 'list';
 // bootstrap plugins
 import 'bootstrap/js/dropdown';
 import 'bootstrap/js/tooltip';
@@ -555,34 +554,35 @@ function init () {
   }
 
   /**
-     * Initialize search
-     */
-  const options = {
-    valueNames: ['nav-list-item', 'nav-list-url-item'],
-  };
-  const endpointsList = new List('scrollingNav', options); // eslint-disable-line no-undef
-
-  /**
-     * Set initial focus to search input
-     */
+   * Set initial focus to search input
+   */
   $('#scrollingNav .sidenav-search input.search').focus();
 
   /**
-     * Detect ESC key to reset search
-     */
-  $(document).keyup(function (e) {
-    if (e.keyCode === 27) $('span.search-reset').click();
+   * Filter search
+   */
+  $('[data-action="filter-search"]').on('keyup', event => {
+    const query = event.currentTarget.value;
+    // find all links that are endpoints
+    $('.sidenav').find('a.nav-list-item').each((index, el) => {
+      // begin by showing all so they don't stay hidden
+      $(el).show();
+      // now simply hide the ones that match the query
+      if (!el.innerText.toLowerCase().includes(query)) {
+        $(el).hide();
+      }
+    });
   });
 
   /**
-     * Search reset
-     */
+   * Search reset
+   */
   $('span.search-reset').on('click', function () {
     $('#scrollingNav .sidenav-search input.search')
       .val('')
       .focus()
     ;
-    endpointsList.search();
+    $('.sidenav').find('a.nav-list-item').show();
   });
 
   /**

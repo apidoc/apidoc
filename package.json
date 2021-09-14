@@ -51,7 +51,6 @@
     "iconv-lite": "^0.6.3",
     "jquery": "^3.6.0",
     "klaw-sync": "^6.0.0",
-    "list": "^2.0.19",
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.0",
     "nodemon": "^2.0.4",
