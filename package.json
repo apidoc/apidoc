@@ -42,7 +42,7 @@
     "win32"
   ],
   "dependencies": {
-    "bootstrap": "3.4.1",
+    "bootstrap": "5.1.1",
     "commander": "^8.1.0",
     "expose-loader": "^3.0.0",
     "fs-extra": "^10.0.0",
