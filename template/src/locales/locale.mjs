@@ -10,19 +10,18 @@
  */
 import { ca } from './ca.mjs';
 import { cs } from './cs.mjs';
-import { de } from'./de.mjs';
-import { es } from'./es.mjs';
+import { de } from './de.mjs';
+import { es } from './es.mjs';
 import { fr } from './fr.mjs';
-import { it } from'./it.mjs';
-import { nl } from'./nl.mjs';
-import { pl } from'./pl.mjs';
-import { pt_br } from'./pt_br.mjs';
-import { ro } from'./ro.mjs';
-import { ru } from'./ru.mjs';
-import { tr } from'./tr.mjs';
-import { vi } from'./vi.mjs';
-import { zh } from'./zh.mjs';
-import { zh_cn } from'./zh_cn.mjs';
+import { it } from './it.mjs';
+import { nl } from './nl.mjs';
+import { pl } from './pl.mjs';
+import { ptBr } from './pt_br.mjs';
+import { ro } from './ro.mjs';
+import { ru } from './ru.mjs';
+import { tr } from './tr.mjs';
+import { vi } from './vi.mjs';
+import { zhCn } from './zh_cn.mjs';
 
 const locales = {
   ca: ca,
@@ -34,12 +33,12 @@ const locales = {
   it: it,
   nl: nl,
   pl: pl,
-  pt: pt_br,
+  pt: ptBr,
   ro: ro,
   ru: ru,
   tr: tr,
   vi: vi,
-  zh: zh,
+  zh: zhCn,
 };
 
 // e.g. en fr pl

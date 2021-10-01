@@ -1,4 +1,4 @@
-export const pt_br = {
+export const ptBr = {
   'Allowed values:': 'Valores permitidos:',
   'Compare all with predecessor': 'Compare todos com antecessores',
   'compare changes to:': 'comparar alterações com:',

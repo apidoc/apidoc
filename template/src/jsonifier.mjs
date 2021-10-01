@@ -12,8 +12,8 @@ import pkg from 'lodash';
 const { defaultsDeep } = pkg;
 
 const setValueToField = (fields, value) => {
-    const reducer = (acc, item, index, arr) => ({ [item]: index + 1 < arr.length ? acc : value });
-    return fields.reduceRight(reducer, {});
+  const reducer = (acc, item, index, arr) => ({ [item]: index + 1 < arr.length ? acc : value });
+  return fields.reduceRight(reducer, {});
 };
 
 const fieldsToJson = fields => {
@@ -23,7 +23,7 @@ const fieldsToJson = fields => {
     obj = defaultsDeep(obj, line);
   });
   return beautify(obj);
-}
+};
 
 /**
  * Stringify an obj to JSON with spaces
@@ -33,26 +33,26 @@ export function beautify (obj) {
 }
 
 export function body2json (context) {
-    // build an array of fields with their type
-    const fields = [];
-    context.forEach(entry => {
-      let val;
-      switch (entry.type.toLowerCase()) {
-        case 'string':
-          val = entry.defaultValue || '';
-          break;
-        case 'boolean':
-          val = Boolean(entry.defaultValue) || false;
-          break;
-        case 'number':
-          val = parseInt(entry.defaultValue || 0, 10);
-          break;
-        case 'date':
-          // date field will have default value or formatted date of today in current locale
-          val = entry.defaultValue || new Date().toLocaleDateString(window.navigator.language);
-          break;
-      }
-      fields.push([entry.field, val]);
-    });
-    return fieldsToJson(fields);
+  // build an array of fields with their type
+  const fields = [];
+  context.forEach(entry => {
+    let val;
+    switch (entry.type.toLowerCase()) {
+      case 'string':
+        val = entry.defaultValue || '';
+        break;
+      case 'boolean':
+        val = Boolean(entry.defaultValue) || false;
+        break;
+      case 'number':
+        val = parseInt(entry.defaultValue || 0, 10);
+        break;
+      case 'date':
+        // date field will have default value or formatted date of today in current locale
+        val = entry.defaultValue || new Date().toLocaleDateString(window.navigator.language);
+        break;
+    }
+    fields.push([entry.field, val]);
+  });
+  return fieldsToJson(fields);
 }
