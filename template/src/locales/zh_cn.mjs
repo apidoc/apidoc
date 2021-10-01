@@ -1,4 +1,4 @@
-export const zh_cn = {
+export const zhCn = {
   'Allowed values:': '允许值:',
   'Compare all with predecessor': '与所有较早的比较',
   'compare changes to:': '将当前版本与指定版本比较:',
