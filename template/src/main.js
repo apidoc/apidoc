@@ -424,7 +424,6 @@ function init () {
       });
     }
 
-    // selects
     $('.sample-request-select select').change(function () {
       $(this).closest('.input-group').find('input').val($(this).val());
     });
