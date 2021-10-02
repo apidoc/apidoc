@@ -42,6 +42,7 @@
     "win32"
   ],
   "dependencies": {
+    "apidoc": "^0.29.0",
     "bootstrap": "3.4.1",
     "commander": "^8.1.0",
     "expose-loader": "^3.0.0",

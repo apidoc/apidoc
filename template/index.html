@@ -211,7 +211,16 @@
             {{#unless this.Type compare=null}}
               <td class="code">{{this.type}}</td>
             {{/unless}}
-            <td>{{{nl2br this.description}}}</td>
+            <td>{{{nl2br this.description}}}
+            {{#if defaultValue}}<p class="default-value">{{__ "Default value:"}} <code>{{{defaultValue}}}</code></p>{{/if}}
+            {{#if size}}<p class="type-size">{{__ "Size range:"}} <code>{{{size}}}</code></p>{{/if}}
+            {{#if allowedValues}}<p class="type-size">{{__ "Allowed values:"}}
+              {{#each allowedValues}}
+                <code>{{{this}}}</code>{{#unless @last}}, {{/unless}}
+              {{/each}}
+              </p>
+            {{/if}}
+            </td>
           </tr>
         {{/each}}
       </tbody>
