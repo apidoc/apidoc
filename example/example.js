@@ -150,6 +150,6 @@ function thankUser() { return; }
  * @apiDescription Create a new city.
  * @apiBody {String} name=Paris Name of the city
  * @apiQuery {String=Aerial,Land,Underwater} view=Aerial Type of view.
- * @apiQuery {String} iiiview Type of view.
+ * @apiQuery {Number} zoom Zoom.
  */
 function createCity() { return; }
