@@ -33,7 +33,7 @@
 }
 
 .border-danger {
-  border: 1px solid var(--red) !important;
+  border: 1px solid var(--red);
 }
 
 /** for some reason the iOS safari style is applied on date inputs */
@@ -46,7 +46,6 @@ input[type="date"] {
 }
 
 .input-group-addon.sample-request-query-select select {
-  border: 1px solid transparent;
   width: auto;
   height: 32px;
 }
