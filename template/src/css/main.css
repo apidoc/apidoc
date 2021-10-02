@@ -33,7 +33,7 @@
 }
 
 .border-danger {
-  border: 1px solid var(--red);
+  border: 1px solid var(--red) !important;
 }
 
 /** for some reason the iOS safari style is applied on date inputs */
