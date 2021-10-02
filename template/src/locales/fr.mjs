@@ -1,4 +1,5 @@
 export const fr = {
+  'No value': 'Aucune valeur',
   'Allowed values:': 'Valeurs autorisées :',
   'Compare all with predecessor': 'Tout comparer avec ...',
   'compare changes to:': 'comparer les changements à :',
