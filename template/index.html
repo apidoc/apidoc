@@ -384,17 +384,27 @@
                 <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="input-group">
                   {{#if allowedValues}}
-                  <div class="input-group-addon sample-request-select">
-                    <select>
-                      <option value=""></option>
+                  <div class="input-group-addon">{{{type}}}</div>
+                  <div class="input-group-addon sample-request-query-select">
+                    <select data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                      <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                       {{#each allowedValues}}
-                      <option value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
+                      <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
                       {{/each}}
                     </select>
                   </div>
-                  {{/if}}
-                  <input id="sample-request-param-field-{{field}}" type="{{setInputType type}}" placeholder="{{field}}" class="form-control sample-request-param" data-sample-request-param-name="{{field}}" data-sample-request-param-group="sample-request-param-{{@../index}}" {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
+                  <input class="invisible">
+                  {{else}}
+                  <input id="sample-request-param-field-{{field}}"
+                    class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
+                    type="{{setInputType type}}" placeholder="{{field}}"
+                    value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
+                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
+                    data-sample-request-param-name="{{field}}"
+                    data-sample-request-param-group="sample-request-param-{{@../index}}"
+                    {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
                   <div class="input-group-addon">{{{type}}}</div>
+                  {{/if}}
                 </div>
               </div>
               {{/each}}
@@ -412,15 +422,16 @@
               <div class="input-group col-md-6">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
-                <div class="input-group-addon sample-request-select">
-                  <select>
-                    <option value=""></option>
+                <div class="input-group-addon sample-request-query-select">
+                  <select data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                    <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
-                    <option value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
+                    <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
                     {{/each}}
                   </select>
                 </div>
-                {{/if}}
+                <input class="invisible">
+                {{else}}
                 <input id="sample-request-param-field-{{field}}"
                   class="form-control sample-request-input"
                   type="{{setInputType type}}"
@@ -430,6 +441,7 @@
                   data-family="query"
                   data-group="{{@../index}}"
                   {{#if optional}}data-optional="true"{{/if}}>
+                {{/if}}
               </div>
             </div>
           {{/each}}

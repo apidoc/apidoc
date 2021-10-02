@@ -41,8 +41,12 @@ input[type="date"] {
   line-height: 1.4 !important;
 }
 
-.input-group-addon.sample-request-select {
+.input-group-addon.sample-request-query-select {
   padding: 0 6px;
+}
+
+.input-group-addon.sample-request-query-select select {
+  border: 1px solid transparent;
 }
 
 /* ------------------------------------------------------------------------------------------
@@ -119,6 +123,10 @@ td.code {
 .open-left {
   right: 0;
   left: auto;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 /* ------------------------------------------------------------------------------------------

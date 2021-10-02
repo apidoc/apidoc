@@ -424,10 +424,6 @@ function init () {
       });
     }
 
-    $('.sample-request-select select').change(function () {
-      $(this).closest('.input-group').find('input').val($(this).val());
-    });
-
     // tabs
     $('.nav-tabs-examples a').click(function (e) {
       e.preventDefault();
