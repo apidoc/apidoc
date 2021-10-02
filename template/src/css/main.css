@@ -48,6 +48,7 @@ input[type="date"] {
 .input-group-addon.sample-request-query-select select {
   border: 1px solid transparent;
   width: auto;
+  height: 32px;
 }
 
 /* ------------------------------------------------------------------------------------------
