@@ -41,15 +41,6 @@ input[type="date"] {
   line-height: 1.4 !important;
 }
 
-.input-group-addon.sample-request-query-select {
-  padding: 0 6px;
-}
-
-.input-group-addon.sample-request-query-select select {
-  width: auto;
-  height: 32px;
-}
-
 /* ------------------------------------------------------------------------------------------
  * Content
  * ------------------------------------------------------------------------------------------ */
@@ -128,6 +119,15 @@ td.code {
 
 .invisible {
   visibility: hidden;
+}
+
+.input-group-addon.sample-request-query-select {
+  padding: 0 6px;
+}
+
+.input-group-addon.sample-request-query-select select {
+  width: auto;
+  height: 32px;
 }
 
 /* ------------------------------------------------------------------------------------------
