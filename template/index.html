@@ -394,7 +394,7 @@
                 <div class="input-group">
                   {{#if allowedValues}}
                   <div class="input-group-addon">{{{type}}}</div>
-                  <div class="input-group-addon sample-request-query-select">
+                  <div class="input-group-addon sample-request-select">
                     <select class="form-control" data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                       <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                       {{#each allowedValues}}
@@ -431,7 +431,7 @@
               <div class="input-group col-md-6">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
-                <div class="input-group-addon sample-request-query-select">
+                <div class="input-group-addon sample-request-select">
                   <select class="form-control" data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                     <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
@@ -487,6 +487,17 @@
               <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
               <div class="input-group">
                 <div class="input-group-addon">{{{type}}}</div>
+                {{#if allowedValues}}
+                <div class="input-group-addon sample-request-select">
+                  <select class="form-control" data-name="{{field}}" data-family="body" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                    <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
+                    {{#each allowedValues}}
+                    <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
+                    {{/each}}
+                  </select>
+                </div>
+                <input class="invisible">
+                {{else}}
                 <input id="sample-request-param-field-{{field}}"
                   class="form-control sample-request-input"
                   type="{{setInputType type}}"
@@ -497,6 +508,7 @@
                   data-name="{{field}}"
                   data-content-type="form"
                   {{#if optional}}data-optional="true"{{/if}}>
+                {{/if}}
               </div>
             </div>
           {{/each}}

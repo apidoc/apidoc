@@ -121,11 +121,11 @@ td.code {
   visibility: hidden;
 }
 
-.input-group-addon.sample-request-query-select {
+.input-group-addon.sample-request-select {
   padding: 0 6px;
 }
 
-.input-group-addon.sample-request-query-select select {
+.input-group-addon.sample-request-select select {
   width: auto;
   height: 32px;
 }
