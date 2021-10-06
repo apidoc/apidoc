@@ -567,7 +567,7 @@ function init () {
     $('.sidenav').find('a.nav-list-item').each((index, el) => {
       // begin by showing all so they don't stay hidden
       $(el).show();
-      // now simply hide the ones that match the query
+      // now simply hide the ones that don't match the query
       if (!el.innerText.toLowerCase().includes(query)) {
         $(el).hide();
       }
