@@ -111,11 +111,11 @@ td.code {
   user-select: none;
 }
 
-.label.label-optional {
+.label.optional {
   background-color: grey;
 }
 
-.label.label-required {
+.label.required {
   background-color: var(--red);
 }
 
