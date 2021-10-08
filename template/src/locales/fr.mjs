@@ -21,6 +21,7 @@ export const fr = {
   'Query Parameter(s)': 'Paramètre(s) de la requête',
   'Query Parameters': 'Paramètres de la requête',
   'Request Body': 'Corps de la requête',
+  required: 'requis',
   Response: 'Réponse',
   Send: 'Envoyer',
   'Send a Sample Request': 'Envoyer une requête représentative',

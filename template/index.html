@@ -207,7 +207,13 @@
       <tbody>
         {{#each params}}
           <tr>
-            <td class="code">{{this.field}}&nbsp;&nbsp;{{#if optional}}<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
+            <td class="code">{{this.field}}&nbsp;&nbsp;
+            {{#if optional}}
+              <span class="label label-optional">{{__ "optional"}}</span>
+            {{else}}
+              <span class="label label-required">{{__ "required"}}</span>
+            {{/if}}
+            </td>
             {{#unless this.Type compare=null}}
               <td class="code">{{this.type}}</td>
             {{/unless}}
@@ -244,7 +250,13 @@
       <tbody>
         {{#each params}}
           <tr>
-            <td class="code">{{this.field}}{{#if optional}}&nbsp;&nbsp;<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
+            <td class="code">{{this.field}}&nbsp;&nbsp;
+            {{#if optional}}
+              <span class="label label-optional">{{__ "optional"}}</span>
+            {{else}}
+              <span class="label label-required">{{__ "required"}}</span>
+            {{/if}}
+            </td>
             {{#unless this.Type compare=null}}
               <td class="code">{{this.type}}</td>
             {{/unless}}
@@ -286,7 +298,12 @@
         <tbody>
         {{#each this}}
           <tr>
-            <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}{{#if optional}}<span class="label label-optional">{{__ "optional"}}</span>{{/if}}</td>
+            <td class="code">{{{splitFill field "." "&nbsp;&nbsp;"}}}
+            {{#if optional}}
+              <span class="label label-optional">{{__ "optional"}}</span>
+            {{else}}
+              <span class="label label-required">{{__ "required"}}</span>
+            {{/if}}</td>
             {{#if ../../_hasType}}
               <td class="code">
                 {{{type}}}

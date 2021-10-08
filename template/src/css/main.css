@@ -112,6 +112,13 @@ td.code {
   user-select: none;
 }
 
+.label-required {
+  float: right;
+  background-color: var(--red);
+  margin-top: 4px;
+  user-select: none;
+}
+
 .open-left {
   right: 0;
   left: auto;
