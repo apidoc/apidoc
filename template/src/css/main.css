@@ -105,18 +105,18 @@ td.code {
   font-weight: 600;
 }
 
-.label-optional {
+.label {
   float: right;
-  background-color: grey;
   margin-top: 4px;
   user-select: none;
 }
 
-.label-required {
-  float: right;
+.label.label-optional {
+  background-color: grey;
+}
+
+.label.label-required {
   background-color: var(--red);
-  margin-top: 4px;
-  user-select: none;
 }
 
 .default-value,
