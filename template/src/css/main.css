@@ -119,6 +119,12 @@ td.code {
   user-select: none;
 }
 
+.default-value,
+.type-size {
+  font-style: italic;
+  font-size: 95%;
+}
+
 .open-left {
   right: 0;
   left: auto;
