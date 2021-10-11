@@ -151,3 +151,23 @@ function thankUser() { return; }
  * @apiBody {String} name=Paris Name of the city
  */
 function createCity() { return; }
+
+/**
+ * @api {get} /catagory Get a category
+ * @apiVersion 0.3.0
+ * @apiName GetCategory
+ * @apiGroup Category (official)
+ * @apiDescription Get a category.
+ * @apiQuery {Number} id Category ID.
+ */
+function getCategory() { return; }
+
+/**
+ * @api {delete} /category Delete a category
+ * @apiVersion 0.3.0
+ * @apiName DeleteCategory
+ * @apiGroup Category (official)
+ * @apiDescription Delete a category.
+ * @apiQuery {Number} id Category ID.
+ */
+function deleteCategory() { return; }
