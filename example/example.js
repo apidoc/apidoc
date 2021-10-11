@@ -1,9 +1,14 @@
 /**
+ * @apiDefine admin:computer User access only
+ * This optional description belong to to the group admin.
+ */
+
+/**
  * @api {get} /user/:region/:id/:opt Read data of a User
  * @apiVersion 0.3.0
  * @apiName GetUser
  * @apiGroup User
- * @apiPermission admin
+ * @apiPermission admin:computer
  *
  * @apiDescription Compare version 0.3.0 with 0.2.0 and you will see the green markers with new items in version 0.3.0 and red markers with removed items since 0.2.0.
  *
