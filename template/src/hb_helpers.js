@@ -16,7 +16,7 @@ import Handlebars from 'handlebars';
 import { __ } from './locales/locale';
 import $ from 'jquery';
 import { body2json } from './jsonifier';
-import DiffMatchPatch from '../vendor/diff_match_patch.min';
+import DiffMatchPatch from 'diff-match-patch';
 
 // this will register all helpers
 export function register () {
@@ -346,7 +346,9 @@ export function register () {
     return ret;
   }
 
-  const diffMatchPatch = new DiffMatchPatch.Diff_match_patch();
+  // FIXME this one is needed to pass elint check
+  const DiffMatchPatchWrapper = DiffMatchPatch.diff_match_patch;
+  const diffMatchPatch = new DiffMatchPatchWrapper();
 
   /**
    * Overwrite Colors
