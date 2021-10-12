@@ -459,12 +459,11 @@ function init () {
         $(apiGroup).removeClass('hide');
         $('.show-api-article').addClass('hide');
 
-        const el = $(apiNameVersioned);
-        if (el.length) {
-          el.parent().removeClass('hide');
-        } else {
-          $(apiName).removeClass('hide');
+        let targetEl = $(apiName);
+        if ($(apiNameVersioned).length) {
+          targetEl = $(apiNameVersioned).parent();
         }
+        targetEl.removeClass('hide');
       });
     }
 
