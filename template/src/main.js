@@ -328,11 +328,6 @@ function init () {
           if (apiProject.sampleUrl === true) {
             apiProject.sampleUrl = window.location.origin;
           }
-          fields.article.sampleRequest = [
-            {
-              url: apiProject.sampleUrl + fields.article.url,
-            },
-          ];
         }
 
         // add prefix URL for endpoint unless it's already absolute
