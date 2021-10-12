@@ -158,7 +158,7 @@ function thankUser() { return; }
 function createCity() { return; }
 
 /**
- * @api {get} /catagory Get a category
+ * @api {get} /category Get a category
  * @apiVersion 0.3.0
  * @apiName GetCategory
  * @apiGroup Category (official)
