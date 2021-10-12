@@ -160,9 +160,10 @@ function createCity() { return; }
 /**
  * @api {get} /category Get a category
  * @apiVersion 0.3.0
+ * @apiSampleRequest http://www.example.com
  * @apiName GetCategory
  * @apiGroup Category (official)
- * @apiDescription Get a category.
+ * @apiDescription Get a category. Sample request on example.com here.
  * @apiQuery {Number} id Category ID.
  */
 function getCategory() { return; }
@@ -170,9 +171,10 @@ function getCategory() { return; }
 /**
  * @api {delete} /category Delete a category
  * @apiVersion 0.3.0
+ * @apiSampleRequest off
  * @apiName DeleteCategory
  * @apiGroup Category (official)
- * @apiDescription Delete a category.
+ * @apiDescription Delete a category. Sample request has been disabled here.
  * @apiQuery {Number} id Category ID.
  */
 function deleteCategory() { return; }
