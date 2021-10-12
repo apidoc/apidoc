@@ -338,7 +338,7 @@ export function register () {
     return ret;
   }
 
-  const diffMatchPatch = new DiffMatchPatch.diff_match_patch();
+  const diffMatchPatch = new DiffMatchPatch.Diff_match_patch();
 
   /**
    * Overwrite Colors
