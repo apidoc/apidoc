@@ -450,12 +450,21 @@ function init () {
 
       // show api
       $('.show-api').click(function () {
+        const selectedVersion = $('#version strong').html();
         const apiName = '.' + $(this).attr('data-name') + '-article';
+        const apiNameVersioned = '[id="' + $(this).attr('href').substring(1) + '-' + selectedVersion + '"]';
         const apiGroup = '.' + $(this).attr('data-group') + '-group';
+
         $('.show-api-group').addClass('hide');
         $(apiGroup).removeClass('hide');
         $('.show-api-article').addClass('hide');
-        $(apiName).removeClass('hide');
+
+        const el = $(apiNameVersioned);
+        if (el.length) {
+          el.parent().removeClass('hide');
+        } else {
+          $(apiName).removeClass('hide');
+        }
       });
     }
 
@@ -491,7 +500,7 @@ function init () {
       const name = $(this).data('name');
       const version = $(this).data('version');
 
-      if (semver.lte(version, selectedVersion)) {
+      if (version === selectedVersion) {
         if ($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
           // enable Article
           $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
