@@ -385,15 +385,14 @@ function init () {
   // Content-Scroll on Navigation click.
   $('.sidenav').find('a').on('click', function (e) {
     e.preventDefault();
-    const id = $(this).attr('href');
+    const id = this.getAttribute('href');
     if (apiProject.template.aloneDisplay) {
       const active = document.querySelector('.sidenav > li.active');
-      if (active) {
-        active.classList.remove('active');
-      }
+      if (active) { active.classList.remove('active'); }
       this.parentNode.classList.add('active');
-    } else if ($(id).length > 0) {
-      $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400);
+    } else {
+      const el = document.querySelector(id);
+      if (el) { $('html,body').animate({ scrollTop: el.offsetTop }, 400); }
     }
     window.location.hash = id;
   });
