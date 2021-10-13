@@ -20,15 +20,15 @@ describe('test sample request url processor', () => {
     parameters['id'] = '3';
     parameters['group'] = 'blah';
     parameters['city'] = 'paris';
+    parameters['view'] = 'aerial';
     const url = UrlProc.hydrate(dryUrl, parameters);
-    assert.strictEqual(url, 'https://api.example.org/user/3/blah/paris');
+    assert.strictEqual(url, 'https://api.example.org/user/3/blah/paris?view=aerial');
     done();
   });
 
   it('should hydrate correctly an empty url', done => {
     const dryUrl = 'https://api.example.org/user/';
     const parameters = {};
-    parameters['id'] = '3';
     const url = UrlProc.hydrate(dryUrl, parameters);
     assert.strictEqual(url, 'https://api.example.org/user/');
     done();
@@ -44,4 +44,14 @@ describe('test sample request url processor', () => {
     assert.strictEqual(url, 'https://api.example.org/user/3/blah/');
     done();
   });
+
+  it('should hydrate correctly an url with standard parameter', done => {
+    const dryUrl = 'https://api.example.org/user';
+    const parameters = {};
+    parameters['view'] = 'aerial';
+    const url = UrlProc.hydrate(dryUrl, parameters);
+    assert.strictEqual(url, 'https://api.example.org/user?view=aerial');
+    done();
+  });
+
 });

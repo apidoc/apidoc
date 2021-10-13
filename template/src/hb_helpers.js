@@ -94,6 +94,14 @@ export function register () {
   });
 
   /**
+   * Remove double quotes.
+   * @param string text
+   */
+  Handlebars.registerHelper('removeDblQuotes', function (text) {
+    return text.replace(/"/g, '');
+  });
+
+  /**
      *
      */
   Handlebars.registerHelper('assign', function (name) {

@@ -105,16 +105,42 @@ td.code {
   font-weight: 600;
 }
 
-.label-optional {
+.label {
   float: right;
-  background-color: grey;
   margin-top: 4px;
   user-select: none;
+}
+
+.label.optional {
+  background-color: grey;
+}
+
+.label.required {
+  background-color: var(--red);
+}
+
+.default-value,
+.type-size {
+  font-style: italic;
+  font-size: 95%;
 }
 
 .open-left {
   right: 0;
   left: auto;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.input-group-addon.sample-request-select {
+  padding: 0 6px;
+}
+
+.input-group-addon.sample-request-select select {
+  width: auto;
+  height: 32px;
 }
 
 /* ------------------------------------------------------------------------------------------
