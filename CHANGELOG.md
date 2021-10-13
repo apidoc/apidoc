@@ -23,6 +23,10 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Fix syntax highlighting for markdown parsed text
 * Fix color in logs was not showing since upgrade to winston 3
 * Fix newlines being removed in pre tags (fix #809 by @JayBerlin)
+* Fix header/footer in aloneDisplay mode (fix #905 via #1027 by @esaracco)
+* Fix duplicated content in aloneDisplay mode (fix #938 via #1025 by @esaracco)
+* Fix apiSampleRequest not working (fix #984 via #1023 by @esaracco)
+* Fix error with parenthesis in apiGroup (fix #994 via #1022 by @esaracco)
 
 #### ADDED
 
@@ -43,6 +47,8 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Ignore node_modules by default (fix #936)
 * Add ASCII art in verbose mode
 * Allow setting input and output in apidoc.json (fix #630)
+* Take standard parameters of URL query string into account (#1014 by @esaracco)
+* Allow colon character in apiDefine (fix #877 via #1021 by @esaracco)
 
 ### 0.29.0
 * Fix broken handlebar
