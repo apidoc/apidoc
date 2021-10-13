@@ -450,7 +450,7 @@ function init () {
 
       // show api
       $('.show-api').click(function () {
-        const selectedVersion = $('#version strong').html();
+        const selectedVersion = document.getElementById('version').textContent.trim();
         const apiName = '.' + $(this).attr('data-name') + '-article';
         const apiNameVersioned = '[id="' + $(this).attr('href').substring(1) + '-' + selectedVersion + '"]';
         const apiGroup = '.' + $(this).attr('data-group') + '-group';
