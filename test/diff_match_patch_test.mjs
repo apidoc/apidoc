@@ -25,7 +25,6 @@ describe('test Diff Match Patch module', () => {
 
   it('should find a addition', done => {
     const r = diffMatchPatch.diffMain('There is a difference', 'There is a minor difference');
-console.log (r);
     assert.deepEqual(r, [ [ 0, 'There is a ' ], [ 1, 'minor ' ], [ 0, 'difference' ] ]);
     done();
   });
