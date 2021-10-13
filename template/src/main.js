@@ -237,7 +237,7 @@ function init () {
     foundLevel1 = addNav(nav, apiProject.header.content, 0); // Add level 1 and 2 titles
     if (!foundLevel1) { // If no Level 1 tags were found, make a title
       nav.unshift({
-        group: '_',
+        group: '_header',
         isHeader: true,
         title: apiProject.header.title == null ? __('General') : apiProject.header.title,
         isFixed: true,
@@ -282,7 +282,12 @@ function init () {
   // render apiDoc, header/footer documentation
   if (apiProject.header) { $('#header').append(templateHeader(apiProject.header)); }
 
-  if (apiProject.footer) { $('#footer').append(templateFooter(apiProject.footer)); }
+  if (apiProject.footer) {
+    $('#footer').append(templateFooter(apiProject.footer));
+    if (apiProject.template.aloneDisplay) {
+      document.getElementById('api-_footer').classList.add('hide');
+    }
+  }
 
   //
   // Render Sections and Articles
@@ -450,10 +455,11 @@ function init () {
 
       // show api
       $('.show-api').click(function () {
+        const id = this.getAttribute('href').substring(1);
         const selectedVersion = document.getElementById('version').textContent.trim();
-        const apiName = '.' + $(this).attr('data-name') + '-article';
-        const apiNameVersioned = '[id="' + $(this).attr('href').substring(1) + '-' + selectedVersion + '"]';
-        const apiGroup = '.' + $(this).attr('data-group') + '-group';
+        const apiName = `.${this.dataset.name}-article`;
+        const apiNameVersioned = `[id="${id}-${selectedVersion}"]`;
+        const apiGroup = `.${this.dataset.group}-group`;
 
         $('.show-api-group').addClass('hide');
         $(apiGroup).removeClass('hide');
@@ -464,6 +470,10 @@ function init () {
           targetEl = $(apiNameVersioned).parent();
         }
         targetEl.removeClass('hide');
+
+        if (id.match(/_(header|footer)/)) {
+          document.getElementById(id).classList.remove('hide');
+        }
       });
     }
 
