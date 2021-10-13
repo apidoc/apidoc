@@ -657,6 +657,8 @@ function init () {
       $root.remove();
       // TODO: on change main version or select the highest version re-render
     }
+
+    Prism.highlightAll();
   }
 
   /**
