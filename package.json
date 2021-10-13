@@ -44,6 +44,7 @@
   "dependencies": {
     "bootstrap": "3.4.1",
     "commander": "^8.1.0",
+    "diff-match-patch": "^1.0.5",
     "expose-loader": "^3.0.0",
     "fs-extra": "^10.0.0",
     "glob": "^7.1.7",

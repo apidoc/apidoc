@@ -24,7 +24,6 @@ import 'prismjs/components/prism-python';
 
 import { initSampleRequest } from './send_sample_request.js';
 import { __, setLanguage } from './locales/locale.mjs';
-// import DiffMatchPatch from './vendor/diff_match_patch.min';
 
 // helpers for HandleBars
 import { register } from './hb_helpers';
@@ -676,6 +675,8 @@ function init () {
       $root.remove();
       // TODO: on change main version or select the highest version re-render
     }
+
+    Prism.highlightAll();
   }
 
   /**

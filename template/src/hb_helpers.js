@@ -16,6 +16,7 @@ import Handlebars from 'handlebars';
 import { __ } from './locales/locale';
 import $ from 'jquery';
 import { body2json } from './jsonifier';
+import DiffMatchPatch from './diff_match_patch';
 
 // this will register all helpers
 export function register () {
@@ -273,14 +274,11 @@ export function register () {
 
       if (!compare) { return source; }
 
-      /*
-      const d = diffMatchPatch.diff_main(stripHtml(compare), stripHtml(source));
-      diffMatchPatch.diff_cleanupSemantic(d);
-      ds = diffMatchPatch.diff_prettyHtml(d);
+      const diffMatchPatch = new DiffMatchPatch();
+      const d = diffMatchPatch.diffMain(compare, source);
+      diffMatchPatch.diffCleanupSemantic(d);
+      ds = diffMatchPatch.diffPrettyHtml(d);
       ds = ds.replace(/&para;/gm, '');
-      */
-      // TODO FIXME
-      // const ds = '';
     }
     if (options === 'nl2br') { ds = _handlebarsNewlineToBreak(ds); }
 
@@ -348,48 +346,4 @@ export function register () {
     }
     return ret;
   }
-
-  // TODO FIXME
-  // const diffMatchPatch = new DiffMatchPatch();
-
-  /**
-   * Overwrite Colors
-   */
-  /*
-  DiffMatchPatch.prototype.diff_prettyHtml = function (diffs) {
-    const html = [];
-    const patternAmp = /&/g;
-    const patternLt = /</g;
-    const patternGt = />/g;
-    const patternPara = /\n/g;
-    for (let x = 0; x < diffs.length; x++) {
-      const op = diffs[x][0]; // Operation (insert, delete, equal)
-      const data = diffs[x][1]; // Text of change.
-      const text = data.replace(patternAmp, '&amp;').replace(patternLt, '&lt;')
-        .replace(patternGt, '&gt;').replace(patternPara, '&para;<br>');
-      switch (op) {
-        case diffMatchPatch.DIFF_INSERT:
-          html[x] = '<ins>' + text + '</ins>';
-          break;
-        case diffMatchPatch.DIFF_DELETE:
-          html[x] = '<del>' + text + '</del>';
-          break;
-        case diffMatchPatch.DIFF_EQUAL:
-          html[x] = '<span>' + text + '</span>';
-          break;
-      }
-    }
-    return html.join('');
-  };
-  */
-
-  /**
-     * Fixes html after comparison (#506, #538, #616, #825)
-     * TODO FIXME commented because only used in tmp commented function
-  function stripHtml (html) {
-    const div = document.createElement('div');
-    div.innerHTML = html;
-    return div.textContent || div.innerText || '';
-  }
-  */
 }
