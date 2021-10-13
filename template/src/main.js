@@ -371,7 +371,10 @@ function init () {
   $('#sections').append(content);
 
   // Bootstrap Scrollspy
-  $('body').scrollspy({ target: '#scrollingNav' });
+  if (!apiProject.template.aloneDisplay) {
+    document.body.dataset.spy = 'scroll';
+    $('body').scrollspy({ target: '#scrollingNav' });
+  }
 
   // when we click on an input that was previously highlighted because it was empty, remove the red border
   // also listen for change because for numbers you can just click the browser's up/down arrow and it will not focus
@@ -382,9 +385,16 @@ function init () {
   // Content-Scroll on Navigation click.
   $('.sidenav').find('a').on('click', function (e) {
     e.preventDefault();
-    const id = $(this).attr('href');
-    if ($(id).length > 0) { $('html,body').animate({ scrollTop: parseInt($(id).offset().top) }, 400); }
-    window.location.hash = $(this).attr('href');
+    const id = this.getAttribute('href');
+    if (apiProject.template.aloneDisplay) {
+      const active = document.querySelector('.sidenav > li.active');
+      if (active) { active.classList.remove('active'); }
+      this.parentNode.classList.add('active');
+    } else {
+      const el = document.querySelector(id);
+      if (el) { $('html,body').animate({ scrollTop: el.offsetTop }, 400); }
+    }
+    window.location.hash = id;
   });
 
   /**
@@ -477,13 +487,22 @@ function init () {
     }
 
     // call scrollspy refresh method
-    $('body').scrollspy('refresh');
-  }
+    if (!apiProject.template.aloneDisplay) {
+      $('body').scrollspy('refresh');
+    }
 
-  if (apiProject.template.aloneDisplay) {
-    const hashVal = window.location.hash;
-    if (hashVal != null && hashVal.length !== 0) {
-      $('.' + hashVal.slice(1) + '-init').click();
+    if (apiProject.template.aloneDisplay) {
+      const hashVal = window.location.hash;
+      if (hashVal != null && hashVal.length !== 0) {
+        const version = document.getElementById('version').textContent.trim();
+        const el = document.querySelector(`li .${hashVal.slice(1)}-init`);
+        const elVersioned = document.querySelector(`li[data-version="${version}"] .show-api.${hashVal.slice(1)}-init`);
+        let targetEl = el;
+        if (elVersioned) {
+          targetEl = elVersioned;
+        }
+        targetEl.click();
+      }
     }
   }
 
