@@ -55,7 +55,7 @@
     "lodash": "^4.17.20",
     "markdown-it": "^12.0.0",
     "nodemon": "^2.0.4",
-    "path-to-regexp": "^3.2.0",
+    "path-to-regexp": "^6.2.0",
     "prismjs": "^1.24.1",
     "semver": "^7.3.2",
     "style-loader": "^3.2.1",
