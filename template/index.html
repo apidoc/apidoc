@@ -585,7 +585,7 @@
     {{/if}}
 
     <span class="method meth-{{toLowerCase compare.type}}">{{compare.type}}</span>
-    <pre data-type="{{toLowerCase article.type}}"><code class="language-html">{{{showDiff article.url compare.url}}}</code></pre>
+    <pre data-type="{{toLowerCase article.type}}" class="language-html">{{{showDiff article.url compare.url}}}</pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
@@ -616,19 +616,19 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</code></pre>
+          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
+          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{source.content}}}</pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
+          <pre data-type="{{compare.type}}" class="language-{{source.type}}">{{{compare.content}}}</pre>
         </div>
       {{/if}}
 
@@ -787,7 +787,7 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</code></pre>
+          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</pre>
         </div>
       {{/if}}
 
