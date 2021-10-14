@@ -27,6 +27,7 @@ Note that the option useHostUrlAsSampleUrl has no longer any effect and can be s
 * Fix duplicated content in aloneDisplay mode (fix #938 via #1025 by @esaracco)
 * Fix apiSampleRequest not working (fix #984 via #1023 by @esaracco)
 * Fix error with parenthesis in apiGroup (fix #994 via #1022 by @esaracco)
+* Fix absent diff on different api route (fix #963 via #1030 by @esaracco)
 
 #### ADDED
 
