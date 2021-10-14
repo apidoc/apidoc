@@ -178,5 +178,21 @@ function getCategory() { return; }
  * @apiGroup Category (official)
  * @apiDescription Delete a category. Sample request has been disabled here.
  * @apiQuery {Number} id Category ID.
+ * @apiParamExample {json} Some json code:
+ *   {
+ *     "user": "Sample User",
+ *      "payload": {
+ *        "test": [
+ *          "code": "
+ *            public class HelloWorldTest {
+ *              HelloWorld hw = new HelloWorld();
+ *              @Test
+ *              public void testOkay {
+ *              assertEquals(\"HelloWorld\", hw.getMsg());
+ *            }
+ *         }"
+ *        ]
+ *      }
+ *   }
  */
 function deleteCategory() { return; }
