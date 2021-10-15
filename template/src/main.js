@@ -64,9 +64,6 @@ function init () {
 
   if (apiProject.template.aloneDisplay == null) { apiProject.template.aloneDisplay = false; }
 
-  // Setup jQuery Ajax
-  $.ajaxSetup(apiProject.template.jQueryAjaxSetup);
-
   //
   // Data transform
   //
