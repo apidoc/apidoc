@@ -9,6 +9,13 @@
   "input": [
     "example"
   ],
+  "order": [
+    "User",
+    "PostUser",
+    "GetUser",
+    "City",
+    "Category (official)"
+  ],
   "header": {
     "title": "Introduction",
     "filename": "header.md"
