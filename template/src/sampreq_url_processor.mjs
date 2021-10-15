@@ -26,11 +26,9 @@ export default class UrlProcessor {
       url = url.replace(':' + key.name, encodeURIComponent(queryParameters[key.name]));
     });
 
-    // If somes parameters do not have url pattern, add them as standard query
+    // if some parameters do not have url pattern, add them as standard query
     // string parameters (key=value)
-    if (url.indexOf('?') === -1) {
-      url += '?';
-    }
+    url += url.indexOf('?') === -1 ? '?' : '&';
     Object.keys(queryParameters).forEach(key => {
       if (urlOrig.indexOf(':' + key) === -1) {
         url += key + '=' + encodeURIComponent(queryParameters[key]) + '&';
