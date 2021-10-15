@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 0.50.1
+
+* Remove the jQueryAjaxSetup configuration option (was not working anyway) (fix #1040 via #1041 by @esaracco)
+
 ### 0.50.0
 
 #### BREAKING CHANGES
