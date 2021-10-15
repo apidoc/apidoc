@@ -32,11 +32,20 @@ describe('Worker: apiSampleRequest', function () {
       }
     },
     {
-      title: 'should handle relative url',
+      title: 'case 1: should handle relative url',
       expected: {sampleRequest: [ {url: 'http://example.com/api'} ]},
       testBlock: {
         global: {},
         local: { sampleRequest: [ { url: '/api' } ] },
+        version: '0.0.1'
+      }
+    },
+    {
+      title: 'case 2: should handle relative url',
+      expected: {sampleRequest: [ {url: 'http://example.com/ap'} ]},
+      testBlock: {
+        global: {},
+        local: { sampleRequest: [ { url: '/ap' } ] },
         version: '0.0.1'
       }
     }
