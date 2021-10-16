@@ -118,13 +118,11 @@ function init () {
   // Group- and Versionlists
   //
   let apiGroups = {};
-  const apiGroupsSort = {};
   const apiGroupTitles = {};
   let apiVersions = {};
   apiVersions[apiProject.version] = 1;
 
   $.each(api, (index, entry) => {
-    apiGroupsSort[entry.group] = entry.groupTitle || entry.group;
     apiGroups[entry.group] = 1;
     apiGroupTitles[entry.group] = entry.groupTitle || entry.group;
     apiVersions[entry.version] = 1;
@@ -135,7 +133,7 @@ function init () {
   apiGroups.sort();
 
   // custom order
-  if (apiProject.order) { apiGroups = sortGroupsByOrder(apiGroupsSort, apiProject.order); }
+  if (apiProject.order) { apiGroups = sortGroupsByOrder(apiGroupTitles, apiProject.order); }
 
   // sort versions DESC
   apiVersions = Object.keys(apiVersions);
