@@ -823,7 +823,7 @@ function init () {
     const results = [];
     order.forEach(sortKey => {
       Object.keys(groups).forEach(name => {
-        if (groups[name].replace(/_/g, ' ') === sortKey) { results.push(name); };
+        if (groups[name].replace(/_/g, ' ') === sortKey) { results.push(name); }
       });
     });
     // Append all other entries that are not defined in order
