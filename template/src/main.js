@@ -806,7 +806,7 @@ function init () {
         });
       }
     });
-    // Append all other entries that ar not defined in order
+    // Append all other entries that are not defined in order
     elements.forEach(function (element) {
       if (results.indexOf(element) === -1) { results.push(element); }
     });
@@ -826,7 +826,7 @@ function init () {
         if (groups[name].replace(/_/g, ' ') === sortKey) { results.push(name); };
       });
     });
-    // Append all other entries that ar not defined in order
+    // Append all other entries that are not defined in order
     Object.keys(groups).forEach(name => {
       if (results.indexOf(name) === -1) { results.push(name); }
     });
