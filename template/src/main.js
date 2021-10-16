@@ -118,11 +118,13 @@ function init () {
   // Group- and Versionlists
   //
   let apiGroups = {};
+  const apiGroupsSort = {};
   const apiGroupTitles = {};
   let apiVersions = {};
   apiVersions[apiProject.version] = 1;
 
   $.each(api, (index, entry) => {
+    apiGroupsSort[entry.group] = entry.groupTitle || entry.group;
     apiGroups[entry.group] = 1;
     apiGroupTitles[entry.group] = entry.groupTitle || entry.group;
     apiVersions[entry.version] = 1;
@@ -133,7 +135,7 @@ function init () {
   apiGroups.sort();
 
   // custom order
-  if (apiProject.order) { apiGroups = sortByOrder(apiGroups, apiProject.order, '#~#'); }
+  if (apiProject.order) { apiGroups = sortGroupsByOrder(apiGroupsSort, apiProject.order); }
 
   // sort versions DESC
   apiVersions = Object.keys(apiVersions);
@@ -810,5 +812,26 @@ function init () {
     });
     return results;
   }
+
+  /**
+     * Return ordered groups by custom order and append not defined groups to the end.
+     * @param  {Object[]} elements (key: group name, value: group title)
+     * @param  {String[]} order
+     * @return {String[]} Custom ordered list.
+     */
+  function sortGroupsByOrder (groups, order) {
+    const results = [];
+    order.forEach(sortKey => {
+      Object.keys(groups).forEach(name => {
+        if (groups[name].replace(/_/g, ' ') === sortKey) { results.push(name); };
+      });
+    });
+    // Append all other entries that ar not defined in order
+    Object.keys(groups).forEach(name => {
+      if (results.indexOf(name) === -1) { results.push(name); }
+    });
+    return results;
+  }
+
   initDynamic();
 }
