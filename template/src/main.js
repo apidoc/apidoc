@@ -133,7 +133,7 @@ function init () {
   apiGroups.sort();
 
   // custom order
-  if (apiProject.order) { apiGroups = sortByOrder(apiGroups, apiProject.order, '#~#'); }
+  if (apiProject.order) { apiGroups = sortGroupsByOrder(apiGroupTitles, apiProject.order); }
 
   // sort versions DESC
   apiVersions = Object.keys(apiVersions);
@@ -804,11 +804,32 @@ function init () {
         });
       }
     });
-    // Append all other entries that ar not defined in order
+    // Append all other entries that are not defined in order
     elements.forEach(function (element) {
       if (results.indexOf(element) === -1) { results.push(element); }
     });
     return results;
   }
+
+  /**
+     * Return ordered groups by custom order and append not defined groups to the end.
+     * @param  {Object[]} elements (key: group name, value: group title)
+     * @param  {String[]} order
+     * @return {String[]} Custom ordered list.
+     */
+  function sortGroupsByOrder (groups, order) {
+    const results = [];
+    order.forEach(sortKey => {
+      Object.keys(groups).forEach(name => {
+        if (groups[name].replace(/_/g, ' ') === sortKey) { results.push(name); }
+      });
+    });
+    // Append all other entries that are not defined in order
+    Object.keys(groups).forEach(name => {
+      if (results.indexOf(name) === -1) { results.push(name); }
+    });
+    return results;
+  }
+
   initDynamic();
 }
