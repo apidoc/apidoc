@@ -3,6 +3,8 @@
 ### 0.50.1
 
 * Remove the jQueryAjaxSetup configuration option (was not working anyway) (fix #1040 via #1041 by @esaracco)
+* Add more files/folders to .npmignore
+* Improve/fix group sorting (fix #1042 via #1044 by @esaracco)
 
 ### 0.50.0
 
