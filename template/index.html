@@ -422,13 +422,14 @@
                   <input class="invisible">
                   {{else}}
                   <input id="sample-request-param-field-{{field}}"
-                    class="form-control sample-request-param" data-sample-request-param-name="{{field}}"
-                    type="{{setInputType type}}" placeholder="{{field}}"
+                    class="form-control sample-request-param"
+                    type="{{setInputType type}}"
                     value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
                     placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
-                    data-sample-request-param-name="{{field}}"
-                    data-sample-request-param-group="sample-request-param-{{@../index}}"
-                    {{#if optional}}data-sample-request-param-optional="true"{{/if}}>
+                    data-name="{{field}}"
+                    data-family="query"
+                    data-group="{{@../index}}"
+                    {{#if optional}}data-optional="true"{{/if}}>
                   <div class="input-group-addon">{{{type}}}</div>
                   {{/if}}
                 </div>
