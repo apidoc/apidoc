@@ -519,19 +519,20 @@ function init () {
     $('#sidenav li:not(.nav-fixed)').addClass('hide');
 
     // show 1st equal or lower Version of each entry
-    $('article[data-version]').each(function (index) {
-      const group = $(this).data('group');
-      const name = $(this).data('name');
-      const version = $(this).data('version');
+    const shown = {};
+    document.querySelectorAll('article[data-version]').forEach(el => {
+      const group = el.dataset.group;
+      const name = el.dataset.name;
+      const version = el.dataset.version;
+      const id = group + name;
 
-      if (version === selectedVersion || version === '0.0.0') {
-        if ($('article[data-group=\'' + group + '\'][data-name=\'' + name + '\']:visible').length === 0) {
-          // enable Article
-          $('article[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
-          // enable Navigation
-          $('#sidenav li[data-group=\'' + group + '\'][data-name=\'' + name + '\'][data-version=\'' + version + '\']').removeClass('hide');
-          $('#sidenav li.nav-header[data-group=\'' + group + '\']').removeClass('hide');
-        }
+      if (!shown[id] && semver.lte(version, selectedVersion)) {
+        shown[id] = true;
+        // enable Article
+        document.querySelector(`article[data-group="${group}"][data-name="${name}"][data-version="${version}"]`).classList.remove('hide');
+        // enable Navigation
+        document.querySelector(`#sidenav li[data-group="${group}"][data-name="${name}"][data-version="${version}"]`).classList.remove('hide');
+        document.querySelector(`#sidenav li.nav-header[data-group="${group}"]`).classList.remove('hide');
       }
     });
 
