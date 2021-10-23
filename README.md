@@ -59,7 +59,7 @@ import { createDoc } from 'apidoc'
 
 const doc = createDoc({
   src: path.resolve(__dirname, 'src'),
-  dest: path.resolve(__dirname, 'doc')
+  dest: path.resolve(__dirname, 'doc') // optional: if omitted, documentation output is not generated
 })
 
 if (typeof doc !== 'boolean') {

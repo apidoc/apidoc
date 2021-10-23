@@ -9,7 +9,14 @@ const optionsProcessor = require('../lib/options');
 describe('test options module', function () {
   it('should provide default options when no options are given', function (done) {
     const processedOptions = optionsProcessor.process({});
-    assert.deepEqual(processedOptions, optionsProcessor.defaultOptions);
+
+    // use a deep copy to not make following tests fail
+    const defaultOptions = JSON.parse(JSON.stringify(optionsProcessor.defaultOptions));
+    // force options that are modified at runtime when in programmatic mode
+    defaultOptions.dryRun = true
+    defaultOptions.silent = true
+
+    assert.deepEqual(processedOptions, defaultOptions);
     done();
   });
 

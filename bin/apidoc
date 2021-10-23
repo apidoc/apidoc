@@ -134,6 +134,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
+  isCli: true,
 };
 
 if (options.debug) {
