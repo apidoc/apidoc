@@ -16,9 +16,9 @@
  * @apiHeader {String} X-Apidoc-Cool-Factor=big Some other header with a default value.
  * @apiHeaderExample {Header} Header-Example
  *     "Authorization: token 5f048fe"
- * @apiQuery {Number} id User unique ID
- * @apiQuery {String} region=fr-par User region
- * @apiQuery {String} [opt] An optional param
+ * @apiParam {Number} id User unique ID
+ * @apiParam {String} region=fr-par User region
+ * @apiParam {String} [opt] An optional param
  *
  * @apiExample {bash} Curl example
  * curl -H "Authorization: token 5f048fe" -i https://api.example.com/user/fr-par/4711
@@ -88,8 +88,9 @@ function postUser() { return; }
  *
  * @apiDescription This function has same errors like POST /user, but errors not defined again, they were included with "apiErrorStructure"
  *
- * @apiParam {String} name Name of the User.
- * @apiParam {File} avatar Upload avatar.
+ * @apiParam {Number} id <code>id</code> of the user.
+ * @apiBody {String} name Name of the User.
+ * @apiBody {File} avatar Upload avatar.
  *
  * @apiUse CreateUserError
  */
@@ -107,7 +108,7 @@ function putUser() { return; }
  * @apiHeader {String} Authorization The token can be generated from your user profile.
  * @apiHeaderExample {Header} Header-Example
  *     "Authorization: token 5f048fe"
- * @apiQuery {Number} id <code>id</code> of the user.
+ * @apiParam {Number} id <code>id</code> of the user.
  *
  * @apiExample {bash} Curl example
  * curl -X DELETE -H "Authorization: token 5f048fe" -i https://api.example.com/user/4711
