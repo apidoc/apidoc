@@ -213,7 +213,7 @@
             {{else}}
               {{this.field}}
             {{/if}}
-            {{#if optional}}
+            {{#if this.optional}}
               <span class="label optional">{{__ "optional"}}</span>
             {{else}}
               <span class="label required">{{__ "required"}}</span>
@@ -261,7 +261,7 @@
             {{else}}
               {{this.field}}
             {{/if}}
-            {{#if optional}}
+            {{#if this.optional}}
               <span class="label optional">{{__ "optional"}}</span>
             {{else}}
               <span class="label required">{{__ "required"}}</span>
