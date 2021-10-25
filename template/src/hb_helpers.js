@@ -170,12 +170,27 @@ export function register () {
   });
 
   /**
-     *
-     */
+   * Convert object dot-notation to form bracket-notation
+   *
+   * @param {String} field name
+   * @param {String} object path
+   * @returns {String}
+   */
+  Handlebars.registerHelper('dot2Bracket', function (field, object) {
+    if (object === '') { return field; }
+    let ret = '';
+    field.split('.').forEach((el, i) => { ret += i === 0 ? el : `[${el}]`; });
+    return ret;
+  });
+
+  /**
+   * Indent object property based on its nesting
+   *
+   * @param {Object} object
+   * @param {String} property
+   */
   Handlebars.registerHelper('objectNesting', function (object, field) {
-    // accept both '.' and '[]' syntax for object properties
-    const f = field.replace(/\[/, '.').replace(/\]/, '');
-    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + f.substring(object.length + 1);
+    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + field.substring(object.length + 1);
   });
 
   /**

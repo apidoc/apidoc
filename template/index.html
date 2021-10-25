@@ -422,12 +422,13 @@
             <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
               {{#each this}}
               <div class="form-group">
-                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+                {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field object}}</label>
                 <div class="input-group">
                   {{#if allowedValues}}
                   <div class="input-group-addon">{{{type}}}</div>
                   <div class="input-group-addon sample-request-select">
-                    <select class="form-control" data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                    <select class="form-control" data-name="{{dot2Bracket field object}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                       <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                       {{#each allowedValues}}
                       <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -440,14 +441,15 @@
                     class="form-control sample-request-param"
                     type="{{setInputType type}}"
                     value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
-                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
-                    data-name="{{field}}"
+                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2Bracket field object}}{{/if}}"
+                    data-name="{{dot2Bracket field object}}"
                     data-family="query"
                     data-group="{{@../index}}"
                     {{#if optional}}data-optional="true"{{/if}}>
                   <div class="input-group-addon">{{{type}}}</div>
                   {{/if}}
                 </div>
+                {{/ifCond}}{{/ifCond}}
               </div>
               {{/each}}
             </div>
@@ -460,12 +462,13 @@
         <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
           {{#each article.query}}
             <div class="form-group">
-              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
+              {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field object}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
               <div class="input-group col-md-6">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
                 <div class="input-group-addon sample-request-select">
-                  <select class="form-control" data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                  <select class="form-control" data-name="{{dot2Bracket field object}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                     <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
                     <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -478,13 +481,14 @@
                   class="form-control sample-request-input"
                   type="{{setInputType type}}"
                   value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
-                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
-                  data-name="{{field}}"
+                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2Bracket field object}}{{/if}}"
+                  data-name="{{dot2Bracket field object}}"
                   data-family="query"
                   data-group="{{@../index}}"
                   {{#if optional}}data-optional="true"{{/if}}>
                 {{/if}}
               </div>
+              {{/ifCond}}{{/ifCond}}
             </div>
           {{/each}}
         </div>
@@ -517,12 +521,13 @@
         <div hidden class="col-md-9" id="sample-request-body-form-input-{{this.id}}">
           {{#each article.body}}
             <div class="form-group">
-              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
+              {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field object}}</label>
               <div class="input-group">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
                 <div class="input-group-addon sample-request-select">
-                  <select class="form-control" data-name="{{field}}" data-family="body" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                  <select class="form-control" data-name="{{dot2Bracket field object}}" data-family="body" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                     <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
                     <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -536,13 +541,14 @@
                   type="{{setInputType type}}"
                   value="{{#ifCond type '!==' 'Boolean'}}{{#if defaultValue}}{{ defaultValue }}{{/if}}{{/ifCond}}"
                   {{#if checked}}checked{{/if}}
-                  placeholder="{{field}}"
+                  placeholder="{{dot2Bracket field object}}"
                   data-family="body"
-                  data-name="{{field}}"
+                  data-name="{{dot2Bracket field object}}"
                   data-content-type="form"
                   {{#if optional}}data-optional="true"{{/if}}>
                 {{/if}}
               </div>
+              {{/ifCond}}{{/ifCond}}
             </div>
           {{/each}}
         </div>
