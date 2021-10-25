@@ -209,7 +209,7 @@
           <tr>
             <td class="code">
             {{#if this.object}}
-              {{{splitFill this.field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting this.object this.field}}}
             {{else}}
               {{this.field}}
             {{/if}}
@@ -257,7 +257,7 @@
           <tr>
             <td class="code">
             {{#if this.object}}
-              {{{splitFill this.field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting this.object this.field}}}
             {{else}}
               {{this.field}}
             {{/if}}
@@ -310,7 +310,7 @@
           <tr>
             <td class="code">
             {{#if object}}
-              {{{splitFill field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting object field}}}
             {{else}}
               {{field}}
             {{/if}}
@@ -831,7 +831,7 @@
         <tr>
           <td class="code">
             {{#if source.object}}
-              {{{splitFill source.field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting source.object source.field}}}
             {{else}}
               {{source.field}}
             {{/if}}
@@ -868,7 +868,7 @@
         <tr class="ins">
           <td class="code">
             {{#if source.object}}
-              {{{splitFill source.field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting source.object source.field}}}
             {{else}}
               {{source.field}}
             {{/if}}
@@ -892,7 +892,7 @@
         <tr class="del">
           <td class="code">
             {{#if compare.object}}
-              {{{splitFill compare.field "." "&nbsp;&nbsp;"}}}
+              {{{objectNesting compare.object compare.field}}}
             {{else}}
               {{compare.field}}
             {{/if}}

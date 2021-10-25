@@ -172,9 +172,8 @@ export function register () {
   /**
      *
      */
-  Handlebars.registerHelper('splitFill', function (value, splitChar, fillChar) {
-    const splits = value.split(splitChar);
-    return new Array(splits.length).join(fillChar) + splits[splits.length - 1];
+  Handlebars.registerHelper('objectNesting', function (object, field) {
+    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + field.substring(object.length + 1);
   });
 
   /**

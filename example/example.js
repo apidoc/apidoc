@@ -70,10 +70,14 @@ function getUser() { return; }
  * @apiBody {Date} extraInfo.hireDateWithDefault=2021-09-01 Date when user was hired with default
  * @apiBody {String} extraInfo.nickname Nickname of the user
  * @apiBody {Boolean} extraInfo.isVegan=true Is the user vegan? (boolean with default)
- * @apiBody {Boolean} extraInfo.isAlive Is the user alive? (boolean with no default)
  * @apiBody {Object} extraInfo.secrets Secret object
  * @apiBody {String} extraInfo.secrets.crush The user secret crush
  * @apiBody {Number} extraInfo.secrets.hair=1000 Number of hair of user
+ * @apiBody {Object} extraInfo.secrets.deepSecret The deep user secret crush
+ * @apiBody {String} extraInfo.secrets.deepSecret.key The deep user secret key
+ * @apiBody {Number} extraInfo.secrets.deepSecret.number The deep user secret key
+ * @apiBody {String} extraInfo.secrets.deepSecret.name.particle The deep user secret name particle with dot
+ * @apiBody {Boolean} extraInfo.isAlive Is the user alive? (boolean with no default)
  * @apiBody {String} custom.property Custom property with dot
  *
  * @apiSuccess {Number} id         The new Users-ID.
