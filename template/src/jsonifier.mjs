@@ -16,11 +16,16 @@ const setValueToField = (fields, value) => {
   return fields.reduceRight(reducer, {});
 };
 
-const fieldsToJson = fields => {
+const fieldsToJson = items => {
   let obj = {};
-  fields.forEach(field => {
-    const line = setValueToField(field[0].split('.'), field[1]);
-    obj = defaultsDeep(obj, line);
+  items.forEach(item => {
+    const { object, field, type } = item[0];
+    let parts = field.split('.');
+    if (object) {
+      parts = object.split('.');
+      parts.push(field.substring(object.length + 1));
+    }
+    obj = defaultsDeep(obj, type.indexOf('Object') === 0 || object !== '' ? setValueToField(parts, item[1]) : setValueToField([field], ''));
   });
   return beautify(obj);
 };
@@ -52,7 +57,7 @@ export function body2json (context) {
         val = entry.defaultValue || new Date().toLocaleDateString(window.navigator.language);
         break;
     }
-    fields.push([entry.field, val]);
+    fields.push([entry, val]);
   });
   return fieldsToJson(fields);
 }
