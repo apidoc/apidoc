@@ -173,7 +173,9 @@ export function register () {
      *
      */
   Handlebars.registerHelper('objectNesting', function (object, field) {
-    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + field.substring(object.length + 1);
+    // accept both '.' and '[]' syntax for object properties
+    const f = field.replace(/\[/, '.').replace(/\]/, '');
+    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + f.substring(object.length + 1);
   });
 
   /**
