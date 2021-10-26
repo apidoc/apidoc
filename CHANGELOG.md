@@ -2,6 +2,9 @@
 
 ### 0.50.1
 
+* fix issue with sampleUrl set to "true" (fix #1058 via #1062 by @esaracco)
+* fix not seeing all versions below (fix #1049 via #1061 by @esaracco)
+* fix apiParams input elements (#1059) by Benjamin Knorr
 * Remove the jQueryAjaxSetup configuration option (was not working anyway) (fix #1040 via #1041 by @esaracco)
 * Add more files/folders to .npmignore
 * Improve/fix group sorting (fix #1042 via #1044 by @esaracco)
