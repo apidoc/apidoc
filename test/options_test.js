@@ -15,8 +15,8 @@ describe('test options module', function () {
 
   it('should provide correct options when options are given', function (done) {
     const options = {
-      src: ['some/path'],
-      dest: 'output/path',
+      src: [path.join('some', 'path')],
+      dest: path.join('output', 'path'),
       debug: true,
     };
     const processedOptions = optionsProcessor.process(options);
