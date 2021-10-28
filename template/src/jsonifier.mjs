@@ -8,24 +8,51 @@
  * Copyright (c) 2013 inveris OHG
  * Licensed under the MIT license.
  */
-import pkg from 'lodash';
-const { defaultsDeep } = pkg;
-
-const setValueToField = (fields, value) => {
-  const reducer = (acc, item, index, arr) => ({ [item]: index + 1 < arr.length ? acc : value });
-  return fields.reduceRight(reducer, {});
-};
 
 const fieldsToJson = items => {
-  let obj = {};
-  items.forEach(item => {
-    const { object, field, type } = item[0];
-    let parts = field.split('.');
-    if (object) {
-      parts = object.split('.');
-      parts.push(field.substring(object.length + 1));
+  const obj = {};
+
+  const _get = (obj, path) => {
+    return path.split('.').reduce((o, key) => {
+      if (o) {
+        if (o[key]) {
+          return o[key];
+        } else if (Array.isArray(o) && o[0] && o[0][key]) {
+          return o[0][key];
+        }
+      }
+      return null;
+    }, obj);
+  };
+
+  const _set = (paren, key, value) => {
+    if (paren) {
+      if (Array.isArray(paren)) {
+        if (!paren.length) {
+          paren.push({ [key]: value });
+        } else {
+          paren[0][key] = value;
+        }
+      } else {
+        paren[key] = value;
+      }
+    } else {
+      obj[key] = value;
     }
-    obj = defaultsDeep(obj, type.indexOf('Object') === 0 || object !== '' ? setValueToField(parts, item[1]) : setValueToField([field], ''));
+  };
+
+  items.forEach(item => {
+    const { parentInfos, field, type } = item[0];
+    const paren = parentInfos ? _get(obj, parentInfos.path) : undefined;
+    const key = paren ? field.substring(parentInfos.path.length + 1) : field;
+    const isArray = type.indexOf('[]') !== -1;
+    // Object / array of Object
+    if (type.indexOf('Object') !== -1) {
+      _set(paren, key, isArray ? [] : {});
+    // all types / array of types
+    } else {
+      _set(paren, key, isArray ? [] : item[1]);
+    }
   });
   return beautify(obj);
 };

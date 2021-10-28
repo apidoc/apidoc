@@ -173,18 +173,18 @@ export function register () {
    * Convert object dot-notation to form bracket-notation
    *
    * @param {String} field name
-   * @param {String} object path
+   * @param {String} parentInfos parent object infos
    * @returns {String}
    */
-  Handlebars.registerHelper('dot2Bracket', function (field, object) {
-    if (object === '') { return field; }
+  Handlebars.registerHelper('dot2Bracket', function (field, parentInfos) {
+    if (!parentInfos) { return field; }
     let ret = '';
     field.split('.').forEach((el, i) => { ret += i === 0 ? el : `[${el}]`; });
-    return ret;
+    return parentInfos.type === 'Object[]' ? ret.replace(/\[/, '[]') : ret;
   });
 
   /**
-   * Indent object property based on its nesting
+   * Indent object property based on its nesting level
    *
    * @param {Object} object
    * @param {String} property
