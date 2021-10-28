@@ -190,6 +190,10 @@ export function register () {
         ret += `[${name}]`;
       }
     });
+    // if this is a array of objects
+    if (parentInfo.type === 'Object[]') {
+      ret = ret.replace(/\[/, '[][');
+    }
     return ret;
   });
 
