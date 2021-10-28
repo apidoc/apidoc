@@ -208,8 +208,8 @@
         {{#each params}}
           <tr>
             <td class="code">
-            {{#if this.parentInfos}}
-              {{{objectNesting this.parentInfos.path this.field}}}
+            {{#if this.parentInfo}}
+              {{{nestObject this.parentInfo.path this.field}}}
             {{else}}
               {{this.field}}
             {{/if}}
@@ -256,8 +256,8 @@
         {{#each params}}
           <tr>
             <td class="code">
-            {{#if this.parentInfos}}
-              {{{objectNesting this.parentInfos.path this.field}}}
+            {{#if this.parentInfo}}
+              {{{nestObject this.parentInfo.path this.field}}}
             {{else}}
               {{this.field}}
             {{/if}}
@@ -309,8 +309,8 @@
         {{#each this}}
           <tr>
             <td class="code">
-            {{#if parentInfos}}
-              {{{objectNesting parentInfos.path field}}}
+            {{#if parentInfo}}
+              {{{nestObject parentInfo.path field}}}
             {{else}}
               {{field}}
             {{/if}}
@@ -423,12 +423,12 @@
               {{#each this}}
               <div class="form-group">
                 {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
-                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field parentInfos}}</label>
+                <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2bracket field parentInfo}}</label>
                 <div class="input-group">
                   {{#if allowedValues}}
                   <div class="input-group-addon">{{{type}}}</div>
                   <div class="input-group-addon sample-request-select">
-                    <select class="form-control" data-name="{{dot2Bracket field parentInfos}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                    <select class="form-control" data-name="{{dot2bracket field parentInfo}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                       <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                       {{#each allowedValues}}
                       <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -441,8 +441,8 @@
                     class="form-control sample-request-param"
                     type="{{setInputType type}}"
                     value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
-                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2Bracket field parentInfos}}{{/if}}"
-                    data-name="{{dot2Bracket field parentInfos}}"
+                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2bracket field parentInfo}}{{/if}}"
+                    data-name="{{dot2bracket field parentInfo}}"
                     data-family="query"
                     data-group="{{@../index}}"
                     {{#if optional}}data-optional="true"{{/if}}>
@@ -463,12 +463,12 @@
           {{#each article.query}}
             <div class="form-group">
               {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
-              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field parentInfos}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2bracket field parentInfo}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
               <div class="input-group col-md-6">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
                 <div class="input-group-addon sample-request-select">
-                  <select class="form-control" data-name="{{dot2Bracket field parentInfos}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                  <select class="form-control" data-name="{{dot2bracket field parentInfo}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                     <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
                     <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -481,8 +481,8 @@
                   class="form-control sample-request-input"
                   type="{{setInputType type}}"
                   value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
-                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2Bracket field parentInfos}}{{/if}}"
-                  data-name="{{dot2Bracket field parentInfos}}"
+                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{dot2bracket field parentInfo}}{{/if}}"
+                  data-name="{{dot2bracket field parentInfo}}"
                   data-family="query"
                   data-group="{{@../index}}"
                   {{#if optional}}data-optional="true"{{/if}}>
@@ -522,12 +522,12 @@
           {{#each article.body}}
             <div class="form-group">
               {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
-              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2Bracket field parentInfos}}</label>
+              <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{dot2bracket field parentInfo}}</label>
               <div class="input-group">
                 <div class="input-group-addon">{{{type}}}</div>
                 {{#if allowedValues}}
                 <div class="input-group-addon sample-request-select">
-                  <select class="form-control" data-name="{{dot2Bracket field parentInfos}}" data-family="body" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
+                  <select class="form-control" data-name="{{dot2bracket field parentInfo}}" data-family="body" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                     <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
                     {{#each allowedValues}}
                     <option {{#ifCond ../defaultValue '===' this}} selected {{/ifCond}}value="{{{removeDblQuotes this}}}">{{{removeDblQuotes this}}}</option>
@@ -541,9 +541,9 @@
                   type="{{setInputType type}}"
                   value="{{#ifCond type '!==' 'Boolean'}}{{#if defaultValue}}{{ defaultValue }}{{/if}}{{/ifCond}}"
                   {{#if checked}}checked{{/if}}
-                  placeholder="{{dot2Bracket field parentInfos}}"
+                  placeholder="{{dot2bracket field parentInfo}}"
                   data-family="body"
-                  data-name="{{dot2Bracket field parentInfos}}"
+                  data-name="{{dot2bracket field parentInfo}}"
                   data-content-type="form"
                   {{#if optional}}data-optional="true"{{/if}}>
                 {{/if}}
@@ -836,8 +836,8 @@
       {{#if typeSame}}
         <tr>
           <td class="code">
-            {{#if source.parentInfos}}
-              {{{objectNesting source.parentInfos.path source.field}}}
+            {{#if source.parentInfo}}
+              {{{nestObject source.parentInfo.path source.field}}}
             {{else}}
               {{source.field}}
             {{/if}}
@@ -873,8 +873,8 @@
       {{#if typeIns}}
         <tr class="ins">
           <td class="code">
-            {{#if source.parentInfos}}
-              {{{objectNesting source.parentInfos.path source.field}}}
+            {{#if source.parentInfo}}
+              {{{nestObject source.parentInfo.path source.field}}}
             {{else}}
               {{source.field}}
             {{/if}}
@@ -897,8 +897,8 @@
       {{#if typeDel}}
         <tr class="del">
           <td class="code">
-            {{#if compare.parentInfos}}
-              {{{objectNesting compare.parentInfos.path compare.field}}}
+            {{#if compare.parentInfo}}
+              {{{nestObject compare.parentInfo.path compare.field}}}
             {{else}}
               {{compare.field}}
             {{/if}}

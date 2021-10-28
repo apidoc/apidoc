@@ -173,14 +173,24 @@ export function register () {
    * Convert object dot-notation to form bracket-notation
    *
    * @param {String} field name
-   * @param {String} parentInfos parent object infos
+   * @param {String} parentInfo parent object infos
    * @returns {String}
    */
-  Handlebars.registerHelper('dot2Bracket', function (field, parentInfos) {
-    if (!parentInfos) { return field; }
+  Handlebars.registerHelper('dot2bracket', function (field, parentInfo) {
+    // if no parent, just return the field name as-is
+    if (!parentInfo) { return field; }
     let ret = '';
-    field.split('.').forEach((el, i) => { ret += i === 0 ? el : `[${el}]`; });
-    return parentInfos.type === 'Object[]' ? ret.replace(/\[/, '[]') : ret;
+    // if parent, replace dot by brackets ie. "." -> [] in the whole path
+    field.split('.').forEach((name, i) => {
+      // the first element of the path is not surrounded by square brackets
+      if (!i) {
+        ret += name;
+      // other path items are surrounded by square  rackets
+      } else {
+        ret += `[${name}]`;
+      }
+    });
+    return ret;
   });
 
   /**
@@ -189,7 +199,7 @@ export function register () {
    * @param {Object} object
    * @param {String} property
    */
-  Handlebars.registerHelper('objectNesting', function (object, field) {
+  Handlebars.registerHelper('nestObject', function (object, field) {
     return '&nbsp;&nbsp;'.repeat(object.split('.').length) + field.substring(object.length + 1);
   });
 

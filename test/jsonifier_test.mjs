@@ -31,13 +31,13 @@ describe('test jsonifier', function () {
         'type': 'Object'
       },
       {
-        'parentInfos': {path: 'bbb', type: 'Object'},
+        'parentInfo': {path: 'bbb', type: 'Object'},
         'field': 'bbb.some',
         'type': 'String',
         'defaultValue': 'bbbsomedefault',
       },
       {
-        'parentInfos': {path: 'bbb', type: 'Object'},
+        'parentInfo': {path: 'bbb', type: 'Object'},
         'field': 'bbb.somebool',
         'type': 'Boolean',
         'defaultValue': true,
@@ -48,13 +48,13 @@ describe('test jsonifier', function () {
         'type': 'Object[]'
       },
       {
-        'parentInfos': {path: 'ccc', type: 'Object[]'},
+        'parentInfo': {path: 'ccc', type: 'Object[]'},
         'field': 'ccc.some',
         'type': 'String',
         'defaultValue': 'cccsomedefault',
       },
       {
-        'parentInfos': {path: 'ccc', type: 'Object[]'},
+        'parentInfo': {path: 'ccc', type: 'Object[]'},
         'field': 'ccc.somebool',
         'type': 'Boolean',
         'defaultValue': true,
@@ -62,47 +62,47 @@ describe('test jsonifier', function () {
       // ----------
       {
         type: 'Object',
-        parentInfos: undefined,
+        parentInfo: undefined,
         field: 'A'
       },
       {
         type: 'Number',
-        parentInfos: { path: 'A', type: 'Object' },
+        parentInfo: { path: 'A', type: 'Object' },
         field: 'A.b'
       },
       {
         type: 'Object[]',
-        parentInfos: { path: 'A', type: 'Object' },
+        parentInfo: { path: 'A', type: 'Object' },
         field: 'A.c'
       },
       {
         type: 'String',
-        parentInfos: { path: 'A.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c', type: 'Object[]' },
         field: 'A.c.b'
       },
       {
         type: 'Object[]',
-        parentInfos: { path: 'A.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c', type: 'Object[]' },
         field: 'A.c.c'
       },
       {
         type: 'String',
-        parentInfos: { path: 'A.c.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c.c', type: 'Object[]' },
         field: 'A.c.c.a'
       },
       {
         type: 'Number[]',
-        parentInfos: { path: 'A.c.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c.c', type: 'Object[]' },
         field: 'A.c.c.b'
       },
       {
         type: 'Object[]',
-        parentInfos: { path: 'A.c.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c.c', type: 'Object[]' },
         field: 'A.c.c.c'
       },
       {
         type: 'String',
-        parentInfos: { path: 'A.c.c.c', type: 'Object[]' },
+        parentInfo: { path: 'A.c.c.c', type: 'Object[]' },
         field: 'A.c.c.c.b'
       }
     ];

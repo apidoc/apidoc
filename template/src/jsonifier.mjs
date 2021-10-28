@@ -42,9 +42,9 @@ const fieldsToJson = items => {
   };
 
   items.forEach(item => {
-    const { parentInfos, field, type } = item[0];
-    const paren = parentInfos ? _get(obj, parentInfos.path) : undefined;
-    const key = paren ? field.substring(parentInfos.path.length + 1) : field;
+    const { parentInfo, field, type } = item[0];
+    const paren = parentInfo ? _get(obj, parentInfo.path) : undefined;
+    const key = paren ? field.substring(parentInfo.path.length + 1) : field;
     const isArray = type.indexOf('[]') !== -1;
     // Object / array of Object
     if (type.indexOf('Object') !== -1) {
