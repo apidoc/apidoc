@@ -15,8 +15,8 @@ describe('test options module', function () {
 
   it('should provide correct options when options are given', function (done) {
     const options = {
-      src: ['some/path'],
-      dest: 'output/path',
+      src: [path.join('some', 'path')],
+      dest: path.join('output', 'path'),
       debug: true,
     };
     const processedOptions = optionsProcessor.process(options);
@@ -32,11 +32,12 @@ describe('test options module', function () {
     };
     // read the apidoc.json file
     const apidocJson = require('../example/apidoc.json');
-
+    // convert path to platform variant
+    apidocJson.output = path.resolve(apidocJson.output.replace(/[\\\/]/g, path.sep));
     const processedOptions = optionsProcessor.process(options);
 
     assert.deepEqual(processedOptions.src, apidocJson.input.map(p => path.resolve(p) + path.sep));
-    assert.strictEqual(processedOptions.dest, apidocJson.output + path.sep);
+    assert.strictEqual(processedOptions.dest, path.resolve(apidocJson.output) + path.sep);
     done();
   });
 });
