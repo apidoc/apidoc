@@ -25,16 +25,16 @@ const fieldsToJson = items => {
     }, obj);
   };
 
-  const _set = (paren, key, value) => {
-    if (paren) {
-      if (Array.isArray(paren)) {
-        if (!paren.length) {
-          paren.push({ [key]: value });
+  const _set = (parentPtr, key, value) => {
+    if (parentPtr) {
+      if (Array.isArray(parentPtr)) {
+        if (!parentPtr.length) {
+          parentPtr.push({ [key]: value });
         } else {
-          paren[0][key] = value;
+          parentPtr[0][key] = value;
         }
       } else {
-        paren[key] = value;
+        parentPtr[key] = value;
       }
     } else {
       obj[key] = value;
@@ -42,16 +42,16 @@ const fieldsToJson = items => {
   };
 
   items.forEach(item => {
-    const { parentInfo, field, type } = item[0];
-    const paren = parentInfo ? _get(obj, parentInfo.path) : undefined;
-    const key = paren ? field.substring(parentInfo.path.length + 1) : field;
+    const { parentNode, field, type } = item[0];
+    const parentPtr = parentNode ? _get(obj, parentNode.path) : undefined;
+    const key = parentPtr ? field.substring(parentNode.path.length + 1) : field;
     const isArray = type.indexOf('[]') !== -1;
     // Object / array of Object
     if (type.indexOf('Object') !== -1) {
-      _set(paren, key, isArray ? [] : {});
+      _set(parentPtr, key, isArray ? [] : {});
     // all types / array of types
     } else {
-      _set(paren, key, isArray ? [] : item[1]);
+      _set(parentPtr, key, isArray ? [] : item[1]);
     }
   });
   return beautify(obj);

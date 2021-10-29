@@ -172,27 +172,31 @@ export function register () {
   /**
    * Convert object dot-notation to form bracket-notation
    *
-   * @param {String} field name
-   * @param {String} parentInfo parent object infos
+   * @param {String} field object
    * @returns {String}
    */
-  Handlebars.registerHelper('dot2bracket', function (field, parentInfo) {
-    // if no parent, just return the field name as-is
-    if (!parentInfo) { return field; }
+  Handlebars.registerHelper('dot2bracket', function (entry) {
+    const { parentNode, field, isArray } = entry;
     let ret = '';
-    // if parent, replace dot by brackets ie. "." -> [] in the whole path
-    field.split('.').forEach((name, i) => {
-      // the first element of the path is not surrounded by square brackets
-      if (!i) {
-        ret += name;
-      // other path items are surrounded by square  rackets
-      } else {
-        ret += `[${name}]`;
-      }
-    });
-    // if this is a array of objects
-    if (parentInfo.type === 'Object[]') {
-      ret = ret.replace(/\[/, '[][');
+    if (parentNode) {
+      let current = entry;
+      // loop on parents to build full object path
+      do {
+        const p = current.parentNode;
+        if (p.isArray) {
+          ret = `[]${ret}`;
+        }
+        if (p.parentNode) {
+          ret = `[${p.field.substring(p.parentNode.path.length + 1)}]${ret}`;
+        } else {
+          ret = p.field + ret;
+        }
+        current = current.parentNode;
+      } while (current.parentNode);
+      ret += `[${field.substring(parentNode.path.length + 1)}]`;
+    } else {
+      ret = field;
+      if (isArray) { ret += '[]'; }
     }
     return ret;
   });
@@ -203,8 +207,9 @@ export function register () {
    * @param {Object} object
    * @param {String} property
    */
-  Handlebars.registerHelper('nestObject', function (object, field) {
-    return '&nbsp;&nbsp;'.repeat(object.split('.').length) + field.substring(object.length + 1);
+  Handlebars.registerHelper('nestObject', function (entry) {
+    const { parentNode, field } = entry;
+    return parentNode ? '&nbsp;&nbsp;'.repeat(parentNode.path.split('.').length) + field.substring(parentNode.path.length + 1) : field;
   });
 
   /**
