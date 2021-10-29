@@ -10,7 +10,7 @@
  */
 
 const fieldsToJson = items => {
-  const obj = {};
+  let obj = {};
 
   const _get = (obj, path) => {
     return path.split('.').reduce((o, key) => {
@@ -54,6 +54,12 @@ const fieldsToJson = items => {
       _set(parentPtr, key, isArray ? [] : item[1]);
     }
   });
+
+  // if result contains only one property that is optional, and this is an
+  // array of objects, remove the key
+  const objKeys = Object.keys(obj);
+  if (objKeys.length === 1 && items[0][0].optional) { obj = obj[objKeys[0]]; }
+
   return beautify(obj);
 };
 
