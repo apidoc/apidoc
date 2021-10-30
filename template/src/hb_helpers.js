@@ -122,6 +122,16 @@ export function register () {
     return _handlebarsNewlineToBreak(text);
   });
 
+  /**
+   * Test if the type is that of an object
+   *
+   * @param {String} type Type
+   * @returns {Boolean}
+   */
+  Handlebars.registerHelper('ifNotObject', function (type, options) {
+    return type.indexOf('Object') !== 0 ? options.fn(this) : options.inverse(this);
+  });
+
   // Test conditions
   // Usage: {{#ifCond var1 '===' var2}}something{{/ifCond}}
   Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {

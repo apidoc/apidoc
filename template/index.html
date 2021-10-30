@@ -410,7 +410,7 @@
             <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
               {{#each this}}
               <div class="form-group">
-                {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+                {{#ifNotObject type}}
                 <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="input-group">
                   {{#if allowedValues}}
@@ -437,7 +437,7 @@
                   <div class="input-group-addon">{{{type}}}</div>
                   {{/if}}
                 </div>
-                {{/ifCond}}{{/ifCond}}
+                {{/ifNotObject}}
               </div>
               {{/each}}
             </div>
@@ -450,7 +450,7 @@
         <div class="{{../id}}-sample-request-param-fields {{../id}}-sample-header-content-type-fields">
           {{#each article.query}}
             <div class="form-group">
-              {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+              {{#ifNotObject type}}
               <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}{{#if optional}} ({{__ "optional"}}){{/if}}</label>
               <div class="input-group col-md-6">
                 <div class="input-group-addon">{{{type}}}</div>
@@ -476,7 +476,7 @@
                   {{#if optional}}data-optional="true"{{/if}}>
                 {{/if}}
               </div>
-              {{/ifCond}}{{/ifCond}}
+              {{/ifNotObject}}
             </div>
           {{/each}}
         </div>
@@ -509,7 +509,7 @@
         <div hidden class="col-md-9" id="sample-request-body-form-input-{{this.id}}">
           {{#each article.body}}
             <div class="form-group">
-              {{#ifCond type '!==' 'Object'}}{{#ifCond type '!==' 'Object[]'}}
+              {{#ifNotObject type}}
               <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
               <div class="input-group">
                 <div class="input-group-addon">{{{type}}}</div>
@@ -536,7 +536,7 @@
                   {{#if optional}}data-optional="true"{{/if}}>
                 {{/if}}
               </div>
-              {{/ifCond}}{{/ifCond}}
+              {{/ifNotObject}}
             </div>
           {{/each}}
         </div>
