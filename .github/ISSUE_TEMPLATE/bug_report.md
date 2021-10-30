@@ -18,4 +18,5 @@ about: If something isn't working as expected.
 
 - Version of apidoc:
 - Operating system (e.g. GNU+Linux/MacOS/Windows):
+- Node version:
 - Browser (e.g. firefox, chrome):
