@@ -459,15 +459,17 @@
                 </div>
                 <input class="invisible">
                 {{else}}
-                <input id="sample-request-param-field-{{field}}"
-                  class="form-control sample-request-input"
-                  type="{{setInputType type}}"
-                  value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
-                  placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
-                  data-name="{{field}}"
-                  data-family="query"
-                  data-group="{{@../index}}"
-                  {{#if optional}}data-optional="true"{{/if}}>
+                <div class="sample-request-input-{{type}}-container"><div>
+                  <input id="sample-request-param-field-{{field}}"
+                    class="sample-request-input"
+                    type="{{setInputType type}}"
+                    value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
+                    placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
+                    data-name="{{field}}"
+                    data-family="query"
+                    data-group="{{@../index}}"
+                    {{#if optional}}data-optional="true"{{/if}}>
+                </div></div>
                 {{/if}}
               </div>
             </div>
