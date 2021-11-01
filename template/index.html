@@ -516,8 +516,9 @@
                 </div>
                 <input class="invisible">
                 {{else}}
-                <input id="sample-request-param-field-{{field}}"
-                  class="form-control sample-request-input"
+                <div class="sample-request-input-{{type}}-container"><div>
+                  <input id="sample-request-param-field-{{field}}"
+                  class="sample-request-input"
                   type="{{setInputType type}}"
                   value="{{#ifCond type '!==' 'Boolean'}}{{#if defaultValue}}{{ defaultValue }}{{/if}}{{/ifCond}}"
                   {{#if checked}}checked{{/if}}
@@ -526,6 +527,7 @@
                   data-name="{{field}}"
                   data-content-type="form"
                   {{#if optional}}data-optional="true"{{/if}}>
+                  </div></div>
                 {{/if}}
               </div>
             </div>
