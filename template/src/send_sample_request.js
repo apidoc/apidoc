@@ -13,11 +13,8 @@ import UrlProcessor from './sampreq_url_processor';
 
 // Prism is the syntax highlighting lib
 import Prism from 'prismjs';
-// languages highlighted by Prism
-import 'prismjs/components/prism-bash';
+// json language
 import 'prismjs/components/prism-json';
-import 'prismjs/components/prism-http';
-import 'prismjs/components/prism-python';
 
 export function initSampleRequest () {
   // Button send
