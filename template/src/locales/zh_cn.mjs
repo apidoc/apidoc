@@ -1,5 +1,6 @@
 export const zhCn = {
   'Allowed values:': '允许值:',
+  Body: '身体',
   'Compare all with predecessor': '与所有较早的比较',
   'compare changes to:': '将当前版本与指定版本比较:',
   'compared to': '相比于',
@@ -16,6 +17,7 @@ export const zhCn = {
   Headers: '头部参数',
   'Permission:': '权限:',
   Response: '返回',
+  required: '必需的',
   Send: '发送',
   'Send a Sample Request': '发送示例请求',
   'show up to version:': '显示到指定版本:',
