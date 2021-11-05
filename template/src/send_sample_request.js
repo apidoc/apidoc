@@ -11,6 +11,14 @@
 import $ from 'jquery';
 import UrlProcessor from './sampreq_url_processor';
 
+// Prism is the syntax highlighting lib
+import Prism from 'prismjs';
+// languages highlighted by Prism
+import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-http';
+import 'prismjs/components/prism-python';
+
 export function initSampleRequest () {
   // Button send
   $('.sample-request-send').off('click');
@@ -159,6 +167,7 @@ function sendSampleRequest (group, name, version, method) {
       jsonResponse = jqXHR.responseText;
     }
     root.find('.sample-request-response-json').text(jsonResponse);
+    Prism.highlightAll();
   }
 
   function displayError (jqXHR, textStatus, error) {
@@ -178,6 +187,7 @@ function sendSampleRequest (group, name, version, method) {
 
     root.find('.sample-request-response').fadeTo(250, 1);
     root.find('.sample-request-response-json').text(message);
+    Prism.highlightAll();
   }
 }
 
