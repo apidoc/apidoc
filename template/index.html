@@ -409,8 +409,8 @@
               <div class="form-group">
                 <label class="col-md-3 control-label" for="sample-request-param-field-{{field}}">{{field}}</label>
                 <div class="input-group">
-                  {{#if allowedValues}}
                   <div class="input-group-addon">{{{type}}}</div>
+                  {{#if allowedValues}}
                   <div class="input-group-addon sample-request-select">
                     <select class="form-control" data-name="{{field}}" data-family="query" data-group="{{@../index}}" {{#if optional}}data-optional="true"{{/if}}>
                       <option value="" class="empty">&lt;{{__ "No value"}}&gt;</option>
@@ -421,9 +421,9 @@
                   </div>
                   <input class="invisible">
                   {{else}}
-                  <div class="input-group-addon">{{{type}}}</div>
+                  <div class="sample-request-input-{{type}}-container"><div>
                   <input id="sample-request-param-field-{{field}}"
-                    class="form-control sample-request-param"
+                    class="{{#ifCond type '!==' 'Boolean'}}form-control{{/ifCond}} sample-request-param"
                     type="{{setInputType type}}"
                     value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
                     placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
@@ -431,6 +431,7 @@
                     data-family="query"
                     data-group="{{@../index}}"
                     {{#if optional}}data-optional="true"{{/if}}>
+                  </div></div>
                   {{/if}}
                 </div>
               </div>
@@ -461,7 +462,7 @@
                 {{else}}
                 <div class="sample-request-input-{{type}}-container"><div>
                   <input id="sample-request-param-field-{{field}}"
-                    class="sample-request-input"
+                    class="{{#ifCond type '!==' 'Boolean'}}form-control{{/ifCond}} sample-request-input"
                     type="{{setInputType type}}"
                     value="{{#if defaultValue}}{{ defaultValue }}{{/if}}"
                     placeholder="{{#if defaultValue}}{{ defaultValue }}{{else}}{{field}}{{/if}}"
@@ -520,7 +521,7 @@
                 {{else}}
                 <div class="sample-request-input-{{type}}-container"><div>
                   <input id="sample-request-param-field-{{field}}"
-                  class="sample-request-input"
+                  class="{{#ifCond type '!==' 'Boolean'}}form-control{{/ifCond}} sample-request-input"
                   type="{{setInputType type}}"
                   value="{{#ifCond type '!==' 'Boolean'}}{{#if defaultValue}}{{ defaultValue }}{{/if}}{{/ifCond}}"
                   {{#if checked}}checked{{/if}}
