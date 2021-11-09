@@ -139,10 +139,11 @@ function sendSampleRequest (group, name, version, method) {
       formData.append(name, value);
     }
     requestParams.data = formData;
-    // if it's a form-data, remove the content-type?? TODO
-    delete requestParams.headers['Content-Type'];
-    requestParams.headers['Content-Type'] = false;
     requestParams.processData = false;
+    // GET and DELETE methods do not need content-type
+    if (method === 'get' || method === 'delete') {
+      delete requestParams.headers['Content-Type'];
+    }
   }
 
   requestParams.type = method;
