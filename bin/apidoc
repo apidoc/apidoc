@@ -50,6 +50,8 @@ const pkgjson = require(path.join('..', 'package.json'));
 program.version(pkgjson.version);
 
 program
+  .option('--apidataFile <path>', 'Path to config file (json or javascript).', '')
+
   .option('-c, --config <config>', 'Path to config file (json or javascript).', '')
 
   .option('--no-color', 'Turn off log color.', false)
@@ -134,6 +136,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
+  apidataFile: argv.apidataFile,
 };
 
 if (options.debug) {
