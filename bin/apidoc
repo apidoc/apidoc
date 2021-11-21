@@ -74,8 +74,6 @@ program
 
   .option('--markdown [markdown]', 'Turn off default markdown parser or set a file to a custom parser.', true)
 
-  .option('-m, --mode <mode>', 'JavaScript output mode. amd | es | commonJS', '')
-
   .option('-n, --dry-run', 'Parse source files but do not write any output files.', false)
 
   .option('-o, --output <output>', 'Output dirname.', 'doc/')
@@ -113,7 +111,6 @@ const options = {
   includeFilters: argv.fileFilters.length ? argv.fileFilters : defaultIncludeFilters,
   src: argv.input,
   dest: argv.output,
-  mode: argv.mode,
   template: argv.template,
   config: argv.config,
   apiprivate: argv.private,
