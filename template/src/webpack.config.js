@@ -11,7 +11,7 @@
 
 /* webpack js bundler config file */
 const path = require('path');
-const { ESBuildMinifyPlugin } = require("esbuild-loader");
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 
 module.exports = {
   entry: path.resolve(__dirname, 'main.js'),
@@ -43,7 +43,7 @@ module.exports = {
   optimization: {
     minimizer: [
       new ESBuildMinifyPlugin({
-        target: "es2015",
+        target: 'es2015',
       }),
     ],
   },
