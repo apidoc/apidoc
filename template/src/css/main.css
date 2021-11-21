@@ -143,6 +143,22 @@ td.code {
   height: 32px;
 }
 
+.sample-request-input-Boolean-container {
+  width: 40px;
+  height: 34px;
+  background: var(--white);
+  border: 1px solid var(--light-gray);
+}
+
+.sample-request-input-Boolean-container > div {
+  margin-top: 7px;
+  text-align: center;
+}
+
+.sample-request-input-Boolean-container > div input {
+  margin: 0;
+}
+
 /* ------------------------------------------------------------------------------------------
  * Request method (HTTP verb)
  * ------------------------------------------------------------------------------------------ */
