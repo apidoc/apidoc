@@ -1,5 +1,23 @@
 # apiDoc Changelog
 
+### 0.50.2
+
+#### FIXED
+
+* fix checkbox styling (fix #1077 via #1079 by @esaracco)
+* make sure success block appears after body/query params (fix #1100)
+* fix content-type value (fix #1084 via #1085 by @esaracco)
+* fix display of types for apiHeader and apiParam (#1083 by @esaracco)
+* fix tests on windows (#1070 by @donmahallem)
+
+#### ENHANCEMENTS
+
+* improve build speed (by @rottmann)
+* make the message about no config files found a warning
+* look for package.json in current working directory for apidoc config (fix #1086)
+* update chinese translation
+* add json response highlighting (#1082 by @esaracco)
+
 ### 0.50.1
 
 * fix issue with sampleUrl set to "true" (fix #1058 via #1062 by @esaracco)
