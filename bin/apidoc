@@ -100,6 +100,8 @@ program
 
   .option('-w, --watch', 'Watch input files for changes to rebuild the docs.', false)
 
+  .option('--force', 'Ignore exclude filters', false)
+
   .parse(process.argv);
 
 const argv = program.opts();
@@ -131,6 +133,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
+  force: argv.force,
 };
 
 if (options.debug) {
