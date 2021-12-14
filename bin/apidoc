@@ -100,7 +100,7 @@ program
 
   .option('-w, --watch', 'Watch input files for changes to rebuild the docs.', false)
 
-  .option('--force', 'Ignore exclude filters', false)
+  .option('--include-node-modules', 'Include node_modules set in the default external filter.', false)
 
   .parse(process.argv);
 
@@ -133,7 +133,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
-  force: argv.force,
+  includeNodeModules: argv.includeNodeModules,
 };
 
 if (options.debug) {
