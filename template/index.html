@@ -211,7 +211,9 @@
             {{#if optional}}
               <span class="label optional">{{__ "optional"}}</span>
             {{else}}
-              <span class="label required">{{__ "required"}}</span>
+              {{#if ../template.showRequiredLabels}}
+                <span class="label required">{{__ "required"}}</span>
+              {{/if}}
             {{/if}}
             </td>
             {{#unless this.Type compare=null}}
@@ -254,7 +256,9 @@
             {{#if optional}}
               <span class="label optional">{{__ "optional"}}</span>
             {{else}}
-              <span class="label required">{{__ "required"}}</span>
+              {{#if ../template.showRequiredLabels}}
+                <span class="label required">{{__ "required"}}</span>
+              {{/if}}
             {{/if}}
             </td>
             {{#unless this.Type compare=null}}
@@ -302,7 +306,9 @@
             {{#if optional}}
               <span class="label optional">{{__ "optional"}}</span>
             {{else}}
-              <span class="label required">{{__ "required"}}</span>
+              {{#if ../template.showRequiredLabels}}
+                <span class="label required">{{__ "required"}}</span>
+              {{/if}}
             {{/if}}</td>
             {{#if ../../_hasType}}
               <td class="code">

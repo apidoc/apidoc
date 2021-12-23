@@ -54,15 +54,16 @@ function init () {
   const templateSidenav = Handlebars.compile($('#template-sidenav').html());
 
   // apiProject defaults
-  if (!apiProject.template) { apiProject.template = {}; }
+  const defaultTemplateOptions = {
+    aloneDisplay: false,
+    showRequiredLabels: false,
+    withGenerator: true,
+    withCompare: true,
+  };
 
-  if (apiProject.template.withCompare == null) { apiProject.template.withCompare = true; }
-
-  if (apiProject.template.withGenerator == null) { apiProject.template.withGenerator = true; }
+  apiProject.template = Object.assign(defaultTemplateOptions, apiProject.template ?? {});
 
   if (apiProject.template.forceLanguage) { setLanguage(apiProject.template.forceLanguage); }
-
-  if (apiProject.template.aloneDisplay == null) { apiProject.template.aloneDisplay = false; }
 
   //
   // Data transform
