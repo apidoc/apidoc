@@ -1,5 +1,15 @@
 # apiDoc Changelog
 
+### 0.50.3
+
+#### FIXED
+
+* Fix bug where header/footer files could not be found in some conditions (fix #1107)
+
+#### ENHANCEMENTS
+
+* Add showRequiredLabels option (default: false) (fix #1095)
+
 ### 0.50.2
 
 #### FIXED
