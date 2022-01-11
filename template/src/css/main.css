@@ -17,6 +17,7 @@
   --meth-post: #4070ec;
   --meth-delete: #ed0039;
   --red: #dc3545;
+  --black: #000;
 }
 
 .color-primary {
@@ -225,7 +226,7 @@ td.code {
   padding: 5px 15px;
   font-weight: 700;
   font-size: 16px;
-  background-color: var(--main-gray);
+  background-color: var(--black);
 }
 
 
