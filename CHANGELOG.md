@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+### 0.50.4
+
+#### FIXED
+
+* Fix bug with loading the CSS file for single page mode (`--single`) (fix #1142)
+
 ### 0.50.3
 
 #### FIXED
