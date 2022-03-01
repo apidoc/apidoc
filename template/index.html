@@ -24,19 +24,22 @@
     <span class="search-reset">x</span>
   </div>
   <ul class="sidenav nav nav-list list">
-  {{#each nav}}
+  {{#each groups}}
     {{#if title}}
-      {{#if isHeader}}
         {{#if isFixed}}
-          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-name="show-api-{{group}}" class="show-api api-{{group}}-init">{{underscoreToSpace title}}</a></li>
+          <li class="nav-fixed nav-header navbar-btn nav-list-item" data-group="{{group}}" data-target="#{{group}}-collapse" data-toggle="collapse" aria-expanded="false" aria-controls="{{group}}"><a href="#api-{{group}}" data-name="show-api-{{group}}" class="show-api api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{else}}
-          <li class="nav-header nav-list-item" data-group="{{group}}"><a href="#api-{{group}}" data-group="show-api-{{group}}" class="show-group api-{{group}}-init">{{underscoreToSpace title}}</a></li>
+          <li class="nav-header nav-list-item" data-target="#{{group}}-collapse" data-group="{{group}}" data-toggle="collapse" aria-expanded="false" aria-controls="{{group}}"><a href="#api-{{group}}" data-group="show-api-{{group}}" class="show-group api-{{group}}-init">{{underscoreToSpace title}}</a></li>
         {{/if}}
-      {{else}}
-        <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
-          <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
-        </li>
-      {{/if}}
+        {{#if children}}
+          <div class="collapse collapse-wrapper" id="{{group}}-collapse">
+            {{#each children}}
+            <li class="{{#if hidden}}hide {{/if}}" data-group="{{group}}" data-name="{{name}}" data-version="{{version}}">
+              <a href="#api-{{group}}-{{name}}" title="{{url}}" data-group="show-api-{{group}}" data-name="show-api-{{group}}-{{name}}" class="nav-list-item show-api api-{{group}}-{{name}}-init">{{title}}<div class="nav-list-url-item hide">{{url}}</div></a>
+            </li>
+            {{/each}}
+          </div>
+        {{/if}}
     {{/if}}
   {{/each}}
   </ul>

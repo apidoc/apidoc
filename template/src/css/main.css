@@ -235,6 +235,25 @@ td.code {
   color: var(--white);
 }
 
+.sidenav .collapse-wrapper > li > a {
+  color: var(--white);
+  display: block;
+  padding: 8px 13px 8px 20px;
+  text-decoration: none;
+}
+
+/* non active sidenav link are highlighted on hover */
+.sidenav .collapse-wrapper > li:not(.active) > a:hover {
+  background-color: var(--hover-gray);
+}
+
+
+.sidenav .collapse-wrapper > li.active > a {
+  position: relative;
+  background-color: var(--primary);
+  color: var(--white);
+}
+
 /**
  * TODO: commented out for the moment
 .sidenav > li.has-modifications a {

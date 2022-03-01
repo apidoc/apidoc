@@ -13,6 +13,8 @@ import 'bootstrap/js/tooltip';
 import 'bootstrap/js/popover';
 import 'bootstrap/js/scrollspy';
 import 'bootstrap/js/tab';
+import 'bootstrap/js/transition';
+import 'bootstrap/js/collapse';
 
 // Prism is the syntax highlighting lib
 import Prism from 'prismjs';
@@ -262,10 +264,30 @@ function init () {
 
   // remove loader
   $('#loader').remove();
+  // save groups
+  const groups = [];
+  nav.filter(function (item) {
+    return item.isHeader;
+  }).forEach(function (item) {
+    groups.push({ group: item.group, children: [], isHeader: item.isHeader, title: item.title, isFixed: item.isFixed });
+  });
+
+  nav.filter(function (item) {
+    return !item.isHeader;
+  }).forEach(function (item) {
+    const index = groups.findIndex(function (group) {
+      return group.group === item.group;
+    });
+
+    if (index > -1) {
+      groups[index].children.push(item);
+    }
+  });
 
   // render sidenav
   const fields = {
     nav: nav,
+    groups: groups,
   };
   $('#sidenav').append(templateSidenav(fields));
 
