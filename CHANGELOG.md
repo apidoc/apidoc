@@ -1,5 +1,14 @@
 # apiDoc Changelog
 
+### 0.50.5
+
+* Use root package.json values if not in apidoc key by Nick Mitchell (#1164)
+* Fix search requiring lower-case input (#1173 by Alexander Weiss)
+* Add yarn berry compatibility (#1144 by 이호영)
+* Fix template path resolve (#1175 by Kevin Bull)
+* Update chinese locale (#1184 by Jun Ding)
+* Dependencies update
+
 ### 0.50.4
 
 #### FIXED
