@@ -4,23 +4,39 @@
 const apidoc = require('../../lib/core/index');
 const assert = require('assert');
 
-function log () {
+class LogCatcher {
+  constructor () {
+    this.logs = {
+      debug: [],
+      verbose: [],
+      info: [],
+      warn: [],
+      error: [],
+    };
+  }
+  debug(msg) {
+    this.logs.debug.push(msg);
+  }
+  verbose(msg) {
+    this.logs.verbose.push(msg);
+  }
+  info(msg) {
+    this.logs.info.push(msg);
+  }
+  warn(msg) {
+    this.logs.warn.push(msg);
+  }
+  error(msg) {
+    this.logs.error.push(msg);
+  }
 }
-
-const logger = {
-  debug: log,
-  verbose: log,
-  info: log,
-  warn: log,
-  error: log,
-};
 
 describe('parseSource', function () {
   const testCases = [
     {
       source:
         '/**' +
-        '\n            * @api     {post}   /api/school/students/:studentId/cloth  ' +
+        '\n            * @api     {post}   /api/school/students/:studentId/cloth  getStudentCloth  ' +
         '\n            * @apiName         createCloth  ' +
         '\n            * @apiGroup        cloth  ' +
         '\n            * @apiParam (body) {String}          [name]  ' +
@@ -35,7 +51,7 @@ describe('parseSource', function () {
         local: {
           type: 'post',
           url: '/api/school/students/:studentId/cloth',
-          title: '',
+          title: 'getStudentCloth',
           name: 'createCloth',
           group: 'cloth',
           parameter: {
@@ -49,7 +65,7 @@ describe('parseSource', function () {
                   group: 'body',
                   optional: true,
                   size: undefined,
-                  type: 'String'
+                  type: 'String',
                 },
               ],
             },
@@ -80,13 +96,22 @@ describe('parseSource', function () {
         },
         index: 1,
       },
+      logs: {
+        warn: [
+          "URL contains a parameter ':studentId' that is not documented as @apiParam in @api 'getStudentCloth' in file: 'app.js'",
+        ],
+      }
     },
   ];
   it('case 1: should pass all test cases', function (done) {
     testCases.forEach(function (testCase) {
-      apidoc.setLogger(logger);
-      const parsed = apidoc.parseSource(Buffer.from(testCase.source));
+      const logCatcher = new LogCatcher();
+      apidoc.setLogger(logCatcher);
+      const parsed = apidoc.parseSource(Buffer.from(testCase.source), {filename: 'app.js'});
       assert.deepEqual(parsed[0], testCase.expected);
+      assert.deepEqual(logCatcher.logs.info, testCase.logs.info || []);
+      assert.deepEqual(logCatcher.logs.warn, testCase.logs.warn || []);
+      assert.deepEqual(logCatcher.logs.error, testCase.logs.error || []);
     });
     done();
   });
