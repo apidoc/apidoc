@@ -39,6 +39,7 @@ describe('parseSource', function () {
         '\n            * @api     {post}   /api/school/students/:studentId/cloth  getStudentCloth  ' +
         '\n            * @apiName         createCloth  ' +
         '\n            * @apiGroup        cloth  ' +
+        '\n            * @apiParam        id' +
         '\n            * @apiParam (body) {String}          [name]  ' +
         '\n            * @apiSuccess      {Number}    code  200  ' +
         '\n            * @apiSuccessExample {json} Success-Response:  ' +
@@ -56,6 +57,18 @@ describe('parseSource', function () {
           group: 'cloth',
           parameter: {
             fields: {
+              Parameter: [
+                {
+                  allowedValues: undefined,
+                  defaultValue: undefined,
+                  description: '',
+                  field: 'id',
+                  group: 'Parameter',
+                  optional: false,
+                  size: undefined,
+                  type: undefined,
+                }
+              ],
               body: [
                 {
                   allowedValues: undefined,
@@ -99,6 +112,7 @@ describe('parseSource', function () {
       logs: {
         warn: [
           "URL contains a parameter ':studentId' that is not documented as @apiParam in @api 'getStudentCloth' in file: 'app.js'",
+          "@apiParam 'id' was defined but does not appear in URL of @api 'getStudentCloth' in file: 'app.js'",
         ],
       }
     },
