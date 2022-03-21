@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+### 0.51.0
+
+* Emit warnings if there are inconsistencies in the apidoc params (PR #1189 by Lucas Cimon)
+* Dependencies update
+
 ### 0.50.5
 
 * Use root package.json values if not in apidoc key by Nick Mitchell (#1164)

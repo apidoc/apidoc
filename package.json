@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.50.5",
+  "version": "0.51.0",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": "MIT",
