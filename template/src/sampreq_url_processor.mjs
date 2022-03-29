@@ -8,8 +8,6 @@
  * Copyright (c) 2013 inveris OHG
  * Licensed under the MIT license.
  */
-import 'url-polyfill';
-
 export default class UrlProcessor {
   // Replace parameters from url (:id) by the parameters from input values
   hydrate (url, queryParameters) {

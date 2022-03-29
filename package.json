@@ -59,7 +59,6 @@
     "prismjs": "^1.25.0",
     "semver": "^7.3.5",
     "style-loader": "^3.3.1",
-    "url-polyfill": "^1.1.12",
     "webpack": "^5.64.2",
     "webpack-cli": "^4.9.1",
     "winston": "^3.3.3"
