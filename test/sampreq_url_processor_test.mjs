@@ -15,14 +15,15 @@ const UrlProc = new UrlProcessor();
 
 describe('test sample request url processor', () => {
   it('should hydrate correctly a complete url', done => {
-    const dryUrl = 'https://api.example.org/user/:id/:group/:city';
+    const dryUrl = 'https://api.example.org/user/:id/:group/:city?country=:country';
     const parameters = {};
     parameters['id'] = '3';
     parameters['group'] = 'blah';
     parameters['city'] = 'paris';
+    parameters['country'] = 'france';
     parameters['view'] = 'aerial';
     const url = UrlProc.hydrate(dryUrl, parameters);
-    assert.strictEqual(url, 'https://api.example.org/user/3/blah/paris?view=aerial');
+    assert.strictEqual(url, 'https://api.example.org/user/3/blah/paris?country=france&view=aerial');
     done();
   });
 
