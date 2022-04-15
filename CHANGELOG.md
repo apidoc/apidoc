@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 0.51.1
+
+* Fix incorrect warnings in some conditions (PR #1206 by @BrokenSourceCode, fix #1194)
+
 ### 0.51.0
 
 * Emit warnings if there are inconsistencies in the apidoc params (PR #1189 by Lucas Cimon)
