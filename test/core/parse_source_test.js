@@ -35,23 +35,24 @@ describe('parseSource', function () {
   const testCases = [
     {
       source:
-        '/**' +
-        '\n            * @api     {post}   /api/school/students/:studentId/cloth  getStudentCloth  ' +
-        '\n            * @apiName         createCloth  ' +
-        '\n            * @apiGroup        cloth  ' +
-        '\n            * @apiParam        id' +
-        '\n            * @apiParam (body) {String}          [name]  ' +
-        '\n            * @apiSuccess      {Number}    code  200  ' +
-        '\n            * @apiSuccessExample {json} Success-Response:  ' +
-        '\n            * {  ' +
-        '\n            *      status: 200  ' +
-        '\n            * }  ' +
-        '\n*/  ',
+        `/**
+          * @api                   {post}   /api/school/students/:studentId/:name/cloth  getStudentCloth
+          * @apiName                        createCloth
+          * @apiGroup                       cloth
+          * @apiParam                       id
+          * @apiParam (body)       {String} name
+          * @apiParam (pagination) {Number} [offset]
+          * @apiSuccess            {Number} code  200
+          * @apiSuccessExample     {json} Success-Response:
+          * {
+          *     status: 200
+          * }
+          */`,
       expected: {
         global: {},
         local: {
           type: 'post',
-          url: '/api/school/students/:studentId/cloth',
+          url: '/api/school/students/:studentId/:name/cloth',
           title: 'getStudentCloth',
           name: 'createCloth',
           group: 'cloth',
@@ -76,9 +77,21 @@ describe('parseSource', function () {
                   description: '',
                   field: 'name',
                   group: 'body',
-                  optional: true,
+                  optional: false,
                   size: undefined,
                   type: 'String',
+                },
+              ],
+              pagination: [
+                {
+                  allowedValues: undefined,
+                  defaultValue: undefined,
+                  description: '',
+                  field: 'offset',
+                  group: 'pagination',
+                  optional: true,
+                  size: undefined,
+                  type: 'Number',
                 },
               ],
             },
@@ -100,8 +113,8 @@ describe('parseSource', function () {
             },
             examples: [
               {
-                title: 'Success-Response:  ',
-                content: '{  \n     status: 200  \n}',
+                title: 'Success-Response:',
+                content: '{\n    status: 200\n}',
                 type: 'json',
               },
             ],
