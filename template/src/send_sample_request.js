@@ -233,11 +233,11 @@ function generateBasicHash (group, name, version, field) {
 
   function authenticateUser (user, password) {
     // https://stackoverflow.com/q/34860814
-    var token = user + ':' + password;
+    const token = user + ':' + password;
 
     // Should i be encoding this value????? does it matter???
     // Base64 Encoding -> btoa
-    var hash = btoa(token); 
+    const hash = btoa(token); 
 
     return "Basic " + hash;
   }
