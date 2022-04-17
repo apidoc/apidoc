@@ -237,8 +237,8 @@ function generateBasicHash (group, name, version, field) {
 
     // Should i be encoding this value????? does it matter???
     // Base64 Encoding -> btoa
-    const hash = btoa(token); 
+    const hash = btoa(token);
 
-    return "Basic " + hash;
+    return 'Basic ' + hash;
   }
 }
