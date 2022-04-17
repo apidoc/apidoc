@@ -384,6 +384,40 @@
                     data-group="{{@../index}}">
                 </div>
               </div>
+                    
+              {{#ifCond type '===' 'String'}}
+                {{#ifCond field '===' 'Authorization'}}
+                  <div class="form-group">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="form-inline">
+                      <div class="input-group">
+                        <span class="input-group-addon">Username</span>
+                        <input type="text" id="sample-request-header-field-{{field}}-username"
+                          class="form-control sample-request-input"
+                          value=""
+                          data-family="header-username"
+                          placeholder="Username">
+                      </div>
+                      <div class="input-group">
+                        <span class="input-group-addon">Password</span>
+                        <input type="password" id="sample-request-header-field-{{field}}-password"
+                          class="form-control sample-request-input"
+                          value=""
+                          data-family="header-password"
+                          placeholder="Password">
+                      </div>
+                      <div class="input-group">
+                        <button class="btn btn-warning generate-basic-hash"
+                        data-family="header"
+                        data-name="{{field}}"
+                        data-group="{{@../index}}"
+                        data-type="{{article.type}}">{{__ "Generate Basic Hash"}}</button>                        
+                      </div>                    
+                    </div>
+                  </div>                   
+                {{/ifCond}}
+              {{/ifCond}}
               {{/each}}
             </div>
           {{/each}}

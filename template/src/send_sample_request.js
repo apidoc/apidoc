@@ -38,6 +38,17 @@ export function initSampleRequest () {
     const version = root.data('version');
     clearSampleRequest(group, name, version);
   });
+
+  // Button generate
+  $('.generate-basic-hash').off('click');
+  $('.generate-basic-hash').on('click', function (e) {
+    e.preventDefault();
+    const root = $(this).parents('article');
+    const group = root.data('group');
+    const name = root.data('name');
+    const version = root.data('version');
+    generateBasicHash(group, name, version, $(this).data('name'));
+  });
 }
 
 // Converts path params in the {param} format to the accepted :param format, used before inserting the URL params.
@@ -207,4 +218,28 @@ function clearSampleRequest (group, name, version) {
   // restore default URL
   const $urlElement = root.find('.sample-request-url');
   $urlElement.val($urlElement.prop('defaultValue'));
+}
+
+function generateBasicHash (group, name, version, field) {
+  // root is the current sample request block, all is scoped within this block
+  const root = $(`article[data-group="${group}"][data-name="${name}"][data-version="${version}"]`);
+  const username = root.find($('[data-family="header-username"]')).val();
+  const password = root.find($('[data-family="header-password"]')).val();
+  const headerField = root.find('#sample-request-header-field-'+field);  
+
+  hash = authenticateUser(username, password);
+
+  headerField.val(hash);
+  
+  function authenticateUser(user, password)
+  {
+    // https://stackoverflow.com/q/34860814
+    var token = user + ":" + password;
+
+    // Should i be encoding this value????? does it matter???
+    // Base64 Encoding -> btoa
+    var hash = btoa(token); 
+
+    return "Basic " + hash;
+  }
 }
