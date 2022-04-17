@@ -146,6 +146,7 @@ function deleteUser() { return; }
  * @apiGroup User
  * @apiDescription This is here to have a long name in the left menu.
  * @apiSampleRequest off
+ * @apiParam {Number} id <code>id</code> of the user. 
  */
 function thankUser() { return; }
 

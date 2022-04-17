@@ -92,7 +92,7 @@
  * @apiDescription In this case "apiErrorStructure" is defined and used.
  * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
  *
- * @apiParam {String} name Name of the User.
+ * @apiBody {String} name Name of the User.
  *
  * @apiSuccess {String} id         The Users-ID.
  *
