@@ -225,16 +225,15 @@ function generateBasicHash (group, name, version, field) {
   const root = $(`article[data-group="${group}"][data-name="${name}"][data-version="${version}"]`);
   const username = root.find($('[data-family="header-username"]')).val();
   const password = root.find($('[data-family="header-password"]')).val();
-  const headerField = root.find('#sample-request-header-field-'+field);  
+  const headerField = root.find('#sample-request-header-field-' + field);
 
-  hash = authenticateUser(username, password);
+  const hash = authenticateUser(username, password);
 
   headerField.val(hash);
-  
-  function authenticateUser(user, password)
-  {
+
+  function authenticateUser (user, password) {
     // https://stackoverflow.com/q/34860814
-    var token = user + ":" + password;
+    var token = user + ':' + password;
 
     // Should i be encoding this value????? does it matter???
     // Base64 Encoding -> btoa
