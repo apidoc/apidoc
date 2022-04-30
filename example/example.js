@@ -51,7 +51,7 @@
  *       "error": "NoAccessRight"
  *     }
  */
-function getUser() { return; }
+function getUser () { }
 
 /**
  * @api {post} /user Create a new User
@@ -77,7 +77,7 @@ function getUser() { return; }
  *
  * @apiUse CreateUserError
  */
-function postUser() { return; }
+function postUser () { }
 
 /**
  * @api {put} /user/:id Change a User
@@ -94,7 +94,7 @@ function postUser() { return; }
  *
  * @apiUse CreateUserError
  */
-function putUser() { return; }
+function putUser () { }
 
 /**
  * @api {delete} /user/:id Delete user
@@ -137,7 +137,7 @@ function putUser() { return; }
  *       "error": "NoAccessRight"
  *     }
  */
-function deleteUser() { return; }
+function deleteUser () { }
 
 /**
  * @api {post} /user/:id Thank a user: this is quite a long name indeed
@@ -146,8 +146,9 @@ function deleteUser() { return; }
  * @apiGroup User
  * @apiDescription This is here to have a long name in the left menu.
  * @apiSampleRequest off
+ * @apiParam {Number} id <code>id</code> of the user.
  */
-function thankUser() { return; }
+function thankUser () { }
 
 /**
  * @api {post} /city Create a new city
@@ -159,7 +160,7 @@ function thankUser() { return; }
  * @apiQuery {String=Aerial,Land,Underwater} view=Aerial Type of view.
  * @apiQuery {Number} zoom Zoom.
  */
-function createCity() { return; }
+function createCity () { }
 
 /**
  * @api {get} /category Get a category
@@ -170,7 +171,7 @@ function createCity() { return; }
  * @apiDescription Get a category. Sample request on example.com here.
  * @apiQuery {Number} id Category ID.
  */
-function getCategory() { return; }
+function getCategory () { }
 
 /**
  * @api {delete} /category Delete a category
@@ -197,4 +198,4 @@ function getCategory() { return; }
  *      }
  *   }
  */
-function deleteCategory() { return; }
+function deleteCategory () { }
