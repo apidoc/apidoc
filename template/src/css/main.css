@@ -203,7 +203,13 @@ td.code {
   overflow-x: hidden;
   overflow-y: auto;
   background-color: var(--dark-gray);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
+
+.sidenav::-webkit-scrollbar {
+   display: none; 
+ }
 
 .sidenav > li > a {
   color: var(--white);
