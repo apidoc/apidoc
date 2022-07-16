@@ -34,11 +34,14 @@ const locales = {
   nl: nl,
   pl: pl,
   pt: ptBr,
+  pt_br: ptBr,
   ro: ro,
   ru: ru,
   tr: tr,
   vi: vi,
+  // for chinese, allow zh and zh_cn
   zh: zhCn,
+  zh_cn: zhCn,
 };
 
 // e.g. en fr pl
@@ -53,5 +56,8 @@ export function __ (text) {
 }
 
 export function setLanguage (language) {
+  if (!Object.prototype.hasOwnProperty.call(locales, language)) {
+    throw new Error(`Invalid value for language setting! Available values are ${Object.keys(locales).join(',')}`);
+  }
   locale = locales[language];
 }
