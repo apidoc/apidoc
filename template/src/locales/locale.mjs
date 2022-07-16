@@ -25,6 +25,7 @@ import { zhCn } from './zh_cn.mjs';
 
 const locales = {
   ca: ca,
+  cn: zhCn,
   cs: cs,
   de: de,
   es: es,
@@ -39,7 +40,7 @@ const locales = {
   ru: ru,
   tr: tr,
   vi: vi,
-  // for chinese, allow zh and zh_cn
+  // for chinese, allow cn, zh and zh_cn
   zh: zhCn,
   zh_cn: zhCn,
 };
