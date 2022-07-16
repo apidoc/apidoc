@@ -20,6 +20,8 @@
 
 /**
  * @api {GET} /resource/:resId/sub/:subId Undocumented URL Parameter
+ * @apiName GetSubResource
+ * @apiGroup Warnings
  *
  * @apiDescription  URL contains a parameter ':resId' that is not documented as @apiParam in @api
  *
@@ -28,6 +30,8 @@
 
 /**
  * @api {GET} /resource/:resId Mismatched URL Parameter
+ * @apiName GetResource
+ * @apiGroup Warnings
  *
  * @apiDescription  URL contains a parameter ':resId' that is not documented as @apiParam in @api
  *
@@ -42,6 +46,8 @@
 
 /**
  * @api {get} /user/:id Unused URL Parameter
+ * @apiName GetUnused
+ * @apiGroup Warnings
  *
  * @apiDescription  ':oops' was defined but does not appear in URL of @api
  *
@@ -57,7 +63,7 @@
 /**
  * @api     {post}   /api/school/students/:studentId/cloth  Multiple Warnings
  * @apiName         createCloth
- * @apiGroup        cloth
+ * @apiGroup        Warnings
  *
  * @apiDescription  @apiParam 'id' was defined but does not appear in URL of @api
  *                  URL contains a parameter ':studentId' that is not documented as @apiParam in @api
