@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+### 0.52.0
+
+* Allow cn, zh_cn or zh for Chinese language option and display meaningful message in console on error. fix #1248
+* Update example files to not display an error (#1210)
+* Update dependencies
+
 ### 0.51.1
 
 * Fix incorrect warnings in some conditions (PR #1206 by @BrokenSourceCode, fix #1194)
