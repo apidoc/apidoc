@@ -1,6 +1,6 @@
 {
   "name": "apidoc",
-  "version": "0.52.0",
+  "version": "0.53.0",
   "description": "RESTful web API Documentation Generator",
   "author": "Peter Rottmann <rottmann@inveris.de>",
   "license": "MIT",
@@ -66,7 +66,7 @@
   "devDependencies": {
     "@types/lodash": "^4.14.177",
     "@types/mocha": "^9.0.0",
-    "@types/node": "^16.11.9",
+    "@types/node": "^18.7.15",
     "eslint": "^7.32.0",
     "eslint-config-recommended": "^4.1.0",
     "eslint-config-standard": "^16.0.3",
