@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 0.53.0
+
+* Fix issue with aloneDisplay and non-ascii characters (#1273 by @KujoMiva)
+
 ### 0.52.0
 
 * Allow cn, zh_cn or zh for Chinese language option and display meaningful message in console on error. fix #1248
