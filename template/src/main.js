@@ -490,7 +490,7 @@ function init () {
     }
 
     if (apiProject.template.aloneDisplay) {
-      const hashVal = window.location.hash;
+      const hashVal = decodeURI(window.location.hash);
       if (hashVal != null && hashVal.length !== 0) {
         const version = document.getElementById('version').textContent.trim();
         const el = document.querySelector(`li .${hashVal.slice(1)}-init`);
