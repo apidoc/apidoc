@@ -141,7 +141,7 @@ function sendSampleRequest (group, name, version, method) {
     requestParams.data = formData;
     requestParams.processData = false;
     // GET and DELETE methods do not need content-type
-    if (method === 'get' || method === 'delete') {
+    if (method.toLowerCase() === 'get' || method.toLowerCase() === 'delete') {
       delete requestParams.headers['Content-Type'];
     }
   }
