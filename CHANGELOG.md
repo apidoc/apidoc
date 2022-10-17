@@ -1,5 +1,11 @@
 # apiDoc Changelog
 
+### 0.53.1
+
+* Add tsx to default extensions parsed. (fix #1290)
+* Compare methods with lowercase strings (fix #1284)
+* Upgrade some dependencies
+
 ### 0.53.0
 
 * Fix issue with aloneDisplay and non-ascii characters (#1273 by @KujoMiva)
