@@ -30,4 +30,24 @@ describe('test writer module', function () {
     const writer = new Writer({}, app);
     return writer.write();
   });
+
+  it('getIndexContent shouldn\'t throws error', async function () {
+    const app = {
+      log: logger,
+    };
+    const writer = new Writer({}, app);
+    assert.throws(writer.getIndexContent, Error);
+  });
+
+  it('should generate inline source maps if debug option is true', async function () {
+    const app = {
+      options: {
+        dryRun: true,
+        debug: true,
+      },
+      log: logger,
+    };
+    const writer = new Writer({}, app);
+    return writer.write();
+  });
 });
