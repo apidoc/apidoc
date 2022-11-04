@@ -124,6 +124,9 @@ function init () {
   apiVersions[apiProject.version] = 1;
 
   $.each(api, (index, entry) => {
+    if (!entry.group) {
+      entry.group = entry.groupTitle;
+    }
     apiGroups[entry.group] = 1;
     apiGroupTitles[entry.group] = entry.groupTitle || entry.group;
     apiVersions[entry.version] = 1;
