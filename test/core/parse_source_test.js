@@ -129,6 +129,36 @@ describe('parseSource', function () {
         ],
       }
     },
+    {
+      source:
+        `/**
+           * @api {Get} /assets/temporary/:id Returns a temporary url to a file by id.
+           * @apiName temporaryUrlById
+           * @apiGroup Assets
+           * @apiUse GetSignedAssetUrlQuery
+           */
+         /**
+           * @apiDefine GetSignedAssetUrlQuery
+           * @apiParam {id} id The id of the asset to download.
+          */`,
+      expected: {
+        global: {},
+        local: {
+          type: 'Get',
+          url: '/assets/temporary/:id',
+          title: 'Returns a temporary url to a file by id.',
+          name: 'temporaryUrlById',
+          group: 'Assets',
+          use: [
+            {
+              name: 'GetSignedAssetUrlQuery'
+            }
+          ]
+        },
+        index: 1,
+      },
+      logs: {}
+    },
   ];
   it('case 1: should pass all test cases', function (done) {
     testCases.forEach(function (testCase) {
@@ -136,9 +166,9 @@ describe('parseSource', function () {
       apidoc.setLogger(logCatcher);
       const parsed = apidoc.parseSource(Buffer.from(testCase.source), {filename: 'app.js'});
       assert.deepEqual(parsed[0], testCase.expected);
-      assert.deepEqual(logCatcher.logs.info, testCase.logs.info || []);
-      assert.deepEqual(logCatcher.logs.warn, testCase.logs.warn || []);
-      assert.deepEqual(logCatcher.logs.error, testCase.logs.error || []);
+      assert.deepEqual(logCatcher.logs.info, testCase.logs.info || [], 'INFO logs do not match');
+      assert.deepEqual(logCatcher.logs.warn, testCase.logs.warn || [], 'WARN logs do not match');
+      assert.deepEqual(logCatcher.logs.error, testCase.logs.error || [], 'ERROR logs do not match');
     });
     done();
   });
