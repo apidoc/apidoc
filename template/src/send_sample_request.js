@@ -143,6 +143,9 @@ function sendSampleRequest (group, name, version, method) {
     // With no content-type header, browser will know it need to generate a proper content type for
     // the form data when sending it. Fix #1122
     delete requestParams.headers['Content-Type'];
+    // As of jQuery 1.6 you can pass false to tell jQuery to not set any content type header.
+    // https://api.jquery.com/jquery.ajax/
+    requestParams.contentType = false;
   }
 
   requestParams.type = method;
