@@ -140,10 +140,9 @@ function sendSampleRequest (group, name, version, method) {
     }
     requestParams.data = formData;
     requestParams.processData = false;
-    // GET and DELETE methods do not need content-type
-    if (method.toLowerCase() === 'get' || method.toLowerCase() === 'delete') {
-      delete requestParams.headers['Content-Type'];
-    }
+    // With no content-type header, browser will know it need to generate a proper content type for
+    // the form data when sending it. Fix #1122
+    delete requestParams.headers['Content-Type'];
   }
 
   requestParams.type = method;
