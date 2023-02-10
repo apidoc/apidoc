@@ -1,5 +1,14 @@
 # apiDoc Changelog
 
+### 0.54.0
+
+* Add cache busting system for assets with query parameter (PR #1333 by @Elysiome, fix #1332)
+* Let browser generate content-type for sending form-data (PR #1327 by @thenewvu, fix #1122, fix #1309, fix #1234)
+* Fix exclude filters option description: add note about always excluded files/folder
+* Improve assignment of conditional variable values (#1296 by MichalS)
+* Handle `@apiDefine` when producing warnings (PR #1305 by Lucas Cimon, fix #1305)
+* Update chinese translations (PR #1304 by Jony Young)
+
 ### 0.53.1
 
 * Add tsx to default extensions parsed. (fix #1290)
