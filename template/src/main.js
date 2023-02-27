@@ -694,6 +694,7 @@ function init () {
       // TODO: on change main version or select the highest version re-render
     }
 
+    initDynamic();
     Prism.highlightAll();
   }
 
