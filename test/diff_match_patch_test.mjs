@@ -29,4 +29,28 @@ describe('test Diff Match Patch module', () => {
     done();
   });
 
+  it('should find a equality', done => {
+    const r = diffMatchPatch.diffLineMode('There is no difference', 'There is no difference');
+    assert.deepEqual(r, [ [ 0, 'There is no difference' ] ]);
+    done();
+  });
+
+  it('should find a update', done => {
+    const r = diffMatchPatch.diffLineMode('There is a difference', 'There is one difference');
+    assert.deepEqual(r, [ [ -1, 'There is a difference' ], [ 1, 'There is one difference' ] ]);
+    done();
+  });
+
+  it('should find a deletion', done => {
+    const r = diffMatchPatch.diffLineMode('There is a difference', 'There is difference');
+    assert.deepEqual(r, [ [ -1, 'There is a difference' ], [ 1, 'There is difference' ] ]);
+    done();
+  });
+
+  it('should find a addition', done => {
+    const r = diffMatchPatch.diffLineMode('There is a difference', 'There is a minor difference');
+    assert.deepEqual(r, [ [ -1, 'There is a difference' ], [ 1, 'There is a minor difference' ] ]);
+    done();
+  });
+
 });
