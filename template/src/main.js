@@ -18,9 +18,11 @@ import 'bootstrap/js/tab';
 import Prism from 'prismjs';
 // languages highlighted by Prism
 import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-http';
 import 'prismjs/components/prism-python';
+import 'prismjs/plugins/diff-highlight/prism-diff-highlight';
 
 import { initSampleRequest } from './send_sample_request.js';
 import { __, setLanguage } from './locales/locale.mjs';

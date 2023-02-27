@@ -55,6 +55,15 @@
  *
  * @apiParam {String} id The Users-ID.
  *
+ * @apiExample {bash} Curl example
+ * curl -i https://api.example.com/user/4711
+ * @apiExample {js} Javascript example
+ * const client = AcmeCorpApi();
+ * const user = client.getUser(42);
+ * @apiExample {python} Python example
+ * client = AcmeCorpApi.Client()
+ * user = client.get_user(42)
+ *
  * @apiSuccess {String} id         The Users-ID.
  * @apiSuccess {Date}   name       Fullname of the User.
  *

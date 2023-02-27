@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="assets/bootstrap.min.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" media="screen">
   <link href="assets/prism.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" />
+  <link href="assets/prism-diff-highlight.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" />
   <link href="assets/main.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" media="screen, print">
   <link href="assets/favicon.ico?__API_CACHE_BUSTING_QUERY_PARAM__" rel="icon" type="image/x-icon">
   <link href="assets/apple-touch-icon.png?__API_CACHE_BUSTING_QUERY_PARAM__" rel="apple-touch-icon" sizes="180x180">
@@ -605,19 +606,19 @@
     {{#each_compare_title article.examples compare.examples}}
       {{#if typeSame}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
+          <a href="#compare-examples-{{../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
       {{#if typeIns}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#compare-examples-{{../../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
+          <a href="#compare-examples-{{../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
         </li>
       {{/if}}
 
       {{#if typeDel}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
+          <a href="#compare-examples-{{../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
     {{/each_compare_title}}
@@ -627,20 +628,20 @@
     {{#each_compare_title article.examples compare.examples}}
 
       {{#if typeSame}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</pre>
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
+          <pre data-type="{{source.type}}"><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{source.content}}}</pre>
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
+          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{compare.type}}" class="language-{{source.type}}">{{{compare.content}}}</pre>
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
+          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
 
@@ -776,19 +777,19 @@
     {{#each_compare_title source.examples compare.examples}}
       {{#if typeSame}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
+          <a href="#{{../section}}-compare-examples-{{../article.id}}-{{index}}" role="tab" data-toggle="tab">{{{showDiff source.title compare.title}}}</a>
         </li>
       {{/if}}
 
       {{#if typeIns}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
+          <a href="#{{../section}}-compare-examples-{{../article.id}}-{{index}}"><ins>{{{source.title}}}</ins></a>
         </li>
       {{/if}}
 
       {{#if typeDel}}
         <li{{#ifCond index '==' 0}} class="active"{{/ifCond}}>
-          <a href="#{{../../section}}-compare-examples-{{../../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
+          <a href="#{{../section}}-compare-examples-{{../article.id}}-{{index}}"><del>{{{compare.title}}}</del></a>
         </li>
       {{/if}}
     {{/each_compare_title}}
@@ -798,19 +799,19 @@
     {{#each_compare_title source.examples compare.examples}}
 
       {{#if typeSame}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}" class="language-{{source.type}}">{{{showDiff source.content compare.content}}}</pre>
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
+          <pre data-type="{{source.type}}"><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
           <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
-        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../../section}}-compare-examples-{{../../article.id}}-{{index}}">
+        <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
           <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
