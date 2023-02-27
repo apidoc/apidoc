@@ -663,6 +663,8 @@ function init () {
       fields.compare.id = fields.compare.id.replace(/\./g, '_');
 
       let entry = sourceEntry;
+      if (entry.header && entry.header.fields) { fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields); }
+
       if (entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }
@@ -672,6 +674,8 @@ function init () {
       if (entry.info && entry.info.fields) { fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields); }
 
       entry = compareEntry;
+      if (fields._hasTypeInHeaderFields !== true && entry.header && entry.header.fields) { fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields); }
+
       if (fields._hasTypeInParameterFields !== true && entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (fields._hasTypeInErrorFields !== true && entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }

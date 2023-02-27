@@ -647,7 +647,10 @@
     {{/each_compare_title}}
     </div>
 
+    {{subTemplate "article-compare-param-block" source=article.header compare=compare.header _hasType=_hasTypeInHeaderFields section="header"}}
     {{subTemplate "article-compare-param-block" source=article.parameter compare=compare.parameter _hasType=_hasTypeInParameterFields section="parameter"}}
+    {{subTemplate "article-compare-query-block" source=article.query compare=compare.query _hasType=_hasTypeInParameterFields section="query"}} 
+    {{subTemplate "article-compare-body-block" source=article.body compare=compare.body _hasType=_hasTypeInParameterFields section="body"}} 
     {{subTemplate "article-compare-param-block" source=article.success compare=compare.success _hasType=_hasTypeInSuccessFields section="success"}}
     {{subTemplate "article-compare-param-block" source=article.error compare=compare.error _col1="Name" _hasType=_hasTypeInErrorFields section="error"}}
 
@@ -817,6 +820,42 @@
     {{/each_compare_title}}
     </div>
     {{/if}}
+  {{/if}}
+</script>
+
+<script id="template-article-compare-query-block" type="text/x-handlebars-template">
+  {{#if article.query}}
+    <h2>{{__ "Query Parameter(s)"}}</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+          {{#unless this.Type compare=null}}
+            <th style="width: 10%">{{__ "Type"}}</th>
+          {{/unless}}
+          <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+        </tr>
+      </thead>
+      {{subTemplate "article-compare-param-block-body" source=source compare=compare _hasType=this.type}}
+    </table>
+  {{/if}}
+</script>
+
+<script id="template-article-compare-body-block" type="text/x-handlebars-template">
+  {{#if article.body}}
+    <h2>{{__ "Request Body"}}</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th style="width: 30%">{{#if ../_col1}}{{__ ../_col1}}{{else}}{{__ "Field"}}{{/if}}</th>
+          {{#unless this.Type compare=null}}
+            <th style="width: 10%">{{__ "Type"}}</th>
+          {{/unless}}
+          <th style="width: {{#if ../_hasType}}60%{{else}}70%{{/if}}">{{__ "Description"}}</th>
+        </tr>
+      </thead>
+      {{subTemplate "article-compare-param-block-body" source=source compare=compare _hasType=this.type}}
+    </table>
   {{/if}}
 </script>
 
