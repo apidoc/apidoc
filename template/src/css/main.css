@@ -64,7 +64,6 @@ a:focus {
 
 #content {
   margin-top: 10px;
-  margin-left: 20%;
   padding-left: 10px;
 }
 
@@ -194,16 +193,30 @@ td.code {
 /* ------------------------------------------------------------------------------------------
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
-.sidenav {
-  color: var(--white);
-  width: 20%;
+#scrollingNav {
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  z-index: 10;
   background-color: var(--dark-gray);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidenav {
+  color: var(--white);
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.sidenav:hover {
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .sidenav > li > a {
@@ -251,14 +264,78 @@ td.code {
 }
 */
 
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+.nav-toggle .btn {
+  padding-left: 0;
+  position: absolute;
+  left: 202px;
+  top: 5px;
+}
+.nav-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+  background-color: #222;
+}
+.nav-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+.nav-toggle .btn,
+.nav-toggle .icon-bar {
+  transition: all 0.5s ease-out;
+}
+
+/* Adding transform to the X */
+.row-offcanvas.active .nav-toggle .btn {
+  transform: rotate(180deg);
+}
+/* Styling the three lines to make it an X */
+.row-offcanvas.active .nav-toggle .btn > .icon-bar {
+  transform: rotate(45deg) translate(1px, -11px);
+}
+.row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(2) {
+  display: none;
+}
+.row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, 5px);
+}
+@media screen and (max-width: 767px) {
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+    left: 0;
+  }
+
+  .row-offcanvas .sidebar-offcanvas {
+    left: -200px !important; /* 6 columns */
+  }
+
+  .row-offcanvas.active .sidebar-offcanvas {
+    left: 0 !important; /* 6 columns */
+  }
+  .row-offcanvas.active {
+    left: 200px;
+  }
+
+  .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    width: 100%; /* 6 columns */
+    max-width: 200px;
+  }
+}
+
 /* ------------------------------------------------------------------------------------------
  * Side nav search
  * ------------------------------------------------------------------------------------------ */
 .sidenav-search {
-  width: 20%;
-  left: 0px;
-  position: fixed;
-  padding: 16px 20px 10px 20px;
+  padding: 16px 10px 10px;
   background-color: var(--dark-gray);
 }
 
@@ -274,7 +351,7 @@ td.code {
   height: 20px;
   text-align: center;
   right: 28px;
-  top: 17px;
+  top: 18px;
   background-color: #fff;
 }
 

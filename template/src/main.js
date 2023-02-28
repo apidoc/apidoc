@@ -586,6 +586,13 @@ function init () {
   }
 
   /**
+   * Off-Canvas side toggle navigation
+   */
+  $('[data-toggle="offcanvas"]').click(function () {
+    $('.row-offcanvas').toggleClass('active');
+  });
+
+  /**
    * Set initial focus to search input
    */
   $('#scrollingNav .sidenav-search input.search').focus();

@@ -19,7 +19,15 @@
 
 <!-- SIDENAV -->
 <script id="template-sidenav" type="text/x-handlebars-template">
-<nav id="scrollingNav">
+<nav id="scrollingNav" class="col-sm-3 col-lg-2 sidebar-offcanvas">
+  <div class="nav-toggle visible-xs">
+    <button type="button" class="btn btn-link" data-toggle="offcanvas">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+  </div>
   <div class="sidenav-search">
     <input class="form-control search" data-action='filter-search' type="text" placeholder="{{__ "Filter..."}}">
     <span class="search-reset">x</span>
@@ -941,9 +949,9 @@
 </script>
 
 <div class="container-fluid">
-  <div class="row">
-    <div id="sidenav" class="span2"></div>
-    <div id="content">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div id="sidenav" class="col-sm-3 col-lg-2"></div>
+    <div id="content" class="col-sm-9 col-lg-10">
       <div id="project"></div>
       <div id="header"></div>
       <div id="sections"></div>
