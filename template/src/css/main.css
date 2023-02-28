@@ -279,6 +279,24 @@ td.code {
 }
 
 /* ------------------------------------------------------------------------------------------
+ * Prism - Toolbar
+ * ------------------------------------------------------------------------------------------ */
+div.code-toolbar.code-toolbar > .toolbar {
+  top: .4rem;
+  right: .4rem;
+}
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:hover, 
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:focus {
+  color: var(--white);
+}
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button {
+  color: var(--light-gray);
+  padding: .5em;
+  background: var(--hover-gray);
+  box-shadow: 0 2px 1px 1px rgba(0,0,0,.5);
+}
+
+/* ------------------------------------------------------------------------------------------
  * Compare
  * ------------------------------------------------------------------------------------------ */
 
