@@ -20,4 +20,7 @@ export const cs = {
   'Size range:': 'Rozsah velikosti:',
   Type: 'Typ',
   url: 'url',
+  Copy: 'Kopírovat',
+  'Press Ctrl+C to copy': 'Stisknutím kombinace kláves Ctrl+C zkopírujte',
+  'copied!': 'Zkopírovaný!',
 };

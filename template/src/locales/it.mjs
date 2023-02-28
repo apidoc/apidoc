@@ -20,4 +20,7 @@ export const it = {
   'Size range:': 'Intervallo dimensione:',
   Type: 'Tipo',
   url: 'url',
+  Copy: 'Copiare',
+  'Press Ctrl+C to copy': 'Premere CTRL+C per copiare',
+  'copied!': 'Copiato!',
 };

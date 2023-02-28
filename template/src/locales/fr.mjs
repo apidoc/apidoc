@@ -29,4 +29,7 @@ export const fr = {
   'Size range:': 'Ordre de grandeur :',
   Type: 'Type',
   url: 'url',
+  Copy: 'Copier',
+  'Press Ctrl+C to copy': 'Appuyez sur Ctrl+C pour copier',
+  'copied!': 'Copié!',
 };

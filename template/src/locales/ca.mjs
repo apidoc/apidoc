@@ -20,4 +20,7 @@ export const ca = {
   'Size range:': 'Tamany de rang:',
   Type: 'Tipus',
   url: 'url',
+  Copy: 'Copiar',
+  'Press Ctrl+C to copy': 'Premeu Ctrl+C per copiar',
+  'copied!': 'Copiat!',
 };

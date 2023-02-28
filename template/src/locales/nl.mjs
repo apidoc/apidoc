@@ -20,4 +20,7 @@ export const nl = {
   'Size range:': 'Maatbereik:',
   Type: 'Type',
   url: 'url',
+  Copy: 'Kopiëren',
+  'Press Ctrl+C to copy': 'Druk op Ctrl+C om te kopiëren',
+  'copied!': 'Gekopieerd!',
 };

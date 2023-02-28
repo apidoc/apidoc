@@ -20,4 +20,7 @@ export const es = {
   'Size range:': 'Tamaño de rango:',
   Type: 'Tipo',
   url: 'url',
+  Copy: 'Copiar',
+  'Press Ctrl+C to copy': 'Presione Ctrl+C para copiar',
+  'copied!': '¡Copiado!',
 };

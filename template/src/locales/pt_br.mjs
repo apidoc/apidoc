@@ -20,4 +20,7 @@ export const ptBr = {
   'Size range:': 'Faixa de tamanho:',
   Type: 'Tipo',
   url: 'url',
+  Copy: 'Copiar',
+  'Press Ctrl+C to copy': 'Pressione Ctrl+C para copiar',
+  'copied!': 'Copiado!',
 };

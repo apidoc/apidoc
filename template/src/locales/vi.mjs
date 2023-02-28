@@ -20,4 +20,7 @@ export const vi = {
   'Size range:': 'Kích cỡ:',
   Type: 'Kiểu',
   url: 'liên kết',
+  Copy: 'Bản sao',
+  'Press Ctrl+C to copy': 'Nhấn Ctrl+C để sao chép',
+  'copied!': 'Sao chép!',
 };
