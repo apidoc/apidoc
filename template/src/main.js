@@ -591,20 +591,15 @@ function init () {
   $('#scrollingNav .sidenav-search input.search').focus();
 
   /**
-   * Filter search
+   * Filter search with a delay of 200 ms
    */
-  $('[data-action="filter-search"]').on('keyup', event => {
+  $('[data-action="filter-search"]').on('keyup', delay(event => {
     const query = event.currentTarget.value.toLowerCase();
-    // find all links that are endpoints
-    $('.sidenav').find('a.nav-list-item').each((index, el) => {
-      // begin by showing all so they don't stay hidden
-      $(el).show();
-      // now simply hide the ones that don't match the query
-      if (!el.innerText.toLowerCase().includes(query)) {
-        $(el).hide();
-      }
+
+    $('.sidenav a.nav-list-item').filter((index, el) => {
+      return $(el).toggle($(el).text().toLowerCase().indexOf(query) > -1);
     });
-  });
+  }, 200));
 
   /**
    * Search reset
@@ -616,6 +611,21 @@ function init () {
     ;
     $('.sidenav').find('a.nav-list-item').show();
   });
+
+  /**
+   * Executing a function after a specified amount of time
+   *
+   * @param {*} fn function to call after ms
+   * @param {*} ms ms to wait before callback
+   * @returns Timeout function includes the callback
+   */
+  function delay (fn, ms) {
+    let timer = null;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(fn.bind(this, ...args), ms || 0);
+    };
+  }
 
   /**
      * Change version of an article to compare it to an other version.
