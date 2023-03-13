@@ -20,4 +20,7 @@ export const de = {
   'Size range:': 'Größenbereich:',
   Type: 'Typ',
   url: 'url',
+  Copy: 'Kopieren',
+  'Press Ctrl+C to copy': 'Drücken Sie Ctrl+C zum kopieren',
+  'Copied!': 'Kopiert!',
 };

@@ -7,6 +7,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link href="assets/bootstrap.min.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" media="screen">
   <link href="assets/prism.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" />
+  <link href="assets/prism-toolbar.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" />
   <link href="assets/prism-diff-highlight.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" />
   <link href="assets/main.css?__API_CACHE_BUSTING_QUERY_PARAM__" rel="stylesheet" media="screen, print">
   <link href="assets/favicon.ico?__API_CACHE_BUSTING_QUERY_PARAM__" rel="icon" type="image/x-icon">
@@ -146,7 +147,12 @@
       <p>{{{nl2br article.description}}}</p>
     {{/if}}
     <span class="method meth-{{toLowerCase article.type}}">{{article.type}}</span>
-    <pre data-type="{{toLowerCase article.type}}"><code class="language-http">{{article.url}}</code></pre>
+    <pre 
+      data-type="{{toLowerCase article.type}}"
+      data-prismjs-copy="{{__ "Copy"}}"
+      data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+      data-prismjs-copy-success="{{__ "copied!"}}"
+    ><code class="language-http">{{article.url}}</code></pre>
 
     {{#if article.permission}}
       <p>
@@ -175,7 +181,12 @@
       <div class="tab-content">
       {{#each article.examples}}
         <div class="tab-pane{{#ifCond @index '==' 0}} active{{/ifCond}}" id="examples-{{../id}}-{{@index}}">
-          <pre data-type="{{type}}"><code class="language-{{type}}">{{content}}</code></pre>
+          <pre 
+            data-type="{{type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-{{type}}">{{content}}</code></pre>
         </div>
       {{/each}}
       </div>
@@ -344,7 +355,12 @@
       <div class="tab-content">
       {{#each params.examples}}
         <div class="tab-pane{{#ifCond @index '==' 0}} active{{/ifCond}}" id="{{../section}}-examples-{{../id}}-{{@index}}">
-        <pre data-type="{{type}}"><code class="language-{{type}}">{{reformat content type}}</code></pre>
+        <pre 
+          data-type="{{type}}"
+          data-prismjs-copy="{{__ "Copy"}}"
+          data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+          data-prismjs-copy-success="{{__ "copied!"}}"
+        ><code class="language-{{type}}">{{reformat content type}}</code></pre>
         </div>
       {{/each}}
       </div>
@@ -556,7 +572,12 @@
               {{__ "Response"}}
               <button class="btn btn-default btn-xs pull-right sample-request-clear">X</button>
             </h3>
-            <pre data-type="json"><code class="language-json sample-request-response-json"></code></pre>
+            <pre 
+              data-type="json"
+              data-prismjs-copy="{{__ "Copy"}}"
+              data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+              data-prismjs-copy-success="{{__ "copied!"}}"
+            ><code class="language-json sample-request-response-json"></code></pre>
           </div>
         </fieldset>
       </form>
@@ -598,7 +619,13 @@
     {{/if}}
 
     <span class="method meth-{{toLowerCase compare.type}}">{{compare.type}}</span>
-    <pre data-type="{{toLowerCase article.type}}" class="language-html">{{{showDiff article.url compare.url}}}</pre>
+    <pre 
+      data-type="{{toLowerCase article.type}}" 
+      data-prismjs-copy="{{__ "Copy"}}"
+      data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+      data-prismjs-copy-success="{{__ "copied!"}}"
+      class="language-html"
+    >{{{showDiff article.url compare.url}}}</pre>
 
     {{subTemplate "article-compare-permission" article=article compare=compare}}
 
@@ -629,19 +656,34 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
+          <pre 
+            data-type="{{source.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
+          <pre 
+            data-type="{{source.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
+          <pre 
+            data-type="{{compare.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
 
@@ -803,19 +845,34 @@
 
       {{#if typeSame}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
+          <pre 
+            data-type="{{source.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-diff-{{source.type}} diff-highlight">{{{showDiff source.content compare.content "code"}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeIns}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{source.type}}"><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
+          <pre 
+            data-type="{{source.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-{{source.type}}">{{{source.content}}}</code></pre>
         </div>
       {{/if}}
 
       {{#if typeDel}}
         <div class="tab-pane{{#ifCond index '==' 0}} active{{/ifCond}}" id="{{../section}}-compare-examples-{{../article.id}}-{{index}}">
-          <pre data-type="{{compare.type}}"><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
+          <pre 
+            data-type="{{compare.type}}"
+            data-prismjs-copy="{{__ "Copy"}}"
+            data-prismjs-copy-error="{{__ "Press Ctrl+C to copy"}}"
+            data-prismjs-copy-success="{{__ "copied!"}}"
+          ><code class="language-{{source.type}}">{{{compare.content}}}</code></pre>
         </div>
       {{/if}}
     {{/each_compare_title}}

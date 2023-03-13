@@ -22,6 +22,8 @@ import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-http';
 import 'prismjs/components/prism-python';
+import 'prismjs/plugins/toolbar/prism-toolbar';
+import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 import 'prismjs/plugins/diff-highlight/prism-diff-highlight';
 
 import { initSampleRequest } from './send_sample_request.js';

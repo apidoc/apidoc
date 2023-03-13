@@ -20,4 +20,7 @@ export const tr = {
   'Size range:': 'Boyut aralığı:',
   Type: 'Tip',
   url: 'url',
+  Copy: 'Kopya etmek',
+  'Press Ctrl+C to copy': 'Kopyalamak için Ctrl+C tuşlarına basın',
+  'copied!': 'Kopya -lanan!',
 };

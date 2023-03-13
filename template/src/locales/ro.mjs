@@ -20,4 +20,7 @@ export const ro = {
   'Size range:': 'Interval permis:',
   Type: 'Tip',
   url: 'url',
+  Copy: 'Copie',
+  'Press Ctrl+C to copy': 'Apăsați Ctrl+C pentru a copia',
+  'copied!': 'Copiat!',
 };
