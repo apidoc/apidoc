@@ -54,7 +54,8 @@ input[type="date"] {
     url('./glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-body {
+html, body {
+  overflow-x: hidden;
   font-family: "Source Sans Pro", sans-serif;
 }
 
@@ -268,42 +269,11 @@ td.code {
  * Off Canvas
  * --------------------------------------------------
  */
-.nav-toggle .btn {
-  padding-left: 0;
-  position: absolute;
-  left: 202px;
-  top: 5px;
-}
-.nav-toggle .icon-bar {
-  display: block;
-  width: 22px;
-  height: 2px;
-  border-radius: 1px;
-  background-color: #222;
-}
-.nav-toggle .icon-bar + .icon-bar {
-  margin-top: 4px;
-}
-.nav-toggle .btn,
-.nav-toggle .icon-bar {
-  transition: all 0.5s ease-out;
-}
-
-/* Adding transform to the X */
-.row-offcanvas.active .nav-toggle .btn {
-  transform: rotate(180deg);
-}
-/* Styling the three lines to make it an X */
-.row-offcanvas.active .nav-toggle .btn > .icon-bar {
-  transform: rotate(45deg) translate(1px, -11px);
-}
-.row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(2) {
-  display: none;
-}
-.row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, 5px);
-}
 @media screen and (max-width: 767px) {
+  #content {
+    margin-top: 58px;
+  }
+
   .row-offcanvas {
     position: relative;
     -webkit-transition: all .25s ease-out;
@@ -312,22 +282,55 @@ td.code {
     left: 0;
   }
 
+  .row-offcanvas,
+  .row-offcanvas * {
+    transition: all 0.5s ease-out;
+  }
+
   .row-offcanvas .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
     left: -200px !important; /* 6 columns */
+    width: 100%; /* 6 columns */
+    max-width: 200px;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    left: 0;
+    background: var(--dark-gray);
+    width: 100%;
+  }
+  
+  .nav-toggle .btn {
+    margin: 10px 14px;
+  }
+  .nav-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--white);
+  }
+  .nav-toggle .icon-bar + .icon-bar {
+    margin-top: 4px;
   }
 
   .row-offcanvas.active .sidebar-offcanvas {
     left: 0 !important; /* 6 columns */
   }
-  .row-offcanvas.active {
+  .row-offcanvas.active, .row-offcanvas.active .nav-toggle {
     left: 200px;
   }
-
-  .sidebar-offcanvas {
-    position: absolute;
-    top: 0;
-    width: 100%; /* 6 columns */
-    max-width: 200px;
+  /* Styling the three lines to make it an X */
+  .row-offcanvas.active .nav-toggle .btn > .icon-bar {
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+  .row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(2) {
+    display: none;
+  }
+  .row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
   }
 }
 
