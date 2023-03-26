@@ -593,20 +593,15 @@ function init () {
   $('#scrollingNav .sidenav-search input.search').focus();
 
   /**
-   * Filter search
+   * Filter search with a delay to prevent issues with very large projects hogging the browser event loop during the search
    */
-  $('[data-action="filter-search"]').on('keyup', event => {
+  $('[data-action="filter-search"]').on('keyup', resetableTimeout(event => {
     const query = event.currentTarget.value.toLowerCase();
-    // find all links that are endpoints
-    $('.sidenav').find('a.nav-list-item').each((index, el) => {
-      // begin by showing all so they don't stay hidden
-      $(el).show();
-      // now simply hide the ones that don't match the query
-      if (!el.innerText.toLowerCase().includes(query)) {
-        $(el).hide();
-      }
+
+    $('.sidenav a.nav-list-item').filter((index, el) => {
+      return $(el).toggle($(el).text().toLowerCase().indexOf(query) > -1);
     });
-  });
+  }, 200));
 
   /**
    * Search reset
@@ -618,6 +613,24 @@ function init () {
     ;
     $('.sidenav').find('a.nav-list-item').show();
   });
+
+  /**
+   * Executing the callback after the specified delay.
+   * Resets the timer if called again before the delay is reached.
+   *
+   * Behavior to prevent too many events from being triggered and getting stuck.
+   *
+   * @param {*} callback function to call after delay expires.
+   * @param {*} delay the time, in milliseconds that the timer should wait before the specified function or code is executed.
+   * @returns Timeout function includes the callback
+   */
+  function resetableTimeout (callback, delay) {
+    let timer = null;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(callback.bind(this, ...args), delay || 0);
+    };
+  }
 
   /**
      * Change version of an article to compare it to an other version.
