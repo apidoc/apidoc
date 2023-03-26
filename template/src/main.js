@@ -591,9 +591,9 @@ function init () {
   $('#scrollingNav .sidenav-search input.search').focus();
 
   /**
-   * Filter search with a delay of 200 ms
+   * Filter search with a delay to prevent issues with very large projects hogging the browser event loop during the search
    */
-  $('[data-action="filter-search"]').on('keyup', delay(event => {
+  $('[data-action="filter-search"]').on('keyup', resetableTimeout(event => {
     const query = event.currentTarget.value.toLowerCase();
 
     $('.sidenav a.nav-list-item').filter((index, el) => {
@@ -613,17 +613,20 @@ function init () {
   });
 
   /**
-   * Executing a function after a specified amount of time
+   * Executing the callback after the specified delay.
+   * Resets the timer if called again before the delay is reached.
    *
-   * @param {*} fn function to call after ms
-   * @param {*} ms ms to wait before callback
+   * Behavior to prevent too many events from being triggered and getting stuck.
+   *
+   * @param {*} callback function to call after delay expires.
+   * @param {*} delay the time, in milliseconds that the timer should wait before the specified function or code is executed.
    * @returns Timeout function includes the callback
    */
-  function delay (fn, ms) {
+  function resetableTimeout (callback, delay) {
     let timer = null;
     return (...args) => {
       clearTimeout(timer);
-      timer = setTimeout(fn.bind(this, ...args), ms || 0);
+      timer = setTimeout(callback.bind(this, ...args), delay || 0);
     };
   }
 
