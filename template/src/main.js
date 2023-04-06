@@ -588,8 +588,9 @@ function init () {
   /**
    * Off-Canvas side toggle navigation
    */
-  $('[data-toggle="offcanvas"]').click(function () {
-    $('.row-offcanvas').toggleClass('active');
+  document.querySelector('[data-toggle="offcanvas"]').addEventListener('click', function () {
+    const row = document.querySelector('.row-offcanvas');
+    if (row) { row.classList.toggle('active'); }
   });
 
   /**
