@@ -18,6 +18,7 @@ export const ca = {
   'Send a Sample Request': 'Enviar una petició d\'exemple',
   'show up to version:': 'mostrar versió:',
   'Size range:': 'Tamany de rang:',
+  'Toggle navigation': 'Canvia la navegació',
   Type: 'Tipus',
   url: 'url',
 };

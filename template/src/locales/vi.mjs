@@ -18,6 +18,7 @@ export const vi = {
   'Send a Sample Request': 'Gửi một yêu cầu mẫu',
   'show up to version:': 'hiển thị phiên bản:',
   'Size range:': 'Kích cỡ:',
+  'Toggle navigation': 'Chuyển đổi điều hướng',
   Type: 'Kiểu',
   url: 'liên kết',
 };

@@ -18,6 +18,7 @@ export const ru = {
   'Send a Sample Request': 'Отправить тестовый запрос',
   'show up to version:': 'показать версию:',
   'Size range:': 'Ограничения:',
+  'Toggle navigation': 'Переключение навигации',
   Type: 'Тип',
   url: 'URL',
 };

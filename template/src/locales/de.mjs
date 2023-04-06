@@ -18,6 +18,7 @@ export const de = {
   'Send a Sample Request': 'Eine Beispielanfrage senden',
   'show up to version:': 'zeige bis zur Version:',
   'Size range:': 'Größenbereich:',
+  'Toggle navigation': 'Navigation ein-/ausblenden',
   Type: 'Typ',
   url: 'url',
 };
