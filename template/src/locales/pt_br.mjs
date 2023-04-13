@@ -18,6 +18,7 @@ export const ptBr = {
   'Send a Sample Request': 'Enviar um Exemplo de Pedido',
   'show up to version:': 'aparecer para a versão:',
   'Size range:': 'Faixa de tamanho:',
+  'Toggle navigation': 'Alternar navegação',
   Type: 'Tipo',
   url: 'url',
   Copy: 'Copiar',

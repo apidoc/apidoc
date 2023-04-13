@@ -18,6 +18,7 @@ export const pl = {
   'Send a Sample Request': 'Wyślij przykładowe żądanie',
   'show up to version:': 'pokaż do wersji:',
   'Size range:': 'Zakres rozmiaru:',
+  'Toggle navigation': 'Przełącz nawigację',
   Type: 'Typ',
   url: 'url',
   Copy: 'Kopiować',

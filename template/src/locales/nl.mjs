@@ -18,6 +18,7 @@ export const nl = {
   'Send a Sample Request': 'Stuur een sample aanvragen',
   'show up to version:': 'toon tot en met versie:',
   'Size range:': 'Maatbereik:',
+  'Toggle navigation': 'Navigatie in-/uitschakelen',
   Type: 'Type',
   url: 'url',
   Copy: 'Kopiëren',
