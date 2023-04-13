@@ -54,9 +54,12 @@ input[type="date"] {
     url('./glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-/* Add the tag "html" to hide vertical scrollbar on off canvas animation ("left" positioning) */
-html, body {
+/* Hide vertical scrollbar on off canvas animation ("left" positioning) */
+html {
   overflow-x: hidden;
+}
+
+body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
