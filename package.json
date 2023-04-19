@@ -67,12 +67,12 @@
     "@types/lodash": "^4.14.177",
     "@types/mocha": "^10.0.0",
     "@types/node": "^16.11.9",
-    "eslint": "^7.32.0",
+    "eslint": "^8.38.0",
     "eslint-config-recommended": "^4.1.0",
-    "eslint-config-standard": "^16.0.3",
+    "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-promise": "^6.1.1",
     "mocha": "^9.1.3"
   }
 }

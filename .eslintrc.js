@@ -22,5 +22,6 @@ module.exports = {
     'no-extra-parens': ['error', 'all'],
     'quotes': ['error', 'single'],
     'semi': ['error', 'always'],
+    'object-shorthand': 'off',
   }
 }
