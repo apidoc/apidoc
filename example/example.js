@@ -65,13 +65,20 @@ function getUser () { }
  *
  * @apiBody {Number} age Age of the User
  * @apiBody {String} name=Caroline Name of the User
+ * @apiBody {Object} extraInfo Date when user was hired
  * @apiBody {Date} extraInfo.hireDate Date when user was hired
  * @apiBody {Date} extraInfo.hireDateWithDefault=2021-09-01 Date when user was hired with default
- * @apiBody {String} extraInfo.nickname Nickname of the user
+ * @apiBody {String[]} extraInfo.nicknames List of Users nicknames (Array of Strings)
  * @apiBody {Boolean} extraInfo.isVegan=true Is the user vegan? (boolean with default)
- * @apiBody {Boolean} extraInfo.isAlive Is the user alive? (boolean with no default)
+ * @apiBody {Object} extraInfo.secrets Secret object
  * @apiBody {String} extraInfo.secrets.crush The user secret crush
  * @apiBody {Number} extraInfo.secrets.hair=1000 Number of hair of user
+ * @apiBody {Object[]} extraInfo.secrets.deepSecrets Deep user secrets crush (array of objects)
+ * @apiBody {String} extraInfo.secrets.deepSecrets.key A deep user secret key
+ * @apiBody {Number} extraInfo.secrets.deepSecrets.number A deep user secret key
+ * @apiBody {String} extraInfo.secrets.deepSecrets.name.particle A deep user secret name particle with dot
+ * @apiBody {Boolean} extraInfo.isAlive Is the user alive? (boolean with no default)
+ * @apiBody {String} custom.property Custom property with dot
  *
  * @apiSuccess {Number} id         The new Users-ID.
  *
@@ -170,6 +177,7 @@ function createCity () { }
  * @apiGroup Category (official)
  * @apiDescription Get a category. Sample request on example.com here.
  * @apiQuery {Number} id Category ID.
+ * @apiBody {String} custom.id Custom ID with dot.
  */
 function getCategory () { }
 

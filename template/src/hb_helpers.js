@@ -122,6 +122,16 @@ export function register () {
     return _handlebarsNewlineToBreak(text);
   });
 
+  /**
+   * Test if the type is that of an object
+   *
+   * @param {String} type Type
+   * @returns {Boolean}
+   */
+  Handlebars.registerHelper('ifNotObject', function (type, options) {
+    return type && type.indexOf('Object') !== 0 ? options.fn(this) : options.inverse(this);
+  });
+
   // Test conditions
   // Usage: {{#ifCond var1 '===' var2}}something{{/ifCond}}
   Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
@@ -170,11 +180,46 @@ export function register () {
   });
 
   /**
-     *
-     */
-  Handlebars.registerHelper('splitFill', function (value, splitChar, fillChar) {
-    const splits = value.split(splitChar);
-    return new Array(splits.length).join(fillChar) + splits[splits.length - 1];
+   * Convert object dot-notation to form bracket-notation
+   *
+   * @param {String} field object
+   * @returns {String}
+   */
+  Handlebars.registerHelper('dot2bracket', function (entry) {
+    const { parentNode, field, isArray } = entry;
+    let ret = '';
+    if (parentNode) {
+      let current = entry;
+      // loop on parents to build full object path
+      do {
+        const p = current.parentNode;
+        if (p.isArray) {
+          ret = `[]${ret}`;
+        }
+        if (p.parentNode) {
+          ret = `[${p.field.substring(p.parentNode.path.length + 1)}]${ret}`;
+        } else {
+          ret = p.field + ret;
+        }
+        current = current.parentNode;
+      } while (current.parentNode);
+      ret += `[${field.substring(parentNode.path.length + 1)}]`;
+    } else {
+      ret = field;
+      if (isArray) { ret += '[]'; }
+    }
+    return ret;
+  });
+
+  /**
+   * Indent object property based on its nesting level
+   *
+   * @param {Object} object
+   * @param {String} property
+   */
+  Handlebars.registerHelper('nestObject', function (entry) {
+    const { parentNode, field } = entry;
+    return parentNode ? '&nbsp;&nbsp;'.repeat(parentNode.path.split('.').length) + field.substring(parentNode.path.length + 1) : field;
   });
 
   /**
