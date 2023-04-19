@@ -60,7 +60,7 @@ program
 
   .option('--encoding <encoding>', 'Set the encoding of the source code. [utf8].', 'utf8')
 
-  .option('-e, --exclude-filters <exclude-filters...>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used).', [])
+  .option('-e, --exclude-filters <exclude-filters...>', 'RegEx-Filter to select files / dirs that should not be parsed (many -e can be used). node_modules and apidoc.config.js are always excluded.', [])
 
   .option('-f --file-filters <file-filters...>', 'RegEx-Filter to select files that should be parsed (multiple -f can be used).', [])
 
@@ -104,7 +104,7 @@ program
 
 const argv = program.opts();
 
-const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|vue)$'];
+const defaultIncludeFilters = ['.*\\.(clj|cls|coffee|cpp|cs|dart|erl|exs?|go|groovy|ino?|java|js|jsx|kt|litcoffee|lua|mjs|p|php?|pl|pm|py|rb|scala|ts|tsx|vue)$'];
 
 const options = {
   excludeFilters: ['apidoc.config.js', 'node_modules'].concat(argv.excludeFilters.length ? argv.excludeFilters : []),

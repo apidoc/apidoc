@@ -18,6 +18,10 @@ export const tr = {
   'Send a Sample Request': 'Örnek istek gönder',
   'show up to version:': 'bu versiyona kadar göster:',
   'Size range:': 'Boyut aralığı:',
+  'Toggle navigation': 'Navigasyonu değiştir',
   Type: 'Tip',
   url: 'url',
+  Copy: 'Kopya etmek',
+  'Press Ctrl+C to copy': 'Kopyalamak için Ctrl+C tuşlarına basın',
+  'copied!': 'Kopya -lanan!',
 };

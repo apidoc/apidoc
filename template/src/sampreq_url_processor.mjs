@@ -8,33 +8,35 @@
  * Copyright (c) 2013 inveris OHG
  * Licensed under the MIT license.
  */
-import URL from 'url-parse';
-import { pathToRegexp } from 'path-to-regexp';
-
 export default class UrlProcessor {
   // Replace parameters from url (:id) by the parameters from input values
   hydrate (url, queryParameters) {
-    const urlOrig = url;
-    // path-to-regexp only wants a path not a full url, so we split it
-    const parsedUrl = new URL(url);
-    // convert/the:path to regexp
-    // this array will hold the results
-    const keys = [];
-    pathToRegexp(parsedUrl.pathname, keys);
-    // loop over all the keys and replace them in the url
-    keys.forEach(key => {
-      url = url.replace(':' + key.name, encodeURIComponent(queryParameters[key.name]));
-    });
+    // The dummy URL base is only used for parses of relative URLs in Node.js.
+    const parsedUrl = new URL(url, typeof window === 'undefined' ? 'https://dummy.base' : window.location.origin);
+    const queryParametersChangedInPathname = {};
 
-    // if some parameters do not have url pattern, add them as standard query
-    // string parameters (key=value)
-    url += url.indexOf('?') === -1 ? '?' : '&';
-    Object.keys(queryParameters).forEach(key => {
-      if (urlOrig.indexOf(':' + key) === -1) {
-        url += key + '=' + encodeURIComponent(queryParameters[key]) + '&';
+    // For API parameters in the URL parts delimited by `/` (e.g. `/:foo/:bar`).
+    parsedUrl.pathname.split('/').forEach((pathnamePart, i) => {
+      if (pathnamePart.charAt(0) === ':') {
+        const realPathnamePart = pathnamePart.slice(1);
+
+        if (typeof queryParameters[realPathnamePart] !== 'undefined') {
+          parsedUrl.pathname = parsedUrl.pathname.replace(pathnamePart, encodeURIComponent(queryParameters[realPathnamePart]));
+          queryParametersChangedInPathname[realPathnamePart] = queryParameters[realPathnamePart];
+        }
       }
     });
 
-    return url.replace(/[?&]$/, '');
+    // For API parameters in the URL query string (e.g. `?foo=:foo&bar=:bar`).
+    for (const key in queryParameters) {
+      if (
+        typeof queryParametersChangedInPathname[key] === 'undefined' || // Avoid adding query parameter if it has already been changed in pathname.
+        parsedUrl.searchParams.has(key)
+      ) {
+        parsedUrl.searchParams.set(key, queryParameters[key]);
+      }
+    }
+
+    return parsedUrl.toString();
   }
 }

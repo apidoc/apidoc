@@ -27,6 +27,10 @@ export const fr = {
   'Send a Sample Request': 'Envoyer une requête représentative',
   'show up to version:': 'Montrer à partir de la version :',
   'Size range:': 'Ordre de grandeur :',
+  'Toggle navigation': 'Basculer la navigation',
   Type: 'Type',
   url: 'url',
+  Copy: 'Copier',
+  'Press Ctrl+C to copy': 'Appuyez sur Ctrl+C pour copier',
+  'copied!': 'Copié!',
 };

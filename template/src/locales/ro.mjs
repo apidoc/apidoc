@@ -18,6 +18,10 @@ export const ro = {
   'Send a Sample Request': 'Trimite o cerere de probă',
   'show up to version:': 'arată până la versiunea:',
   'Size range:': 'Interval permis:',
+  'Toggle navigation': 'Comutarea navigării',
   Type: 'Tip',
   url: 'url',
+  Copy: 'Copie',
+  'Press Ctrl+C to copy': 'Apăsați Ctrl+C pentru a copia',
+  'copied!': 'Copiat!',
 };

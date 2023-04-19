@@ -18,6 +18,10 @@ export const es = {
   'Send a Sample Request': 'Enviar una petición de ejemplo',
   'show up to version:': 'mostrar a versión:',
   'Size range:': 'Tamaño de rango:',
+  'Toggle navigation': 'Alternar navegación',
   Type: 'Tipo',
   url: 'url',
+  Copy: 'Copiar',
+  'Press Ctrl+C to copy': 'Presione Ctrl+C para copiar',
+  'copied!': '¡Copiado!',
 };

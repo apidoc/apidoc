@@ -18,9 +18,13 @@ import 'bootstrap/js/tab';
 import Prism from 'prismjs';
 // languages highlighted by Prism
 import 'prismjs/components/prism-bash';
+import 'prismjs/components/prism-diff';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-http';
 import 'prismjs/components/prism-python';
+import 'prismjs/plugins/toolbar/prism-toolbar';
+import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+import 'prismjs/plugins/diff-highlight/prism-diff-highlight';
 
 import { initSampleRequest } from './send_sample_request.js';
 import { __, setLanguage } from './locales/locale.mjs';
@@ -490,7 +494,7 @@ function init () {
     }
 
     if (apiProject.template.aloneDisplay) {
-      const hashVal = window.location.hash;
+      const hashVal = decodeURI(window.location.hash);
       if (hashVal != null && hashVal.length !== 0) {
         const version = document.getElementById('version').textContent.trim();
         const el = document.querySelector(`li .${hashVal.slice(1)}-init`);
@@ -584,25 +588,30 @@ function init () {
   }
 
   /**
+   * Off-Canvas side toggle navigation
+   */
+  document.querySelector('[data-toggle="offcanvas"]').addEventListener('click', function () {
+    const row = document.querySelector('.row-offcanvas');
+    if (row) {
+      row.classList.toggle('active');
+    }
+  });
+
+  /**
    * Set initial focus to search input
    */
   $('#scrollingNav .sidenav-search input.search').focus();
 
   /**
-   * Filter search
+   * Filter search with a delay to prevent issues with very large projects hogging the browser event loop during the search
    */
-  $('[data-action="filter-search"]').on('keyup', event => {
-    const query = event.currentTarget.value;
-    // find all links that are endpoints
-    $('.sidenav').find('a.nav-list-item').each((index, el) => {
-      // begin by showing all so they don't stay hidden
-      $(el).show();
-      // now simply hide the ones that don't match the query
-      if (!el.innerText.toLowerCase().includes(query)) {
-        $(el).hide();
-      }
+  $('[data-action="filter-search"]').on('keyup', resetableTimeout(event => {
+    const query = event.currentTarget.value.toLowerCase();
+
+    $('.sidenav a.nav-list-item').filter((index, el) => {
+      return $(el).toggle($(el).text().toLowerCase().indexOf(query) > -1);
     });
-  });
+  }, 200));
 
   /**
    * Search reset
@@ -614,6 +623,24 @@ function init () {
     ;
     $('.sidenav').find('a.nav-list-item').show();
   });
+
+  /**
+   * Executing the callback after the specified delay.
+   * Resets the timer if called again before the delay is reached.
+   *
+   * Behavior to prevent too many events from being triggered and getting stuck.
+   *
+   * @param {*} callback function to call after delay expires.
+   * @param {*} delay the time, in milliseconds that the timer should wait before the specified function or code is executed.
+   * @returns Timeout function includes the callback
+   */
+  function resetableTimeout (callback, delay) {
+    let timer = null;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(callback.bind(this, ...args), delay || 0);
+    };
+  }
 
   /**
      * Change version of an article to compare it to an other version.
@@ -663,6 +690,8 @@ function init () {
       fields.compare.id = fields.compare.id.replace(/\./g, '_');
 
       let entry = sourceEntry;
+      if (entry.header && entry.header.fields) { fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields); }
+
       if (entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }
@@ -672,6 +701,8 @@ function init () {
       if (entry.info && entry.info.fields) { fields._hasTypeInInfoFields = _hasTypeInFields(entry.info.fields); }
 
       entry = compareEntry;
+      if (fields._hasTypeInHeaderFields !== true && entry.header && entry.header.fields) { fields._hasTypeInHeaderFields = _hasTypeInFields(entry.header.fields); }
+
       if (fields._hasTypeInParameterFields !== true && entry.parameter && entry.parameter.fields) { fields._hasTypeInParameterFields = _hasTypeInFields(entry.parameter.fields); }
 
       if (fields._hasTypeInErrorFields !== true && entry.error && entry.error.fields) { fields._hasTypeInErrorFields = _hasTypeInFields(entry.error.fields); }
@@ -694,6 +725,7 @@ function init () {
       // TODO: on change main version or select the highest version re-render
     }
 
+    initDynamic();
     Prism.highlightAll();
   }
 

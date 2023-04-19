@@ -6,7 +6,6 @@
 // Current Success.
 // ------------------------------------------------------------------------------------------
 
-
 // ------------------------------------------------------------------------------------------
 // Current Errors.
 // ------------------------------------------------------------------------------------------
@@ -24,7 +23,6 @@
  *     }
  */
 
-
 // ------------------------------------------------------------------------------------------
 // Current Permissions.
 // ------------------------------------------------------------------------------------------
@@ -36,7 +34,6 @@
  *
  * @apiVersion 0.3.0
  */
-
 
 // ------------------------------------------------------------------------------------------
 // History.
@@ -57,6 +54,15 @@
  * Multilines are possible.
  *
  * @apiParam {String} id The Users-ID.
+ *
+ * @apiExample {bash} Curl example
+ * curl -i https://api.example.com/user/4711
+ * @apiExample {js} Javascript example
+ * const client = AcmeCorpApi();
+ * const user = client.getUser(42);
+ * @apiExample {python} Python example
+ * client = AcmeCorpApi.Client()
+ * user = client.get_user(42)
  *
  * @apiSuccess {String} id         The Users-ID.
  * @apiSuccess {Date}   name       Fullname of the User.
@@ -92,7 +98,7 @@
  * @apiDescription In this case "apiErrorStructure" is defined and used.
  * Define blocks with params that will be used in several functions, so you dont have to rewrite them.
  *
- * @apiParam {String} name Name of the User.
+ * @apiBody {String} name Name of the User.
  *
  * @apiSuccess {String} id         The Users-ID.
  *

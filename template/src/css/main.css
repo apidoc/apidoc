@@ -49,8 +49,14 @@ input[type="date"] {
   src: url('./glyphicons-halflings-regular.eot');
   src: url('./glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
     url('./glyphicons-halflings-regular.woff') format('woff'),
+    url('./glyphicons-halflings-regular.woff2') format('woff2'),
     url('./glyphicons-halflings-regular.ttf') format('truetype'),
     url('./glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+/* Hide vertical scrollbar on off canvas animation ("left" positioning) */
+html {
+  overflow-x: hidden;
 }
 
 body {
@@ -63,7 +69,6 @@ a:focus {
 
 #content {
   margin-top: 10px;
-  margin-left: 20%;
   padding-left: 10px;
 }
 
@@ -193,16 +198,30 @@ td.code {
 /* ------------------------------------------------------------------------------------------
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
-.sidenav {
-  color: var(--white);
-  width: 20%;
+#scrollingNav {
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   bottom: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+  z-index: 10;
   background-color: var(--dark-gray);
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+
+.sidenav {
+  color: var(--white);
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.sidenav:hover {
+  overflow-x: auto;
+  overflow-y: auto;
 }
 
 .sidenav > li > a {
@@ -250,14 +269,80 @@ td.code {
 }
 */
 
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 767px) {
+  #content {
+    margin-top: 58px;
+  }
+
+  .row-offcanvas {
+    position: relative;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+    left: 0;
+  }
+
+  .row-offcanvas,
+  .row-offcanvas * {
+    transition: all 0.5s ease-out;
+  }
+
+  .row-offcanvas .sidebar-offcanvas {
+    position: absolute;
+    top: 0;
+    left: -200px !important; /* 6 columns */
+    width: 100%; /* 6 columns */
+    max-width: 200px;
+  }
+
+  .nav-toggle {
+    position: fixed;
+    left: 0;
+    background: var(--dark-gray);
+    width: 100%;
+  }
+  
+  .nav-toggle .btn {
+    margin: 10px 14px;
+  }
+  .nav-toggle .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background-color: var(--white);
+  }
+  .nav-toggle .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+
+  .row-offcanvas.active .sidebar-offcanvas {
+    left: 0 !important; /* 6 columns */
+  }
+  .row-offcanvas.active, .row-offcanvas.active .nav-toggle {
+    left: 200px;
+  }
+  /* Styling the three lines to make it an X */
+  .row-offcanvas.active .nav-toggle .btn > .icon-bar {
+    transform: rotate(45deg) translate(-4px, -4px);
+  }
+  .row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(2) {
+    display: none;
+  }
+  .row-offcanvas.active .nav-toggle .btn .icon-bar:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+}
+
 /* ------------------------------------------------------------------------------------------
  * Side nav search
  * ------------------------------------------------------------------------------------------ */
 .sidenav-search {
-  width: 20%;
-  left: 0px;
-  position: fixed;
-  padding: 16px 20px 10px 20px;
+  padding: 16px 10px 10px;
   background-color: var(--dark-gray);
 }
 
@@ -273,8 +358,26 @@ td.code {
   height: 20px;
   text-align: center;
   right: 28px;
-  top: 17px;
+  top: 18px;
   background-color: #fff;
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Prism - Toolbar
+ * ------------------------------------------------------------------------------------------ */
+div.code-toolbar.code-toolbar > .toolbar {
+  top: .4rem;
+  right: .4rem;
+}
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:hover, 
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button:focus {
+  color: var(--white);
+}
+div.code-toolbar.code-toolbar > .toolbar > .toolbar-item > button {
+  color: var(--light-gray);
+  padding: .5em;
+  background: var(--hover-gray);
+  box-shadow: 0 2px 1px 1px rgba(0,0,0,.5);
 }
 
 /* ------------------------------------------------------------------------------------------

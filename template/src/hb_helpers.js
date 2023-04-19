@@ -312,6 +312,7 @@ export function register () {
 
   Handlebars.registerHelper('showDiff', function (source, compare, options) {
     let ds = '';
+
     if (source === compare) {
       ds = source;
     } else {
@@ -320,12 +321,18 @@ export function register () {
       if (!compare) { return source; }
 
       const diffMatchPatch = new DiffMatchPatch();
-      const d = diffMatchPatch.diffMain(compare, source);
-      diffMatchPatch.diffCleanupSemantic(d);
-      ds = diffMatchPatch.diffPrettyHtml(d);
-      ds = ds.replace(/&para;/gm, '');
+      if (options === 'code') {
+        const d = diffMatchPatch.diffLineMode(compare, source);
+        ds = diffMatchPatch.diffPrettyCode(d);
+      } else {
+        const d = diffMatchPatch.diffMain(compare, source);
+        diffMatchPatch.diffCleanupSemantic(d);
+        ds = diffMatchPatch.diffPrettyHtml(d);
+        ds = ds.replace(/&para;/gm, '');
+
+        if (options === 'nl2br') { ds = _handlebarsNewlineToBreak(ds); }
+      }
     }
-    if (options === 'nl2br') { ds = _handlebarsNewlineToBreak(ds); }
 
     return ds;
   });

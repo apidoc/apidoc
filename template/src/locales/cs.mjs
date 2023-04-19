@@ -18,6 +18,10 @@ export const cs = {
   'Send a Sample Request': 'Odeslat ukázkový požadavek',
   'show up to version:': 'zobrazit po verzi:',
   'Size range:': 'Rozsah velikosti:',
+  'Toggle navigation': 'Přepnout navigaci',
   Type: 'Typ',
   url: 'url',
+  Copy: 'Kopírovat',
+  'Press Ctrl+C to copy': 'Stisknutím kombinace kláves Ctrl+C zkopírujte',
+  'copied!': 'Zkopírovaný!',
 };
