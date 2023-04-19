@@ -1,5 +1,19 @@
 # apiDoc Changelog
 
+### 1.0.0
+
+#### BREAKING CHANGE
+
+* Requires Node v16 minimum (end of support for Node 14 is April 30th 2023)
+
+#### Contributed changes
+
+* Add off-canvas sidenav for mobile (PR #1341 by @SchoppAx)
+* Improve filter performance for huge projects (fix #1337 via PR #1343 by @SchoppAx)
+* Add clipboard button to code snippets (PR #1342 by @SchoppAx)
+* Re-create eventlisteners after compare manipulation (PR #1340 by @SchoppAx)
+* Add prism highlight diff support (PR #1338 by @SchoppAx)
+
 ### 0.54.0
 
 * Add cache busting system for assets with query parameter (PR #1333 by @Elysiome, fix #1332)
