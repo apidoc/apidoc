@@ -129,7 +129,7 @@ export function register () {
    * @returns {Boolean}
    */
   Handlebars.registerHelper('ifNotObject', function (type, options) {
-    return type.indexOf('Object') !== 0 ? options.fn(this) : options.inverse(this);
+    return type && type.indexOf('Object') !== 0 ? options.fn(this) : options.inverse(this);
   });
 
   // Test conditions
