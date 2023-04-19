@@ -47,7 +47,7 @@
     "diff-match-patch": "^1.0.5",
     "esbuild-loader": "^2.16.0",
     "expose-loader": "^3.1.0",
-    "fs-extra": "^10.0.0",
+    "fs-extra": "^11.0.0",
     "glob": "^7.2.0",
     "handlebars": "^4.7.7",
     "iconv-lite": "^0.6.3",
