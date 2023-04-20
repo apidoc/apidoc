@@ -23,6 +23,10 @@ module.exports = {
       jquery: 'jquery/src/jquery',
     },
     extensions: ['.js', '.mjs'],
+    // avoid issue with webpack not finding the polyfill
+    fallback: {
+      util: false,
+    },
   },
   module: {
     rules: [
