@@ -32,7 +32,7 @@ describe('Worker: apiGroup', function () {
 
     const rootBlock = parsedFiles[0][0];
 
-    assert.strictEqual(rootBlock.local.group, 'Category_official');
+    assert.strictEqual(rootBlock.local.group, 'Category_(official)');
     assert.strictEqual(rootBlock.local.groupTitle, 'Category_(official)');
 
     done();
