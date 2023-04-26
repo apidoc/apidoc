@@ -3,7 +3,6 @@
 apiDoc creates a documentation from API descriptions in your source code.
 
 ![validate](https://github.com/apidoc/apidoc/workflows/validate/badge.svg)
-[![Dependency Status](https://david-dm.org/apidoc/apidoc.svg)](https://david-dm.org/apidoc/apidoc)
 [![NPM version](https://badge.fury.io/js/apidoc.svg)](http://badge.fury.io/js/apidoc)
 [![Join the chat at https://gitter.im/apidoc/talk](https://badges.gitter.im/apidoc/talk.svg)](https://gitter.im/apidoc/talk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
