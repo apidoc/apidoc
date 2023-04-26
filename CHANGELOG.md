@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 1.0.1
+
+* fix version number
+
 ### 1.0.0
 
 #### BREAKING CHANGE
