@@ -6,8 +6,14 @@
 
 * Requires Node v16 minimum (end of support for Node 14 is April 30th 2023)
 
+#### Bugfixes
+
+* Fix issue with non latin group names (fix #1331)
+* Fix bundle not being generated unless in debug mode (fix #1350)
+
 #### Contributed changes
 
+* Allow escaping fields with dot (fix #774, PR by Emmanuel Saracco #1063)
 * Add off-canvas sidenav for mobile (PR #1341 by @SchoppAx)
 * Improve filter performance for huge projects (fix #1337 via PR #1343 by @SchoppAx)
 * Add clipboard button to code snippets (PR #1342 by @SchoppAx)
