@@ -60,7 +60,7 @@
     "semver": "^7.5.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.64.2",
-    "webpack-cli": "^4.9.1",
+    "webpack-cli": "^5.0.2",
     "winston": "^3.3.3"
   },
   "devDependencies": {
