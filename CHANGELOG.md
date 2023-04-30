@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 1.0.2
+
+* Fix group name with parenthesis causing scrollspy error
+
 ### 1.0.1
 
 * fix version number
