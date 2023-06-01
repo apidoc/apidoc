@@ -1,5 +1,10 @@
 # apiDoc Changelog
 
+### 1.0.3
+
+* Fix warning triggered by code example (fix #1384 via #1391 by Emmanuel Saracco)
+* Fix issue with apiSuccessExample parsiing (fix #1365 via #1366 by Emmanuel Saracco)
+
 ### 1.0.2
 
 * Fix group name with parenthesis causing scrollspy error
