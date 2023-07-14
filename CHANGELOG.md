@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 1.1.0
+
+* Upgrade dependencies
+
 ### 1.0.3
 
 * Fix warning triggered by code example (fix #1384 via #1391 by Emmanuel Saracco)
