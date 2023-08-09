@@ -78,7 +78,7 @@ program
 
   .option('-o, --output <output>', 'Output dirname.', 'doc/')
 
-  .option('--output-datafile', 'Output API data into file.', false)
+  .option('--write-json', 'Will create api-data.json file with parsed API info.', false)
 
   .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename', [])
 
@@ -133,7 +133,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
-  dataFile: argv.outputDatafile,
+  writeJson: argv.writeJson,
 };
 
 if (options.debug) {
