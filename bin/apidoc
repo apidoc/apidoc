@@ -78,6 +78,8 @@ program
 
   .option('-o, --output <output>', 'Output dirname.', 'doc/')
 
+  .option('--write-json', 'Will create api-data.json file with parsed API info.', false)
+
   .option('--parse-filters <parse-filters...>', 'Optional user defined filters. Format name=filename', [])
 
   .option('--parse-languages <parse-languages...>', 'Optional user defined languages. Format name=filename', [])
@@ -131,6 +133,7 @@ const options = {
   filterBy: argv.filterBy,
   logFormat: argv.logFormat,
   warnError: argv.warnError,
+  writeJson: argv.writeJson,
 };
 
 if (options.debug) {

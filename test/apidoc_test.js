@@ -33,7 +33,7 @@ function testFullExample (config) {
 
   // create
   it('should create example in ' + outputPath, async function () {
-    const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' -i ' + 'example -o ' + outputPath + ' -q -d';
+    const cmd = 'node ./bin/apidoc ' + (config ? '-c ' + config : '') + ' --write-json -i ' + 'example -o ' + outputPath + ' -q -d';
     const { stdout, stderr } = await exec(cmd);
   }).timeout(80000);
 
@@ -41,6 +41,7 @@ function testFullExample (config) {
   it('should find created files', done => {
     const outputFiles = [
       'assets/main.bundle.js',
+      'assets/api-data.json',
       'index.html',
     ];
 
