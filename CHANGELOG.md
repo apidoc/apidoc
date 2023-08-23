@@ -1,5 +1,9 @@
 # apiDoc Changelog
 
+### 1.2.0
+
+* Allow generation of `api-data.json` file with an option flag (PR #1427 by Henrik Gemal)
+
 ### 1.1.0
 
 * Upgrade dependencies
