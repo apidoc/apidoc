@@ -20,6 +20,7 @@ export const zhCn = {
   optional: '可选',
   Parameter: '参数',
   Parameters: '参数',
+  'Tag:': '标签:',
   'Permission:': '权限:',
   'Query Parameter(s)': '查询参数',
   'Query Parameters': '查询参数',

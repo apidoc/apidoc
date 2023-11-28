@@ -13,6 +13,7 @@ export const ptBr = {
   optional: 'opcional',
   Parameter: 'Parâmetro',
   'Permission:': 'Permissão:',
+  'Tag:': 'Rótulo:',
   Response: 'Resposta',
   Send: 'Enviar',
   'Send a Sample Request': 'Enviar um Exemplo de Pedido',

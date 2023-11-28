@@ -91,6 +91,7 @@ function postUser () { }
  * @apiVersion 0.3.0
  * @apiName PutUser
  * @apiGroup User
+ * @apiTag User,Put
  * @apiPermission none
  *
  * @apiDescription This function has same errors like POST /user, but errors not defined again, they were included with "apiErrorStructure"
@@ -108,6 +109,7 @@ function putUser () { }
  * @apiVersion 0.3.0
  * @apiName DeleteUser
  * @apiGroup User
+ * @apiTag admin,a,b,c
  * @apiPermission admin
  *
  * @apiDescription Be careful! This will remove all the data associated with that user!

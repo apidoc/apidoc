@@ -13,6 +13,7 @@ export const pl = {
   optional: 'opcjonalny',
   Parameter: 'Parametr',
   'Permission:': 'Uprawnienia:',
+  'Tag:': 'Etykieta:',
   Response: 'Odpowiedź',
   Send: 'Wyślij',
   'Send a Sample Request': 'Wyślij przykładowe żądanie',

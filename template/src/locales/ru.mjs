@@ -13,6 +13,7 @@ export const ru = {
   optional: 'необязательный',
   Parameter: 'Параметр',
   'Permission:': 'Разрешено:',
+  'Tag:': 'Этикетка:',
   Response: 'Ответ',
   Send: 'Отправить',
   'Send a Sample Request': 'Отправить тестовый запрос',

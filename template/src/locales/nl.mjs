@@ -13,6 +13,7 @@ export const nl = {
   optional: 'optioneel',
   Parameter: 'Parameter',
   'Permission:': 'Permissie:',
+  'Tag:': 'Etiket:',
   Response: 'Antwoorden',
   Send: 'Sturen',
   'Send a Sample Request': 'Stuur een sample aanvragen',

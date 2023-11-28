@@ -13,6 +13,7 @@ export const ro = {
   optional: 'opțional',
   Parameter: 'Parametru',
   'Permission:': 'Permisiune:',
+  'Tag:': 'Eticheta:',
   Response: 'Răspuns',
   Send: 'Trimite',
   'Send a Sample Request': 'Trimite o cerere de probă',

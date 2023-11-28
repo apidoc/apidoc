@@ -13,6 +13,7 @@ export const vi = {
   optional: 'Tùy chọn',
   Parameter: 'Tham số',
   'Permission:': 'Quyền hạn:',
+  'Tag:': 'Nhãn:',
   Response: 'Kết quả',
   Send: 'Gửi',
   'Send a Sample Request': 'Gửi một yêu cầu mẫu',

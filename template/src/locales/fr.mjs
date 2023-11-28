@@ -18,6 +18,7 @@ export const fr = {
   Parameter: 'Paramètre',
   Parameters: 'Paramètres',
   'Permission:': 'Permission :',
+  'Tag:': 'Étiquette :',
   'Query Parameter(s)': 'Paramètre(s) de la requête',
   'Query Parameters': 'Paramètres de la requête',
   'Request Body': 'Corps de la requête',
