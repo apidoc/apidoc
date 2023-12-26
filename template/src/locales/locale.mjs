@@ -20,6 +20,7 @@ import { ptBr } from './pt_br.mjs';
 import { ro } from './ro.mjs';
 import { ru } from './ru.mjs';
 import { tr } from './tr.mjs';
+import { uk } from './uk.mjs';
 import { vi } from './vi.mjs';
 import { zhCn } from './zh_cn.mjs';
 
@@ -39,6 +40,7 @@ const locales = {
   ro: ro,
   ru: ru,
   tr: tr,
+  uk: uk,
   vi: vi,
   // for chinese, allow cn, zh and zh_cn
   zh: zhCn,
