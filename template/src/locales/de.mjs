@@ -13,6 +13,7 @@ export const de = {
   optional: 'optional',
   Parameter: 'Parameter',
   'Permission:': 'Berechtigung:',
+  'Tag:': 'Etiket:',
   Response: 'Antwort',
   Send: 'Senden',
   'Send a Sample Request': 'Eine Beispielanfrage senden',

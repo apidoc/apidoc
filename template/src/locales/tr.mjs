@@ -13,6 +13,7 @@ export const tr = {
   optional: 'opsiyonel',
   Parameter: 'Parametre',
   'Permission:': 'İzin:',
+  'Tag:': 'Etiket:',
   Response: 'Dönüş',
   Send: 'Gönder',
   'Send a Sample Request': 'Örnek istek gönder',

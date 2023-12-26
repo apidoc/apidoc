@@ -13,6 +13,7 @@ export const cs = {
   optional: 'volitelné',
   Parameter: 'Parametr',
   'Permission:': 'Oprávnění:',
+  'Tag:': 'Označení:',
   Response: 'Odpověď',
   Send: 'Odeslat',
   'Send a Sample Request': 'Odeslat ukázkový požadavek',

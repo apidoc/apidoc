@@ -13,6 +13,7 @@ export const ca = {
   optional: 'opcional',
   Parameter: 'Paràmetre',
   'Permission:': 'Permisos:',
+  'Tag:': 'Címke:',
   Response: 'Resposta',
   Send: 'Enviar',
   'Send a Sample Request': 'Enviar una petició d\'exemple',

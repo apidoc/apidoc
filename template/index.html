@@ -176,6 +176,16 @@
       </p>
     {{/if}}
 
+    {{#if article.tag}}
+      <p>
+        {{__ "Tag:"}}
+        {{#each article.tag}}
+          {{this}}
+        {{/each}}
+      </p>
+    {{/if}}
+
+
     {{!-- CODE EXAMPLES IN TABS --}}
     {{#ifCond article.examples.length '>' 0}}
       <ul class="nav nav-tabs nav-tabs-examples" role="tablist">

@@ -374,6 +374,10 @@
     "version": "0.1.0",
     "name": "GetUser",
     "group": "User",
+    "tag": [
+      "User",
+      "Detail"
+    ],
     "permission": [
       {
         "name": "admin",
@@ -519,6 +523,10 @@
     "version": "0.2.0",
     "name": "PostUser",
     "group": "User",
+    "tag": [
+      "User",
+      "Post"
+    ],
     "permission": [
       {
         "name": "none"
@@ -591,6 +599,10 @@
     "version": "0.3.0",
     "name": "PutUser",
     "group": "User",
+    "tag": [
+      "User",
+      "Change"
+    ],
     "permission": [
       {
         "name": "none"

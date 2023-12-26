@@ -55,6 +55,7 @@ const app = {
     apisamplerequest: './parsers/api_sample_request.js',
     apideprecated: './parsers/api_deprecated.js',
     apiprivate: './parsers/api_private.js',
+    apitag: './parsers/api_tag.js',
   },
   workers: {
     apierrorstructure: './workers/api_error_structure.js',
@@ -70,6 +71,7 @@ const app = {
     apisuccessstructure: './workers/api_success_structure.js',
     apisuccesstitle: './workers/api_success_title.js',
     apiuse: './workers/api_use.js',
+    apitag: './workers/api_tag.js'
   },
   hooks: {}
 };
