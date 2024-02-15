@@ -16,22 +16,14 @@
   <link href="assets/favicon-16x16.png?__API_CACHE_BUSTING_QUERY_PARAM__" rel="icon" type="image/png" sizes="16x16">
 </head>
 
-<body class="container-fluid">
+<body>
 
 <!-- SIDENAV -->
 <script id="template-sidenav" type="text/x-handlebars-template">
 <nav id="scrollingNav" class="col-sm-3 col-lg-2 sidebar-offcanvas">
-  <div class="nav-toggle visible-xs">
-    <button type="button" class="btn btn-link" data-toggle="offcanvas">
-        <span class="sr-only">{{__ "Toggle navigation"}}</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-    </button>
-  </div>
   <div class="sidenav-search">
-    <input class="form-control search" data-action='filter-search' type="text" placeholder="{{__ "Filter..."}}">
-    <span class="search-reset">x</span>
+    <input class="form-control search" data-action='filter-search' type="text" placeholder="{{__ "Filter"}}">
+    <span class="search-reset"><span class="glyphicon glyphicon-remove"></span></span>
   </div>
   <ul class="sidenav nav nav-list list">
   {{#each nav}}
@@ -57,7 +49,7 @@
 <script id="template-project" type="text/x-handlebars-template">
   <div class="pull-left">
     <h1>{{name}}</h1>
-    {{#if description}}<h2>{{{nl2br description}}}</h2>{{/if}}
+    {{#if description}}<p>{{{nl2br description}}}</p>{{/if}}
   </div>
   <div class="pull-right">
     {{#if template.withCompare}}
@@ -109,7 +101,7 @@
 
 <script id="template-sections" type="text/x-handlebars-template">
   <section id="api-{{group}}" class="show-api-group show-api-{{group}}-group {{#if aloneDisplay}} hide{{/if}}">
-    <h1 class="color-primary font-weight-bold">{{underscoreToSpace title}}</h1>
+    <h2 class="color-primary font-weight-bold">{{underscoreToSpace title}}</h2>
     {{#if description}}
       <p>{{{nl2br description}}}</p>
     {{/if}}
@@ -124,7 +116,7 @@
 <script id="template-article" type="text/x-handlebars-template">
   <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
     <div class="pull-left">
-      <h1><span class="color-primary">{{underscoreToSpace article.groupTitle}}</span>{{#if article.title}} <span class="text-muted">|</span> {{article.title}}{{/if}}</h1>
+      <h2><span class="color-primary">{{underscoreToSpace article.groupTitle}}</span>{{#if article.title}} <span class="text-muted">|</span> {{article.title}}{{/if}}</h2>
     </div>
     {{#if template.withCompare}}
     <div class="pull-right">
@@ -605,7 +597,7 @@
 <script id="template-compare-article" type="text/x-handlebars-template">
   <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
     <div class="pull-left">
-      <h1>{{underscoreToSpace article.groupTitle}} | {{{showDiff article.title compare.title}}}</h1>
+      <h2>{{underscoreToSpace article.groupTitle}} | {{{showDiff article.title compare.title}}}</h2>
     </div>
 
     <div class="pull-right">
@@ -1015,9 +1007,17 @@
 </script>
 
 <div class="container-fluid">
-  <div class="row row-offcanvas row-offcanvas-left">
-    <div id="sidenav" class="col-sm-3 col-lg-2"></div>
-    <div id="content" class="col-sm-9 col-lg-10">
+  <div class="nav-toggle visible-xs">
+    <button type="button" class="btn btn-link" data-toggle="offcanvas">
+        <span class="sr-only">{{__ "Toggle navigation"}}</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+  </div>
+  <div class="row row-offcanvas row-offcanvas-left main">
+    <div id="sidenav" class=""></div>
+    <div id="content" class="">
       <div id="project"></div>
       <div id="header"></div>
       <div id="sections"></div>
