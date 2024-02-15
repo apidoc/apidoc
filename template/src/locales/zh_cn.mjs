@@ -9,7 +9,7 @@ export const zhCn = {
   Description: '描述',
   'Error 4xx': '请求失败（4xx）',
   Field: '字段',
-  'Filter...': '筛选…',
+  'Filter': '筛选',
   General: '概要',
   'Generated with': '构建于',
   Header: '请求头',
