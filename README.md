@@ -1,3 +1,8 @@
+# Important note
+
+This project is currently not active maintained!
+See discussion https://github.com/apidoc/apidoc/issues/1436
+
 # apiDoc
 
 apiDoc creates a documentation from API descriptions in your source code.
